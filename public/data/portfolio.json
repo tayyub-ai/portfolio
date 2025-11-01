@@ -12,39 +12,92 @@
       "email": "tayyubyaqoob@gmail.com",
       "location": "Stirling, Scotland, UK"
     },
-    "experience": [
-      {
-        "company": "8 Million Stories (8MS)",
-        "title": "Digital Analyst",
-        "dates": "Nov 2022 – Present",
-        "description": "Lead AI/ML and analytics modules across organic and paid teams. Own data pipelines, forecasting, MMM, anomaly detection, audits, and automation.",
-        "achievements": [
-          "Built 6+ Codex modules (forecasting, query forecast, sitemap similarity, anomaly detection, sentiment analysis, synergy).",
-          "GA4 + BigQuery pipelines, Advanced Consent Mode V2, GTM regex tables, and automated reporting at scale.",
-          "Delivered data retainers and insights for brands incl. Neilson Holidays, Clogau, Tesco Bank, Royal London."
-        ]
-      },
-      {
-        "company": "Freelance",
-        "title": "Data & AI Consultant",
-        "dates": "2019 – Present",
-        "description": "Consulting on GA4/GTM/BigQuery, AWS & Vertex AI workloads, dashboards, and automation.",
-        "achievements": [
-          "Scaled workloads via AWS Lambda/Fargate/EC2; containerized jobs per client.",
-          "Automated Looker dashboards and MMM pipelines with BigQuery."
-        ]
-      },
-      {
-        "company": "Cointelegraph",
-        "title": "AI/ML Content Creator (as Callum Reid)",
-        "dates": "2023 – Present",
-        "description": "Research-backed articles on AI in crypto and DeFi.",
-        "achievements": [
-          "Published 35+ articles on AI, ML and Blockchain",
-          "How-to guides and deep dives aligned to editorial & SEO standards."
-        ]
-      }
-    ],
+"experience": [
+  {
+    "company": "8 Million Stories Ltd (8MS)",
+    "title": "Digital Analyst",
+    "dates": "Apr 2021 – Present",
+    "description": "Develop and implement data-driven strategies for optimizing digital marketing campaigns, including user journey analysis, attribution modeling, and funnel optimization. Apply machine learning and predictive analytics to enhance campaign effectiveness and reporting automation.",
+    "achievements": [
+      "Developed and implemented data-driven strategies for digital marketing optimization across SEO, PPC, and analytics.",
+      "Created and automated real-time dashboards using Google Data Studio, Tableau, and Power BI for actionable insights and performance tracking.",
+      "Applied ML techniques and predictive analytics to improve campaign targeting and personalization.",
+      "Conducted SEO/PPC forecasting and trend analysis for clients including Tesco Bank and BBC World Service.",
+      "Performed deep analysis on web analytics data to uncover user behaviors and growth opportunities.",
+      "Collaborated with cross-functional teams to integrate analytics and AI-driven insights into marketing strategies, improving ROI."
+    ]
+  },
+  {
+    "company": "Cointelegraph",
+    "title": "AI/ML Content Creator (Freelance, as Callum Reid)",
+    "dates": "Apr 2023 – Present",
+    "description": "Research and analyze emerging AI/ML technologies, creating data-driven content and deep-dive articles for Cointelegraph’s global audience.",
+    "achievements": [
+      "Researched and analyzed AI/ML trends, including LLMs and generative AI, for global editorial coverage.",
+      "Translated complex AI/ML concepts into accessible, research-backed articles for both technical and non-technical readers.",
+      "Explored AI integration with blockchain and Web3 ecosystems, highlighting use cases and implications for DeFi.",
+      "Leveraged data analytics to identify content performance trends and align topics with audience interests.",
+      "Collaborated with editorial teams to ensure accuracy, quality, and SEO-aligned relevance."
+    ]
+  },
+  {
+    "company": "AlphaWire",
+    "title": "Crypto Content Creator (Contract)",
+    "dates": "May 2025 – Aug 2025",
+    "description": "Produced data-grounded content on fintech and blockchain, simplifying complex crypto-economic concepts for diverse audiences.",
+    "achievements": [
+      "Authored research-backed pieces on blockchain, crypto assets, and fintech integrations with traditional markets.",
+      "Transformed emerging financial and regulatory concepts into clear, actionable insights.",
+      "Highlighted expertise in AI, data, and blockchain to align technology innovation with business strategy."
+    ]
+  },
+  {
+    "company": "Freelance",
+    "title": "Data & AI Consultant",
+    "dates": "2019 – Present",
+    "description": "Consulted on analytics, automation, and AI-driven data solutions using GA4, GTM, BigQuery, AWS, and Vertex AI.",
+    "achievements": [
+      "Built scalable data pipelines and automated dashboards using BigQuery, Looker, and AWS.",
+      "Deployed workloads using Lambda, Fargate, and EC2 for client-specific AI modules.",
+      "Implemented marketing mix models, forecasting, and anomaly detection pipelines."
+    ]
+  },
+  {
+    "company": "Scholarships Guider",
+    "title": "Co-Founder",
+    "dates": "Jan 2020 – Apr 2021",
+    "description": "Founded and managed an educational platform connecting students to global scholarship opportunities.",
+    "achievements": [
+      "Developed and maintained the Scholarships Guider website and content strategy.",
+      "Built partnerships with universities and organizations to expand the platform’s reach.",
+      "Led digital campaigns that increased organic traffic and student engagement."
+    ]
+  },
+  {
+    "company": "iVision",
+    "title": "Data Analyst",
+    "dates": "Jan 2020 – Apr 2021",
+    "description": "Analyzed marketing campaigns and developed scalable data solutions using SQL, Python, and Google Analytics.",
+    "achievements": [
+      "Designed ETL workflows to manage and process data from multiple sources.",
+      "Conducted campaign performance analysis and presented insights to key stakeholders.",
+      "Implemented tags via GTM to track user behavior across digital assets.",
+      "Built dashboards and reports supporting marketing and business decisions."
+    ]
+  },
+  {
+    "company": "Quipsol",
+    "title": "Data Analyst",
+    "dates": "Aug 2017 – Aug 2018",
+    "description": "Collaborated with cross-functional teams to deliver data insights and optimize automated reporting systems.",
+    "achievements": [
+      "Developed SQL-based reporting systems for analytics and visualization.",
+      "Monitored data pipelines for accuracy and reliability.",
+      "Supported forecasting and business intelligence initiatives through advanced analytics."
+    ]
+  }
+],
+
     "education": [
       {
     "institution": "University of Stirling",
@@ -58,8 +111,6 @@
     "degree": "BS in Software Engineering",
     "dates": "2013 - 2017",
     "location": "Islamabad, Pakistan"
-
-
       }
     ],
     "projects": [
