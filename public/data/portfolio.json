@@ -103,15 +103,15 @@
     "education": [
       {
     "institution": "University of Stirling",
-    "degree": "MSc Computing Science",
-    "dates": "2018 - 2019",
+    "degree": "Masters in Big Data",
+    "dates": "2018-2019",
     "location": "Stirling, Scotland, UK"
 
     },
       {
     "institution": "COMSATS University Islamabad",
     "degree": "BS in Software Engineering",
-    "dates": "2013 - 2017",
+    "dates": "2013-2017",
     "location": "Islamabad, Pakistan"
       }
     ],
