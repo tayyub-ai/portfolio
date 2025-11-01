@@ -30,7 +30,7 @@
   },
   {
     "company": "Cointelegraph",
-    "title": "AI/ML Content Creator (Freelance, as Callum Reid)",
+    "title": "AI/ML Content Creator (Freelance)",
     "dates": "Apr 2023 – Present",
     "achievements": [
       "Authored over 30 AI and ML research articles reaching more than 1.2M readers worldwide, covering topics such as large language models, AI ethics, and model transparency.",
@@ -118,8 +118,8 @@
     "projects": [
       {
         "title": "Codex – Forecasting Engine (GSC/GA4)",
-        "description": "Weekly automated forecasts (queries, sessions) with backtests and alerting.",
-        "technologies": ["Python", "BigQuery", "Vertex AI", "Vercel"],
+        "description": "Weekly automated forecasts (organic traffic, keyword level traffic, website total traffic) with backtests and alerting.",
+        "technologies": ["Python", "BigQuery", "AWS", "Git Workflows"],
         "github": "",
         "demo": "",
         "featured": true
