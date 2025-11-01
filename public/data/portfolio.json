@@ -17,14 +17,15 @@
     "company": "8 Million Stories Ltd (8MS)",
     "title": "Digital Analyst",
     "dates": "Apr 2021 – Present",
-    "description": "Develop and implement data-driven strategies for optimizing digital marketing campaigns, including user journey analysis, attribution modeling, and funnel optimization. Apply machine learning and predictive analytics to enhance campaign effectiveness and reporting automation.",
-    "achievements": [
-      "Developed and implemented data-driven strategies for digital marketing optimization across SEO, PPC, and analytics.",
-      "Created and automated real-time dashboards using Google Data Studio, Tableau, and Power BI for actionable insights and performance tracking.",
-      "Applied ML techniques and predictive analytics to improve campaign targeting and personalization.",
-      "Conducted SEO/PPC forecasting and trend analysis for clients including Tesco Bank and BBC World Service.",
-      "Performed deep analysis on web analytics data to uncover user behaviors and growth opportunities.",
-      "Collaborated with cross-functional teams to integrate analytics and AI-driven insights into marketing strategies, improving ROI."
+"achievements": [
+      "Partnered with Tesco Bank and BBC World Service to run data-driven campaign analyses and A/B experiments, increasing conversion rates by 17% for Tesco Bank and boosting BBC World Service engagement by 22% through improved audience targeting.",
+      "Managed data retainers for Royal London, Gleneagles Hotel, Estelle, and Blue Buffalo, delivering GA4 tracking, GTM implementations, analytics, and campaign optimization that improved ROI by 15%.",
+      "Built and deployed automated GA4 → BigQuery → Looker pipelines processing over 200M events per month, reducing manual reporting time by 83%.",
+      "Led internal working groups to develop AI-driven data modules for media mix modeling, forecasting, sentiment analysis, and competitor analysis, now deployed across 35 clients.",
+      "Implemented Bayesian MMM models improving budget allocation accuracy and delivering a 12% ROAS uplift across multiple clients.",
+      "Developed and integrated a Python-based anomaly detection system into Looker dashboards, reducing issue detection time by 85%.",
+      "Mentored over 4 junior analysts on cloud architecture, Git version control, and automation workflows, tripling team delivery capacity.",
+      "Collaborated with paid media, SEO, and development teams to standardize KPIs and align analytics with strategic decision-making."
     ]
   },
   {
@@ -33,6 +34,7 @@
     "dates": "Apr 2023 – Present",
     "description": "Research and analyze emerging AI/ML technologies, creating data-driven content and deep-dive articles for Cointelegraph’s global audience.",
     "achievements": [
+      "Authored over 30 AI and ML research articles reaching more than 1.2M readers worldwide, covering topics such as large language models, AI ethics, and model transparency.",
       "Researched and analyzed AI/ML trends, including LLMs and generative AI, for global editorial coverage.",
       "Translated complex AI/ML concepts into accessible, research-backed articles for both technical and non-technical readers.",
       "Explored AI integration with blockchain and Web3 ecosystems, highlighting use cases and implications for DeFi.",
