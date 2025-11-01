@@ -32,7 +32,6 @@
     "company": "Cointelegraph",
     "title": "AI/ML Content Creator (Freelance, as Callum Reid)",
     "dates": "Apr 2023 – Present",
-    "description": "Research and analyze emerging AI/ML technologies, creating data-driven content and deep-dive articles for Cointelegraph’s global audience.",
     "achievements": [
       "Authored over 30 AI and ML research articles reaching more than 1.2M readers worldwide, covering topics such as large language models, AI ethics, and model transparency.",
       "Researched and analyzed AI/ML trends, including LLMs and generative AI, for global editorial coverage.",
@@ -46,7 +45,6 @@
     "company": "AlphaWire",
     "title": "Crypto Content Creator (Contract)",
     "dates": "May 2025 – Aug 2025",
-    "description": "Produced data-grounded content on fintech and blockchain, simplifying complex crypto-economic concepts for diverse audiences.",
     "achievements": [
       "Authored research-backed pieces on blockchain, crypto assets, and fintech integrations with traditional markets.",
       "Transformed emerging financial and regulatory concepts into clear, actionable insights.",
@@ -57,7 +55,6 @@
     "company": "Freelance",
     "title": "Data & AI Consultant",
     "dates": "2019 – Present",
-    "description": "Consulted on analytics, automation, and AI-driven data solutions using GA4, GTM, BigQuery, AWS, and Vertex AI.",
     "achievements": [
       "Built scalable data pipelines and automated dashboards using BigQuery, Looker, and AWS.",
       "Deployed workloads using Lambda, Fargate, and EC2 for client-specific AI modules.",
@@ -68,9 +65,8 @@
     "company": "Scholarships Guider",
     "title": "Co-Founder",
     "dates": "Jan 2020 – Apr 2021",
-    "description": "Founded and managed an educational platform connecting students to global scholarship opportunities.",
     "achievements": [
-      "Developed and maintained the Scholarships Guider website and content strategy.",
+      "Founded and managed an educational platform connecting students to global scholarship opportunities.",
       "Built partnerships with universities and organizations to expand the platform’s reach.",
       "Led digital campaigns that increased organic traffic and student engagement."
     ]
@@ -79,24 +75,28 @@
     "company": "iVision",
     "title": "Data Analyst",
     "dates": "Jan 2020 – Apr 2021",
-    "description": "Analyzed marketing campaigns and developed scalable data solutions using SQL, Python, and Google Analytics.",
     "achievements": [
-      "Designed ETL workflows to manage and process data from multiple sources.",
-      "Conducted campaign performance analysis and presented insights to key stakeholders.",
-      "Implemented tags via GTM to track user behavior across digital assets.",
-      "Built dashboards and reports supporting marketing and business decisions."
-    ]
+        "Used machine learning techniques to create scalable solutions for business problems.",
+        "Handled large volumes of data across multiple databases, performing ETL operations using SQL to meet client requirements.",
+        "Analyzed marketing campaigns across different channels using Google Analytics and delivered key insights to senior stakeholders based on performance KPIs.",
+        "Scraped large datasets from multiple websites using Python libraries such as BeautifulSoup to extract and process relevant data.",
+        "Implemented Google Tag Manager (GTM) to track and analyze user interactions including banner clicks, registrations, and page visits.",
+        "Ensured data consistency, reliability, and quality across multiple reporting pipelines.",
+        "Collaborated with business and technical teams to ensure that analytics outputs aligned with marketing goals and decision-making."
+      ]
   },
   {
     "company": "Quipsol",
     "title": "Data Analyst",
     "dates": "Aug 2017 – Aug 2018",
-    "description": "Collaborated with cross-functional teams to deliver data insights and optimize automated reporting systems.",
     "achievements": [
-      "Developed SQL-based reporting systems for analytics and visualization.",
-      "Monitored data pipelines for accuracy and reliability.",
-      "Supported forecasting and business intelligence initiatives through advanced analytics."
-    ]
+        "Collaborated with cross-functional teams to identify data requirements and translate them into actionable insights for strategic business decisions.",
+        "Developed, maintained, and optimized automated reporting systems and dashboards to streamline data visualization and accessibility for stakeholders.",
+        "Designed and executed complex SQL queries to extract, transform, and analyze data from multiple sources, ensuring accuracy and efficiency.",
+        "Monitored data pipelines and implemented validation steps to ensure high-quality, reliable reporting outputs.",
+        "Analyzed data trends and patterns in large datasets to support forecasting and data-informed decision-making.",
+        "Presented insights and recommendations to management, enabling data-backed improvements in process and performance."
+      ]
   }
 ],
 
