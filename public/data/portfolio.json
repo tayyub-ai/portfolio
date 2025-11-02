@@ -237,8 +237,6 @@
   { "name": "Python", "icon": "https://cdn.simpleicons.org/python/3776AB", "category": "AI & ML" },
   { "name": "Pandas", "icon": "https://cdn.simpleicons.org/pandas/150458", "category": "AI & ML" },
   { "name": "NumPy", "icon": "https://cdn.simpleicons.org/numpy/013243", "category": "AI & ML" },
-  { "name": "GA4", "icon": "https://cdn.simpleicons.org/googleanalytics/FFA500", "category": "Analytics" },
-  { "name": "GTM", "icon": "https://cdn.simpleicons.org/googletagmanager/4C8BF5", "category": "Analytics" },
   { "name": "scikit-learn", "icon": "https://cdn.simpleicons.org/scikitlearn/F7931E", "category": "AI & ML" },
   { "name": "TensorFlow", "icon": "https://cdn.simpleicons.org/tensorflow/FF6F00", "category": "AI & ML" },
   { "name": "PyTorch", "icon": "https://cdn.simpleicons.org/pytorch/EE4C2C", "category": "AI & ML" },
@@ -256,14 +254,15 @@
   { "name": "AWS Lambda", "icon": "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", "category": "Cloud Infrastructure" },
   { "name": "Amazon ECS", "icon": "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", "category": "Cloud Infrastructure" },
   { "name": "Amazon S3", "icon": "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg", "category": "Cloud Infrastructure" },
-  { "name": "Power BI", "icon": "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg", "category": "Data Visualization" },
   { "name": "Docker", "icon": "https://cdn.simpleicons.org/docker/2496ED", "category": "Cloud Infrastructure" },
   { "name": "Kubernetes", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5", "category": "Cloud Infrastructure" },
   { "name": "Vercel", "icon": "https://cdn.simpleicons.org/vercel/FFFFFF", "category": "Cloud Infrastructure" },
-  { "name": "Looker Studio", "icon": "https://cdn.simpleicons.org/looker/4285F4", "category": "Data Visualization" },
+  { "name": "GA4", "icon": "https://cdn.simpleicons.org/googleanalytics/FFA500", "category": "Analytics" },
+  { "name": "GTM", "icon": "https://cdn.simpleicons.org/googletagmanager/4C8BF5", "category": "Analytics" },
   { "name": "Google Ads", "icon": "https://cdn.simpleicons.org/googleads/4285F4", "category": "Paid Media" },
   { "name": "Search Console", "icon": "https://cdn.simpleicons.org/googlesearchconsole/34A853", "category": "SEO" },
-  { "name": "Supermetrics", "icon": "https://cdn.brandfetch.io/id5cb28dFI/theme/light/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B", "category": "Automation" },
+  { "name": "Power BI", "icon": "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg", "category": "Data Visualization" },
+  { "name": "Looker Studio", "icon": "https://cdn.simpleicons.org/looker/4285F4", "category": "Data Visualization" },
   { "name": "Tableau", "icon": "https://www.svgrepo.com/svg/354428/tableau-icon", "category": "Data Visualization" },
   { "name": "FastAPI", "icon": "https://cdn.simpleicons.org/fastapi/009688", "category": "Backend" },
   { "name": "Flask", "icon": "https://cdn.simpleicons.org/flask/FFFFFF", "category": "Backend" },
@@ -272,6 +271,7 @@
   { "name": "GitHub Actions", "icon": "https://cdn.simpleicons.org/githubactions/2088FF", "category": "DevOps" },
   { "name": "MySQL", "icon": "https://cdn.simpleicons.org/mysql/4479A1", "category": "Databases" }
 ],
+
 
     "socialLinks": {
       "github": "https://github.com/tayyub-ai",
