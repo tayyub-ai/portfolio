@@ -102,7 +102,6 @@
       ]
   }
 ],
-
     "education": [
       {
     "institution": "University of Stirling",
@@ -259,20 +258,11 @@
       "learningFocus": "Health data science and NHS digital tools",
       "careerTrajectory": "Evolving from marketing analytics to clinical/health data AI."
     },
-    "techStack": [
-      "Python",
-      "BigQuery",
-      "Vertex AI",
-      "AWS",
-      "GA4 & GTM",
-      "React",
-      "Vercel"
-    ],
     "githubStats": {
-      "totalPublicRepos": 12,
-      "totalStars": 80,
+      "totalPublicRepos": 7,
+      "totalStars": 12,
       "totalForks": 20,
-      "totalCommits": 1200,
+      "totalCommits": 130,
       "featuredRepos": 5
     }
   }
