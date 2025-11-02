@@ -52,15 +52,18 @@
     ]
   },
   {
-    "company": "Freelance",
-    "title": "Data & AI Consultant",
-    "dates": "2019 – Present",
-    "achievements": [
-      "Built scalable data pipelines and automated dashboards using BigQuery, Looker, and AWS.",
-      "Deployed workloads using Lambda, Fargate, and EC2 for client-specific AI modules.",
-      "Implemented marketing mix models, forecasting, and anomaly detection pipelines."
-    ]
-  },
+  "company": "Freelance",
+  "title": "Data & AI Consultant",
+  "dates": "2019 – Present",
+  "description": "Provide data analytics, tracking, and AI consulting for global clients across multiple industries, focusing on GA4, GTM, automation, and cloud-based analytics solutions.",
+  "achievements": [
+    "Delivered GA4 audits, troubleshooting, and end-to-end tracking setups across paid channels including Google Ads, Meta, LinkedIn, and Bing.",
+    "Implemented advanced GTM tagging architectures and event tracking for performance and attribution measurement.",
+    "Set up and maintained cookie compliance frameworks (GDPR, Consent Mode V2) to ensure privacy-first data collection.",
+    "Built automated GA4 → BigQuery → Looker pipelines for marketing and performance reporting.",
+    "Worked on data retainers and analytics solutions for clients such as Neilson Holidays, JojoSki, Nerdwallet, Rivet Education, and Clinic Secret."
+  ]
+},
   {
     "company": "Scholarships Guider",
     "title": "Co-Founder",
@@ -116,135 +119,122 @@
       }
     ],
     "projects": [
-      {
-        "title": "Codex – Forecasting Engine (GSC/GA4)",
-        "description": "Weekly automated forecasts (organic traffic, keyword level traffic, website total traffic) with backtests and alerting.",
-        "technologies": ["Python", "BigQuery", "AWS", "Git Workflows"],
-        "github": "",
-        "demo": "",
-        "featured": true
-      },
-      {
-        "title": "Codex – Anomaly Detection & Alerts",
-        "description": "Precision/recall-tuned anomaly detection on clicks/sessions with notifications.",
-        "technologies": ["Python", "BigQuery", "Cloud Functions"],
-        "github": "",
-        "demo": "",
-        "featured": true
-      },
-      {
-        "title": "Codex – Sitemap Similarity",
-        "description": "Compare 50–100 sites, clean HTML, compute embeddings, output similarity scores.",
-        "technologies": ["Python", "SentenceTransformers", "AWS", "BigQuery"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Codex – Sentiment & Mentions",
-        "description": "Weekly sentiment across sources; client-specific negative keywords; S3 outputs.",
-        "technologies": ["Python", "VADER", "AWS Lambda", "S3"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Synergy (Paid × Organic)",
-        "description": "Attribution-aware analysis measuring paid/organic overlap and cannibalization.",
-        "technologies": ["Python", "BigQuery", "Pandas"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Meridian – MMM (Vertex AI)",
-        "description": "MMM light for budget optimization with holdout validation and simulations.",
-        "technologies": ["Vertex AI", "BigQuery", "Python"],
-        "github": "",
-        "demo": "",
-        "featured": true
-      },
-      {
-        "title": "Neilson Holidays – Data Retainer",
-        "description": "Forecasting bookings/traffic, anomaly detection, GA4 pipelines and dashboards.",
-        "technologies": ["GA4", "BigQuery", "Python", "Looker Studio"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Clogau & Clogau Outlet – CRM × GA4",
-        "description": "Matched enquiries to bookings; automated reporting; Advanced Consent Mode V2.",
-        "technologies": ["GA4", "BigQuery", "CRM API", "Supermetrics"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Rivet Education – Data Retainer",
-        "description": "Forecasting, sentiment dashboards, and sector insights.",
-        "technologies": ["Python", "BigQuery", "AWS"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Tesco Bank – GA4 Retainer",
-        "description": "GA4 audits, GTM automation, anomaly detection, MMM forecasting.",
-        "technologies": ["GA4", "BigQuery", "Python"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Royal London – Insights Retainer",
-        "description": "Pipelines for anomaly detection and query forecasting, GA4 event audits.",
-        "technologies": ["Python", "Vertex AI", "BigQuery"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Stablecoin Depegging Study (2023–2025)",
-        "description": "CoinGecko data on USDT/USDC/DAI; depeg windows, liquidity and market cap dynamics.",
-        "technologies": ["CoinGecko API", "Python", "Pandas"],
-        "github": "",
-        "demo": "",
-        "featured": true
-      },
-      {
-        "title": "Looker Forecast vs Actuals",
-        "description": "Daily actuals vs projections for consumer/adviser/red routes; variance tracking.",
-        "technologies": ["BigQuery", "Looker Studio", "Python"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "GA4 Superior Audit Template",
-        "description": "Audit framework: consent, PII, attribution, broken tags, custom events, BQ links.",
-        "technologies": ["GA4", "GTM", "BigQuery"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "SaaS Experiments",
-        "description": "CV builder, AI tools aggregator, free-online-games portal with affiliate flows.",
-        "technologies": ["React", "Next.js", "Vercel", "Stripe"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      },
-      {
-        "title": "Investment & FIRE Plan",
-        "description": "PSX: EFERT, MIIETF, MZNPETF, MEBL, MARI, POL, NML; dividend reinvestment and index strategy.",
-        "technologies": ["Financial Modeling", "PSX", "Index Funds"],
-        "github": "",
-        "demo": "",
-        "featured": false
-      }
-    ],
+  {
+    "title": "Forecasting Engine (GSC / GA4)",
+    "description": "Automated weekly forecasting engine for organic and GA4 traffic across 50+ clients. Generates keyword, query, and total traffic predictions with backtests, confidence intervals, and performance alerts.",
+    "technologies": ["Python", "BigQuery", "AWS Lambda", "Prophet", "Pandas", "GitHub Actions"],
+    "featured": true
+  },
+  {
+    "title": "Anomaly Detection & Alerting",
+    "description": "Anomaly detection framework using precision/recall-tuned thresholds on clicks and sessions. Automatically identifies unusual traffic patterns and sends real-time alerts to teams.",
+    "technologies": ["Python", "BigQuery", "Cloud Functions", "Scikit-learn", "AWS SNS"],
+    "featured": true
+  },
+  {
+    "title": "Sitemap Similarity Engine",
+    "description": "Analyzes and compares website sitemaps (50–100 sites) by extracting and embedding HTML text via SentenceTransformers to measure content overlap and structural similarity.",
+    "technologies": ["Python", "SentenceTransformers", "AWS EC2", "BigQuery", "BeautifulSoup"],
+    "featured": false
+  },
+  {
+    "title": "Sentiment & Mentions Intelligence",
+    "description": "Weekly automated sentiment analysis across online sources, handling client-specific negative keywords. Outputs sentiment and brand mention data to AWS S3 for reporting in Looker.",
+    "technologies": ["Python", "VADER", "AWS Lambda", "S3", "Pandas"],
+    "featured": false
+  },
+  {
+    "title": "PersonaGraph (Multi-Source)",
+    "description": "NLP-based persona generation system that combines Google Knowledge Graph, Wikidata, DBpedia, and Wikipedia data. Uses embeddings and clustering to uncover entity relationships and build topic personas for SEO.",
+    "technologies": ["Python", "SentenceTransformers", "Wikidata SPARQL", "Google KG API", "Streamlit"],
+    "featured": true
+  },
+  {
+    "title": "Synergy (Paid × Organic Attribution)",
+    "description": "Attribution-aware analytics module quantifying overlap and cannibalization between paid and organic channels. Supports data-driven reallocation to maximize blended ROI.",
+    "technologies": ["Python", "BigQuery", "NumPy", "Pandas"],
+    "featured": false
+  },
+  {
+    "title": "Meridian – MMM",
+    "description": "Bayesian Marketing Mix Modeling pipeline for budget optimization. Implements adstock, saturation, and diminishing returns modeling with holdout validation and posterior simulations.",
+    "technologies": ["BigQuery", "Python", "Google Meridian"],
+    "featured": true
+  },
+  {
+    "title": "Neilson Holidays – Data Retainer",
+    "description": "Forecasting, anomaly detection, and GA4 data automation across bookings and traffic. Implemented automated Looker dashboards built on GA4 → BigQuery pipelines.",
+    "technologies": ["GA4", "BigQuery", "Python", "Looker Studio"],
+    "featured": false
+  },
+  {
+    "title": "Clogau & Clogau Outlet – CRM × GA4 Integration",
+    "description": "Connected CRM and GA4 datasets to match enquiries and bookings, enabling automated performance reporting. Implemented Advanced Consent Mode V2 to ensure compliance.",
+    "technologies": ["GA4", "BigQuery", "CRM API", "Consent Mode V2", "Supermetrics"],
+    "featured": false
+  },
+  {
+    "title": "Rivet Education – Data Retainer",
+    "description": "Developed forecasting, sentiment dashboards, and trend analysis pipelines for education sector data. Enabled actionable insight reporting using GA4 and AWS.",
+    "technologies": ["Python", "BigQuery", "AWS Lambda", "Looker Studio"],
+    "featured": false
+  },
+  {
+    "title": "Tesco Bank – GA4 & MMM Retainer",
+    "description": "Delivered end-to-end GA4 audits, GTM automation, and MMM forecasting with budget optimization insights. Enabled advanced tracking and decision-ready dashboards.",
+    "technologies": ["GA4", "BigQuery", "Python", "Vertex AI", "GTM"],
+    "featured": false
+  },
+  {
+    "title": "Royal London – Insights Automation",
+    "description": "Built pipelines for anomaly detection, MMM inputs, and search query forecasting. Automated GA4 audits and integrated outputs into Looker dashboards.",
+    "technologies": ["Python", "Vertex AI", "BigQuery", "Looker Studio"],
+    "featured": false
+  },
+  {
+    "title": "Stablecoin Depegging Study (2023–2025)",
+    "description": "Analyzed USDT, USDC, and DAI stability using CoinGecko API data. Studied depeg events, liquidity effects, and market cap correlations to assess systemic risk in stablecoins.",
+    "technologies": ["Python", "CoinGecko API", "Pandas", "Matplotlib", "BigQuery"],
+    "featured": true
+  },
+  {
+    "title": "Looker Forecast vs Actuals Dashboard",
+    "description": "Automated daily comparison of forecasted vs actual traffic for multiple journey types (consumer, adviser, red routes). Highlights variance and anomalies for reporting accuracy.",
+    "technologies": ["BigQuery", "Looker Studio", "Python", "Supermetrics"],
+    "featured": false
+  },
+  {
+    "title": "GA4 Superior Audit Template",
+    "description": "Comprehensive audit framework for analytics setup validation, covering consent mode, data accuracy, broken tags, and attribution issues.",
+    "technologies": ["GA4", "GTM", "BigQuery", "JavaScript"],
+    "featured": false
+  },
+  {
+    "title": "AI Mentions Tracker",
+    "description": "Automated module to identify AI-related mentions across web and social data. Supports reputation monitoring and competitive benchmarking.",
+    "technologies": ["Python", "AWS Lambda", "BigQuery", "VADER", "S3"],
+    "featured": false
+  },
+  {
+    "title": "AI Forecasting Dashboard (Vertex AI + BigQuery)",
+    "description": "Integrated Vertex AI time series forecasting with BigQuery and Looker for automated campaign-level projections and accuracy evaluation.",
+    "technologies": ["Vertex AI", "BigQuery", "Python", "Looker Studio"],
+    "featured": true
+  },
+  {
+    "title": "AI News Rundown (Automation Pipeline)",
+    "description": "Automated AI news aggregation pipeline inspired by Rundown.ai, using NLP to summarize and categorize industry updates for daily distribution.",
+    "technologies": ["Python", "NewsAPI", "OpenAI API", "Streamlit", "AWS Lambda"],
+    "featured": false
+  },
+  {
+    "title": "Adverity Migration – PPC Dashboards",
+    "description": "Migrated PPC reporting stack from Supermetrics to Adverity + BigQuery. Automated daily data refresh, campaign grouping, and performance reconciliation across multiple markets.",
+    "technologies": ["Adverity", "BigQuery", "Looker Studio", "GA4", "GTM"],
+    "featured": true
+  }
+],
+
     "skills": [
       "Python",
       "BigQuery",
