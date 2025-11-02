@@ -241,12 +241,12 @@
   },
   {
     "name": "BigQuery",
-    "icon": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Google_BigQuery_Logo.svg",
+    "icon": "https://cdn.worldvectorlogo.com/logos/google-bigquery-logo-1.svg",
     "category": "Data Engineering"
   },
   {
     "name": "Vertex AI",
-    "icon": "https://www.gstatic.com/devrel-devsite/prod/vb8e7dfc00ceaa40dc7d6885f77a0376fcb4d2a41dfd32784d7e52e3ccf76ec79/cloud/images/lockup.svg",
+    "icon": "https://www.gstatic.com/devrel-devsite/prod/v4b8a3a4adfbd12e48e993bdfb1532580de1f4e3e9adcb5568f82d4b3b86e1b6c/cloud/images/lockup.svg",
     "category": "AI / Cloud"
   },
   {
@@ -264,10 +264,19 @@
     "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Google_Tag_Manager_logo.svg",
     "category": "Analytics"
   },
-
+  {
+    "name": "React",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    "category": "Frontend"
+  },
+  {
+    "name": "Next.js",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    "category": "Frontend"
+  },
   {
     "name": "Looker Studio",
-    "icon": "https://upload.wikimedia.org/wikipedia/commons/2/20/Looker_Studio_logo.svg",
+    "icon": "https://cdn.worldvectorlogo.com/logos/looker-icon.svg",
     "category": "Data Visualization"
   },
   {
@@ -276,7 +285,6 @@
     "category": "Automation"
   }
 ],
-
     "socialLinks": {
       "github": "https://github.com/tayyub-ai",
       "linkedin": "https://www.linkedin.com/in/tayyubyaqoob",
