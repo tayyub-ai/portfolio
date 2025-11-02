@@ -233,18 +233,50 @@
     "featured": true
   }
 ],
-    "techStack": [
-  { "name": "Python", "icon": "/icons/python.svg", "category": "AI & ML" },
-  { "name": "BigQuery", "icon": "/icons/bigquery.svg", "category": "Data Engineering" },
-  { "name": "Vertex AI", "icon": "/icons/vertexai.svg", "category": "AI / Cloud" },
-  { "name": "AWS", "icon": "/icons/aws.svg", "category": "Cloud Infrastructure" },
-  { "name": "GA4", "icon": "/icons/ga4.svg", "category": "Analytics" },
-  { "name": "GTM", "icon": "/icons/gtm.svg", "category": "Analytics" },
-  { "name": "React", "icon": "/icons/react.svg", "category": "Frontend" },
-  { "name": "Next.js", "icon": "/icons/nextjs.svg", "category": "Frontend" },
-  { "name": "Looker Studio", "icon": "/icons/looker.svg", "category": "Data Visualization" },
-  { "name": "Supermetrics", "icon": "/icons/supermetrics.svg", "category": "Automation" }
-],
+"techStack": [
+  {
+    "name": "Python",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    "category": "AI & ML"
+  },
+  {
+    "name": "BigQuery",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Google_BigQuery_Logo.svg",
+    "category": "Data Engineering"
+  },
+  {
+    "name": "Vertex AI",
+    "icon": "https://www.gstatic.com/devrel-devsite/prod/vb8e7dfc00ceaa40dc7d6885f77a0376fcb4d2a41dfd32784d7e52e3ccf76ec79/cloud/images/lockup.svg",
+    "category": "AI / Cloud"
+  },
+  {
+    "name": "AWS",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
+    "category": "Cloud Infrastructure"
+  },
+  {
+    "name": "GA4",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Google_Analytics_4_Logo.svg",
+    "category": "Analytics"
+  },
+  {
+    "name": "GTM",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Google_Tag_Manager_logo.svg",
+    "category": "Analytics"
+  },
+
+  {
+    "name": "Looker Studio",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/2/20/Looker_Studio_logo.svg",
+    "category": "Data Visualization"
+  },
+  {
+    "name": "Supermetrics",
+    "icon": "https://cdn.supermetrics.com/img/sm-icon.svg",
+    "category": "Automation"
+  }
+]
+
     "socialLinks": {
       "github": "https://github.com/tayyub-ai",
       "linkedin": "https://www.linkedin.com/in/tayyubyaqoob",
