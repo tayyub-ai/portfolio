@@ -73,7 +73,7 @@ const TechStack = () => {
   const animationControls = useAnimation();
   
   // Get tech stack icons
-  const techStackWithIcons = getTechStackWithIcons(portfolio);
+  const techStackWithIcons = portfolio?.techStack || [];
 
   // Extract top skills from insights with safe fallbacks
   const topSkills = portfolio?.insights?.topSkills || [];
