@@ -234,57 +234,72 @@
   }
 ],
 "techStack": [
-  {
-    "name": "Python",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    "category": "AI & ML"
-  },
-  {
-    "name": "BigQuery",
-    "icon": "https://cdn.worldvectorlogo.com/logos/google-bigquery-logo-1.svg",
-    "category": "Data Engineering"
-  },
-  {
-    "name": "Vertex AI",
-    "icon": "https://www.gstatic.com/devrel-devsite/prod/v4b8a3a4adfbd12e48e993bdfb1532580de1f4e3e9adcb5568f82d4b3b86e1b6c/cloud/images/lockup.svg",
-    "category": "AI / Cloud"
-  },
-  {
-    "name": "AWS",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
-    "category": "Cloud Infrastructure"
-  },
-  {
-    "name": "GA4",
-    "icon": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Google_Analytics_4_Logo.svg",
-    "category": "Analytics"
-  },
-  {
-    "name": "GTM",
-    "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Google_Tag_Manager_logo.svg",
-    "category": "Analytics"
-  },
-  {
-    "name": "React",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    "category": "Frontend"
-  },
-  {
-    "name": "Next.js",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-    "category": "Frontend"
-  },
-  {
-    "name": "Looker Studio",
-    "icon": "https://cdn.worldvectorlogo.com/logos/looker-icon.svg",
-    "category": "Data Visualization"
-  },
-  {
-    "name": "Supermetrics",
-    "icon": "https://cdn.supermetrics.com/img/sm-icon.svg",
-    "category": "Automation"
-  }
+  /* AI & ML */
+  { "name": "Python",           "icon": "https://cdn.simpleicons.org/python",             "category": "AI & ML" },
+  { "name": "Pandas",           "icon": "https://cdn.simpleicons.org/pandas",             "category": "AI & ML" },
+  { "name": "NumPy",            "icon": "https://cdn.simpleicons.org/numpy",              "category": "AI & ML" },
+  { "name": "scikit-learn",     "icon": "https://cdn.simpleicons.org/scikitlearn",        "category": "AI & ML" },
+  { "name": "TensorFlow",       "icon": "https://cdn.simpleicons.org/tensorflow",         "category": "AI & ML" },
+  { "name": "PyTorch",          "icon": "https://cdn.simpleicons.org/pytorch",            "category": "AI & ML" },
+  { "name": "Hugging Face",     "icon": "https://cdn.simpleicons.org/huggingface",        "category": "AI & ML" },
+  { "name": "Jupyter",          "icon": "https://cdn.simpleicons.org/jupyter",            "category": "AI & ML" },
+  { "name": "Vertex AI",        "icon": "https://cdn.simpleicons.org/googlecloud",        "category": "AI / Cloud" },
+  { "name": "BigQuery ML",      "icon": "https://cdn.simpleicons.org/googlebigquery",     "category": "AI / Cloud" },
+
+  /* Data Engineering */
+  { "name": "BigQuery",         "icon": "https://cdn.simpleicons.org/googlebigquery",     "category": "Data Engineering" },
+  { "name": "dbt",              "icon": "https://cdn.simpleicons.org/dbt",                "category": "Data Engineering" },
+  { "name": "Apache Airflow",   "icon": "https://cdn.simpleicons.org/apacheairflow",      "category": "Data Engineering" },
+  { "name": "Apache Spark",     "icon": "https://cdn.simpleicons.org/apachespark",        "category": "Data Engineering" },
+  { "name": "Kafka",            "icon": "https://cdn.simpleicons.org/apachekafka",        "category": "Data Engineering" },
+  { "name": "Snowflake",        "icon": "https://cdn.simpleicons.org/snowflake",          "category": "Data Engineering" },
+
+  /* Cloud Infrastructure */
+  { "name": "Google Cloud",     "icon": "https://cdn.simpleicons.org/googlecloud",        "category": "Cloud Infrastructure" },
+  { "name": "AWS",              "icon": "https://cdn.simpleicons.org/amazonaws",          "category": "Cloud Infrastructure" },
+  { "name": "AWS Lambda",       "icon": "https://cdn.simpleicons.org/awslambda",          "category": "Cloud Infrastructure" },
+  { "name": "Amazon S3",        "icon": "https://cdn.simpleicons.org/amazons3",           "category": "Cloud Infrastructure" },
+  { "name": "Amazon ECS",       "icon": "https://cdn.simpleicons.org/amazonecs",          "category": "Cloud Infrastructure" },
+  { "name": "Docker",           "icon": "https://cdn.simpleicons.org/docker",             "category": "Cloud Infrastructure" },
+  { "name": "Kubernetes",       "icon": "https://cdn.simpleicons.org/kubernetes",         "category": "Cloud Infrastructure" },
+  { "name": "Vercel",           "icon": "https://cdn.simpleicons.org/vercel",             "category": "Cloud Infrastructure" },
+
+  /* Analytics and Marketing */
+  { "name": "GA4",              "icon": "https://cdn.simpleicons.org/googleanalytics",    "category": "Analytics" },
+  { "name": "GTM",              "icon": "https://cdn.simpleicons.org/googletagmanager",   "category": "Analytics" },
+  { "name": "Looker Studio",    "icon": "https://cdn.simpleicons.org/looker",             "category": "Data Visualization" },
+  { "name": "Google Ads",       "icon": "https://cdn.simpleicons.org/googleads",          "category": "Paid Media" },
+  { "name": "Search Console",   "icon": "https://cdn.simpleicons.org/googlesearchconsole","category": "SEO" },
+  { "name": "Supermetrics",     "icon": "https://cdn.simpleicons.org/supermetrics",       "category": "Automation" },
+  { "name": "Tableau",          "icon": "https://cdn.simpleicons.org/tableau",            "category": "Data Visualization" },
+  { "name": "Power BI",         "icon": "https://cdn.simpleicons.org/powerbi",            "category": "Data Visualization" },
+
+  /* Frontend */
+  { "name": "React",            "icon": "https://cdn.simpleicons.org/react",              "category": "Frontend" },
+  { "name": "Next.js",          "icon": "https://cdn.simpleicons.org/nextdotjs",          "category": "Frontend" },
+  { "name": "TypeScript",       "icon": "https://cdn.simpleicons.org/typescript",         "category": "Frontend" },
+  { "name": "JavaScript",       "icon": "https://cdn.simpleicons.org/javascript",         "category": "Frontend" },
+  { "name": "Tailwind CSS",     "icon": "https://cdn.simpleicons.org/tailwindcss",        "category": "Frontend" },
+
+  /* Backend and APIs */
+  { "name": "FastAPI",          "icon": "https://cdn.simpleicons.org/fastapi",            "category": "Backend" },
+  { "name": "Flask",            "icon": "https://cdn.simpleicons.org/flask",              "category": "Backend" },
+  { "name": "Node.js",          "icon": "https://cdn.simpleicons.org/nodedotjs",          "category": "Backend" },
+  { "name": "Express",          "icon": "https://cdn.simpleicons.org/express",            "category": "Backend" },
+
+  /* DevOps and Tooling */
+  { "name": "Git",              "icon": "https://cdn.simpleicons.org/git",                "category": "DevOps" },
+  { "name": "GitHub",           "icon": "https://cdn.simpleicons.org/github",             "category": "DevOps" },
+  { "name": "GitHub Actions",   "icon": "https://cdn.simpleicons.org/githubactions",      "category": "DevOps" },
+  { "name": "Terraform",        "icon": "https://cdn.simpleicons.org/terraform",          "category": "DevOps" },
+
+  /* Databases and Search */
+  { "name": "PostgreSQL",       "icon": "https://cdn.simpleicons.org/postgresql",         "category": "Databases" },
+  { "name": "MySQL",            "icon": "https://cdn.simpleicons.org/mysql",              "category": "Databases" },
+  { "name": "Redis",            "icon": "https://cdn.simpleicons.org/redis",              "category": "Databases" },
+  { "name": "Elasticsearch",    "icon": "https://cdn.simpleicons.org/elasticsearch",      "category": "Search" }
 ],
+
     "socialLinks": {
       "github": "https://github.com/tayyub-ai",
       "linkedin": "https://www.linkedin.com/in/tayyubyaqoob",
