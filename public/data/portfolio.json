@@ -258,7 +258,6 @@
   { "name": "Search Console", "icon": "https://cdn.simpleicons.org/googlesearchconsole/34A853", "category": "SEO" },
   { "name": "Power BI", "icon": "https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg", "category": "Data Visualization" },
   { "name": "Looker Studio", "icon": "https://cdn.simpleicons.org/looker/4285F4", "category": "Data Visualization" },
-  { "name": "Tableau", "icon": "https://www.svgrepo.com/svg/354428/tableau-icon", "category": "Data Visualization" },
   { "name": "FastAPI", "icon": "https://cdn.simpleicons.org/fastapi/009688", "category": "Backend" },
   { "name": "Flask", "icon": "https://cdn.simpleicons.org/flask/FFFFFF", "category": "Backend" },
   { "name": "Git", "icon": "https://cdn.simpleicons.org/git/F05032", "category": "DevOps" },
