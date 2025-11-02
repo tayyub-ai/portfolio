@@ -256,7 +256,7 @@
   { "name": "AWS Lambda", "icon": "https://upload.wikimedia.org/wikipedia/commons/3/3f/AWS_Lambda_logo.svg", "category": "Cloud Infrastructure" },
   { "name": "Amazon ECS", "icon": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Amazon_Elastic_Container_Service_Logo.svg", "category": "Cloud Infrastructure" },
   { "name": "Amazon S3", "icon": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Amazon-S3-Logo.svg", "category": "Cloud Infrastructure" },
-  { "name": "Power BI", "icon": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Power_BI_logo.svg", "category": "Data Visualization" }
+  { "name": "Power BI", "icon": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Power_BI_logo.svg", "category": "Data Visualization" },
   { "name": "Docker", "icon": "https://cdn.simpleicons.org/docker/2496ED", "category": "Cloud Infrastructure" },
   { "name": "Kubernetes", "icon": "https://cdn.simpleicons.org/kubernetes/326CE5", "category": "Cloud Infrastructure" },
   { "name": "Vercel", "icon": "https://cdn.simpleicons.org/vercel/FFFFFF", "category": "Cloud Infrastructure" },
