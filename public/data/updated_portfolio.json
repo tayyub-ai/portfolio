@@ -1,720 +1,301 @@
 {
   "statusCode": 200,
   "success": true,
-  "message": "Portfolio data processed successfully",
+  "message": "Portfolio data loaded successfully",
   "data": {
     "personalInfo": {
-      "name": "Lakshya Jain",
-      "title": "Fullstack Developer | Passionate Innovator",
-      "summary": "A highly driven coder with a knack for solving complex problems using innovative technologies, from backend systems to AI-powered solutions."
+      "name": "Tayyub Yaqoob",
+      "title": "Digital Analyst & AI/ML Solutions Engineer",
+      "summary": "I’m a Digital Analyst and AI Engineer with 7+ years of experience turning complex data into insights that drive growth, efficiency, and smarter decision-making. I build AI-powered analytics systems that automate reporting, optimize budgets, and reveal actionable opportunities across marketing and operations. My work helps organizations improve ROI, accelerate performance, and make data-driven decisions with confidence.",
+      "image": "/assets/default-avatar.png",
+      "phone": "",
+      "email": "tayyubyaqoob@gmail.com",
+      "location": "Stirling, Scotland, UK"
     },
-    "experience": [
-      {
-        "company": "2nd Swap",
-        "title": "Founding Engineer",
-        "dates": "Jan 2025 - Apr 2025",
-        "achievements": [
-          "Built backend infrastructure with 12+ RESTful endpoints and secure authentication, enabling real-time updates with <200ms latency for 50+ items and 25+ active users.",
-          "Created an OCR and OAuth verification system that reduced manual review by 20% while maintaining 99.8% platform uptime.",
-          "Architected complete backend using Node.js, Express, MongoDB, REST APIs, OAuth 2.0, and Socket.io."
-        ]
-      },
-      {
-        "company": "PMStack",
-        "title": "SDE Intern - Android Development",
-        "dates": "Dec 2024 - Apr 2025",
-        "achievements": [
-          "Developed mobile UI components with Flutter and integrated analytics for user insights; resolved critical bugs across Android versions through Crashlytics monitoring achieving 120+ beta users within the first month of beta release.",
-          "Boosted app performance through code restructuring and implementing architecture refinements like modularity; resolved 163 technical issues in frontend and backend systems.",
-          "Built applications using Flutter, Firebase, Dart, Google Analytics, Crashlytics, and Figma."
-        ]
-      }
-    ],
+"experience": [ 
+  {
+    "company": "8 Million Stories Ltd (8MS)",
+    "title": "Digital Analyst",
+    "dates": "Apr 2021 – Present",
+"achievements": [
+      "Partnered with Tesco Bank and BBC World Service to run data-driven campaign analyses and A/B experiments, increasing conversion rates by 17% for Tesco Bank and boosting BBC World Service engagement by 22% through improved audience targeting.",
+      "Managed data retainers for Royal London, Gleneagles Hotel, Estelle, and Blue Buffalo, delivering GA4 tracking, GTM implementations, analytics, and campaign optimization that improved ROI by 15%.",
+      "Built and deployed automated GA4 → BigQuery → Looker pipelines processing over 200M events per month, reducing manual reporting time by 83%.",
+      "Led internal working groups to develop AI-driven data modules for media mix modeling, forecasting, sentiment analysis, and competitor analysis, now deployed across 35 clients.",
+      "Implemented Bayesian MMM models improving budget allocation accuracy and delivering a 12% ROAS uplift across multiple clients.",
+      "Developed and integrated a Python-based anomaly detection system into Looker dashboards, reducing issue detection time by 85%.",
+      "Mentored over 4 junior analysts on cloud architecture, Git version control, and automation workflows, tripling team delivery capacity.",
+      "Collaborated with paid media, SEO, and development teams to standardize KPIs and align analytics with strategic decision-making."
+    ]
+  },
+  {
+    "company": "Cointelegraph",
+    "title": "AI/ML Content Creator (Freelance)",
+    "dates": "Apr 2023 – Present",
+    "achievements": [
+      "Authored over 30 AI and ML research articles reaching more than 1.2M readers worldwide, covering topics such as large language models, AI ethics, and model transparency.",
+      "Researched and analyzed AI/ML trends, including LLMs and generative AI, for global editorial coverage.",
+      "Translated complex AI/ML concepts into accessible, research-backed articles for both technical and non-technical readers.",
+      "Explored AI integration with blockchain and Web3 ecosystems, highlighting use cases and implications for DeFi.",
+      "Leveraged data analytics to identify content performance trends and align topics with audience interests.",
+      "Collaborated with editorial teams to ensure accuracy, quality, and SEO-aligned relevance."
+    ]
+  },
+  {
+    "company": "AlphaWire",
+    "title": "Crypto Content Creator (Contract)",
+    "dates": "May 2025 – Aug 2025",
+    "achievements": [
+      "Authored research-backed pieces on blockchain, crypto assets, and fintech integrations with traditional markets.",
+      "Transformed emerging financial and regulatory concepts into clear, actionable insights.",
+      "Highlighted expertise in AI, data, and blockchain to align technology innovation with business strategy."
+    ]
+  },
+  {
+  "company": "Freelance",
+  "title": "Data & AI Consultant",
+  "dates": "2019 – Present",
+  "description": "Provide data analytics, tracking, and AI consulting for global clients across multiple industries, focusing on GA4, GTM, automation, and cloud-based analytics solutions.",
+  "achievements": [
+    "Delivered GA4 audits, troubleshooting, and end-to-end tracking setups across paid channels including Google Ads, Meta, LinkedIn, and Bing.",
+    "Implemented advanced GTM tagging architectures and event tracking for performance and attribution measurement.",
+    "Set up and maintained cookie compliance frameworks (GDPR, Consent Mode V2) to ensure privacy-first data collection.",
+    "Built automated GA4 → BigQuery → Looker pipelines for marketing and performance reporting.",
+    "Worked on data retainers and analytics solutions for clients such as Neilson Holidays, JojoSki, Nerdwallet, Rivet Education, and Clinic Secret."
+  ]
+},
+  {
+    "company": "Scholarships Guider",
+    "title": "Co-Founder",
+    "dates": "Jan 2020 – Apr 2021",
+    "achievements": [
+      "Founded and managed an educational platform connecting students to global scholarship opportunities.",
+      "Built partnerships with universities and organizations to expand the platform’s reach.",
+      "Led digital campaigns that increased organic traffic and student engagement."
+    ]
+  },
+  {
+    "company": "iVision",
+    "title": "Data Analyst",
+    "dates": "Jan 2020 – Apr 2021",
+    "achievements": [
+        "Used machine learning techniques to create scalable solutions for business problems.",
+        "Handled large volumes of data across multiple databases, performing ETL operations using SQL to meet client requirements.",
+        "Analyzed marketing campaigns across different channels using Google Analytics and delivered key insights to senior stakeholders based on performance KPIs.",
+        "Scraped large datasets from multiple websites using Python libraries such as BeautifulSoup to extract and process relevant data.",
+        "Implemented Google Tag Manager (GTM) to track and analyze user interactions including banner clicks, registrations, and page visits.",
+        "Ensured data consistency, reliability, and quality across multiple reporting pipelines.",
+        "Collaborated with business and technical teams to ensure that analytics outputs aligned with marketing goals and decision-making."
+      ]
+  },
+  {
+    "company": "Quipsol",
+    "title": "Data Analyst",
+    "dates": "Aug 2017 – Aug 2018",
+    "achievements": [
+        "Collaborated with cross-functional teams to identify data requirements and translate them into actionable insights for strategic business decisions.",
+        "Developed, maintained, and optimized automated reporting systems and dashboards to streamline data visualization and accessibility for stakeholders.",
+        "Designed and executed complex SQL queries to extract, transform, and analyze data from multiple sources, ensuring accuracy and efficiency.",
+        "Monitored data pipelines and implemented validation steps to ensure high-quality, reliable reporting outputs.",
+        "Analyzed data trends and patterns in large datasets to support forecasting and data-informed decision-making.",
+        "Presented insights and recommendations to management, enabling data-backed improvements in process and performance."
+      ]
+  }
+],
     "education": [
       {
-        "institution": "Indian Institute of Technology, Jodhpur",
-        "degree": "B.Tech Computer Science and Engineering",
-        "dates": "2023-2027",
-        "cgpa": "8.96/10"
-      },
+    "institution": "University of Stirling",
+    "degree": "Masters in Big Data",
+    "dates": "2018-2019",
+    "location": "Stirling, Scotland, UK"
+
+    },
       {
-        "institution": "R.S. Memorial International School",
-        "degree": "Senior Secondary (PCM)",
-        "dates": "2021-2022",
-        "cgpa": "93.8%"
-      },
-      {
-        "institution": "St. Anne's Sr. Sec. School",
-        "degree": "Secondary",
-        "dates": "2019-2020",
-        "cgpa": "94.6%"
+    "institution": "COMSATS University Islamabad",
+    "degree": "BS in Software Engineering",
+    "dates": "2013-2017",
+    "location": "Islamabad, Pakistan"
       }
     ],
     "projects": [
-      {
-        "id": "956103985",
-        "title": "GitCury",
-        "description": "An AI-powered Git companion that automates workflows with features like semantic commit messages, alias-based commands, and root folder filtering.",
-        "technologies": [
-          "Go",
-          "Generative AI",
-          "CLI"
-        ],
-        "github": "https://github.com/lakshyajain-0291/GitCury",
-        "stars": 0,
-        "forks": 0,
-        "commits": 104
-      },
-      {
-        "id": "resume-project-0",
-        "title": "LIBR",
-        "description": "A decentralized forum ensuring censorship resistance, featuring quorum moderation and fault-tolerant architecture.",
-        "technologies": [
-          "Go",
-          "Docker",
-          "PostgreSQL",
-          "Distributed Systems"
-        ],
-        "github": "https://github.com/DALDA-IITJ/libr",
-        "stars": 3,
-        "forks": 0,
-        "commits": 146
-      }
-    ],
-    "skills": [
-      "Go",
-      "Dart",
-      "Flutter",
-      "Node.js",
-      "Express.js",
-      "React.js",
-      "JavaScript",
-      "C++",
-      "C",
-      "TypeScript",
-      "Firebase",
-      "Docker",
-      "PostgreSQL",
-      "MongoDB",
-      "Distributed Systems",
-      "Microservices Architecture",
-      "RESTful APIs",
-      "AI Integration",
-      "System Design",
-      "Semantic Search"
-    ],
+  {
+    "title": "Forecasting Engine (GSC / GA4)",
+    "description": "Automated weekly forecasting engine for organic and GA4 traffic across 50+ clients. Generates keyword, query, and total traffic predictions with backtests, confidence intervals, and performance alerts.",
+    "technologies": ["Python", "BigQuery", "AWS Lambda", "Prophet", "Pandas", "GitHub Actions"],
+    "featured": true
+  },
+  {
+    "title": "Anomaly Detection & Alerting",
+    "description": "Anomaly detection framework using precision/recall-tuned thresholds on clicks and sessions. Automatically identifies unusual traffic patterns and sends real-time alerts to teams.",
+    "technologies": ["Python", "BigQuery", "Cloud Functions", "Scikit-learn", "AWS SNS"],
+    "featured": true
+  },
+  {
+    "title": "Sitemap Similarity Engine",
+    "description": "Analyzes and compares website sitemaps (50–100 sites) by extracting and embedding HTML text via SentenceTransformers to measure content overlap and structural similarity.",
+    "technologies": ["Python", "SentenceTransformers", "AWS EC2", "BigQuery", "BeautifulSoup"],
+    "featured": false
+  },
+  {
+    "title": "Sentiment & Mentions Intelligence",
+    "description": "Weekly automated sentiment analysis across online sources, handling client-specific negative keywords. Outputs sentiment and brand mention data to AWS S3 for reporting in Looker.",
+    "technologies": ["Python", "VADER", "AWS Lambda", "S3", "Pandas"],
+    "featured": false
+  },
+  {
+    "title": "PersonaGraph (Multi-Source)",
+    "description": "NLP-based persona generation system that combines Google Knowledge Graph, Wikidata, DBpedia, and Wikipedia data. Uses embeddings and clustering to uncover entity relationships and build topic personas for SEO.",
+    "technologies": ["Python", "SentenceTransformers", "Wikidata SPARQL", "Google KG API", "Streamlit"],
+    "featured": true
+  },
+  {
+    "title": "Synergy (Paid × Organic Attribution)",
+    "description": "Attribution-aware analytics module quantifying overlap and cannibalization between paid and organic channels. Supports data-driven reallocation to maximize blended ROI.",
+    "technologies": ["Python", "BigQuery", "NumPy", "Pandas"],
+    "featured": false
+  },
+  {
+    "title": "Meridian – MMM",
+    "description": "Bayesian Marketing Mix Modeling pipeline for budget optimization. Implements adstock, saturation, and diminishing returns modeling with holdout validation and posterior simulations.",
+    "technologies": ["BigQuery", "Python", "Google Meridian"],
+    "featured": true
+  },
+  {
+    "title": "Neilson Holidays – Data Retainer",
+    "description": "Forecasting, anomaly detection, and GA4 data automation across bookings and traffic. Implemented automated Looker dashboards built on GA4 → BigQuery pipelines.",
+    "technologies": ["GA4", "BigQuery", "Python", "Looker Studio"],
+    "featured": false
+  },
+  {
+    "title": "Clogau & Clogau Outlet – CRM × GA4 Integration",
+    "description": "Connected CRM and GA4 datasets to match enquiries and bookings, enabling automated performance reporting. Implemented Advanced Consent Mode V2 to ensure compliance.",
+    "technologies": ["GA4", "BigQuery", "CRM API", "Consent Mode V2", "Supermetrics"],
+    "featured": false
+  },
+  {
+    "title": "Rivet Education – Data Retainer",
+    "description": "Developed forecasting, sentiment dashboards, and trend analysis pipelines for education sector data. Enabled actionable insight reporting using GA4 and AWS.",
+    "technologies": ["Python", "BigQuery", "AWS Lambda", "Looker Studio"],
+    "featured": false
+  },
+  {
+    "title": "Tesco Bank – GA4 & MMM Retainer",
+    "description": "Delivered end-to-end GA4 audits, GTM automation, and MMM forecasting with budget optimization insights. Enabled advanced tracking and decision-ready dashboards.",
+    "technologies": ["GA4", "BigQuery", "Python", "Vertex AI", "GTM"],
+    "featured": false
+  },
+  {
+    "title": "Royal London – Insights Automation",
+    "description": "Built pipelines for anomaly detection, MMM inputs, and search query forecasting. Automated GA4 audits and integrated outputs into Looker dashboards.",
+    "technologies": ["Python", "Vertex AI", "BigQuery", "Looker Studio"],
+    "featured": false
+  },
+  {
+    "title": "Stablecoin Depegging Study (2023–2025)",
+    "description": "Analyzed USDT, USDC, and DAI stability using CoinGecko API data. Studied depeg events, liquidity effects, and market cap correlations to assess systemic risk in stablecoins.",
+    "technologies": ["Python", "CoinGecko API", "Pandas", "Matplotlib", "BigQuery"],
+    "featured": true
+  },
+  {
+    "title": "Looker Forecast vs Actuals Dashboard",
+    "description": "Automated daily comparison of forecasted vs actual traffic for multiple journey types (consumer, adviser, red routes). Highlights variance and anomalies for reporting accuracy.",
+    "technologies": ["BigQuery", "Looker Studio", "Python", "Supermetrics"],
+    "featured": false
+  },
+  {
+    "title": "GA4 Superior Audit Template",
+    "description": "Comprehensive audit framework for analytics setup validation, covering consent mode, data accuracy, broken tags, and attribution issues.",
+    "technologies": ["GA4", "GTM", "BigQuery", "JavaScript"],
+    "featured": false
+  },
+  {
+    "title": "AI Mentions Tracker",
+    "description": "Automated module to identify AI-related mentions across web and social data. Supports reputation monitoring and competitive benchmarking.",
+    "technologies": ["Python", "AWS Lambda", "BigQuery", "VADER", "S3"],
+    "featured": false
+  },
+  {
+    "title": "AI Forecasting Dashboard (Vertex AI + BigQuery)",
+    "description": "Integrated Vertex AI time series forecasting with BigQuery and Looker for automated campaign-level projections and accuracy evaluation.",
+    "technologies": ["Vertex AI", "BigQuery", "Python", "Looker Studio"],
+    "featured": true
+  },
+  {
+    "title": "AI News Rundown (Automation Pipeline)",
+    "description": "Automated AI news aggregation pipeline inspired by Rundown.ai, using NLP to summarize and categorize industry updates for daily distribution.",
+    "technologies": ["Python", "NewsAPI", "OpenAI API", "Streamlit", "AWS Lambda"],
+    "featured": false
+  },
+  {
+    "title": "Adverity Migration – PPC Dashboards",
+    "description": "Migrated PPC reporting stack from Supermetrics to Adverity + BigQuery. Automated daily data refresh, campaign grouping, and performance reconciliation across multiple markets.",
+    "technologies": ["Adverity", "BigQuery", "Looker Studio", "GA4", "GTM"],
+    "featured": true
+  }
+],
+"techStack": [
+  {
+    "name": "Python",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    "category": "AI & ML"
+  },
+  {
+    "name": "BigQuery",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Google_BigQuery_Logo.svg",
+    "category": "Data Engineering"
+  },
+  {
+    "name": "Vertex AI",
+    "icon": "https://www.gstatic.com/devrel-devsite/prod/vb8e7dfc00ceaa40dc7d6885f77a0376fcb4d2a41dfd32784d7e52e3ccf76ec79/cloud/images/lockup.svg",
+    "category": "AI / Cloud"
+  },
+  {
+    "name": "AWS",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
+    "category": "Cloud Infrastructure"
+  },
+  {
+    "name": "GA4",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Google_Analytics_4_Logo.svg",
+    "category": "Analytics"
+  },
+  {
+    "name": "GTM",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Google_Tag_Manager_logo.svg",
+    "category": "Analytics"
+  },
+
+  {
+    "name": "Looker Studio",
+    "icon": "https://upload.wikimedia.org/wikipedia/commons/2/20/Looker_Studio_logo.svg",
+    "category": "Data Visualization"
+  },
+  {
+    "name": "Supermetrics",
+    "icon": "https://cdn.supermetrics.com/img/sm-icon.svg",
+    "category": "Automation"
+  }
+]
+
     "socialLinks": {
-      "github": "https://github.com/lakshyajain-0291",
-      "linkedin": "https://www.linkedin.com/in/lakshya-jain-5b565a284/",
-      "codeforces": "https://codeforces.com/profile/lakshyajain-0291",
-      "email": "b23cs1032@iitj.ac.in",
-      "phone": "+91-7976123107"
+      "github": "https://github.com/tayyub-ai",
+      "linkedin": "https://www.linkedin.com/in/tayyubyaqoob",
+      "twitter": "",
+      "website": "https://www.tayyubyaqoob.com/"
     },
+    "resumeUrl": "/resume/resume.pdf",
     "insights": {
-      "topSkills": [
-        {
-          "name": "Go",
-          "category": "Backend",
-          "proficiency": 90,
-          "justification": "Primary language used in multiple major projects (GitCury, LIBR, GenCLI) with significant commit history and complex implementations."
-        },
-        {
-          "name": "Flutter",
-          "category": "Mobile",
-          "proficiency": 85,
-          "justification": "Professional experience at PMStack with 120+ beta users achieved, plus Travel Companion App with 360+ users."
-        },
-        {
-          "name": "Node.js",
-          "category": "Backend",
-          "proficiency": 80,
-          "justification": "Founding Engineer role at 2nd Swap with 12+ RESTful endpoints and real-time systems implementation."
-        },
-        {
-          "name": "C++",
-          "category": "Backend",
-          "proficiency": 75,
-          "justification": "Used in RealmWeaver with 80 commits and complex game development with AI integration."
-        },
-        {
-          "name": "Distributed Systems",
-          "category": "Backend",
-          "proficiency": 75,
-          "justification": "LIBR project demonstrates deep understanding of Byzantine fault tolerance, DHT, and distributed architecture."
-        },
-        {
-          "name": "JavaScript",
-          "category": "Frontend",
-          "proficiency": 70,
-          "justification": "Used across multiple projects including web development and full-stack applications."
-        },
-        {
-          "name": "C",
-          "category": "Systems",
-          "proficiency": 70,
-          "justification": "Strong foundation with projects like The Vindication (107 commits) and Image Filtration Program."
-        },
-        {
-          "name": "Firebase",
-          "category": "Cloud",
-          "proficiency": 70,
-          "justification": "Professional experience with PMStack and Travel Companion App integration."
-        },
-        {
-          "name": "AI/ML Integration",
-          "category": "AI",
-          "proficiency": 75,
-          "justification": "Multiple projects using Gemini API, vector embeddings, and semantic search (GenCLI, GitCury, RealmWeaver)."
-        },
-        {
-          "name": "System Design",
-          "category": "Architecture",
-          "proficiency": 80,
-          "justification": "Demonstrated through LIBR's distributed architecture and 2nd Swap's scalable backend design."
-        }
-      ],
-      "technicalProfile": {
-        "primaryStack": [
-          "Go",
-          "Flutter",
-          "Node.js",
-          "Firebase",
-          "Docker",
-          "PostgreSQL",
-          "MongoDB"
-        ],
-        "secondaryStack": [
-          "C++",
-          "C",
-          "JavaScript",
-          "TypeScript",
-          "Python",
-          "Dart",
-          "Express.js",
-          "React.js"
-        ],
-        "languages": [
-          {
-            "name": "Go",
-            "proficiency": "expert"
-          },
-          {
-            "name": "Dart",
-            "proficiency": "high"
-          },
-          {
-            "name": "JavaScript",
-            "proficiency": "high"
-          },
-          {
-            "name": "C++",
-            "proficiency": "high"
-          },
-          {
-            "name": "C",
-            "proficiency": "high"
-          },
-          {
-            "name": "Python",
-            "proficiency": "medium"
-          },
-          {
-            "name": "TypeScript",
-            "proficiency": "medium"
-          }
-        ],
-        "methodologies": [
-          "Agile Development",
-          "Distributed Systems Design",
-          "RESTful API Design",
-          "Microservices Architecture",
-          "CI/CD",
-          "Test-Driven Development"
-        ],
-        "strengths": [
-          "Backend Development (Go, Node.js)",
-          "Mobile App Development (Flutter)",
-          "Distributed Systems Architecture",
-          "AI-Driven Application Development",
-          "Full-Stack Development",
-          "System Design & Scalability",
-          "CLI Tool Development"
-        ],
-        "growthAreas": [
-          "Cloud Platform Expertise (AWS/GCP)",
-          "Advanced Machine Learning",
-          "DevOps & Infrastructure Management",
-          "Frontend Framework Mastery"
-        ]
-      },
-      "careerTrajectory": "Rapidly advancing software engineer with strong foundation in backend development, mobile applications, and distributed systems. Demonstrated ability to lead projects and deliver scalable solutions in startup environments.",
-      "careerRecommendations": {
-        "nextSteps": [
-          "Pursue cloud certifications (AWS/GCP) to complement distributed systems expertise",
-          "Deepen machine learning knowledge to enhance AI integration capabilities",
-          "Seek technical leadership roles to leverage project management experience",
-          "Contribute to open-source distributed systems projects"
-        ],
-        "potentialRoles": [
-          "Senior Backend Engineer",
-          "Distributed Systems Engineer",
-          "Full-Stack Developer",
-          "Mobile Application Developer",
-          "Technical Lead",
-          "DevOps Engineer",
-          "Solutions Architect"
-        ],
-        "skillsToAcquire": [
-          "Advanced cloud computing (AWS/GCP/Azure)",
-          "Kubernetes and container orchestration",
-          "Advanced machine learning and AI",
-          "Technical leadership and mentoring",
-          "Advanced system design patterns"
-        ]
-      },
-      "summary": {
-        "strengths_analysis": "Strong technical foundation with expertise in Go, distributed systems, and mobile development. Proven ability to build scalable backend systems and deliver user-focused applications. Excellent track record of contributing to both startup environments and open-source projects.",
-        "career_trajectory": "Ascending rapidly from foundational programming to complex distributed systems and leadership roles. Strong entrepreneurial mindset with founding engineer experience and significant campus involvement.",
-        "technical_focus": "Backend-heavy with strong distributed systems knowledge, complemented by mobile development skills and AI integration capabilities. Well-positioned for senior engineering roles.",
-        "learning_recommendations": "Focus on cloud platforms, advanced ML/AI, and technical leadership skills to advance to senior/lead positions in the next 2-3 years."
-      }
+      "mostUsedLanguage": "Python",
+      "preferredStack": "AI/ML + Cloud",
+      "learningFocus": "Health data science and NHS digital tools",
+      "careerTrajectory": "Evolving from marketing analytics to clinical/health data AI."
     },
-    "techStack": [
-      {
-        "name": "Go",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
-      },
-      {
-        "name": "Flutter",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
-      },
-      {
-        "name": "Node.js",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-      },
-      {
-        "name": "C++",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-      },
-      {
-        "name": "JavaScript",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-      },
-      {
-        "name": "TypeScript",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-      },
-      {
-        "name": "Python",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-      },
-      {
-        "name": "Dart",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
-      },
-      {
-        "name": "C",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
-      },
-      {
-        "name": "Firebase",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
-      },
-      {
-        "name": "MongoDB",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-      },
-      {
-        "name": "PostgreSQL",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-      },
-      {
-        "name": "Docker",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-      },
-      {
-        "name": "Express.js",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-      },
-      {
-        "name": "React.js",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-      },
-      {
-        "name": "Figma",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
-      },
-      {
-        "name": "Git",
-        "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-      }
-    ],
-    "resumeUrl": "/home/lakshya-jain/projects/Portfolio_Automation_API/server/uploads/resume-1746844966227-232699752.pdf",
     "githubStats": {
-      "totalPublicRepos": 18,
-      "totalStars": 8,
-      "totalForks": 11,
-      "totalCommits": 1814,
-      "featuredRepos": 6
-    },
-    "githubData": {
-      "user": {
-        "login": "lakshyajain-0291",
-        "name": "Lakshya Jain",
-        "avatar_url": "https://avatars.githubusercontent.com/u/123456789",
-        "html_url": "https://github.com/lakshyajain-0291",
-        "bio": "I build innovative applications that leverage AI to solve complex problems.",
-        "company": "IIT Jodhpur",
-        "location": "India",
-        "email": "lakshyajainrj19@gmail.com",
-        "public_repos": 18,
-        "followers": 12,
-        "following": 8,
-        "created_at": "2024-01-01T00:00:00Z",
-        "updated_at": "2025-04-30T00:00:00Z"
-      },
-      "repositories": [
-        {
-          "name": "GitCury",
-          "full_name": "lakshyajain-0291/GitCury",
-          "html_url": "https://github.com/lakshyajain-0291/GitCury",
-          "description": "\ud83d\ude80 GitCury: Your ultimate Git sidekick! \ud83c\udfaf Built with Go, it automates your Git workflow with \ud83c\udf1f AI-powered commit messages, \ud83d\uddc2\ufe0f root folder filtering, \u26a1 alias-based commands, and \ud83d\udee0\ufe0f CLI utilities. From single repos to multi-project management, GitCury's got your back! \ud83c\udf08",
-          "homepage": "",
-          "stargazers_count": 0,
-          "watchers_count": 0,
-          "forks_count": 0,
-          "language": "Go",
-          "topics": [
-            "automation",
-            "cli",
-            "generative-ai",
-            "git",
-            "go",
-            "golang"
-          ],
-          "commits": 104,
-          "updated_at": "2025-05-09T14:08:57Z",
-          "created_at": "2025-03-27T17:48:55Z"
-        },
-        {
-          "name": "gencli",
-          "full_name": "lakshyajain-0291/gencli",
-          "html_url": "https://github.com/lakshyajain-0291/gencli",
-          "description": "\ud83d\udca1 GenCLI: Revolutionize your command-line experience! \u26a1 Powered by Gemini-1.5-flash, it combines \ud83e\udde0 advanced AI for intelligent file indexing, \ud83d\udd0d smart searching, and \ud83d\udde8\ufe0f interactive chat features. Transform how you manage and interact with your files! \ud83d\ude80",
-          "homepage": "",
-          "stargazers_count": 1,
-          "watchers_count": 1,
-          "forks_count": 0,
-          "language": "Go",
-          "topics": [
-            "cli",
-            "generative-ai",
-            "golang",
-            "indexing",
-            "searching"
-          ],
-          "commits": 47,
-          "updated_at": "2025-05-07T10:48:28Z",
-          "created_at": "2024-07-04T13:35:20Z"
-        },
-        {
-          "name": "RealmWeaver",
-          "full_name": "lakshyajain-0291/RealmWeaver",
-          "html_url": "https://github.com/lakshyajain-0291/RealmWeaver",
-          "description": "\ud83c\udfae RealmWeaver: Step into a world of endless possibilities! \u2728 This 2D open-ended game redefines interactive storytelling with \ud83e\uddd9 dynamic NPCs, \ud83d\uddfa\ufe0f unique locations, \ud83c\udff9 quests, and \ud83c\udf81 items\u2014all generated through the powerful GEMINI API. No two adventures are ever the same! \ud83c\udf1f",
-          "homepage": "",
-          "stargazers_count": 2,
-          "watchers_count": 2,
-          "forks_count": 5,
-          "language": "C++",
-          "topics": [
-            "cpp",
-            "dsa",
-            "game",
-            "generative-ai",
-            "open-world-game"
-          ],
-          "commits": 80,
-          "updated_at": "2025-05-07T10:50:03Z",
-          "created_at": "2024-09-30T13:56:20Z"
-        },
-        {
-          "name": "Vindication",
-          "full_name": "lakshyajain-0291/Vindication",
-          "html_url": "https://github.com/lakshyajain-0291/Vindication",
-          "description": "\u2694\ufe0f The Vindication: Dive into a text-based historical fiction adventure! \ud83c\udff0 Built in C, this open-ended game world features \ud83c\udfae mini-games, \ud83e\udd1d NPC interactions, \ud83d\udcdc quests, \ud83d\uddbc\ufe0f terminal ASCII graphics, and \ud83c\udfb5 immersive audio. Easily expand the experience with modifiable JSON game content! \ud83d\ude80",
-          "homepage": "",
-          "stargazers_count": 2,
-          "watchers_count": 2,
-          "forks_count": 2,
-          "language": "C",
-          "topics": [],
-          "commits": 107,
-          "updated_at": "2025-05-07T10:32:09Z",
-          "created_at": "2024-02-29T15:26:24Z"
-        },
-        {
-          "name": "Image-filtration-in-C",
-          "full_name": "lakshyajain-0291/Image-filtration-in-C",
-          "html_url": "https://github.com/lakshyajain-0291/Image-filtration-in-C",
-          "description": "Programmed 6 image filters (Grayscale, Blur, Sharpen, Sobel Edge Detection, Reflect, Negative) for BMP file manipulation with 100% format compatibility.",
-          "homepage": "",
-          "stargazers_count": 0,
-          "watchers_count": 0,
-          "forks_count": 0,
-          "language": "C",
-          "topics": [],
-          "commits": 6,
-          "updated_at": "2024-05-18T06:43:23Z",
-          "created_at": "2024-03-17T11:45:40Z"
-        },
-        {
-          "name": "ml_showcase_site",
-          "full_name": "lakshyajain-0291/ml_showcase_site",
-          "html_url": "https://github.com/lakshyajain-0291/ml_showcase_site",
-          "description": "A showcase website for machine learning projects and demonstrations.",
-          "homepage": "https://ml-showcase-site.vercel.app",
-          "stargazers_count": 0,
-          "watchers_count": 0,
-          "forks_count": 0,
-          "language": "TypeScript",
-          "topics": [],
-          "commits": 86,
-          "updated_at": "2025-04-15T08:08:08Z",
-          "created_at": "2025-04-11T05:44:11Z"
-        },
-        {
-          "name": "summer-project",
-          "full_name": "lakshyajain-0291/summer-project",
-          "html_url": "https://github.com/lakshyajain-0291/summer-project",
-          "description": "Making a version control for content creators",
-          "homepage": "",
-          "stargazers_count": 0,
-          "watchers_count": 0,
-          "forks_count": 4,
-          "language": "JavaScript",
-          "topics": [],
-          "commits": 27,
-          "updated_at": "2024-07-05T11:44:18Z",
-          "created_at": "2024-05-17T17:05:02Z"
-        },
-        {
-          "name": "libr",
-          "full_name": "DALDA-IITJ/libr",
-          "html_url": "https://github.com/DALDA-IITJ/libr",
-          "description": "A Moderated, Censorship-Resilient Digital Forum",
-          "homepage": "",
-          "stargazers_count": 3,
-          "watchers_count": 3,
-          "forks_count": 0,
-          "language": "Go",
-          "topics": [
-            "distributed-systems",
-            "forum",
-            "golang",
-            "moderation"
-          ],
-          "commits": 146,
-          "updated_at": "2025-04-30T00:00:00Z",
-          "created_at": "2025-02-01T00:00:00Z"
-        }
-      ],
-      "contributions": [
-        {
-          "date": "2025-05-21",
-          "count": 3,
-          "level": 2
-        },
-        {
-          "date": "2025-05-20",
-          "count": 5,
-          "level": 3
-        },
-        {
-          "date": "2025-05-19",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-05-18",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-05-17",
-          "count": 7,
-          "level": 3
-        },
-        {
-          "date": "2025-05-16",
-          "count": 2,
-          "level": 1
-        },
-        {
-          "date": "2025-05-15",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-05-14",
-          "count": 4,
-          "level": 2
-        },
-        {
-          "date": "2025-05-13",
-          "count": 1,
-          "level": 1
-        },
-        {
-          "date": "2025-05-12",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-05-11",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-05-10",
-          "count": 3,
-          "level": 2
-        },
-        {
-          "date": "2025-05-09",
-          "count": 6,
-          "level": 3
-        },
-        {
-          "date": "2025-05-08",
-          "count": 0,
-          "level": 0
-        },
-        {
-          "date": "2025-05-07",
-          "count": 2,
-          "level": 1
-        }
-      ],
-      "languageStats": {
-        "Go": 35.6,
-        "C++": 14.2,
-        "C": 13.8,
-        "JavaScript": 11.5,
-        "TypeScript": 8.9,
-        "Dart": 8.2,
-        "Python": 4.6,
-        "HTML": 1.6,
-        "CSS": 1.2,
-        "Shell": 0.4
-      },
-      "recentActivity": [
-        {
-          "type": "PushEvent",
-          "repo": "lakshyajain-0291/GitCury",
-          "created_at": "2025-05-21T14:22:18Z",
-          "payload": {
-            "commits": 3,
-            "ref": "refs/heads/main"
-          }
-        },
-        {
-          "type": "PullRequestEvent",
-          "repo": "lakshyajain-0291/ml_showcase_site",
-          "created_at": "2025-05-20T09:15:42Z",
-          "payload": {
-            "action": "opened",
-            "number": 12
-          }
-        },
-        {
-          "type": "PushEvent",
-          "repo": "lakshyajain-0291/ml_showcase_site",
-          "created_at": "2025-05-20T09:10:11Z",
-          "payload": {
-            "commits": 5,
-            "ref": "refs/heads/feature/model-visualization"
-          }
-        },
-        {
-          "type": "IssueCommentEvent",
-          "repo": "lakshyajain-0291/RealmWeaver",
-          "created_at": "2025-05-17T16:34:22Z",
-          "payload": {
-            "action": "created",
-            "issue": {
-              "number": 8,
-              "title": "Add new quest generation system"
-            }
-          }
-        },
-        {
-          "type": "PushEvent",
-          "repo": "lakshyajain-0291/RealmWeaver",
-          "created_at": "2025-05-17T14:08:37Z",
-          "payload": {
-            "commits": 7,
-            "ref": "refs/heads/main"
-          }
-        }
-      ]
-    },
-    "achievements": [
-      "Gold Medal in Bug Bounty '25 for addressing critical vulnerabilities.",
-      "1st place in 'Pitch It' competition at Initio '23.",
-      "Contributions to 18+ repositories with over 1700 commits."
-    ],
-    "leadership": [
-      {
-        "role": "Core Member",
-        "organization": "DevlUp Labs, IIT Jodhpur",
-        "duration": "Mar 2025 - Present",
-        "description": "Shipped mobile apps with 200+ users that directly addressed campus needs, while contributing to 10+ open-source repositories with peer code reviews."
-      },
-      {
-        "role": "Assistant Head",
-        "organization": "Prometeo X Econclave (Tech Fest), IIT Jodhpur",
-        "duration": "Jan 2025 - Feb 2025",
-        "description": "Led cross-functional partnerships with industry leaders, coordinating technical workshops and organizing case competitions that secured Rs. 80,000+ in prize funding."
-      },
-      {
-        "role": "Senior Executive",
-        "organization": "Entrepreneurship cell, IIT Jodhpur",
-        "duration": "Jun 2024 - Apr 2025",
-        "description": "Orchestrated the Vandre event through data-backed strategic planning, optimizing resource allocation to achieve 500% revenue growth and deliver Rs. 2,28,153 in profit from Rs. 4,19,338 total earnings."
-      },
-      {
-        "role": "Student Guide",
-        "organization": "Student Wellbeing Committee, IIT Jodhpur",
-        "duration": "Jun 2024 - Mar 2025",
-        "description": "Spearheaded mentorship program for 11 first-year students, implementing data-driven guidance strategies that increased retention rates and enhanced academic performance metrics."
-      }
-    ],
-    "coursework": [
-      {
-        "course": "Mathematics for Computing",
-        "grade": "A"
-      },
-      {
-        "course": "Calculus and Linear Algebra",
-        "grade": "A"
-      },
-      {
-        "course": "Probability, Statistics & Stochastic Processes",
-        "grade": "A-"
-      },
-      {
-        "course": "Introduction to Computer Science",
-        "grade": "A*"
-      },
-      {
-        "course": "Data Structures and Algorithms",
-        "grade": "A"
-      },
-      {
-        "course": "Software Engineering",
-        "grade": "B"
-      }
-    ]
+      "totalPublicRepos": 7,
+      "totalStars": 12,
+      "totalForks": 20,
+      "totalCommits": 130,
+      "featuredRepos": 5
+    }
   }
 }
