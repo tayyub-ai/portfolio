@@ -1,0 +1,60 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { portfolio } from '@/lib/portfolio';
+import { buildProjectsCollectionSchema, SITE_URL } from '@/lib/seo';
+
+const { projects } = portfolio;
+const path = '/projects';
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
+---
+
+<BaseLayout
+  meta={{
+    title: 'Projects',
+    description: 'AI/ML systems, forecasting engines, MMM pipelines, and analytics platforms built across enterprise clients.',
+    path,
+    ogType: 'website',
+  }}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Projects', url: path },
+  ]}
+  extraSchema={[buildProjectsCollectionSchema(`${SITE_URL}${path}`)]}
+>
+  <section class="container mx-auto py-20">
+    <h1 class="font-rajdhani text-5xl font-bold mb-6">Projects</h1>
+    <p class="text-lg max-w-3xl text-darktech-muted">
+      Production AI/ML systems shipped across enterprise clients in financial services, media, hospitality, and education.
+    </p>
+
+    <h2 class="font-rajdhani text-2xl font-bold mt-16 mb-6">Featured</h2>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {featured.map((p) => (
+        <li>
+          <a href={`/projects/${p.slug}`} class="block tech-card flex-col items-start gap-3 p-6 hover:border-darktech-neon-green transition-colors">
+            <h3 class="font-rajdhani text-xl font-bold">{p.title}</h3>
+            <p class="text-sm">{p.description}</p>
+            <ul class="flex flex-wrap gap-2">
+              {p.technologies.map((t) => (
+                <li class="text-xs px-2 py-1 rounded bg-darktech-card border border-darktech-border">{t}</li>
+              ))}
+            </ul>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <h2 class="font-rajdhani text-2xl font-bold mt-16 mb-6">All projects</h2>
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {others.map((p) => (
+        <li>
+          <a href={`/projects/${p.slug}`} class="block p-4 border border-darktech-border rounded-lg hover:border-darktech-neon-green transition-colors">
+            <h3 class="font-rajdhani text-base font-bold">{p.title}</h3>
+            <p class="text-xs text-darktech-muted mt-1 line-clamp-2">{p.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

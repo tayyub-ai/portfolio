@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { portfolio } from '@/lib/portfolio';
+import { buildContactPageSchema, SITE_URL } from '@/lib/seo';
+
+const { personalInfo, socialLinks } = portfolio;
+const path = '/contact';
+---
+
+<BaseLayout
+  meta={{
+    title: 'Contact',
+    description: `Contact Tayyub Yaqoob — ${personalInfo.title} based in ${personalInfo.location}.`,
+    path,
+    ogType: 'website',
+  }}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Contact', url: path },
+  ]}
+  extraSchema={[buildContactPageSchema(`${SITE_URL}${path}`)]}
+>
+  <section class="container mx-auto py-20 max-w-2xl">
+    <h1 class="font-rajdhani text-5xl font-bold mb-6">Contact</h1>
+    <p class="text-lg text-darktech-muted">
+      The fastest way to reach me is email. I read everything; I reply to relevant work in 1–3 business days.
+    </p>
+
+    <ul class="mt-10 space-y-4">
+      <li class="glass-panel p-6">
+        <p class="text-sm text-darktech-muted">Email</p>
+        <a href={`mailto:${personalInfo.email}`} class="text-lg font-medium hover:text-darktech-neon-green">{personalInfo.email}</a>
+      </li>
+      <li class="glass-panel p-6">
+        <p class="text-sm text-darktech-muted">Location</p>
+        <p class="text-lg font-medium">{personalInfo.location}</p>
+      </li>
+      <li class="glass-panel p-6">
+        <p class="text-sm text-darktech-muted">LinkedIn</p>
+        <a href={socialLinks.linkedin} class="text-lg font-medium hover:text-darktech-neon-green" rel="me noopener" target="_blank">
+          linkedin.com/in/tayyubyaqoob
+        </a>
+      </li>
+      <li class="glass-panel p-6">
+        <p class="text-sm text-darktech-muted">GitHub</p>
+        <a href={socialLinks.github} class="text-lg font-medium hover:text-darktech-neon-green" rel="me noopener" target="_blank">
+          github.com/tayyub-ai
+        </a>
+      </li>
+      <li class="glass-panel p-6">
+        <p class="text-sm text-darktech-muted">X / Twitter</p>
+        <a href={socialLinks.twitter} class="text-lg font-medium hover:text-darktech-neon-green" rel="me noopener" target="_blank">
+          @TayyabY
+        </a>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>

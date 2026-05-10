@@ -1,23 +1,15 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@src2/*": ["./src2/*"],
-      "src2/*": ["./src2/*"],
-      "@/store/*": ["./src2/store/*"],
-      "@/lib/*": ["./src2/lib/*"]
+      "@/*": ["src/*"]
     },
-    "noImplicitAny": false,
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
-    "allowJs": true,
-    "noUnusedLocals": false,
-    "strictNullChecks": false
-  }
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": false
+  },
+  "include": ["src/**/*", "src/**/*.astro", ".astro/types.d.ts"],
+  "exclude": ["dist", "node_modules", "src2", "src3", "server"]
 }

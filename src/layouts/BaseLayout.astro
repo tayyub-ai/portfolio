@@ -1,0 +1,94 @@
+---
+import '@/styles/global.css';
+import {
+  buildPersonSchema,
+  buildOrganizationSchema,
+  buildWebsiteSchema,
+  buildBreadcrumbSchema,
+  buildPageMeta,
+  type PageMeta,
+} from '@/lib/seo';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+interface Props {
+  meta: PageMeta;
+  breadcrumbs?: { name: string; url: string }[];
+  extraSchema?: Record<string, unknown>[];
+}
+
+const { meta, breadcrumbs = [], extraSchema = [] } = Astro.props;
+const m = buildPageMeta(meta);
+
+const schemas: Record<string, unknown>[] = [
+  buildOrganizationSchema(),
+  buildPersonSchema(),
+  buildWebsiteSchema(),
+];
+if (breadcrumbs.length > 1) {
+  schemas.push(buildBreadcrumbSchema(breadcrumbs));
+}
+schemas.push(...extraSchema);
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MH7NJ4VX');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <title>{m.fullTitle}</title>
+    <meta name="description" content={m.description} />
+    <link rel="canonical" href={m.canonical} />
+
+    <meta property="og:type" content={m.ogType} />
+    <meta property="og:title" content={m.fullTitle} />
+    <meta property="og:description" content={m.description} />
+    <meta property="og:url" content={m.canonical} />
+    <meta property="og:image" content={m.ogImage} />
+    <meta property="og:site_name" content="Tayyub Yaqoob" />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={m.twitterHandle} />
+    <meta name="twitter:creator" content={m.twitterHandle} />
+    <meta name="twitter:title" content={m.fullTitle} />
+    <meta name="twitter:description" content={m.description} />
+    <meta name="twitter:image" content={m.ogImage} />
+
+    <meta name="author" content="Tayyub Yaqoob" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+
+    {schemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
+  </head>
+
+  <body>
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MH7NJ4VX"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+
+    <Header />
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

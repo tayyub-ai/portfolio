@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { portfolio } from '@/lib/portfolio';
+import { buildPublicationsCollectionSchema, SITE_URL } from '@/lib/seo';
+
+const { publications } = portfolio;
+const path = '/publications';
+---
+
+<BaseLayout
+  meta={{
+    title: 'Publications',
+    description: 'Published research and editorial work by Tayyub Yaqoob — 30+ articles on AI, ML, and Web3 reaching 1.2M+ readers via Cointelegraph and AlphaWire.',
+    path,
+    ogType: 'website',
+  }}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Publications', url: path },
+  ]}
+  extraSchema={[buildPublicationsCollectionSchema(`${SITE_URL}${path}`)]}
+>
+  <section class="container mx-auto py-20">
+    <h1 class="font-rajdhani text-5xl font-bold mb-6">Publications</h1>
+    <p class="text-lg max-w-3xl text-darktech-muted">
+      Research-backed writing on AI, machine learning, and the integration of these systems with finance and Web3.
+    </p>
+
+    <ul class="mt-12 space-y-8">
+      {publications.map((p) => (
+        <li class="glass-panel p-8">
+          <p class="text-darktech-neon-green text-sm uppercase tracking-wide">{p.publisher}</p>
+          <h2 class="font-rajdhani text-2xl font-bold mt-1">{p.title}</h2>
+          <p class="text-sm text-darktech-muted mt-1">{p.role} · {p.dates}</p>
+          {'audienceReach' in p && p.audienceReach && <p class="text-sm mt-2">Reach: <span class="text-darktech-neon-green">{p.audienceReach}</span></p>}
+          {'articlesCount' in p && p.articlesCount && <p class="text-sm">Articles: <span class="text-darktech-neon-green">{p.articlesCount}</span></p>}
+          <p class="mt-4">{p.summary}</p>
+          {p.topics && (
+            <ul class="mt-4 flex flex-wrap gap-2">
+              {p.topics.map((t) => (
+                <li class="text-xs px-2 py-1 rounded border border-darktech-border">{t}</li>
+              ))}
+            </ul>
+          )}
+          <div class="mt-6">
+            {p.url ? (
+              <a href={p.url} class="text-darktech-neon-green hover:underline" rel="noopener" target="_blank">
+                View author page →
+              </a>
+            ) : (
+              <p class="text-xs text-darktech-muted/70 italic">{p.urlTodo}</p>
+            )}
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

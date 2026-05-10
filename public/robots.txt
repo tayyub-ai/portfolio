@@ -1,14 +1,21 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
+# https://www.tayyubyaqoob.com/robots.txt
 User-agent: *
 Allow: /
+
+# AI search crawlers — explicitly allow
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.tayyubyaqoob.com/sitemap-index.xml

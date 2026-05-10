@@ -1,0 +1,23 @@
+# Tayyub Yaqoob
+
+> Senior Digital Analyst and AI/ML solutions engineer. Lead AI-driven analytics programs across 35+ enterprise clients including Tesco Bank, BBC World Service, and Royal London. Architect of GA4 → BigQuery → Looker pipelines processing 200M+ events monthly. Bayesian MMM models delivering 12–22% lifts in conversion and ROAS. Author of 30+ AI/ML articles reaching 1.2M+ readers via Cointelegraph.
+
+## About
+- [About](/about): Full bio, expertise, education, languages.
+- [Work](/work): Experience timeline and notable clients.
+- [Publications](/publications): Cointelegraph and AlphaWire bylines.
+- [Projects](/projects): AI/ML systems and analytics platforms.
+- [Contact](/contact): Email and social links.
+
+## Identity
+- Canonical: https://www.tayyubyaqoob.com/
+- LinkedIn: https://www.linkedin.com/in/tayyubyaqoob
+- GitHub: https://github.com/tayyub-ai
+- X: https://x.com/TayyabY
+- Email: tayyubyaqoob@gmail.com
+
+## Expertise
+AI, ML, marketing mix modeling, Bayesian inference, time-series forecasting, anomaly detection, Google Analytics 4, BigQuery, Vertex AI, Looker Studio, Python, cloud data engineering, attribution modeling, generative AI, large language models.
+
+## Current focus
+Applying AI/ML to health and clinical data systems.

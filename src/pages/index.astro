@@ -1,0 +1,97 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { portfolio, getFeaturedProjects } from '@/lib/portfolio';
+
+const { personalInfo, metrics, publications, notableClients } = portfolio;
+const featured = getFeaturedProjects().slice(0, 3);
+---
+
+<BaseLayout
+  meta={{
+    title: 'Home',
+    description: personalInfo.summary.slice(0, 155),
+    path: '/',
+    ogType: 'profile',
+  }}
+>
+  <section class="container mx-auto py-20 md:py-32">
+    <p class="text-darktech-neon-green font-rajdhani uppercase tracking-widest text-sm mb-4">
+      {personalInfo.location}
+    </p>
+    <h1 class="font-rajdhani text-5xl md:text-7xl font-bold leading-tight max-w-4xl">
+      <span class="text-gradient">{personalInfo.headline}</span>
+    </h1>
+    <p class="mt-2 text-lg md:text-xl text-darktech-muted">{personalInfo.title}</p>
+    <p class="mt-8 max-w-2xl text-base md:text-lg leading-relaxed">{personalInfo.summary}</p>
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href="/about" class="px-6 py-3 rounded-lg bg-darktech-neon-green text-darktech-background font-medium hover:opacity-90">
+        About me
+      </a>
+      <a href="/work" class="px-6 py-3 rounded-lg border border-darktech-border hover:border-darktech-neon-green">
+        See my work
+      </a>
+      <a href="/publications" class="px-6 py-3 rounded-lg border border-darktech-border hover:border-darktech-neon-green">
+        Publications
+      </a>
+    </div>
+  </section>
+
+  <section class="container mx-auto py-12 border-t border-darktech-border">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {metrics.map((m) => (
+        <div class="glass-panel p-6">
+          <div class="text-3xl md:text-4xl font-rajdhani font-bold text-darktech-neon-green">{m.value}</div>
+          <div class="text-sm text-darktech-muted mt-2">{m.label}</div>
+          <div class="text-xs text-darktech-muted/70 mt-1">{m.source}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="container mx-auto py-16">
+    <h2 class="font-rajdhani text-3xl font-bold mb-8">Published research</h2>
+    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {publications.map((p) => (
+        <li class="tech-card flex-col items-start gap-2 p-6">
+          <p class="text-darktech-neon-green text-sm uppercase tracking-wide">{p.publisher}</p>
+          <h3 class="font-rajdhani text-xl font-bold">{p.title}</h3>
+          <p class="text-sm text-darktech-muted">{p.dates}</p>
+          <p class="text-sm">{p.summary}</p>
+          {p.audienceReach && <p class="text-xs text-darktech-muted">Reach: {p.audienceReach}</p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="container mx-auto py-16 border-t border-darktech-border">
+    <h2 class="font-rajdhani text-3xl font-bold mb-8">Featured projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {featured.map((p) => (
+        <a href={`/projects/${p.slug}`} class="tech-card flex-col items-start gap-2 p-6 hover:border-darktech-neon-green transition-colors">
+          <h3 class="font-rajdhani text-xl font-bold">{p.title}</h3>
+          <p class="text-sm text-darktech-muted">{p.description}</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            {p.technologies.slice(0, 4).map((t) => (
+              <span class="text-xs px-2 py-1 rounded bg-darktech-card border border-darktech-border">{t}</span>
+            ))}
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="mt-8">
+      <a href="/projects" class="text-darktech-neon-green hover:underline">All projects →</a>
+    </div>
+  </section>
+
+  <section class="container mx-auto py-16 border-t border-darktech-border">
+    <h2 class="font-rajdhani text-3xl font-bold mb-8">Notable clients</h2>
+    <ul class="flex flex-wrap gap-3">
+      {notableClients.map((c) => (
+        <li class="px-4 py-2 rounded-lg border border-darktech-border text-sm">
+          <span class="font-medium">{c.name}</span>
+          <span class="text-darktech-muted ml-2 text-xs">{c.sector}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>

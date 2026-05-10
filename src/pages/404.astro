@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  meta={{
+    title: 'Not found',
+    description: 'The page you were looking for does not exist.',
+    path: '/404',
+  }}
+>
+  <section class="container mx-auto py-32 text-center">
+    <h1 class="font-rajdhani text-7xl font-bold text-gradient">404</h1>
+    <p class="mt-6 text-lg text-darktech-muted">That page does not exist.</p>
+    <a href="/" class="inline-block mt-8 px-6 py-3 rounded-lg bg-darktech-neon-green text-darktech-background font-medium hover:opacity-90">
+      Go home
+    </a>
+  </section>
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { portfolio } from '@/lib/portfolio';
+import { buildProfilePageSchema, SITE_URL } from '@/lib/seo';
+
+const { personalInfo, education, insights } = portfolio;
+const path = '/about';
+---
+
+<BaseLayout
+  meta={{
+    title: 'About',
+    description: `About ${personalInfo.name}: ${personalInfo.title}. ${personalInfo.summary.slice(0, 100)}`,
+    path,
+    ogType: 'profile',
+  }}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'About', url: path },
+  ]}
+  extraSchema={[buildProfilePageSchema(`${SITE_URL}${path}`)]}
+>
+  <section class="container mx-auto py-20">
+    <h1 class="font-rajdhani text-5xl font-bold mb-6">About</h1>
+    <p class="text-xl max-w-3xl leading-relaxed">{personalInfo.summary}</p>
+
+    <h2 class="font-rajdhani text-2xl font-bold mt-16 mb-6">What I work on</h2>
+    <ul class="flex flex-wrap gap-2 max-w-3xl">
+      {personalInfo.knowsAbout.map((topic) => (
+        <li class="px-3 py-1 rounded border border-darktech-border text-sm">{topic}</li>
+      ))}
+    </ul>
+
+    <h2 class="font-rajdhani text-2xl font-bold mt-16 mb-6">Education</h2>
+    <ul class="space-y-4">
+      {education.map((e) => (
+        <li class="glass-panel p-6">
+          <h3 class="font-rajdhani text-xl font-bold">{e.degree}</h3>
+          <p class="text-darktech-muted">{e.institution} · {e.location}</p>
+          <p class="text-sm text-darktech-muted">{e.dates}</p>
+        </li>
+      ))}
+    </ul>
+
+    <h2 class="font-rajdhani text-2xl font-bold mt-16 mb-6">Languages</h2>
+    <p>{personalInfo.languages.join(', ')}</p>
+
+    <h2 class="font-rajdhani text-2xl font-bold mt-16 mb-6">Current focus</h2>
+    <p class="max-w-3xl">{insights.learningFocus}. {insights.careerTrajectory}</p>
+  </section>
+</BaseLayout>

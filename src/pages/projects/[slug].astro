@@ -1,0 +1,51 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getAllProjectSlugs, getProjectBySlug } from '@/lib/portfolio';
+import { buildProjectSchema, SITE_URL } from '@/lib/seo';
+
+export function getStaticPaths() {
+  return getAllProjectSlugs().map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params as { slug: string };
+const project = getProjectBySlug(slug);
+if (!project) {
+  throw new Error(`Project not found: ${slug}`);
+}
+const path = `/projects/${slug}`;
+const canonical = `${SITE_URL}${path}`;
+---
+
+<BaseLayout
+  meta={{
+    title: project.title,
+    description: project.description.slice(0, 155),
+    path,
+    ogType: 'article',
+  }}
+  breadcrumbs={[
+    { name: 'Home', url: '/' },
+    { name: 'Projects', url: '/projects' },
+    { name: project.title, url: path },
+  ]}
+  extraSchema={[buildProjectSchema(slug, canonical)]}
+>
+  <section class="container mx-auto py-20 max-w-3xl">
+    <a href="/projects" class="text-sm text-darktech-muted hover:text-darktech-neon-green">← All projects</a>
+    <h1 class="font-rajdhani text-4xl md:text-5xl font-bold mt-4">{project.title}</h1>
+    <p class="mt-6 text-lg leading-relaxed">{project.description}</p>
+
+    <h2 class="font-rajdhani text-xl font-bold mt-12 mb-4">Technologies</h2>
+    <ul class="flex flex-wrap gap-2">
+      {project.technologies.map((t) => (
+        <li class="text-sm px-3 py-1 rounded border border-darktech-border">{t}</li>
+      ))}
+    </ul>
+
+    {project.featured && (
+      <p class="mt-12 text-sm text-darktech-muted italic">
+        This is one of the featured projects in Tayyub's portfolio.
+      </p>
+    )}
+  </section>
+</BaseLayout>
