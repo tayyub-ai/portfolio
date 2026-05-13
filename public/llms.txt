@@ -12,13 +12,13 @@
 - [About](/about): Bio, credentials grid (12 AI/ML certifications), operating principles.
 - [Press kit](/press): Bios in three lengths (copy-paste ready), fact sheet, pull-quote paragraphs, expert topics, asset downloads, direct press contact.
 - [Receipts](/receipts): Structured evidence backup — role, systems, products, writing, press, peer review, client impact, credentials.
-- [Code](/open-source): Public engineering profile — github.com/tayyab-ai.
+- [Code](/open-source): Public engineering profile — github.com/tayyub-ai.
 - [Contact](/contact): Media enquiries, podcasts, panels, commissioned writing, consulting.
 
 ## Identity
 - Canonical: https://www.tayyubyaqoob.com/
 - LinkedIn: https://www.linkedin.com/in/tayyubyaqoob
-- GitHub: https://github.com/tayyab-ai
+- GitHub: https://github.com/tayyub-ai
 - Cointelegraph: https://cointelegraph.com/authors/tayyub-yaqoob
 - AlphaWire: https://alphawire.xyz/author/tayyub/
 - Email: tayyabyaqoob.1@gmail.com
