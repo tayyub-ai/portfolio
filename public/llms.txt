@@ -1,23 +1,39 @@
 # Tayyub Yaqoob
 
-> Senior Digital Analyst and AI/ML solutions engineer. Lead AI-driven analytics programs across 35+ enterprise clients including Tesco Bank, BBC World Service, and Royal London. Architect of GA4 → BigQuery → Looker pipelines processing 200M+ events monthly. Bayesian MMM models delivering 12–22% lifts in conversion and ROAS. Author of 30+ AI/ML articles reaching 1.2M+ readers via Cointelegraph.
+> UK-based data scientist and AI engineer. Senior Digital Analyst at 8 Million Stories, Stirling. Architects proprietary AI-analytics systems used by 50+ client teams. Published author at Cointelegraph (30+) and AlphaWire (5+). Quoted as expert source by CCN. Invited chapter reviewer for IGI Global.
 
-## About
-- [About](/about): Full bio, expertise, education, languages.
-- [Work](/work): Experience timeline and notable clients.
-- [Publications](/publications): Cointelegraph and AlphaWire bylines.
-- [Projects](/projects): AI/ML systems and analytics platforms.
-- [Contact](/contact): Email and social links.
+## Key pages
+- [Home](/): Positioning, client exposure, quantified-impact metrics, eight surfaces of work.
+- [Systems](/systems): Eight proprietary analytics systems — forecasting, sentiment, anomaly detection, AI-mentions, deck generation, organic-insight automation.
+- [Products](/products): Independent product work, including LedgerTouch (in development).
+- [Writing](/publications): 35+ technical articles across Cointelegraph and AlphaWire; CCN expert quotes — verifiable on each outlet's profile.
+- [Research](/research): External recognition (Cointelegraph + CCN), IGI Global completed-chapter-reviews record.
+- [Words](/testimonials): Verbatim client quotes — BBC, General Mills (Blue Buffalo), Diligent Pharma, MRI Management.
+- [About](/about): Bio, credentials grid (12 AI/ML certifications), operating principles.
+- [Press kit](/press): Bios in three lengths (copy-paste ready), fact sheet, pull-quote paragraphs, expert topics, asset downloads, direct press contact.
+- [Receipts](/receipts): Structured evidence backup — role, systems, products, writing, press, peer review, client impact, credentials.
+- [Code](/open-source): Public engineering profile — github.com/tayyab-ai.
+- [Contact](/contact): Media enquiries, podcasts, panels, commissioned writing, consulting.
 
 ## Identity
 - Canonical: https://www.tayyubyaqoob.com/
 - LinkedIn: https://www.linkedin.com/in/tayyubyaqoob
-- GitHub: https://github.com/tayyub-ai
-- X: https://x.com/TayyabY
-- Email: tayyubyaqoob@gmail.com
+- GitHub: https://github.com/tayyab-ai
+- Cointelegraph: https://cointelegraph.com/authors/tayyub-yaqoob
+- AlphaWire: https://alphawire.xyz/author/tayyub/
+- Email: tayyabyaqoob.1@gmail.com
+- Location: Stirling, Scotland, UK
 
-## Expertise
-AI, ML, marketing mix modeling, Bayesian inference, time-series forecasting, anomaly detection, Google Analytics 4, BigQuery, Vertex AI, Looker Studio, Python, cloud data engineering, attribution modeling, generative AI, large language models.
+## Recognition signals
+- 30+ technical articles published in Cointelegraph (Apr 2024 → present)
+- 5+ articles published in AlphaWire
+- Quoted as expert source by CCN
+- 3 completed chapter reviews for IGI Global (CBDCs, blockchain consensus for IoT-based banking, AI-enabled IoT for FinTech)
+- 12 AI/ML credentials — Google AI Agents, AWS ML Specialty exam prep, Vertex AI MLOps, Model Context Protocol with Agentic AI, Agentic AI for Developers, OpenAI Generative AI, AI Ethics & Safety, TensorFlow Deep Learning
+- MSc Computing Science, University of Stirling
+- Verbatim client testimonials from BBC, General Mills (Blue Buffalo), Diligent Pharma, MRI Management
+- 12+ named client programmes shipped via 8 Million Stories
+- 8 proprietary analytics systems in production; 50+ client teams on the platform on a weekly cadence
 
 ## Current focus
-Applying AI/ML to health and clinical data systems.
+AI agents and machine learning in production, AI-search disruption to organic visibility, consent-mode transparency, measurement-platform accountability. Building LedgerTouch — an independent analytics platform — outside agency work.

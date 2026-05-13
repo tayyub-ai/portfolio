@@ -1,13 +1,17 @@
 /* TEAM */
   Lead: Tayyub Yaqoob
-  Role: Senior Digital Analyst & AI/ML Solutions Engineer
+  Role: Senior Digital Analyst | AI & ML Engineer
   Site: https://www.tayyubyaqoob.com/
+  Email: tayyabyaqoob.1@gmail.com
   LinkedIn: https://www.linkedin.com/in/tayyubyaqoob
-  GitHub: https://github.com/tayyub-ai
+  GitHub: https://github.com/tayyab-ai
+  Cointelegraph: https://cointelegraph.com/authors/tayyub-yaqoob
+  AlphaWire: https://alphawire.xyz/author/tayyub/
   X: https://x.com/TayyabY
   Location: Stirling, Scotland, UK
 
 /* SITE */
-  Last update: 2026/05/10
+  Last update: 2026/05/13
   Built with: Astro, TypeScript, Tailwind CSS
-  Hosted on: Vercel
+  Purpose: Evidence-first personal portfolio — AI, analytics and applied research
+  Press kit: https://www.tayyubyaqoob.com/press

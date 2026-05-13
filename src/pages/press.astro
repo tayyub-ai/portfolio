@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Press kit — Tayyub Yaqoob</title>
+<meta name="description" content="Press kit for journalists, podcast producers and panel organisers. Bios in three lengths, ready-to-quote pull paragraphs, fact sheet, expert topics and direct press contact." />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<style>
+.press-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start}
+@media (max-width:980px){.press-grid{grid-template-columns:1fr}}
+
+/* Bio cards with copy buttons */
+.bio{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;display:flex;flex-direction:column;gap:12px;transition:border-color .25s,box-shadow .25s}
+.bio:hover{border-color:var(--line-2);box-shadow:var(--shadow-1)}
+.bio-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.bio-head .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);font-weight:600}
+.bio-head .wc{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.04em}
+.bio-body{font-family:var(--serif);font-size:16.5px;line-height:1.55;color:var(--ink);text-wrap:pretty;letter-spacing:-.005em}
+.bio-body b{color:var(--terra);font-weight:500}
+.bio-foot{display:flex;justify-content:flex-end;margin-top:6px}
+.copy-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.copy-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.copy-btn.copied{background:var(--sage-soft);color:var(--moss);border-color:var(--moss)}
+
+/* Fact sheet panel */
+.facts{background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 28px;box-shadow:var(--shadow-1)}
+.facts h3{font-family:var(--serif);font-size:22px;letter-spacing:-.01em;margin-bottom:14px}
+.facts h3 em{font-style:italic;color:var(--terra)}
+.facts ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:9px}
+.facts li{display:flex;align-items:flex-start;gap:10px;font-size:14px;line-height:1.5;color:var(--ink-2)}
+.facts li::before{content:"›";color:var(--terra);font-weight:600;font-size:16px;line-height:1.4;flex-shrink:0}
+.facts li b{color:var(--ink);font-weight:600}
+
+/* Pull-quote paragraph blocks */
+.pull-list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.pull{position:relative;background:#fff;border-left:3px solid var(--terra);border-radius:var(--r-md);padding:22px 24px;box-shadow:var(--shadow-1);transition:transform .25s,box-shadow .25s}
+.pull:hover{transform:translateY(-2px);box-shadow:var(--shadow-2)}
+.pull-tag{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.pull blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.45;color:var(--ink);letter-spacing:-.005em}
+.pull blockquote b{font-style:normal;color:var(--terra);font-weight:500}
+.pull-attr{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:14px;padding-top:10px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+.pull-attr b{color:var(--ink-2)}
+@media (max-width:880px){.pull-list{grid-template-columns:1fr}}
+
+/* Topics chips */
+.topic-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.topic-chip{padding:7px 13px;border-radius:999px;background:var(--ochre-soft);color:#8a5e15;border:1px solid #f0d690;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.topic-chip.t2{background:var(--terra-soft);color:var(--terra);border-color:#f6cdbb}
+.topic-chip.t3{background:var(--sage-soft);color:var(--moss);border-color:#cfe0b1}
+
+/* Asset download card */
+.asset-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;display:flex;flex-direction:column;gap:8px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.asset-card:hover{transform:translateY(-2px);border-color:var(--terra);box-shadow:var(--shadow-1)}
+.asset-card h5{font-family:var(--sans);font-weight:600;font-size:14px;color:var(--ink);letter-spacing:-.005em}
+.asset-card .desc{font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.asset-card .meta{font-family:var(--mono);font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:auto;padding-top:6px;border-top:1px dashed var(--line)}
+.asset-card .meta a{color:var(--terra);font-weight:600;border-bottom:1px solid currentColor}
+.asset-headshot{background:var(--bg-soft);aspect-ratio:1/1;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);position:relative}
+.asset-headshot img{width:100%;height:100%;object-fit:cover;filter:sepia(.05) saturate(.95)}
+.asset-headshot .dl{position:absolute;bottom:8px;right:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:rgba(255,255,255,.95);color:var(--ink);border:1px solid var(--line);text-decoration:none;backdrop-filter:blur(8px);box-shadow:var(--shadow-1)}
+.asset-headshot .dl:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* Press-route hero */
+.press-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--terra-soft);border:1px solid var(--terra);font-family:var(--mono);font-size:10.5px;color:var(--terra);letter-spacing:.06em;text-transform:uppercase;font-weight:600;margin-bottom:14px}
+.press-eyebrow::before{content:"●";color:var(--terra)}
+
+/* Section dividers within press page */
+.press-block{margin-bottom:48px}
+.press-block h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,40px);letter-spacing:-.018em;line-height:1.05;margin-bottom:8px}
+.press-block h2 em{font-style:italic;color:var(--terra)}
+.press-block .lead{font-size:15.5px;color:var(--ink-2);line-height:1.55;margin-bottom:22px;max-width:60ch}
+.press-block .lead b{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="aurora"></div>
+<div class="spotlight" id="spot"></div>
+
+<div class="shell">
+
+<header class="nav">
+  <div class="nav-l"><a href="/" class="brand"><span class="mark"></span><b>Tayyub Yaqoob</b></a></div>
+  <nav class="nav-c">
+    <a href="/">Home</a>
+    <a href="/systems">Systems</a>
+    <a href="/products">Products</a>
+    <a href="/publications">Writing</a>
+    <a href="/research">Research</a>
+    <a href="/testimonials">Words</a>
+    <a href="/about">About</a>
+  </nav>
+  <div class="nav-r">
+    <span class="pill"><span class="live"></span>Open · 2026</span>
+    <a href="/contact" class="btn btn-primary">Contact →</a>
+  </div>
+</header>
+
+<header class="page-head wrap">
+  <div class="crumb"><a href="/">Home</a><span>›</span><span>Press kit</span></div>
+  <span class="press-eyebrow">For journalists · producers · panel organisers</span>
+  <h1>Press <em>kit</em>.</h1>
+  <p>Bios in three lengths, ready-to-quote pull paragraphs, a fact sheet that doesn&#39;t need verifying, expert topics, and a direct line for press enquiries. Reuse anything below verbatim &mdash; this page is built to be copied.</p>
+</header>
+
+<!-- ── Bios + fact sheet ── -->
+<section class="section wrap first press-block" data-screen-label="Bios">
+  <h2>Bios &mdash; <em>copy-paste ready</em>.</h2>
+  <p class="lead">Three lengths for three contexts: panel chair intro, podcast bumper, feature lede. Each accurate as of <b>2026</b> &mdash; no claims that can&#39;t be backed by an artefact in the <a href="/receipts" style="color:var(--terra);border-bottom:1px solid currentColor">receipts</a>.</p>
+
+  <div class="press-grid">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <article class="bio rv" data-bio="short">
+        <header class="bio-head"><span class="lbl">Short bio · 50 words</span><span class="wc">For panel intros, captions</span></header>
+        <div class="bio-body" id="bio-short">Tayyub Yaqoob is a UK-based <b>AI and digital-analytics specialist</b>. He has published <b>35+ technical articles</b> in Cointelegraph and AlphaWire on AI agents, machine learning and blockchain, is quoted as an expert source by CCN, and has completed <b>three chapter reviews</b> for IGI Global. Based in Stirling, UK.</div>
+        <footer class="bio-foot"><button class="copy-btn" data-target="bio-short">Copy bio</button></footer>
+      </article>
+
+      <article class="bio rv" data-bio="medium">
+        <header class="bio-head"><span class="lbl">Medium bio · 100 words</span><span class="wc">For podcast notes, programmes</span></header>
+        <div class="bio-body" id="bio-medium">Tayyub Yaqoob is a <b>Senior Digital Analyst at 8 Million Stories</b> in Stirling, UK, where he architects proprietary AI-analytics systems used by 50+ client teams. Cointelegraph describes him as a &ldquo;data scientist and AI engineer specialising in machine learning applications across blockchain and marketing analytics.&rdquo; He has published <b>30+ articles</b> in Cointelegraph and <b>5+ in AlphaWire</b>, is quoted as an <b>expert source by CCN</b>, has completed <b>three chapter reviews</b> for IGI Global, and holds AI/ML credentials from Google, AWS and LinkedIn Learning. He is building LedgerTouch &mdash; an independent analytics platform &mdash; in parallel.</div>
+        <footer class="bio-foot"><button class="copy-btn" data-target="bio-medium">Copy bio</button></footer>
+      </article>
+
+      <article class="bio rv" data-bio="long">
+        <header class="bio-head"><span class="lbl">Long bio · ~200 words</span><span class="wc">For feature pieces, profile copy</span></header>
+        <div class="bio-body" id="bio-long">Tayyub Yaqoob is a UK-based <b>data scientist and AI engineer</b> working at the intersection of machine learning, blockchain and digital measurement. He is <b>Senior Digital Analyst at 8 Million Stories</b>, where he has designed eight proprietary analytics systems &mdash; forecasters, sentiment models, anomaly detectors and automated reporting engines &mdash; that 50+ client teams depend on each week. His work focuses on the production engineering behind AI / ML systems rather than the demos, with explicit attention to consent, data quality and reproducibility.<br /><br />He has published <b>30+ articles in Cointelegraph</b> and <b>5+ in AlphaWire</b> on AI agents, generative-AI trading, crypto security, quantum-resistance and regulation. He is cited as an <b>expert source by CCN</b>, has completed <b>three peer-reviewed chapter evaluations</b> for IGI Global (on CBDCs, blockchain consensus for IoT banking, and AI-enabled IoT for FinTech), and is currently building LedgerTouch &mdash; an independent analytics platform &mdash; outside of his agency role. He holds an MSc in Computing Science from the University of Stirling, plus AI / ML credentials from Google, AWS and LinkedIn Learning.</div>
+        <footer class="bio-foot"><button class="copy-btn" data-target="bio-long">Copy bio</button></footer>
+      </article>
+    </div>
+
+    <aside class="facts rv">
+      <h3>Fact <em>sheet</em>.</h3>
+      <ul>
+        <li><b>Role.</b> Senior Digital Analyst, 8 Million Stories. Stirling, United Kingdom.</li>
+        <li><b>Discipline.</b> AI engineering, machine learning, digital analytics, marketing intelligence.</li>
+        <li><b>Published work.</b> 30+ Cointelegraph articles &middot; 5+ AlphaWire articles. Author profiles live and verifiable.</li>
+        <li><b>Press.</b> Quoted as expert source by CCN (digital-asset news).</li>
+        <li><b>Peer review.</b> 3 completed chapter reviews for IGI Global &mdash; CBDCs, blockchain consensus, AI-FinTech (2022-2023).</li>
+        <li><b>Systems shipped.</b> Eight proprietary analytics systems in production. 50+ client teams on the platform weekly.</li>
+        <li><b>Independent product.</b> Building LedgerTouch &mdash; analytics platform, in development.</li>
+        <li><b>Education.</b> MSc Computing Science, University of Stirling.</li>
+        <li><b>Credentials.</b> 12 AI / ML certifications &mdash; Google AI Agents (2025), AWS ML Specialty prep, Vertex AI MLOps, Model Context Protocol (MCP), Agentic AI for Developers, OpenAI Generative AI, AI Ethics &amp; Safety.</li>
+        <li><b>Languages.</b> English (native), Urdu.</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- ── Pull-quote paragraphs ── -->
+<section class="section wrap press-block" data-screen-label="Quotes">
+  <h2>Ready-to-quote <em>pull paragraphs</em>.</h2>
+  <p class="lead">Verbatim statements you may use as expert commentary &mdash; please attribute to <b>Tayyub Yaqoob, Senior Digital Analyst, 8 Million Stories</b>. Email for tighter quotes around a specific brief.</p>
+
+  <div class="pull-list">
+    <article class="pull rv">
+      <div class="pull-tag">On AI-agent trading risk</div>
+      <blockquote>The first time an autonomous AI agent loses money for you will not be a model failure &mdash; it will be a <b>plumbing failure</b>. Architectures that treat the API call as the safety boundary, not the model output, will outlive the ones that don&#39;t.</blockquote>
+      <div class="pull-attr"><span>Tayyub Yaqoob</span><b>AI agents · trading</b></div>
+    </article>
+
+    <article class="pull rv d1">
+      <div class="pull-tag">On AI search disruption to organic visibility</div>
+      <blockquote>AI Overviews compress the answer, but they don&#39;t compress the audit trail. Whoever can <b>show, with reproducible methodology</b>, where their visibility actually shifted &mdash; not just where their CTR did &mdash; will own the measurement conversation in 2026.</blockquote>
+      <div class="pull-attr"><span>Tayyub Yaqoob</span><b>AI search · measurement</b></div>
+    </article>
+
+    <article class="pull rv d2">
+      <div class="pull-tag">On consent mode and platform-driven measurement</div>
+      <blockquote>Consent Mode v2 hands the platform the modelling job. That isn&#39;t inherently wrong, but it makes the platform&#39;s assumptions part of the result &mdash; and most teams have <b>no auditing surface</b> on those assumptions yet.</blockquote>
+      <div class="pull-attr"><span>Tayyub Yaqoob</span><b>Consent · transparency</b></div>
+    </article>
+
+    <article class="pull rv d3">
+      <div class="pull-tag">On quantum-resistant tokens</div>
+      <blockquote>The Q-day debate isn&#39;t really &ldquo;when quantum cracks Bitcoin&rdquo; &mdash; it&#39;s how the protocol changes <b>before</b> that day arrives. Honest reading of the timeline favours preparing networks now, not designing fear narratives.</blockquote>
+      <div class="pull-attr"><span>Tayyub Yaqoob</span><b>Quantum · security</b></div>
+    </article>
+  </div>
+</section>
+
+<!-- ── Topics ── -->
+<section class="section wrap press-block" data-screen-label="Topics">
+  <h2>Expert <em>topics</em>.</h2>
+  <p class="lead">Areas with on-record published work or directly-shipped systems. Briefs welcome on any of these.</p>
+  <div class="topic-chips">
+    <span class="topic-chip">AI agents</span>
+    <span class="topic-chip">Generative AI in production</span>
+    <span class="topic-chip">Machine learning</span>
+    <span class="topic-chip t2">AI-driven crypto trading</span>
+    <span class="topic-chip t2">Crypto security &amp; threat models</span>
+    <span class="topic-chip t2">Quantum-resistance &amp; Bitcoin</span>
+    <span class="topic-chip">AI ethics &amp; safety</span>
+    <span class="topic-chip t3">GA4 / digital measurement</span>
+    <span class="topic-chip t3">Consent &amp; measurement transparency</span>
+    <span class="topic-chip t3">AI search disruption to organic visibility</span>
+    <span class="topic-chip t2">DeFi, restaking, L1 economics</span>
+    <span class="topic-chip">SAB 121 &amp; crypto regulation</span>
+  </div>
+</section>
+
+<!-- ── Asset downloads ── -->
+<section class="section wrap press-block" data-screen-label="Assets">
+  <h2>Brand <em>assets</em>.</h2>
+  <p class="lead">Use the portrait as the headshot. Reach out for a 1-page PDF CV or a custom briefing pack tailored to your piece.</p>
+
+  <div class="press-grid">
+    <div class="asset-headshot rv">
+      <img src="/assets/portrait.jpeg" alt="Tayyub Yaqoob portrait" />
+      <a class="dl" href="/assets/portrait.jpeg" download="tayyub-yaqoob-portrait.jpeg">↓ Download headshot</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="asset-card rv">
+        <h5>One-page CV (PDF)</h5>
+        <div class="desc">Single-page CV with role, recognition, publications and credentials &mdash; updated quarterly.</div>
+        <div class="meta">Status &middot; <a href="mailto:tayyabyaqoob.1@gmail.com?subject=Press%20kit%3A%20one-page%20CV%20request">Request copy →</a></div>
+      </div>
+      <div class="asset-card rv d1">
+        <h5>Custom briefing pack</h5>
+        <div class="desc">For features and long-form: tighter angle, supporting artefacts, additional quotes around your hook.</div>
+        <div class="meta">Turnaround &middot; <b>48 hours on weekdays</b></div>
+      </div>
+      <div class="asset-card rv d2">
+        <h5>Author profiles</h5>
+        <div class="desc">Verifiable byline pages &mdash; click through, count and quote freely.</div>
+        <div class="meta"><a href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Cointelegraph ↗</a> &nbsp;·&nbsp; <a href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">AlphaWire ↗</a></div>
+      </div>
+      <div class="asset-card rv d3">
+        <h5>Receipts &amp; artefacts</h5>
+        <div class="desc">Structured backup &mdash; every claim with the document, screenshot or link behind it.</div>
+        <div class="meta"><a href="/receipts">Open receipts ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Direct press contact ── -->
+<section class="section wrap press-block" data-screen-label="Contact">
+  <h2>Direct <em>press contact</em>.</h2>
+  <p class="lead">No PR intermediary. Email goes straight to me. Reply within <b>48 hours</b> on weekdays; faster for breaking-news briefs.</p>
+  <div class="press-grid">
+    <div class="asset-card rv" style="background:linear-gradient(155deg,#fff,var(--terra-soft));border-color:var(--terra)">
+      <h5>For interviews, quotes &amp; live commentary</h5>
+      <div class="desc">Send your hook, deadline and quote-format preference. Happy to do recorded or written. Email preferred over LinkedIn for time-sensitive asks.</div>
+      <div class="meta"><a href="mailto:tayyabyaqoob.1@gmail.com?subject=Press%20enquiry">tayyabyaqoob.1@gmail.com →</a></div>
+    </div>
+    <div class="asset-card rv d1">
+      <h5>For podcast / panel / conference</h5>
+      <div class="desc">Topic, format, audience size, date window. Lead time of 2 weeks preferred for podcast recordings.</div>
+      <div class="meta"><a href="/contact">Use contact form →</a></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <h2 class="foot-cta rv">For <em>media enquiries</em>.<br /><a href="mailto:tayyabyaqoob.1@gmail.com?subject=Press%20enquiry">Press enquiry →</a></h2>
+    <p class="foot-lede rv d1">For interviews, commentary, podcasts, panels and commissioned writing &mdash; direct line, no PR layer.</p>
+    <div class="foot-grid">
+      <div class="fc fc-id"><div class="nm">Tayyub Yaqoob</div><p>Senior Digital Analyst · 8 Million Stories · Stirling, UK.</p></div>
+      <div class="fc"><h5>Reach</h5><a href="/contact">Contact form</a><a href="mailto:tayyabyaqoob.1@gmail.com">Email</a><a href="https://www.linkedin.com/in/tayyubyaqoob" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/tayyab-ai" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+      <div class="fc"><h5>Pages</h5><a href="/">Home</a><a href="/systems">Systems</a><a href="/products">Products</a><a href="/publications">Writing</a><a href="/research">Research</a><a href="/testimonials">Words</a><a href="/about">About</a></div>
+      <div class="fc"><h5>Press &amp; receipts</h5><a href="/press">Press kit</a><a href="/receipts">The receipts ↗</a><a href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Cointelegraph ↗</a><a href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">AlphaWire ↗</a></div>
+    </div>
+    <div class="foot-bot"><span>© 2026 Tayyub Yaqoob</span><span>Stirling · MMXXVI</span></div>
+  </div>
+</footer>
+
+<script is:inline>
+(function(){
+  document.querySelectorAll('.copy-btn').forEach(btn=>{
+    btn.addEventListener('click',async()=>{
+      const id=btn.dataset.target;
+      const el=document.getElementById(id);
+      if(!el)return;
+      const text=el.innerText.replace(/\s+/g,' ').trim();
+      try{
+        await navigator.clipboard.writeText(text);
+        const orig=btn.textContent;
+        btn.classList.add('copied');
+        btn.textContent='Copied ✓';
+        setTimeout(()=>{btn.classList.remove('copied');btn.textContent=orig;},1800);
+      }catch(e){
+        // fallback
+        const ta=document.createElement('textarea');
+        ta.value=text;document.body.appendChild(ta);ta.select();
+        try{document.execCommand('copy');}catch(_){}
+        ta.remove();
+        btn.textContent='Copied ✓';
+        setTimeout(()=>{btn.textContent='Copy bio';},1800);
+      }
+    });
+  });
+})();
+</script>
+<script is:inline src="/script.js"></script>
+</body>
+</html>

@@ -1,58 +1,409 @@
----
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import { portfolio } from '@/lib/portfolio';
-import { buildPublicationsCollectionSchema, SITE_URL } from '@/lib/seo';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Writing &amp; commentary — Tayyub Yaqoob</title>
+<meta name="description" content="35+ technical articles across Cointelegraph and AlphaWire on AI, crypto, blockchain, quantum computing, security and regulation. Expert commentary quoted by CCN." />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<style>
+.outlet{display:grid;grid-template-columns:1.1fr 1fr;gap:32px;align-items:start;margin-bottom:24px;padding:26px 28px;background:linear-gradient(155deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-1)}
+.outlet-l h3{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.02;letter-spacing:-.02em;color:var(--ink)}
+.outlet-l h3 em{font-style:italic;color:var(--terra)}
+.outlet-l .pubmeta{display:flex;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:12px}
+.outlet-l .pubmeta b{color:var(--ink);font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:0;text-transform:none;display:block}
+.outlet-l .pubmeta span{display:flex;flex-direction:column;gap:2px}
+.outlet-l .pubcta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--terra);border-bottom:1px solid currentColor;padding-bottom:1px;width:max-content}
+.outlet-r{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:22px 24px;position:relative}
+.outlet-r::before{content:"\201C";position:absolute;top:6px;left:18px;font-family:var(--serif);font-size:68px;line-height:1;color:var(--terra);opacity:.18;font-style:italic}
+.outlet-r blockquote{margin:0;padding-left:26px;font-family:var(--serif);font-size:16.5px;line-height:1.45;font-style:italic;color:var(--ink);text-wrap:balance}
+.outlet-r blockquote b{font-style:normal;color:var(--terra);font-weight:500}
+.outlet-r cite{display:block;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-style:normal}
+.outlet-r cite b{color:var(--ink);font-family:var(--sans);font-weight:600;font-size:11.5px;letter-spacing:0;text-transform:none;font-style:italic}
+.shelf{display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-1)}
+.shelf-item{display:grid;grid-template-columns:90px 1fr auto auto;gap:18px;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line);transition:background .2s,padding-left .25s cubic-bezier(.2,.7,.1,1);cursor:pointer;color:inherit;text-decoration:none}
+.shelf-item:last-child{border-bottom:0}
+.shelf-item:hover{background:rgba(196,77,44,.04);padding-left:30px}
+.shelf-item.dim{opacity:.3;filter:saturate(.4);pointer-events:none}
+.shelf-date{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.shelf-title{font-family:var(--serif);font-size:17px;font-weight:400;line-height:1.3;letter-spacing:-.005em;color:var(--ink);text-wrap:balance}
+.shelf-item:hover .shelf-title{color:var(--terra)}
+.shelf-cat{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:3px;background:#fff5d7;color:#8a5e15;border:1px solid #f0d690;font-weight:600;white-space:nowrap;width:max-content}
+.shelf-cat.cat-explained{background:#e8e0fc;color:#5a3a8a;border-color:#cdbef0}
+.shelf-cat.cat-trending{background:#fce5d8;color:var(--rust);border-color:#f5c8b1}
+.shelf-cat.cat-tech{background:#dceeff;color:#1d4f8a;border-color:#b8d4f0}
+.shelf-cat.cat-business{background:var(--sage-soft);color:var(--moss);border-color:#cfe0b1}
+.shelf-arr{font-family:var(--serif);font-size:18px;color:var(--ink-2);transition:transform .25s,color .25s}
+.shelf-item:hover .shelf-arr{transform:translateX(4px);color:var(--terra)}
+.shelf-filter{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.shelf-tab{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);cursor:pointer;transition:all .2s}
+.shelf-tab:hover{border-color:var(--ink)}
+.shelf-tab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.shelf-tab .ct{margin-left:6px;font-size:9.5px;opacity:.6}
+.pub-counter{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.pub-counter .stat{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;display:flex;flex-direction:column;gap:4px;transition:transform .25s,border-color .25s}
+.pub-counter .stat:hover{transform:translateY(-2px);border-color:var(--line-2)}
+.pub-counter .stat .v{font-family:var(--serif);font-size:32px;line-height:1;letter-spacing:-.02em}
+.pub-counter .stat .v em{font-style:italic;color:var(--terra)}
+.pub-counter .stat .k{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.pub-counter .stat .sub{font-size:12px;color:var(--ink-2);line-height:1.4;margin-top:2px}
+@media (max-width:880px){
+  .outlet{grid-template-columns:1fr;padding:22px}
+  .shelf-item{grid-template-columns:1fr;gap:6px;padding:14px 18px}
+  .shelf-item:hover{padding-left:18px}
+  .shelf-arr{display:none}
+  .pub-counter{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
 
-const { publications } = portfolio;
-const path = '/publications';
----
+<div class="progress" id="progress"></div>
+<div class="aurora"></div>
+<div class="spotlight" id="spot"></div>
 
-<BaseLayout
-  meta={{
-    title: 'Publications',
-    description: 'Published research and editorial work by Tayyub Yaqoob — 30+ articles on AI, ML, and Web3 reaching 1.2M+ readers via Cointelegraph and AlphaWire.',
-    path,
-    ogType: 'website',
-  }}
-  breadcrumbs={[
-    { name: 'Home', url: '/' },
-    { name: 'Publications', url: path },
-  ]}
-  extraSchema={[buildPublicationsCollectionSchema(`${SITE_URL}${path}`)]}
->
-  <section class="container mx-auto py-20">
-    <h1 class="font-rajdhani text-5xl font-bold mb-6">Publications</h1>
-    <p class="text-lg max-w-3xl text-darktech-muted">
-      Research-backed writing on AI, machine learning, and the integration of these systems with finance and Web3.
-    </p>
+<div class="shell">
 
-    <ul class="mt-12 space-y-8">
-      {publications.map((p) => (
-        <li class="glass-panel p-8">
-          <p class="text-darktech-neon-green text-sm uppercase tracking-wide">{p.publisher}</p>
-          <h2 class="font-rajdhani text-2xl font-bold mt-1">{p.title}</h2>
-          <p class="text-sm text-darktech-muted mt-1">{p.role} · {p.dates}</p>
-          {'audienceReach' in p && p.audienceReach && <p class="text-sm mt-2">Reach: <span class="text-darktech-neon-green">{p.audienceReach}</span></p>}
-          {'articlesCount' in p && p.articlesCount && <p class="text-sm">Articles: <span class="text-darktech-neon-green">{p.articlesCount}</span></p>}
-          <p class="mt-4">{p.summary}</p>
-          {p.topics && (
-            <ul class="mt-4 flex flex-wrap gap-2">
-              {p.topics.map((t) => (
-                <li class="text-xs px-2 py-1 rounded border border-darktech-border">{t}</li>
-              ))}
-            </ul>
-          )}
-          <div class="mt-6">
-            {p.url ? (
-              <a href={p.url} class="text-darktech-neon-green hover:underline" rel="noopener" target="_blank">
-                View author page →
-              </a>
-            ) : (
-              <p class="text-xs text-darktech-muted/70 italic">{p.urlTodo}</p>
-            )}
-          </div>
-        </li>
-      ))}
-    </ul>
-  </section>
-</BaseLayout>
+<header class="nav">
+  <div class="nav-l"><a href="/" class="brand"><span class="mark"></span><b>Tayyub Yaqoob</b></a></div>
+  <nav class="nav-c">
+    <a href="/">Home</a>
+    <a href="/systems">Systems</a>
+    <a href="/products">Products</a>
+    <a href="/publications" class="on">Writing</a>
+    <a href="/research">Research</a>
+    <a href="/testimonials">Words</a>
+    <a href="/about">About</a>
+  </nav>
+  <div class="nav-r">
+    <span class="pill"><span class="live"></span>Open · 2026</span>
+    <a href="/contact" class="btn btn-primary">Contact →</a>
+  </div>
+</header>
+
+<header class="page-head wrap">
+  <div class="crumb"><a href="/">Home</a><span>›</span><span>Writing</span></div>
+  <h1>Writing &amp; <em>commentary</em>.</h1>
+  <p>Thirty-five-plus technical articles across <b>Cointelegraph</b> and <b>AlphaWire</b> on AI, blockchain, quantum computing, security and regulation. Quoted as an <b>expert source</b> by <b>CCN</b>. Verifiable on each publication&#39;s author profile.</p>
+</header>
+
+<section class="section wrap first" data-screen-label="Volume">
+  <div class="pub-counter rv">
+    <div class="stat"><span class="v">30<em>+</em></span><span class="k">Cointelegraph articles</span><span class="sub">2024 → present · author profile live.</span></div>
+    <div class="stat"><span class="v">5<em>+</em></span><span class="k">AlphaWire articles</span><span class="sub">Technology, trending and business desks.</span></div>
+    <div class="stat"><span class="v"><em>2</em></span><span class="k">CCN expert quotes</span><span class="sub">Cited as industry expert.</span></div>
+    <div class="stat"><span class="v">8<em>+</em></span><span class="k">Topics covered</span><span class="sub">AI · trading · quantum · regulation · security · DeFi.</span></div>
+  </div>
+</section>
+
+<section class="section wrap" id="cointelegraph" data-screen-label="Cointelegraph">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Cointelegraph · contributor</span>
+      <h2>The <em>Cointelegraph</em> shelf.</h2>
+      <p>Long-form technical contribution to one of the largest crypto-native publications on the open web. Profile bio (Cointelegraph&#39;s words) below.</p>
+    </div>
+    <div class="sec-head-r"><a href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Author profile ↗</a></div>
+  </div>
+
+  <div class="outlet rv">
+    <div class="outlet-l">
+      <h3>Cointe<em>legraph</em></h3>
+      <div class="pubmeta">
+        <span>Outlet<b>Crypto-native news</b></span>
+        <span>Role<b>Contributor</b></span>
+        <span>Cadence<b>Apr 2024 → present</b></span>
+        <span>Pieces<b>30+</b></span>
+      </div>
+      <a class="pubcta" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Open profile ↗</a>
+    </div>
+    <div class="outlet-r">
+      <blockquote>Tayyub Yaqoob is a contributor at Cointelegraph. He is a <b>data scientist and AI engineer specializing in machine learning applications across blockchain and marketing analytics</b>. Since 2018, his work has focused on how AI models and automation can improve on-chain intelligence, trading insights, and data transparency.</blockquote>
+      <cite>— <b>Cointelegraph contributor profile</b></cite>
+    </div>
+  </div>
+
+  <div class="shelf-filter rv" data-shelf="ct">
+    <button class="shelf-tab on" data-cat="all">All<span class="ct">· 30</span></button>
+    <button class="shelf-tab" data-cat="ai-trading">AI &amp; trading<span class="ct">· 14</span></button>
+    <button class="shelf-tab" data-cat="security">Security<span class="ct">· 5</span></button>
+    <button class="shelf-tab" data-cat="quantum">Quantum<span class="ct">· 3</span></button>
+    <button class="shelf-tab" data-cat="regulation">Regulation<span class="ct">· 1</span></button>
+    <button class="shelf-tab" data-cat="ai-safety">AI safety<span class="ct">· 2</span></button>
+    <button class="shelf-tab" data-cat="blockchain">Blockchain &amp; NFT<span class="ct">· 3</span></button>
+    <button class="shelf-tab" data-cat="adoption">Adoption<span class="ct">· 2</span></button>
+  </div>
+
+  <div class="shelf rv" data-shelf-grid="ct">
+    <a class="shelf-item" data-cat="adoption" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">26 Dec 2025</span>
+      <span class="shelf-title">Inside the Swiss city where you can pay for almost everything in Bitcoin.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="quantum" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">15 Nov 2025</span>
+      <span class="shelf-title">What happens to Satoshi&#39;s 1M Bitcoin if quantum computers go live?</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">05 Nov 2025</span>
+      <span class="shelf-title">How to turn ChatGPT into your personal crypto trading assistant.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">30 Oct 2025</span>
+      <span class="shelf-title">Can ChatGPT really predict the next crypto market crash?</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">14 Oct 2025</span>
+      <span class="shelf-title">How to use Google&#39;s Gemini to research coins before you invest.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">22 Sep 2025</span>
+      <span class="shelf-title">How to day trade crypto using ChatGPT and Grok.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">19 Sep 2025</span>
+      <span class="shelf-title">How to use ChatGPT for real-time crypto trading signals.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">08 Sep 2025</span>
+      <span class="shelf-title">How to use Grok for real-time crypto trading signals.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="security" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">04 Sep 2025</span>
+      <span class="shelf-title">Can AI bots steal your crypto? The rise of digital thieves.</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">03 Sep 2025</span>
+      <span class="shelf-title">How to use Google Gemini for smarter crypto trading.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">01 Sep 2025</span>
+      <span class="shelf-title">How to use ChatGPT to predict altcoin pumps before they happen.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">08 Aug 2025</span>
+      <span class="shelf-title">Can Google Gemini really help plan crypto trades?</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-safety" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">05 Aug 2025</span>
+      <span class="shelf-title">This open-source LLM could redefine AI research, and it&#39;s 100% public.</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">14 Jul 2025</span>
+      <span class="shelf-title">How to use GitHub, Discord, and X to find hidden crypto gems early.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">11 Jul 2025</span>
+      <span class="shelf-title">How to use ChatGPT for crypto strategy, signals, and sentiment.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">09 Jul 2025</span>
+      <span class="shelf-title">ChatGPT vs X: Which is better at first spotting the next big crypto narrative?</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="security" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">03 Jul 2025</span>
+      <span class="shelf-title">What are address poisoning attacks in crypto and how to avoid them?</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">12 Jun 2025</span>
+      <span class="shelf-title">Tried automating crypto trades with Grok 3? Here&#39;s what happens.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-safety" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">11 Jun 2025</span>
+      <span class="shelf-title">When an AI says, &lsquo;No, I don&#39;t want to power off&rsquo; — Inside the o3 refusal.</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">23 May 2025</span>
+      <span class="shelf-title">Can ChatGPT-powered AI agents really trade crypto for you?</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">24 Mar 2025</span>
+      <span class="shelf-title">How to use ChatGPT to predict crypto market trends.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">04 Mar 2025</span>
+      <span class="shelf-title">How to build a ChatGPT-powered AI trading bot — a step-by-step guide.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="ai-trading" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">10 Feb 2025</span>
+      <span class="shelf-title">How to develop an AI agent for crypto trading.</span>
+      <span class="shelf-cat">How to</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="security" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">27 Jan 2025</span>
+      <span class="shelf-title">AI-powered romance scams — the new frontier in crypto fraud.</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="regulation" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">24 Jan 2025</span>
+      <span class="shelf-title">SAB 121 rescinded — what it means for crypto custody and regulation in 2025.</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="quantum" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">08 Jan 2025</span>
+      <span class="shelf-title">What are quantum-resistant tokens and why do they matter for crypto?</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="quantum" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">17 Dec 2024</span>
+      <span class="shelf-title">Google&#39;s Willow quantum chip vs Bitcoin security — what&#39;s at stake?</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="blockchain" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">13 Dec 2024</span>
+      <span class="shelf-title">What is decentralized identity in blockchain?</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="security" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">23 May 2024</span>
+      <span class="shelf-title">What is a crypto vault, and how does it work?</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" data-cat="blockchain" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="shelf-date">07 Apr 2024</span>
+      <span class="shelf-title">What are generative art NFTs?</span>
+      <span class="shelf-cat cat-explained">Explained</span><span class="shelf-arr">↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="section wrap" id="alphawire" data-screen-label="AlphaWire">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ AlphaWire · contributor</span>
+      <h2>The <em>AlphaWire</em> shelf.</h2>
+      <p>Technology and analysis writing across stablecoins, restaking, Layer 1s and emerging tokens. Profile bio (AlphaWire&#39;s words) below.</p>
+    </div>
+    <div class="sec-head-r"><a href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">Author profile ↗</a></div>
+  </div>
+
+  <div class="outlet rv">
+    <div class="outlet-l">
+      <h3>Alpha<em>Wire</em></h3>
+      <div class="pubmeta">
+        <span>Outlet<b>AI / crypto / blockchain</b></span>
+        <span>Role<b>Contributor · AlphaClub</b></span>
+        <span>Pieces<b>5+</b></span>
+        <span>Desks<b>Tech · Trending · Biz</b></span>
+      </div>
+      <a class="pubcta" href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">Open profile ↗</a>
+    </div>
+    <div class="outlet-r">
+      <blockquote>Tayyub works at the intersection of <b>AI, crypto, and blockchain</b>. Building data-driven solutions, writing SEO-optimised narratives, and simplifying emerging technologies for real-world impact. He brings a deep understanding of <b>automation, analytics, and Web3</b> to help brands and platforms stay ahead.</blockquote>
+      <cite>— <b>AlphaWire contributor profile</b></cite>
+    </div>
+  </div>
+
+  <div class="shelf rv">
+    <a class="shelf-item" href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">
+      <span class="shelf-date">2025</span>
+      <span class="shelf-title">X402 Explained — how Coinbase is simplifying stablecoin transactions over HTTP.</span>
+      <span class="shelf-cat cat-tech">Technology</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">
+      <span class="shelf-date">2025</span>
+      <span class="shelf-title">Restake &amp; build — how Babylon is bringing BTC into staking economies.</span>
+      <span class="shelf-cat cat-tech">Technology</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">
+      <span class="shelf-date">2025</span>
+      <span class="shelf-title">SUI&#39;s evolving use case — can a storage-based model compete in DeFi?</span>
+      <span class="shelf-cat cat-tech">Technology</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">
+      <span class="shelf-date">2025</span>
+      <span class="shelf-title">How EigenLayer is redefining Ethereum yield.</span>
+      <span class="shelf-cat cat-trending">Trending</span><span class="shelf-arr">↗</span>
+    </a>
+    <a class="shelf-item" href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">
+      <span class="shelf-date">2025</span>
+      <span class="shelf-title">Meet EmCoin — where you can trade crypto, stocks, and commodities together.</span>
+      <span class="shelf-cat cat-business">Business</span><span class="shelf-arr">↗</span>
+    </a>
+  </div>
+</section>
+
+<section class="section wrap" id="ccn" data-screen-label="CCN">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--rust)"></span>§ CCN · expert commentary</span>
+      <h2>Quoted as an <em>expert source</em>.</h2>
+      <p><i>Frame:</i> external commentary quoted by CCN, a digital-asset news publication.</p>
+    </div>
+    <div class="sec-head-r">/ excerpts on file</div>
+  </div>
+  <div class="ccn-list">
+    <div class="ccn rv">
+      <span class="ccn-meta">CCN · 2024 — 25</span>
+      <h4>Excerpt on AI-driven trading risk.</h4>
+      <p>Quoted as an industry expert on automated trading risk and the limits of LLM-driven market interpretation.</p>
+      <span class="ccn-link">Article link archived — available on request.</span>
+    </div>
+    <div class="ccn rv d1">
+      <span class="ccn-meta">CCN · 2024 — 25</span>
+      <h4>Excerpt on crypto-security &amp; user threat models.</h4>
+      <p>Cited on practical user-level security posture — wallets, key custody, recovery flows.</p>
+      <span class="ccn-link">Article link archived — available on request.</span>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <h2 class="foot-cta rv">For <em>media enquiries</em>.<br /><a href="/contact">Get in touch →</a></h2>
+    <p class="foot-lede rv d1">For expert commentary, interviews, podcasts, speaking, advisory or commissioned writing — direct contact only.</p>
+    <div class="foot-grid">
+      <div class="fc fc-id"><div class="nm">Tayyub Yaqoob</div><p>Senior Digital Analyst · 8 Million Stories · Stirling, UK.</p></div>
+      <div class="fc"><h5>Reach</h5><a href="/contact">Contact form</a><a href="mailto:tayyabyaqoob.1@gmail.com">Email</a><a href="https://www.linkedin.com/in/tayyubyaqoob" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/tayyab-ai" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Cointelegraph ↗</a><a href="https://alphawire.xyz/author/tayyub/" target="_blank" rel="noreferrer">AlphaWire ↗</a></div>
+      <div class="fc"><h5>Pages</h5><a href="/">Home</a><a href="/systems">Systems</a><a href="/products">Products</a><a href="/publications">Writing</a><a href="/research">Research</a><a href="/testimonials">Words</a><a href="/about">About</a></div>
+      <div class="fc"><h5>Press &amp; receipts</h5><a href="/press">Press kit</a><a href="/receipts">The receipts ↗</a><a href="/open-source">Code ↗</a></div>
+    </div>
+    <div class="foot-bot"><span>© 2026 Tayyub Yaqoob</span><span>Stirling · MMXXVI</span></div>
+  </div>
+</footer>
+
+<script is:inline>
+(function(){
+  const tabs=document.querySelectorAll('.shelf-filter[data-shelf="ct"] .shelf-tab');
+  const items=document.querySelectorAll('[data-shelf-grid="ct"] .shelf-item');
+  if(!tabs.length)return;
+  tabs.forEach(t=>{
+    t.addEventListener('click',()=>{
+      tabs.forEach(x=>x.classList.remove('on'));
+      t.classList.add('on');
+      const c=t.dataset.cat;
+      items.forEach(it=>{
+        const m=c==='all'||(it.dataset.cat||'').split(/\s+/).includes(c);
+        it.classList.toggle('dim',!m);
+      });
+    });
+  });
+})();
+</script>
+<script is:inline src="/script.js"></script>
+</body>
+</html>

@@ -1,97 +1,458 @@
----
-import BaseLayout from '@/layouts/BaseLayout.astro';
-import { portfolio, getFeaturedProjects } from '@/lib/portfolio';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Tayyub Yaqoob — Digital analytics, AI automation &amp; marketing intelligence</title>
+<meta name="description" content="UK-based digital analytics, AI automation and marketing intelligence specialist. Senior Digital Analyst at 8 Million Stories. Building LedgerTouch (in development). Cointelegraph contributor. Quoted by CCN. IGI Global chapter reviewer." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<style>
+/* Brand logo cells — image-first with stylised wordmark fallback */
+.press-cell{padding:22px 16px;min-height:104px;gap:10px;align-items:center;text-align:center}
+.press-cell .brand-img{height:34px;max-width:90%;width:auto;display:block;margin:0 auto;object-fit:contain;filter:none;opacity:.95;transition:transform .3s cubic-bezier(.2,.7,.1,1),opacity .3s}
+.press-cell:hover .brand-img{transform:scale(1.06);opacity:1}
+.press-cell .pn-fallback{display:flex;align-items:center;justify-content:center;height:34px;line-height:1;letter-spacing:-.02em;font-weight:800;font-size:18px}
+.press-cell .pk{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.brand-bbc .pn-fallback{font-family:Arial,sans-serif;font-weight:900;color:#000;letter-spacing:-1px}
+.brand-bbc .pn-fallback b{background:#000;color:#fff;padding:5px 6px;margin-right:2px;font-size:15px;display:inline-block;line-height:1}
+.brand-bbc .pn-fallback b:last-child{margin-right:0}
+.brand-tesco .pn-fallback{color:#ee1c2e;font-family:Helvetica,Arial,sans-serif;font-style:italic;font-weight:800;font-size:24px;letter-spacing:-.03em;position:relative;display:inline-flex;padding-bottom:3px}
+.brand-tesco .pn-fallback::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#0064b1;border-radius:1px}
+.brand-gm .pn-fallback{color:#0046ad;font-family:Inter,sans-serif;font-weight:800;font-size:17px;letter-spacing:-.02em}
+.brand-royal-london .pn-fallback{color:#1d3a6e;font-family:Georgia,serif;font-weight:600;font-size:18px;letter-spacing:.01em}
+.brand-gleneagles .pn-fallback{color:#9a7c3d;font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:24px;letter-spacing:.04em}
+.brand-nerdwallet .pn-fallback{color:#008a05;font-family:Inter,sans-serif;font-weight:800;font-size:18px;letter-spacing:-.01em}
+.brand-neilson .pn-fallback{color:#e36f1e;font-family:Inter,sans-serif;font-weight:800;font-size:17px;letter-spacing:-.01em}
+.brand-blue-buffalo .pn-fallback{color:#1b4290;font-family:Inter,sans-serif;font-weight:800;font-size:16px;letter-spacing:-.01em}
+.brand-estelle .pn-fallback{color:#a26a40;font-family:Georgia,serif;font-style:italic;font-weight:500;font-size:22px;letter-spacing:.02em}
+.brand-diligent .pn-fallback{color:#0a7d3e;font-family:Inter,sans-serif;font-weight:800;font-size:15px;letter-spacing:-.01em}
+.brand-mri .pn-fallback{color:#003b71;font-family:Inter,sans-serif;font-weight:800;font-size:17px;letter-spacing:.02em}
 
-const { personalInfo, metrics, publications, notableClients } = portfolio;
-const featured = getFeaturedProjects().slice(0, 3);
----
+/* Hide pn-fallback if img loads successfully */
+.press-cell .brand-img:not([src=""]):not([data-fallback="true"]) + .pn-fallback{display:none}
 
-<BaseLayout
-  meta={{
-    title: 'Home',
-    description: personalInfo.summary.slice(0, 155),
-    path: '/',
-    ogType: 'profile',
-  }}
->
-  <section class="container mx-auto py-20 md:py-32">
-    <p class="text-darktech-neon-green font-rajdhani uppercase tracking-widest text-sm mb-4">
-      {personalInfo.location}
-    </p>
-    <h1 class="font-rajdhani text-5xl md:text-7xl font-bold leading-tight max-w-4xl">
-      <span class="text-gradient">{personalInfo.headline}</span>
-    </h1>
-    <p class="mt-2 text-lg md:text-xl text-darktech-muted">{personalInfo.title}</p>
-    <p class="mt-8 max-w-2xl text-base md:text-lg leading-relaxed">{personalInfo.summary}</p>
-    <div class="mt-10 flex flex-wrap gap-4">
-      <a href="/about" class="px-6 py-3 rounded-lg bg-darktech-neon-green text-darktech-background font-medium hover:opacity-90">
-        About me
-      </a>
-      <a href="/work" class="px-6 py-3 rounded-lg border border-darktech-border hover:border-darktech-neon-green">
-        See my work
-      </a>
-      <a href="/publications" class="px-6 py-3 rounded-lg border border-darktech-border hover:border-darktech-neon-green">
-        Publications
-      </a>
+/* Press strip expansion to 12 cells */
+@media (min-width:881px){
+  .press-strip{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .press-cell:nth-child(5n){border-right:1px solid var(--line)}
+  .press-cell:nth-child(6n){border-right:0}
+  .press-cell:nth-last-child(-n+5){border-bottom:1px solid var(--line)}
+  .press-cell:nth-last-child(-n+6){border-bottom:0}
+}
+
+/* Quantified-impact metric strip on home */
+.metrics-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.metric{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;display:flex;flex-direction:column;gap:4px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.metric:hover{transform:translateY(-2px);border-color:var(--line-2);box-shadow:var(--shadow-1)}
+.metric .v{font-family:var(--serif);font-size:34px;letter-spacing:-.02em;line-height:1;color:var(--ink)}
+.metric .v em{font-style:italic;color:var(--terra)}
+.metric .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.metric .sub{font-size:12.5px;color:var(--ink-2);line-height:1.4;margin-top:2px}
+@media (max-width:880px){.metrics-strip{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="aurora"></div>
+<div class="spotlight" id="spot"></div>
+
+<div class="shell">
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-l">
+    <a href="/" class="brand"><span class="mark"></span><b>Tayyub Yaqoob</b></a>
+  </div>
+  <nav class="nav-c" id="primary-nav">
+    <a href="/" class="on">Home</a>
+    <a href="/systems">Systems</a>
+    <a href="/products">Products</a>
+    <a href="/publications">Writing</a>
+    <a href="/research">Research</a>
+    <a href="/testimonials">Words</a>
+    <a href="/about">About</a>
+  </nav>
+  <div class="nav-r">
+    <span class="pill"><span class="live"></span>Open · 2026</span>
+    <a href="/contact" class="btn btn-primary">Contact →</a>
+  </div>
+</header>
+
+<!-- HERO (compact) -->
+<section class="hero wrap" data-screen-label="01 Intro" id="top">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow rv" data-parallax="6">
+        <span class="dot"></span>
+        Senior Digital Analyst · 8 Million Stories · Stirling, UK
+      </div>
+      <h1 class="rv d1">
+        I architect <span class="grad">AI&nbsp;analytics</span> systems that <span class="marked">50+ teams</span> depend on.
+      </h1>
+      <p class="lede rv d2">
+        Eight proprietary forecasting, sentiment and detection systems running in production for global brands. <b>35+ technical articles</b> across <b>Cointelegraph</b> and <b>AlphaWire</b>. Quoted as expert source by <b>CCN</b>. <b>3 completed chapter reviews</b> for <b>IGI Global</b>. AI &amp; ML credentials from Google, AWS and LinkedIn Learning. Building <b>LedgerTouch</b> (in development).
+      </p>
+      <div class="hero-cta rv d3">
+        <a href="/systems" class="btn btn-primary" data-magnet>See the systems →</a>
+        <a href="/contact" class="btn btn-ghost" data-magnet>Media enquiries ↗</a>
+      </div>
+      <div class="hero-pills rv d4">
+        <a class="hero-pill" href="/publications"><svg class="ic" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20 L20 4 M15 4 H20 V9 M14 14 L20 20"/></svg>Cointelegraph author</a>
+        <a class="hero-pill" href="/products"><svg class="ic" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21" stroke-linecap="round"/></svg>30+ articles · Cointelegraph</a>
+        <a class="hero-pill" href="/publications"><svg class="ic" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 7 H9 V12 L7 12 V14 L11 14 V7 M15 7 H17 V12 L15 12 V14 L19 14 V7"/></svg>Quoted by CCN</a>
+        <a class="hero-pill" href="/research"><svg class="ic" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3 L20 7 V13 C20 17 16.5 20.5 12 22 C7.5 20.5 4 17 4 13 V7 Z"/><path d="M9 12 L11 14 L15 10"/></svg>IGI Global reviewer</a>
+        <a class="hero-pill" href="/about"><svg class="ic" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3 L22 9 L12 15 L2 9 Z"/><path d="M6 11 V16 C6 17 8 19 12 19 C16 19 18 17 18 16 V11"/></svg>MSc · Stirling</a>
+      </div>
     </div>
-  </section>
 
-  <section class="container mx-auto py-12 border-t border-darktech-border">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      {metrics.map((m) => (
-        <div class="glass-panel p-6">
-          <div class="text-3xl md:text-4xl font-rajdhani font-bold text-darktech-neon-green">{m.value}</div>
-          <div class="text-sm text-darktech-muted mt-2">{m.label}</div>
-          <div class="text-xs text-darktech-muted/70 mt-1">{m.source}</div>
+    <div class="hero-card rv d2">
+      <img src="/assets/portrait.jpeg" alt="Tayyub Yaqoob" />
+      <div class="hero-card-cap">
+        <div>
+          <b>Tayyub Yaqoob</b>
+          <span>Plate i — in studio</span>
         </div>
-      ))}
+        <span>2026</span>
+      </div>
+      <div class="hero-evidence left compact">
+        <div class="hev"><span class="ic terra">C</span><b>Cointelegraph</b></div>
+      </div>
+      <div class="hero-evidence right compact">
+        <div class="hev"><span class="ic sage">⌘</span><b>IGI Global</b></div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="container mx-auto py-16">
-    <h2 class="font-rajdhani text-3xl font-bold mb-8">Published research</h2>
-    <ul class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {publications.map((p) => (
-        <li class="tech-card flex-col items-start gap-2 p-6">
-          <p class="text-darktech-neon-green text-sm uppercase tracking-wide">{p.publisher}</p>
-          <h3 class="font-rajdhani text-xl font-bold">{p.title}</h3>
-          <p class="text-sm text-darktech-muted">{p.dates}</p>
-          <p class="text-sm">{p.summary}</p>
-          {p.audienceReach && <p class="text-xs text-darktech-muted">Reach: {p.audienceReach}</p>}
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  <section class="container mx-auto py-16 border-t border-darktech-border">
-    <h2 class="font-rajdhani text-3xl font-bold mb-8">Featured projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {featured.map((p) => (
-        <a href={`/projects/${p.slug}`} class="tech-card flex-col items-start gap-2 p-6 hover:border-darktech-neon-green transition-colors">
-          <h3 class="font-rajdhani text-xl font-bold">{p.title}</h3>
-          <p class="text-sm text-darktech-muted">{p.description}</p>
-          <div class="flex flex-wrap gap-2 mt-3">
-            {p.technologies.slice(0, 4).map((t) => (
-              <span class="text-xs px-2 py-1 rounded bg-darktech-card border border-darktech-border">{t}</span>
-            ))}
-          </div>
-        </a>
-      ))}
+<!-- CLIENT EXPOSURE -->
+<section class="section wrap first" data-screen-label="Clients" id="clients">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Client exposure</span>
+      <h2>Shipped <em>analytics</em> &amp; reporting work to.</h2>
+      <p style="font-size:14px">Via 8 Million Stories · where disclosure permitted.</p>
     </div>
-    <div class="mt-8">
-      <a href="/projects" class="text-darktech-neon-green hover:underline">All projects →</a>
-    </div>
-  </section>
+    <div class="sec-head-r">/ 12 of many</div>
+  </div>
 
-  <section class="container mx-auto py-16 border-t border-darktech-border">
-    <h2 class="font-rajdhani text-3xl font-bold mb-8">Notable clients</h2>
-    <ul class="flex flex-wrap gap-3">
-      {notableClients.map((c) => (
-        <li class="px-4 py-2 rounded-lg border border-darktech-border text-sm">
-          <span class="font-medium">{c.name}</span>
-          <span class="text-darktech-muted ml-2 text-xs">{c.sector}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
-</BaseLayout>
+  <div class="press-strip rv">
+    <div class="press-cell brand-bbc"><span class="pn-fallback"><b>B</b><b>B</b><b>C</b></span><span class="pk">Media · UK</span></div>
+    <div class="press-cell brand-tesco"><span class="pn-fallback">Tesco</span><span class="pk">Financial · UK</span></div>
+    <div class="press-cell brand-tesco"><span class="pn-fallback">Tesco</span><span class="pk">Insurance · UK</span></div>
+    <div class="press-cell brand-gm"><span class="pn-fallback">General Mills</span><span class="pk">Consumer · global</span></div>
+    <div class="press-cell brand-blue-buffalo"><span class="pn-fallback">Blue Buffalo</span><span class="pk">CPG · US</span></div>
+    <div class="press-cell brand-royal-london"><span class="pn-fallback">Royal London</span><span class="pk">Insurance · UK</span></div>
+    <div class="press-cell brand-gleneagles"><span class="pn-fallback">Gleneagles</span><span class="pk">Hospitality · UK</span></div>
+    <div class="press-cell brand-nerdwallet"><span class="pn-fallback">NerdWallet</span><span class="pk">Personal finance</span></div>
+    <div class="press-cell brand-neilson"><span class="pn-fallback">Neilson</span><span class="pk">Travel · UK</span></div>
+    <div class="press-cell brand-diligent"><span class="pn-fallback">Diligent Pharma</span><span class="pk">Pharma · life sciences</span></div>
+    <div class="press-cell brand-mri"><span class="pn-fallback">MRI Management</span><span class="pk">Property tech · US</span></div>
+    <div class="press-cell brand-estelle"><span class="pn-fallback">Estelle</span><span class="pk">Beauty · UK</span></div>
+  </div>
+
+  <div class="metrics-strip rv">
+    <div class="metric"><span class="v">35<em>+</em></span><span class="k">Technical articles published</span><span class="sub">Cointelegraph (30+) &amp; AlphaWire (5+).</span></div>
+    <div class="metric"><span class="v"><em>3</em></span><span class="k">Completed IGI Global reviews</span><span class="sub">Peer review for international academic publisher.</span></div>
+    <div class="metric"><span class="v"><em>50+</em></span><span class="k">Client teams on the systems</span><span class="sub">Eight proprietary tools, weekly cadence.</span></div>
+    <div class="metric"><span class="v">12<em>+</em></span><span class="k">AI / ML credentials</span><span class="sub">Google · AWS · LinkedIn Learning · Lynda.</span></div>
+  </div>
+</section>
+
+<!-- PROOF BENTO -->
+<section class="section wrap first" id="proof" data-screen-label="02 Proof">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ The map</span>
+      <h2>What's <em>behind</em> the work.</h2>
+      <p>Eight surfaces. Each one verifiable. Each one a separate page with its own proof.</p>
+    </div>
+    <div class="sec-head-r">/ click any →</div>
+  </div>
+
+  <div class="bento">
+    <a class="cap feature rv" href="/systems">
+      <span class="cap-num">/ 01 — Proprietary systems</span>
+      <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2"/><circle cx="12" cy="12" r="2.2"/><line x1="6" y1="6" x2="12" y2="12"/><line x1="18" y1="6" x2="12" y2="12"/><line x1="6" y1="18" x2="12" y2="12"/><line x1="18" y1="18" x2="12" y2="12"/></svg></div>
+      <h3>Analytics systems <em>I architected</em>.</h3>
+      <p>The proprietary tools behind agency-scale insight delivery — pipelines, forecasting, anomaly detection, AI-mention &amp; brand-sentiment workflows. Eight, and growing.</p>
+      <span class="cap-go">Open systems →</span>
+    </a>
+
+    <a class="cap rv d1 t-ochre" href="/products">
+      <span class="cap-num">/ 02</span>
+      <div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></svg></div>
+      <h3>GA4<em>Audits</em>.</h3>
+      <span class="cap-go">Independent product →</span>
+    </a>
+
+    <a class="cap rv d2 t-coral" href="/publications">
+      <span class="cap-num">/ 03</span>
+      <div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="7" y1="13" x2="17" y2="13"/></svg></div>
+      <h3>Cointelegraph <em>writing</em>.</h3>
+      <span class="cap-go">Technical articles →</span>
+    </a>
+
+    <a class="cap rv t-rust" href="/publications">
+      <span class="cap-num">/ 04</span>
+      <div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12c0 4.5-4 8-9 8a10 10 0 0 1-4-.8L3 21l1.4-3.4A8 8 0 0 1 3 12c0-4.5 4-8 9-8s9 3.5 9 8z"/></svg></div>
+      <h3>CCN <em>expert</em> quotes.</h3>
+      <span class="cap-go">Press &amp; commentary →</span>
+    </a>
+
+    <a class="cap rv d1 t-sage" href="/research">
+      <span class="cap-num">/ 05</span>
+      <div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3 L20 7 V13 C20 17 16.5 20.5 12 22 C7.5 20.5 4 17 4 13 V7 Z"/><path d="M9 12 L11 14 L15 10"/></svg></div>
+      <h3>IGI Global <em>review</em>.</h3>
+      <span class="cap-go">Peer-review activity →</span>
+    </a>
+
+    <a class="cap rv d2 t-moss" href="/research">
+      <span class="cap-num">/ 06</span>
+      <div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 19 L10 13 L14 17 L20 7"/><path d="M14 7 H20 V13"/></svg></div>
+      <h3>AI-search <em>research</em>.</h3>
+      <span class="cap-go">Drafts in flight →</span>
+    </a>
+
+    <a class="cap rv d3 t-coral" href="/testimonials">
+      <span class="cap-num">/ 07</span>
+      <div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 12c0 4.5-4 8-9 8a10 10 0 0 1-4-.8L3 21l1.4-3.4A8 8 0 0 1 3 12c0-4.5 4-8 9-8s9 3.5 9 8z"/></svg></div>
+      <h3>The <em>words</em>.</h3>
+      <span class="cap-go">Testimonials &amp; mentions →</span>
+    </a>
+
+    <a class="cap rv d4 t-ochre" href="/about">
+      <span class="cap-num">/ 08</span>
+      <div class="cap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3 L22 9 L12 15 L2 9 Z"/><path d="M6 11 V16 C6 17 8 19 12 19 C16 19 18 17 18 16 V11"/></svg></div>
+      <h3>MSc <em>Stirling</em>.</h3>
+      <span class="cap-go">About &amp; bio →</span>
+    </a>
+  </div>
+</section>
+
+<!-- FEATURED WORK STRIP -->
+<section class="section wrap" id="featured" data-screen-label="03 Selected work">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ Systems · preview</span>
+      <h2>Three from the <em>systems</em> suite.</h2>
+    </div>
+    <div class="sec-head-r"><a href="/systems">All systems →</a></div>
+  </div>
+
+  <div class="feat-strip">
+    <a class="feat-card rv" href="/systems" data-tilt>
+      <div class="feat-card-viz">
+        <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid meet">
+          <defs><linearGradient id="fc1" x1="0" x2="1"><stop offset="0" stop-color="#c44d2c" stop-opacity=".15"/><stop offset="1" stop-color="#c89942" stop-opacity=".05"/></linearGradient></defs>
+          <rect width="400" height="240" fill="url(#fc1)"/>
+          <g stroke="#e8e2d2" stroke-dasharray="3 4" fill="none"><line x1="0" y1="100" x2="400" y2="100"/><line x1="0" y1="180" x2="400" y2="180"/></g>
+          <path class="anim-line" d="M20 200 L80 160 L140 170 L200 120 L260 130 L320 80 L380 60" stroke="#c44d2c" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <g><circle class="anim-pop" cx="20" cy="200" r="3" fill="#c44d2c"/><circle class="anim-pop d1" cx="140" cy="170" r="3" fill="#c44d2c"/><circle class="anim-pop d1" cx="260" cy="130" r="3" fill="#c44d2c"/><circle class="anim-pop d2" cx="380" cy="60" r="4" fill="#c44d2c"/></g>
+          <g font-family="JetBrains Mono,monospace" font-size="10" fill="#85807a"><text x="14" y="20">GA4 → BigQuery → forecast</text></g>
+        </svg>
+      </div>
+      <div class="feat-card-body">
+        <span class="feat-card-tag">/ 01 — Agency systems</span>
+        <h4>Forecasting &amp; insight pipelines</h4>
+        <p>Pipelines, forecasting and AI-mention workflows behind client insight delivery.</p>
+      </div>
+    </a>
+
+    <a class="feat-card rv d1" href="/systems" data-tilt>
+      <div class="feat-card-viz">
+        <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid meet">
+          <rect width="400" height="240" fill="#fff"/>
+          <g><rect x="40" y="60" width="320" height="120" rx="8" fill="#fbeec9" stroke="#c89942"/>
+            <rect x="60" y="80" width="280" height="14" rx="3" fill="#fff" stroke="#e8e2d2"/>
+            <rect class="anim-bar" x="60" y="100" width="200" height="10" rx="3" fill="#c89942" opacity=".6"/>
+            <rect class="anim-bar d1" x="60" y="116" width="240" height="10" rx="3" fill="#c89942" opacity=".4"/>
+            <rect class="anim-bar d2" x="60" y="132" width="160" height="10" rx="3" fill="#c89942" opacity=".3"/>
+            <rect class="anim-bar d3" x="60" y="148" width="260" height="20" rx="4" fill="#c44d2c" opacity=".15" stroke="#c44d2c"/>
+            <text x="70" y="162" font-family="JetBrains Mono,monospace" font-size="10" fill="#8a5e15">✓ consent · ✓ tagging · ⚠ attribution</text>
+          </g>
+          <g font-family="JetBrains Mono,monospace" font-size="10" fill="#85807a"><text x="14" y="24">GA4 audit · automated</text></g>
+        </svg>
+      </div>
+      <div class="feat-card-body">
+        <span class="feat-card-tag" style="color:#8a5e15">/ 02 — Brand sentiment</span>
+        <h4>Sentiment scoring engine</h4>
+        <p>LLM-assisted sentiment scoring across press, social and review surfaces, per topic, in production.</p>
+      </div>
+    </a>
+
+    <a class="feat-card rv d2" href="/systems" data-tilt>
+      <div class="feat-card-viz">
+        <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid meet">
+          <rect width="400" height="240" fill="#fff"/>
+          <path class="anim-line" d="M20 80 Q90 60 160 78 T300 70 T380 65" stroke="#7a8f5e" stroke-width="2" fill="none"/>
+          <path class="anim-line" style="transition-delay:.2s" d="M20 130 Q90 130 160 138 T300 165 T380 195" stroke="#c44d2c" stroke-width="2" fill="none"/>
+          <g class="anim-pop d2"><rect x="200" y="20" width="180" height="60" rx="6" fill="#fde8df" stroke="#c44d2c"/>
+            <text x="216" y="42" font-family="Instrument Serif,serif" font-size="14" fill="#c44d2c" font-style="italic">AI Overviews</text>
+            <text x="216" y="60" font-family="JetBrains Mono,monospace" font-size="9" fill="#85807a">CTR ▼ on matched queries</text>
+            <text x="216" y="72" font-family="JetBrains Mono,monospace" font-size="9" fill="#85807a">impressions stable</text>
+          </g>
+          <g font-family="JetBrains Mono,monospace" font-size="10" fill="#85807a"><text x="14" y="24">GSC + AI-Overviews · research</text></g>
+        </svg>
+      </div>
+      <div class="feat-card-body">
+        <span class="feat-card-tag" style="color:var(--moss)">/ 03 — Research in progress</span>
+        <h4>AI-search visibility study</h4>
+        <p>Reproducible methodology pairing GSC with AI-Overview tagging. Draft underway.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- TESTIMONIAL LETTERS -->
+<section class="section wrap" id="words" data-screen-label="04 Words">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--coral)"></span>§ Words · from the room</span>
+      <h2>Said about the <em>work</em>.</h2>
+      <p>Short notes from people I've shipped alongside. Released where approval is in place.</p>
+    </div>
+    <div class="sec-head-r"><a href="/testimonials">All testimonials →</a></div>
+  </div>
+
+  <div class="letters">
+    <article class="letter rv">
+      <div class="letter-stamp">Verbatim</div>
+      <div class="letter-mark">"</div>
+      <div class="letter-body">The tool is working fully, and we've been able to <b>share the update with wider teams</b>.</div>
+      <div class="letter-sig">
+        <div class="letter-sig-l">
+          <span class="name">BBC</span>
+          <span class="role">Project stakeholder</span>
+        </div>
+        <span class="letter-sig-r">Media · UK</span>
+      </div>
+    </article>
+
+    <article class="letter rv d1">
+      <div class="letter-stamp">Verbatim</div>
+      <div class="letter-mark">"</div>
+      <div class="letter-body">The feedback was very positive… overall they are happy with the first go at this. I appreciate all your help and of course <b>passed on high praise of your work</b>.</div>
+      <div class="letter-sig">
+        <div class="letter-sig-l">
+          <span class="name">General Mills</span>
+          <span class="role">Account team · Blue Buffalo</span>
+        </div>
+        <span class="letter-sig-r">Consumer · global</span>
+      </div>
+    </article>
+
+    <article class="letter rv d2">
+      <div class="letter-stamp">Verbatim</div>
+      <div class="letter-mark">"</div>
+      <div class="letter-body">I really liked working with you and hope we can build a working relationship. <b>I have 3 to 4 clients that require your skills on a routine basis</b>.</div>
+      <div class="letter-sig">
+        <div class="letter-sig-l">
+          <span class="name">MRI Management</span>
+          <span class="role">Engagement partner</span>
+        </div>
+        <span class="letter-sig-r">Property tech · US</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- IMPACT MARQUEE -->
+<section class="section" data-screen-label="05 At a glance" style="padding:32px 0">
+  <div class="wrap">
+    <div class="mar-wrap">
+      <div class="mar" id="mar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- RECEIPTS TEASER -->
+<section class="section wrap" id="receipts" data-screen-label="06 Receipts">
+  <div class="ev-card rv">
+    <div class="ev-card-l">
+      <span class="sec-tag" style="margin-bottom:12px"><span class="dot" style="background:var(--terra)"></span>§ The receipts</span>
+      <h2>Every claim, with the <em>artefact</em> behind it.</h2>
+      <p>A structured backup of the body of work — role, systems, products, writing, press, peer review, client impact and technical proof. Nothing overstated; nothing in-flight listed as shipped.</p>
+      <a href="/receipts" class="btn btn-primary" data-magnet>See the receipts →</a>
+    </div>
+    <div class="ev-card-r">
+      <ul class="ev-list">
+        <li><span class="ev-ic">01</span>Role &amp; employment</li>
+        <li><span class="ev-ic">02</span>Proprietary systems</li>
+        <li><span class="ev-ic">03</span>Independent products</li>
+        <li><span class="ev-ic">04</span>Public writing</li>
+        <li><span class="ev-ic">05</span>Press &amp; expert quotes</li>
+        <li><span class="ev-ic">06</span>Peer review</li>
+        <li><span class="ev-ic">07</span>Client impact</li>
+        <li><span class="ev-ic">08</span>Technical proof</li>
+        <li><span class="ev-ic">09</span>Forward pipeline</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</div><!-- /shell -->
+
+<!-- FOOT -->
+<footer class="foot" id="contact" data-screen-label="07 Contact">
+  <div class="wrap">
+    <h2 class="foot-cta rv">For <em>media enquiries</em>.<br /><a href="/contact">Get in touch →</a></h2>
+    <p class="foot-lede rv d1">For analytics automation, GA4 audit work, digital-measurement research, expert commentary, speaking or collaboration. Direct reply only.</p>
+    <div class="foot-grid">
+      <div class="fc fc-id"><div class="nm">Tayyub Yaqoob</div><p>Senior Digital Analyst · 8 Million Stories · Stirling, UK.</p></div>
+      <div class="fc">
+        <h5>Reach</h5>
+        <a href="/contact">Contact form</a>
+        <a href="mailto:tayyabyaqoob.1@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/tayyubyaqoob" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="https://github.com/tayyab-ai" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Cointelegraph ↗</a>
+      </div>
+      <div class="fc">
+        <h5>Pages</h5>
+        <a href="/">Home</a>
+        <a href="/systems">Systems</a>
+        <a href="/products">Products</a>
+        <a href="/publications">Writing</a>
+        <a href="/research">Research</a>
+        <a href="/testimonials">Words</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="fc">
+        <h5>Press &amp; receipts</h5>
+        <a href="/press">Press kit</a>
+        <a href="/receipts">The receipts ↗</a>
+        <a href="/open-source">Code ↗</a>
+      </div>
+    </div>
+    <div class="foot-bot"><span>© 2026 Tayyub Yaqoob</span><span>Stirling · MMXXVI</span></div>
+  </div>
+</footer>
+
+<div class="k-hint"><span>Navigate</span><kbd>↑</kbd><kbd>↓</kbd><span>sections</span></div>
+
+<script is:inline>
+// marquee items
+(function(){
+  const items=[
+    ["35+","Articles · Cointelegraph & AlphaWire"],
+    ["⌘","3 IGI Global chapter reviews"],
+    ["★","Quoted by CCN"],
+    ["◉","LedgerTouch · in development"],
+    ["▤","MSc · University of Stirling"],
+    ["G","AWS · Google · LinkedIn ML credentials"]
+  ];
+  const wrap=document.getElementById('mar');if(!wrap)return;
+  [...items,...items,...items].forEach(([m,t])=>{
+    const e=document.createElement('span');e.className='mar-item';
+    e.innerHTML=`<span class="star">${m}</span>${t}<em>·</em>`;
+    wrap.appendChild(e);
+  });
+})();
+</script>
+<script is:inline src="/script.js"></script>
+</body>
+</html>

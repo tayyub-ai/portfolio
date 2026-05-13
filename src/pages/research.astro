@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Featured, cited &amp; in review — Tayyub Yaqoob</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+<style>
+/* IGI Global completed-evaluations record */
+.igi-record{background:#fff;border:1px solid var(--moss);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-2);margin-top:8px}
+.igi-record-head{padding:24px 28px 22px;border-bottom:1px solid var(--line);background:linear-gradient(135deg,var(--sage-soft),#fff);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
+.igi-record-head .crest{width:48px;height:48px;border-radius:50%;background:var(--moss);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:24px;flex-shrink:0;box-shadow:0 4px 12px -4px rgba(74,93,47,.4)}
+.igi-record-head .igi-titleblock{display:flex;flex-direction:column;gap:4px;min-width:0}
+.igi-record-head .igi-num{font-family:var(--mono);font-size:10.5px;color:var(--moss);letter-spacing:.08em;text-transform:uppercase}
+.igi-record-head h3{font-family:var(--serif);font-weight:400;font-size:30px;letter-spacing:-.015em;color:var(--ink);line-height:1.05}
+.igi-record-head h3 em{font-style:italic;color:var(--moss)}
+.igi-record-head .igi-pub{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px}
+.igi-record-head .igi-stamp{font-family:var(--mono);font-size:9.5px;color:var(--moss);letter-spacing:.12em;text-transform:uppercase;background:#fff;border:1px solid var(--moss);padding:6px 12px;border-radius:3px;transform:rotate(2deg);box-shadow:0 4px 12px -4px rgba(74,93,47,.3);white-space:nowrap}
+.igi-table{display:flex;flex-direction:column}
+.igi-row{display:grid;grid-template-columns:130px 1fr 110px 110px 140px;gap:20px;padding:18px 28px;border-bottom:1px solid var(--line);align-items:center;transition:background .2s}
+.igi-row:last-child{border-bottom:0}
+.igi-row:not(.igi-thead):hover{background:rgba(74,93,47,.04)}
+.igi-thead{background:#fafaf5;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:12px 28px;border-bottom:1px solid var(--line-2)}
+.igi-type{font-family:var(--mono);font-size:10px;color:var(--moss);letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;background:var(--sage-soft);border-radius:4px;width:max-content;border:1px solid #cfe0b1}
+.igi-title{font-family:var(--serif);font-size:17.5px;line-height:1.35;letter-spacing:-.005em;color:var(--ink);text-wrap:balance}
+.igi-title b{font-weight:500;color:var(--ink)}
+.igi-title em{font-style:italic;color:var(--moss);font-weight:500}
+.igi-date{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);letter-spacing:.02em;display:flex;flex-direction:column;gap:2px}
+.igi-date span{font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.igi-date b{color:var(--moss);font-weight:600;font-size:12.5px;letter-spacing:.01em}
+.igi-co{font-family:var(--mono);font-size:10.5px;color:var(--ink-2);background:var(--bg-soft);padding:5px 10px;border-radius:999px;width:max-content;border:1px solid var(--line)}
+.igi-foot{padding:16px 28px;background:#fafaf5;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;gap:14px;border-top:1px solid var(--line)}
+.igi-foot .igi-seal{color:var(--moss);font-weight:600;text-transform:uppercase;letter-spacing:.08em;display:inline-flex;align-items:center;gap:6px}
+.igi-foot .igi-seal::before{content:"★";color:var(--moss)}
+@media (max-width:980px){
+  .igi-row{grid-template-columns:1fr;gap:8px;padding:18px 22px}
+  .igi-thead{display:none}
+  .igi-date{flex-direction:row;gap:6px;align-items:baseline}
+  .igi-title{font-size:16px}
+  .igi-record-head{grid-template-columns:auto 1fr;padding:20px 22px}
+  .igi-record-head .igi-stamp{grid-column:1/-1;justify-self:start;margin-top:4px}
+  .igi-foot{padding:14px 22px;flex-direction:column;align-items:flex-start;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="aurora"></div>
+<div class="spotlight" id="spot"></div>
+
+<div class="shell">
+
+<header class="nav">
+  <div class="nav-l"><a href="/" class="brand"><span class="mark"></span><b>Tayyub Yaqoob</b></a></div>
+  <nav class="nav-c">
+    <a href="/">Home</a>
+    <a href="/systems">Systems</a>
+    <a href="/products">Products</a>
+    <a href="/publications">Writing</a>
+    <a href="/research" class="on">Research</a>
+    <a href="/testimonials">Words</a>
+    <a href="/about">About</a>
+  </nav>
+  <div class="nav-r">
+    <span class="pill"><span class="live"></span>Open · 2026</span>
+    <a href="/contact" class="btn btn-primary">Contact →</a>
+  </div>
+</header>
+
+<header class="page-head wrap">
+  <div class="crumb"><a href="/">Home</a><span>›</span><span>Research &amp; recognition</span></div>
+  <h1>Featured, <em>cited</em> &amp; in review.</h1>
+  <p>External publications I write for. Outlets that quote me. Academic review activity. Honest status throughout.</p>
+</header>
+
+<!-- ── Featured & cited in ── -->
+<section class="section wrap first" data-screen-label="Mastheads" id="mastheads">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Featured &amp; cited in</span>
+      <h2>The <em>mastheads</em>.</h2>
+    </div>
+    <div class="sec-head-r">/ where the work appears</div>
+  </div>
+
+  <div class="feat-row">
+
+    <a class="mc ct rv" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer" data-tilt>
+      <div class="mc-art">
+        <span class="cover-cross">Vol. ii · No. 014</span>
+        <span class="seal" style="background:var(--ochre);color:var(--ink);border-color:var(--ochre)">CONTRIBUTOR</span>
+        <span class="masthead">Cointe<em>legraph</em></span>
+        <span class="cover-head">"Generative AI &amp; the trading-floor question."</span>
+      </div>
+      <div class="mc-body">
+        <span class="label">● Author profile · 2023 → present</span>
+        <h3>Long-form technical <em>articles</em>.</h3>
+        <p>Technical writing on AI, crypto security, trading bots, DeFi automation and market analysis — published into one of the largest crypto-native publications on the open web.</p>
+        <div class="mc-meta"><span>Author profile</span><b>14+ articles</b></div>
+      </div>
+    </a>
+
+    <a class="mc ccn rv d1" href="#ccn" data-tilt>
+      <div class="mc-art">
+        <span class="seal">EXPERT SOURCE</span>
+        <div class="ccn-mast">CCN<span>Digital-asset news · expert source</span></div>
+        <div class="clip">"…trading bot architectures must be built to <b>fail safely</b> before they're built to win."</div>
+      </div>
+      <div class="mc-body">
+        <span class="label">● Quoted as expert</span>
+        <h3>Cited by <em>industry press</em>.</h3>
+        <p>External commentary quoted by CCN on AI-driven trading risk and crypto-security threat models.</p>
+        <div class="mc-meta"><span>Citations on file</span><b>Excerpts</b></div>
+      </div>
+    </a>
+
+    <a class="mc igi rv d2" href="#peer" data-tilt>
+      <div class="mc-art">
+        <span class="seal" style="background:var(--sage-soft);color:var(--moss);border-color:var(--moss)">VERIFIED</span>
+        <div class="cert">
+          <div class="crest">★</div>
+          <div class="tag">Chapter Review · 2024 — 25</div>
+          <h4>IGI Global</h4>
+          <span class="sig">— Tayyub Y.</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <span class="label">● Peer review activity</span>
+        <h3>Academic <em>chapter</em> reviewer.</h3>
+        <p>Invited chapter-review activity for IGI Global publication work — digital-technology, Web3 and CBDC-adjacent material.</p>
+        <div class="mc-meta"><span>Certificate</span><b>On file</b></div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ── Top picks — Cointelegraph ── -->
+<section class="section wrap" data-screen-label="Picks" id="picks">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ Selected articles · Cointelegraph</span>
+      <h2>The <em>shelf</em>.</h2>
+      <p>Hover any line to deep-dive.</p>
+    </div>
+    <div class="sec-head-r"><a href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Full author profile ↗</a></div>
+  </div>
+
+  <div class="picks rv">
+    <a class="pick" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="pick-rank">N<em>°</em> 01</span>
+      <span class="pick-title">
+        <span class="tag">AI &amp; crypto · long-form</span>
+        <h4>Generative AI &amp; the trading-floor question.</h4>
+      </span>
+      <span class="pick-meta"><b>Featured</b>Cointelegraph · 2024</span>
+      <span class="pick-arr">↗</span>
+    </a>
+    <a class="pick" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="pick-rank">N<em>°</em> 02</span>
+      <span class="pick-title">
+        <span class="tag">Trading bots · explainer</span>
+        <h4>Building responsible trading-bot architectures.</h4>
+      </span>
+      <span class="pick-meta"><b>Editor's pick</b>Cointelegraph · 2024</span>
+      <span class="pick-arr">↗</span>
+    </a>
+    <a class="pick" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="pick-rank">N<em>°</em> 03</span>
+      <span class="pick-title">
+        <span class="tag">Security · practical</span>
+        <h4>Hardware wallets, hot wallets &amp; the threat model.</h4>
+      </span>
+      <span class="pick-meta"><b>Read</b>Cointelegraph</span>
+      <span class="pick-arr">↗</span>
+    </a>
+    <a class="pick" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="pick-rank">N<em>°</em> 04</span>
+      <span class="pick-title">
+        <span class="tag">DeFi automation</span>
+        <h4>Automating DeFi positions without losing your shirt.</h4>
+      </span>
+      <span class="pick-meta"><b>Operations</b>Cointelegraph</span>
+      <span class="pick-arr">↗</span>
+    </a>
+    <a class="pick" href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">
+      <span class="pick-rank">N<em>°</em> 05</span>
+      <span class="pick-title">
+        <span class="tag">Market analysis</span>
+        <h4>Reading on-chain &amp; off-chain together.</h4>
+      </span>
+      <span class="pick-meta"><b>Analysis</b>Cointelegraph</span>
+      <span class="pick-arr">↗</span>
+    </a>
+  </div>
+</section>
+
+<!-- ── Quoted by — CCN spotlights ── -->
+<section class="section wrap" data-screen-label="Quoted" id="ccn">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--rust)"></span>§ Quoted as expert source</span>
+      <h2>In the <em>clippings</em>.</h2>
+      <p><i>Frame:</i> external expert commentary quoted by a digital-asset news publication.</p>
+    </div>
+    <div class="sec-head-r">/ excerpts on file</div>
+  </div>
+
+  <div class="spots">
+    <article class="spot rv" data-tilt>
+      <div class="spot-masthead">
+        <span class="pub">CCN</span>
+        <span class="dt">Late edition · 2024 — 25</span>
+      </div>
+      <h4>"On AI-driven trading risk."</h4>
+      <blockquote>"Trading bot architectures must be built to <b>fail safely</b> before they're built to win — the failure mode is the design."</blockquote>
+      <div class="spot-foot"><span>Cited as expert source</span><b>Read excerpt →</b></div>
+    </article>
+
+    <article class="spot rv d1" data-tilt>
+      <div class="spot-masthead">
+        <span class="pub">CCN</span>
+        <span class="dt">Edition · 2024 — 25</span>
+      </div>
+      <h4>"On user-level threat models."</h4>
+      <blockquote>"Most users lose funds at the <b>seed phrase, not the smart contract</b>. The threat model is human, not cryptographic."</blockquote>
+      <div class="spot-foot"><span>Cited as expert source</span><b>Read excerpt →</b></div>
+    </article>
+  </div>
+</section>
+
+<!-- ── Peer review · IGI Global completed evaluations ── -->
+<section class="section wrap" data-screen-label="Peer review" id="peer">
+  <div class="sec-head rv">
+    <div class="sec-head-l">
+      <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ Peer-review activity · IGI Global</span>
+      <h2>Three completed <em>chapter reviews</em>, on file.</h2>
+      <p>Invited reviewer for <b>IGI Global</b> publications on blockchain, IoT, CBDCs and AI-FinTech. Each review submitted within days of request, alongside co-reviewers on every manuscript. Source platform record below.</p>
+    </div>
+    <div class="sec-head-r">/ 3 completed · 0 outstanding</div>
+  </div>
+
+  <div class="igi-record rv">
+    <header class="igi-record-head">
+      <div class="crest">★</div>
+      <div class="igi-titleblock">
+        <span class="igi-num">/ 03 — Completed Evaluations</span>
+        <h3>IGI <em>Global</em> · chapter review record</h3>
+        <span class="igi-pub">International academic publisher · digital technology, blockchain &amp; AI-FinTech titles</span>
+      </div>
+      <span class="igi-stamp">Verified · certificate held</span>
+    </header>
+
+    <div class="igi-table">
+      <div class="igi-row igi-thead">
+        <div>Type</div>
+        <div>Manuscript</div>
+        <div>Requested</div>
+        <div>Submitted</div>
+        <div>Co-reviewers</div>
+      </div>
+
+      <article class="igi-row">
+        <div class="igi-type">Chapter / Book</div>
+        <div class="igi-title"><b>Understanding the Impact of CBDCs on Financial Stability</b> — <em>The Shift Towards a User-Centric Financial Ecosystem</em>.</div>
+        <div class="igi-date"><span>Requested</span>11 Jul 2023</div>
+        <div class="igi-date"><span>Submitted</span><b>12 Jul 2023</b></div>
+        <div class="igi-co">+1 co-reviewer</div>
+      </article>
+
+      <article class="igi-row">
+        <div class="igi-type">Chapter / Book</div>
+        <div class="igi-title"><b>Review of the Blockchain Technology and Consensus Algorithms</b> — <em>for IoT-Based Banking</em>.</div>
+        <div class="igi-date"><span>Requested</span>1 Feb 2022</div>
+        <div class="igi-date"><span>Submitted</span><b>9 Feb 2022</b></div>
+        <div class="igi-co">+2 co-reviewers</div>
+      </article>
+
+      <article class="igi-row">
+        <div class="igi-type">Chapter / Book</div>
+        <div class="igi-title"><b>How AI-Enabled Agile Internet of Things Can Enhance the Business Efficiency</b> — <em>of China's FinTech Ecosystem</em>.</div>
+        <div class="igi-date"><span>Requested</span>23 Jan 2022</div>
+        <div class="igi-date"><span>Submitted</span><b>9 Feb 2022</b></div>
+        <div class="igi-co">+1 co-reviewer</div>
+      </article>
+    </div>
+
+    <footer class="igi-foot">
+      <span>Manuscripts evaluated for publisher-led peer review. Editor names, full review notes and confirmation screenshots available on request.</span>
+      <span class="igi-seal">Certificate on file</span>
+    </footer>
+  </div>
+</section>
+
+<!-- ── Research forthcoming (demoted footnote) ── -->
+<section class="section wrap" data-screen-label="Forthcoming" id="flight" style="padding-top:32px;padding-bottom:32px">
+  <div class="rv" style="padding:18px 22px;background:rgba(217,119,87,.08);border:1px solid rgba(217,119,87,.3);border-radius:12px;font-size:14px;color:var(--ink-2);line-height:1.55">
+    <b style="color:var(--ink);font-weight:600">Forthcoming research</b> &mdash; methodology papers and op-eds on AI Overviews &amp; organic visibility, consent-mode transparency, and an industry standard for analytics audit, currently drafting. Listed only as completed work surfaces. Working titles and target venues available on request.
+  </div>
+</section>
+
+</div>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <h2 class="foot-cta rv">For <em>media enquiries</em>.<br /><a href="/contact">Get in touch →</a></h2>
+    <div class="foot-grid">
+      <div class="fc fc-id"><div class="nm">Tayyub Yaqoob</div><p>Senior Digital Analyst · 8 Million Stories · Stirling, UK.</p></div>
+      <div class="fc"><h5>Reach</h5><a href="/contact">Contact form</a><a href="mailto:tayyabyaqoob.1@gmail.com">Email</a><a href="https://www.linkedin.com/in/tayyubyaqoob" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/tayyab-ai" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Cointelegraph ↗</a></div>
+      <div class="fc"><h5>Pages</h5><a href="/">Home</a><a href="/systems">Systems</a><a href="/products">Products</a><a href="/publications">Writing</a><a href="/research">Research</a><a href="/testimonials">Words</a><a href="/about">About</a></div>
+      <div class="fc"><h5>Press &amp; receipts</h5><a href="/press">Press kit</a><a href="/receipts">The receipts ↗</a><a href="/open-source">Code ↗</a></div>
+    </div>
+    <div class="foot-bot"><span>© 2026 Tayyub Yaqoob</span><span>Stirling · MMXXVI</span></div>
+  </div>
+</footer>
+
+<script is:inline src="/script.js"></script>
+</body>
+</html>
