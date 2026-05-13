@@ -1,32 +1,30 @@
 # Tayyub Yaqoob
 
-> UK-based data scientist and AI engineer. Senior Digital Analyst at 8 Million Stories, Stirling. Architects proprietary AI-analytics systems used by 50+ client teams. Published author at Cointelegraph (30+) and AlphaWire (5+). Quoted as expert source by CCN. Invited chapter reviewer for IGI Global.
+> UK-based senior digital analyst and AI analytics systems specialist. Architects proprietary analytics and automation systems used by 50+ client teams. Technical publication record across Cointelegraph and AlphaWire, with archive continuity evidence where publisher structures changed. Quoted as expert source by CCN. Invited chapter reviewer for IGI Global.
 
 ## Key pages
-- [Home](/): Positioning, client exposure, quantified-impact metrics, eight surfaces of work.
-- [Systems](/systems): Eight proprietary analytics systems — forecasting, sentiment, anomaly detection, AI-mentions, deck generation, organic-insight automation.
-- [Products](/products): Independent product work, including LedgerTouch (in development).
-- [Writing](/publications): 35+ technical articles across Cointelegraph and AlphaWire; CCN expert quotes — verifiable on each outlet's profile.
-- [Research](/research): External recognition (Cointelegraph + CCN), IGI Global completed-chapter-reviews record.
-- [Words](/testimonials): Verbatim client quotes — BBC, General Mills (Blue Buffalo), Diligent Pharma, MRI Management.
-- [About](/about): Bio, credentials grid (12 AI/ML certifications), operating principles.
-- [Press kit](/press): Bios in three lengths (copy-paste ready), fact sheet, pull-quote paragraphs, expert topics, asset downloads, direct press contact.
-- [Receipts](/receipts): Structured evidence backup — role, systems, products, writing, press, peer review, client impact, credentials.
-- [Code](/open-source): Public engineering profile — github.com/tayyub-ai.
-- [Contact](/contact): Media enquiries, podcasts, panels, commissioned writing, consulting.
+- [Home](/): Positioning, client exposure, quantified credibility signals, and reviewer-first routing.
+- [Evidence](/evidence): Structured evidence index covering role, systems, publications, recognition, code, and archive continuity.
+- [Case Studies](/case-studies): Production analytics and AI workflow case studies.
+- [Publications](/publications): Direct live article URLs plus archive continuity proof for removed or unstable publisher surfaces.
+- [Recognition](/recognition): External recognition, CCN expert-source context, and IGI Global completed review record.
+- [Testimonials](/testimonials): Verbatim client quotes from BBC, General Mills (Blue Buffalo), Diligent Pharma, and MRI Management.
+- [Labs](/labs): Independent product work and experiments, including LedgerTouch.
+- [About](/about): Bio, credentials, and operating principles.
+- [Press kit](/press): Bios, fact sheet, expert topics, and media assets.
+- [Code](/open-source): Public engineering profile and active repositories.
+- [Contact](/contact): Senior roles, consulting, speaking, publication requests, and evidence requests.
 
 ## Identity
 - Canonical: https://www.tayyubyaqoob.com/
 - LinkedIn: https://www.linkedin.com/in/tayyubyaqoob
 - GitHub: https://github.com/tayyub-ai
-- Cointelegraph: https://cointelegraph.com/authors/tayyub-yaqoob
-- AlphaWire: https://alphawire.xyz/author/tayyub/
+- Publications route: https://www.tayyubyaqoob.com/publications
 - Email: tayyabyaqoob.1@gmail.com
 - Location: Stirling, Scotland, UK
 
 ## Recognition signals
-- 30+ technical articles published in Cointelegraph (Apr 2024 → present)
-- 5+ articles published in AlphaWire
+- 35+ technical articles across Cointelegraph and AlphaWire, combining live URLs with archive continuity where needed
 - Quoted as expert source by CCN
 - 3 completed chapter reviews for IGI Global (CBDCs, blockchain consensus for IoT-based banking, AI-enabled IoT for FinTech)
 - 12 AI/ML credentials — Google AI Agents, AWS ML Specialty exam prep, Vertex AI MLOps, Model Context Protocol with Agentic AI, Agentic AI for Developers, OpenAI Generative AI, AI Ethics & Safety, TensorFlow Deep Learning

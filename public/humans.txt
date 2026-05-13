@@ -5,13 +5,12 @@
   Email: tayyabyaqoob.1@gmail.com
   LinkedIn: https://www.linkedin.com/in/tayyubyaqoob
   GitHub: https://github.com/tayyub-ai
-  Cointelegraph: https://cointelegraph.com/authors/tayyub-yaqoob
-  AlphaWire: https://alphawire.xyz/author/tayyub/
+  Publications: https://www.tayyubyaqoob.com/publications
   X: https://x.com/TayyabY
   Location: Stirling, Scotland, UK
 
 /* SITE */
-  Last update: 2026/05/13
+  Last update: 2026/05/14
   Built with: Astro, TypeScript, Tailwind CSS
   Purpose: Evidence-first personal portfolio — AI, analytics and applied research
   Press kit: https://www.tayyubyaqoob.com/press

@@ -1,0 +1,218 @@
+---
+import { footerNav, primaryNav, site, socialLinks } from "../data/site";
+
+type Crumb = { label: string; href?: string };
+
+interface Props {
+  title: string;
+  description: string;
+  pathname: string;
+  canonicalPath?: string;
+  crumbs?: Crumb[];
+  image?: string;
+  noindex?: boolean;
+  pageType?: "default" | "about";
+  footerTitle?: string;
+  footerLead?: string;
+  structuredData?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  pathname,
+  canonicalPath = pathname,
+  crumbs = [],
+  image = site.image,
+  noindex = false,
+  pageType = "default",
+  footerTitle = "Request the evidence pack or get in touch.",
+  footerLead = "For senior roles, consulting, speaking, publications, recommendation context, or a closer look at the supporting evidence.",
+  structuredData = [],
+} = Astro.props;
+
+const canonical = new URL(canonicalPath, site.siteUrl).toString();
+const imageUrl = new URL(image, site.siteUrl).toString();
+const pageTitle = title.includes(site.name) ? title : `${title} — ${site.name}`;
+
+const breadcrumbData =
+  crumbs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: crumbs.map((crumb, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: crumb.label,
+          item: new URL(crumb.href ?? pathname, site.siteUrl).toString(),
+        })),
+      }
+    : null;
+
+const personEntity = {
+  "@type": "Person",
+  name: site.name,
+  url: site.siteUrl,
+  image: imageUrl,
+  jobTitle: "Senior Digital Analyst",
+  worksFor: {
+    "@type": "Organization",
+    name: "8 Million Stories",
+  },
+  homeLocation: {
+    "@type": "Place",
+    name: site.location,
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "University of Stirling",
+  },
+  email: `mailto:${site.email}`,
+  sameAs: [site.social.linkedin, site.social.github, site.social.x],
+  knowsAbout: [
+    "AI analytics systems",
+    "Digital measurement",
+    "Machine learning",
+    "Search visibility",
+    "Analytics automation",
+  ],
+  mainEntityOfPage: canonical,
+  description,
+};
+
+const personData = {
+  "@context": "https://schema.org",
+  ...personEntity,
+};
+
+const organizationData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "8 Million Stories",
+  url: "https://www.8millionstories.co.uk/",
+};
+
+const websiteData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: site.name,
+  url: site.siteUrl,
+  description: site.description,
+};
+
+const profilePageData =
+  pageType === "about"
+    ? {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        url: canonical,
+        name: pageTitle,
+        description,
+        mainEntity: personEntity,
+      }
+    : null;
+
+const allStructuredData = [
+  ...(!noindex
+    ? [
+        websiteData,
+        organizationData,
+        personData,
+        profilePageData,
+        breadcrumbData,
+        ...structuredData,
+      ]
+    : []),
+].filter(Boolean);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={imageUrl} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={imageUrl} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  {allStructuredData.map((entry) => (
+    <script type="application/ld+json" set:html={JSON.stringify(entry)} />
+  ))}
+  <slot name="head" />
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="aurora"></div>
+  <div class="spotlight" id="spot"></div>
+
+  <div class="shell">
+    <header class="nav">
+      <div class="nav-l">
+        <a href="/" class="brand"><span class="mark"></span><b>{site.name}</b></a>
+      </div>
+      <nav class="nav-c" id="primary-nav" aria-label="Primary">
+        {primaryNav.map((item) => (
+          <a href={item.href} class={pathname === item.href ? "on" : undefined}>{item.label}</a>
+        ))}
+      </nav>
+      <div class="nav-r">
+        <span class="pill"><span class="live"></span>Open · 2026</span>
+        <a href="/contact" class={`btn btn-primary${pathname === "/contact" ? " on" : ""}`}>Contact →</a>
+      </div>
+    </header>
+
+    <slot />
+  </div>
+
+  <footer class="foot" id="contact">
+    <div class="wrap">
+      <h2 class="foot-cta rv">{footerTitle}<br /><a href="/contact">Get in touch →</a></h2>
+      <p class="foot-lede rv d1">{footerLead}</p>
+      <div class="foot-grid">
+        <div class="fc fc-id">
+          <div class="nm">{site.name}</div>
+          <p>{site.role} · {site.location}.</p>
+        </div>
+        <div class="fc">
+          <h5>Reach</h5>
+          <a href="/contact">Contact form</a>
+          <a href={`mailto:${site.email}`}>Email</a>
+          {socialLinks.map((item) => (
+            <a href={item.href} target="_blank" rel="noreferrer">{item.label} ↗</a>
+          ))}
+        </div>
+        <div class="fc">
+          <h5>Pages</h5>
+          {footerNav.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))}
+        </div>
+        <div class="fc">
+          <h5>Evidence</h5>
+          <a href="/evidence">Evidence index</a>
+          <a href="/publications">Publication record</a>
+          <a href="/press">Press</a>
+          <a href="/open-source">Open Source</a>
+        </div>
+      </div>
+      <div class="foot-bot"><span>© 2026 {site.name}</span><span>Stirling · MMXXVI</span></div>
+    </div>
+  </footer>
+
+  <script is:inline src="/script.js"></script>
+</body>
+</html>

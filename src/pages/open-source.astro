@@ -1,88 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<title>Open source — Tayyub Yaqoob</title>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/styles.css" />
-</head>
-<body>
+---
+import PageHeader from "../components/PageHeader.astro";
+import SiteLayout from "../components/SiteLayout.astro";
+import { publicRepos } from "../data/repos";
+---
 
-<div class="progress" id="progress"></div>
-<div class="aurora"></div>
-<div class="spotlight" id="spot"></div>
+<SiteLayout
+  title="Open Source"
+  description="Current public repositories used as supporting technical evidence, presented honestly and without placeholder repo names."
+  pathname="/open-source"
+  crumbs={[{ label: "Home", href: "/" }, { label: "Open Source" }]}
+>
+  <style slot="head">
+    .repo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .repo-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-1);transition:transform .25s,box-shadow .25s,border-color .25s}
+    .repo-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .repo-card .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra)}
+    .repo-card h3{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.04;letter-spacing:-.015em}
+    .repo-card p{font-size:14px;line-height:1.65;color:var(--ink-2)}
+    .repo-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .repo-tags span{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line);color:var(--ink-2)}
+    .repo-card a{margin-top:auto;color:var(--terra);border-bottom:1px solid currentColor;width:max-content}
+    @media (max-width:880px){.repo-grid{grid-template-columns:1fr}}
+  </style>
 
-<div class="shell">
+  <PageHeader
+    title="Public <em>repositories</em>."
+    subtitle="Most production analytics systems are private to clients and agencies. This page now lists only <b>real, current public repositories</b> and treats them as supporting technical evidence rather than stand-ins for confidential systems."
+    crumbs={[{ label: "Home", href: "/" }, { label: "Open Source" }]}
+  />
 
-<header class="nav">
-  <div class="nav-l"><a href="/" class="brand"><span class="mark"></span><b>Tayyub Yaqoob</b></a></div>
-  <nav class="nav-c">
-    <a href="/">Home</a>
-    <a href="/systems">Systems</a>
-    <a href="/products">Products</a>
-    <a href="/publications">Writing</a>
-    <a href="/research">Research</a>
-    <a href="/testimonials">Words</a>
-    <a href="/about">About</a>
-  </nav>
-  <div class="nav-r">
-    <span class="pill"><span class="live"></span>Open · 2026</span>
-    <a href="/contact" class="btn btn-primary">Contact →</a>
-  </div>
-</header>
-
-<header class="page-head wrap">
-  <div class="crumb"><a href="/">Home</a><span>›</span><span>Code</span></div>
-  <h1>Public <em>code</em>.</h1>
-  <p>Most production work is private — client analytics systems, agency automation, proprietary reporting. Public repos are <b>deliberate examples</b> that demonstrate engineering approach.</p>
-</header>
-
-<section class="section wrap first" data-screen-label="Terminal">
-  <div class="terminal rv">
-    <div class="terminal-bar">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <div class="ttl">~/tayyub-ai · git · 4 repos</div>
-    </div>
-    <div class="terminal-body">
-      <div class="tline typing"><span class="prompt">$</span><span class="cmd">whoami</span></div>
-      <div class="term-out fade d1">tayyub-ai — public engineering profile<br /><a href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer">github.com/tayyub-ai ↗</a></div>
-
-      <div class="tline typing t2"><span class="prompt">$</span><span class="cmd">ls -la public/</span></div>
-      <div class="term-out fade d2">
-        <span class="repo"><b>analytics-audit-examples</b> <i>· open utility scripts &amp; example checks for GA4 / consent / tagging audit logic</i><br /><span class="tag py">python</span><span class="tag api">ga4 admin api</span></span>
-        <span class="repo"><b>gsc-bigquery-notebooks</b> <i>· notebooks for joining GSC exports to BigQuery, with AI-Overview tagging samples used in the visibility research</i><br /><span class="tag py">python</span><span class="tag bq">bigquery</span></span>
-        <span class="repo"><b>pptx-report-engine</b> <i>· reference scaffold for automated PowerPoint reporting — the public-safe version of the agency tooling</i><br /><span class="tag py">python-pptx</span><span class="tag sql">templating</span></span>
-        <span class="repo"><b>forecasting-sketches</b> <i>· small, well-documented forecasting / anomaly-detection examples illustrating the engineering style of the larger private systems</i><br /><span class="tag py">prophet</span><span class="tag py">sklearn</span></span>
+  <section class="section wrap first" data-screen-label="Repos">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Current public code</span>
+        <h2>Verified public <em>repos</em>.</h2>
+        <p>This route replaces the illustrative repo names that were on the previous site. Public code is useful supporting evidence, but the strongest proof still comes from shipped private systems, publications, and recommendation context.</p>
       </div>
-
-      <div class="tline typing" style="animation-delay:3.4s"><span class="prompt">$</span><span class="cmd">cat NOTE.txt</span></div>
-      <div class="term-out fade d3">
-        <div class="term-note">
-          ⚠ <b>I don't lean on GitHub stars as recognition.</b> The point of this page is <b>code as evidence</b> — that I write production-grade Python, document it, and understand the systems I describe. The serious systems are private to clients; the public set is shareable surface area.
-        </div>
-      </div>
-
-      <div class="tline"><span class="prompt">$</span><span class="term-cursor"></span></div>
+      <div class="sec-head-r"><a href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer">GitHub profile ↗</a></div>
     </div>
-  </div>
-</section>
 
-</div>
-
-<footer class="foot" id="contact">
-  <div class="wrap">
-    <h2 class="foot-cta rv">For <em>media enquiries</em>.<br /><a href="/contact">Get in touch →</a></h2>
-    <div class="foot-grid">
-      <div class="fc fc-id"><div class="nm">Tayyub Yaqoob</div><p>Senior Digital Analyst · 8 Million Stories · Stirling, UK.</p></div>
-      <div class="fc"><h5>Reach</h5><a href="/contact">Contact form</a><a href="mailto:tayyabyaqoob.1@gmail.com">Email</a><a href="https://www.linkedin.com/in/tayyubyaqoob" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://cointelegraph.com/authors/tayyub-yaqoob" target="_blank" rel="noreferrer">Cointelegraph ↗</a></div>
-      <div class="fc"><h5>Pages</h5><a href="/">Home</a><a href="/systems">Systems</a><a href="/products">Products</a><a href="/publications">Writing</a><a href="/research">Research</a><a href="/testimonials">Words</a><a href="/about">About</a></div>
-      <div class="fc"><h5>Press &amp; receipts</h5><a href="/press">Press kit</a><a href="/receipts">The receipts ↗</a><a href="/open-source">Code ↗</a></div>
+    <div class="repo-grid">
+      {publicRepos.map((repo) => (
+        <article class="repo-card rv">
+          <span class="tag">Live GitHub repository</span>
+          <h3>{repo.name}</h3>
+          <p>{repo.description}</p>
+          <div class="repo-tags">
+            {repo.tags.map((tag) => <span>{tag}</span>)}
+          </div>
+          <a href={repo.url} target="_blank" rel="noreferrer">Open repository ↗</a>
+        </article>
+      ))}
     </div>
-    <div class="foot-bot"><span>© 2026 Tayyub Yaqoob</span><span>Stirling · MMXXVI</span></div>
-  </div>
-</footer>
-
-<script is:inline src="/script.js"></script>
-</body>
-</html>
+  </section>
+</SiteLayout>

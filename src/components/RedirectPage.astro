@@ -1,0 +1,29 @@
+---
+import SiteLayout from "./SiteLayout.astro";
+
+interface Props {
+  to: string;
+  title?: string;
+}
+
+const { to, title = "Redirecting" } = Astro.props;
+---
+
+<SiteLayout
+  title={title}
+  description={`Redirecting to ${to}.`}
+  pathname={Astro.url.pathname}
+  canonicalPath={to}
+  noindex={true}
+  footerTitle="Redirect in progress."
+  footerLead="If the browser does not redirect automatically, use the link below."
+>
+  <meta slot="head" http-equiv="refresh" content={`0;url=${to}`} />
+
+  <main class="wrap" style="padding:96px 0 140px">
+    <p style="font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Updated route</p>
+    <h1 style="font-family:var(--serif);font-size:clamp(34px,5vw,60px);font-weight:400;line-height:1.02;letter-spacing:-.02em;margin-bottom:16px">Redirecting.</h1>
+    <p style="max-width:56ch;color:var(--ink-2);font-size:16px;line-height:1.6">This route has moved to a clearer, evidence-first structure.</p>
+    <p style="margin-top:22px"><a class="btn btn-primary" href={to}>Open the new page →</a></p>
+  </main>
+</SiteLayout>

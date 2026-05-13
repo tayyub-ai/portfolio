@@ -1,0 +1,116 @@
+---
+import PageHeader from "../components/PageHeader.astro";
+import SiteLayout from "../components/SiteLayout.astro";
+import { publicationArchive } from "../data/publications";
+---
+
+<SiteLayout
+  title="Recognition"
+  description="External recognition, peer review, expert-source citations, and supporting context for the public record."
+  pathname="/recognition"
+  crumbs={[{ label: "Home", href: "/" }, { label: "Recognition" }]}
+>
+  <style slot="head">
+    .rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .rec-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-1);transition:transform .25s,box-shadow .25s,border-color .25s}
+    .rec-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .rec-card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra)}
+    .rec-card h3{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.04;letter-spacing:-.015em}
+    .rec-card h3 em{font-style:italic;color:var(--terra)}
+    .rec-card p{font-size:14px;line-height:1.6;color:var(--ink-2)}
+    .rec-card .meta{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+    .quote-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .quote-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;box-shadow:var(--shadow-1)}
+    .quote-card blockquote{font-family:var(--serif);font-size:19px;line-height:1.45;font-style:italic;color:var(--ink);letter-spacing:-.008em}
+    .quote-card blockquote b{font-style:normal;color:var(--terra);font-weight:500}
+    .quote-card .meta{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    .proof-band{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+    .proof-panel{background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;box-shadow:var(--shadow-1)}
+    .proof-panel h3{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:-.015em;margin-bottom:10px}
+    .proof-panel h3 em{font-style:italic;color:var(--moss)}
+    .proof-panel p{font-size:14.5px;color:var(--ink-2);line-height:1.65}
+    .proof-panel a{color:var(--terra);border-bottom:1px solid currentColor}
+    @media (max-width:980px){.rec-grid,.quote-row,.proof-band{grid-template-columns:1fr}}
+  </style>
+
+  <PageHeader
+    title="External <em>recognition</em>."
+    subtitle="This route is where the third-party signals live: publication record context, expert-source citations, peer review, and the evidence framing needed for serious evaluators."
+    crumbs={[{ label: "Home", href: "/" }, { label: "Recognition" }]}
+  />
+
+  <section class="section wrap first" data-screen-label="Signals">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Recognition signals</span>
+        <h2>What is <em>externally visible</em>.</h2>
+      </div>
+      <div class="sec-head-r">/ third-party surfaces</div>
+    </div>
+
+    <div class="rec-grid">
+      <article class="rec-card rv">
+        <span class="tag">Publication record</span>
+        <h3>Public technical <em>writing</em>.</h3>
+        <p>Technical articles published across Cointelegraph and AlphaWire. Some historic author-index pages were later removed or restructured by the publishers, so the site now points to live article URLs plus archive evidence rather than dead profile pages.</p>
+        <div class="meta"><a href="/publications">Publications →</a></div>
+      </article>
+      <article class="rec-card rv d1">
+        <span class="tag">Expert source</span>
+        <h3>Quoted by <em>CCN</em>.</h3>
+        <p>Quoted as an expert source on AI-driven trading risk and crypto-security threat models. This is supporting recognition rather than the core thesis of the site, but it remains part of the public record.</p>
+        <div class="meta">Press citation context</div>
+      </article>
+      <article class="rec-card rv d2">
+        <span class="tag">Peer review</span>
+        <h3>IGI Global <em>chapter reviews</em>.</h3>
+        <p>Three completed chapter reviews for IGI Global across CBDCs, blockchain consensus for IoT banking, and AI-enabled IoT for FinTech. Stronger as supporting evidence than as a standalone headline claim.</p>
+        <div class="meta">Publisher-led review activity</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" data-screen-label="Quotes">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <span class="sec-tag"><span class="dot" style="background:var(--rust)"></span>§ Expert-source context</span>
+        <h2>Quoted as an <em>expert source</em>.</h2>
+        <p>The site no longer pretends those citations are instantly verifiable via a current author page. They are presented as supporting recognition with archived sourcing held in the evidence pack.</p>
+      </div>
+      <div class="sec-head-r"><a href="/evidence">Evidence context →</a></div>
+    </div>
+
+    <div class="quote-row">
+      <article class="quote-card rv">
+        <blockquote>Trading bot architectures must be built to <b>fail safely</b> before they are built to win.</blockquote>
+        <div class="meta">CCN · supporting citation context</div>
+      </article>
+      <article class="quote-card rv d1">
+        <blockquote>Most users lose funds at the <b>seed phrase, not the smart contract</b>. The threat model is often human, not cryptographic.</blockquote>
+        <div class="meta">CCN · supporting citation context</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section wrap" data-screen-label="Peer review">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ Peer review</span>
+        <h2>Three completed <em>chapter reviews</em>.</h2>
+        <p>Invited review activity for IGI Global on blockchain, IoT, CBDCs, and AI-FinTech-adjacent material. Important as an external contribution signal, but best understood as supporting evidence rather than the foundation of the case.</p>
+      </div>
+      <div class="sec-head-r">/ 2022–2023 record</div>
+    </div>
+
+    <div class="proof-band">
+      <article class="proof-panel rv">
+        <h3>IGI Global <em>review record</em>.</h3>
+        <p><b>CBDCs and Financial Stability</b>, <b>Blockchain and Consensus for IoT-Based Banking</b>, and <b>AI-Enabled Agile IoT for FinTech</b> are the three completed reviews currently held on file. The evidence route explains what document types back this up.</p>
+      </article>
+      <article class="proof-panel rv d1">
+        <h3>Archive and <em>continuity</em>.</h3>
+        <p>The publication record now depends partly on archive evidence because publisher structure changed. The current site uses that fact honestly instead of forcing broken author pages into the public proof chain. Archive asset: <a href={publicationArchive.url}>Cointelegraph PDF record ↗</a>.</p>
+      </article>
+    </div>
+  </section>
+</SiteLayout>

@@ -1,0 +1,29 @@
+---
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  crumbs: Crumb[];
+  eyebrow?: string;
+}
+
+const { title, subtitle, crumbs, eyebrow } = Astro.props;
+---
+
+<header class="page-head wrap">
+  <div class="crumb">
+    {crumbs.map((crumb, index) => (
+      <>
+        {crumb.href ? <a href={crumb.href}>{crumb.label}</a> : <span>{crumb.label}</span>}
+        {index < crumbs.length - 1 ? <span>›</span> : null}
+      </>
+    ))}
+  </div>
+  {eyebrow ? <span class="press-eyebrow">{eyebrow}</span> : null}
+  <h1 set:html={title} />
+  <p set:html={subtitle} />
+</header>

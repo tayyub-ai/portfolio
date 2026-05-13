@@ -78,7 +78,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .rail a.on{background:var(--ink);transform:scale(1.5)}
 
 /* ── Top nav ── */
-.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gut);background:rgba(250,250,245,.78);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px var(--gut);background:rgba(250,250,245,.78);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);border-bottom:1px solid var(--line);gap:14px}
 .nav-l{display:flex;align-items:center;gap:14px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:-.01em}
 .brand .mark{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 220deg,var(--terra),var(--coral),var(--ochre),var(--sage),var(--coral),var(--terra));box-shadow:0 0 0 1px rgba(255,255,255,.5) inset,0 6px 14px -6px rgba(196,77,44,.5);animation:spin 18s linear infinite}
@@ -902,6 +902,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .page-head p b{color:var(--ink);font-weight:600}
 
 @media (max-width:1180px){
+  .nav{flex-wrap:wrap;align-items:flex-start}
+  .nav-c{order:3;width:100%;overflow:auto;white-space:nowrap;justify-content:flex-start}
+  .nav-r{margin-left:auto}
   .bento{grid-template-columns:repeat(3,1fr)}
   .cap.feature{grid-column:span 3;grid-row:auto}
   .prod-bento{grid-template-columns:1fr 1fr}
@@ -922,7 +925,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
   .case-l-cols{grid-template-columns:1fr;gap:0;padding:20px 22px 22px}
   .about{grid-template-columns:1fr;gap:32px}
   .about-card{position:static}
-  .nav-c{display:none}
+  .nav{padding-bottom:12px}
+  .nav-c{display:flex;padding:4px;max-width:100%;scrollbar-width:none}
+  .nav-c::-webkit-scrollbar{display:none}
+  .nav-c a{padding:6px 12px}
+  .nav-r{width:100%;justify-content:space-between}
   .principles,.foot-grid{grid-template-columns:1fr 1fr}
   .case-l-head{padding:18px 20px}
   .rail{display:none}

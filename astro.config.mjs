@@ -13,7 +13,12 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
     react(),
     sitemap({
-      filter: (page) => !page.includes('/404'),
+      filter: (page) =>
+        !page.includes('/404') &&
+        !page.endsWith('/systems') &&
+        !page.endsWith('/products') &&
+        !page.endsWith('/research') &&
+        !page.endsWith('/receipts'),
     }),
   ],
   vite: {

@@ -19,3 +19,4 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.tayyubyaqoob.com/sitemap-index.xml
+Sitemap: https://www.tayyubyaqoob.com/sitemap-0.xml

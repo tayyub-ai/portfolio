@@ -4,5 +4,27 @@
   "buildCommand": "astro build",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/systems",
+      "destination": "/case-studies",
+      "permanent": true
+    },
+    {
+      "source": "/products",
+      "destination": "/labs",
+      "permanent": true
+    },
+    {
+      "source": "/research",
+      "destination": "/recognition",
+      "permanent": true
+    },
+    {
+      "source": "/receipts",
+      "destination": "/evidence",
+      "permanent": true
+    }
+  ]
 }
