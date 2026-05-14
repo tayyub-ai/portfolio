@@ -105,29 +105,21 @@ import SiteLayout from "../components/SiteLayout.astro";
 
     @media (max-width:780px){.cs{grid-template-columns:1fr;padding:22px}.cs-gutter{flex-direction:column}}
 
-    /* ── Case-file folder bento ── */
-    .casefile-wrap{margin-top:32px}
-    .casefile{position:relative;background:linear-gradient(160deg,#f4ecdc,#e8d8b6);border:1px solid #c9b88e;border-radius:18px;padding:48px 36px 36px;box-shadow:0 18px 50px rgba(60,40,20,.18),inset 0 1px 0 rgba(255,255,255,.5);overflow:hidden}
-    .casefile::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:140px;height:36px;background:#d8c79c;border-bottom-left-radius:60px 18px;border-bottom-right-radius:60px 18px;box-shadow:0 2px 4px rgba(60,40,20,.15)}
-    .casefile-h{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #9c8550;padding-bottom:14px;margin-bottom:24px}
-    .casefile-h h3{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.4vw,32px);line-height:1.05;letter-spacing:-.015em;color:#3d2c12}
-    .casefile-h h3 em{font-style:italic;color:#7c4a16}
-    .casefile-h .file-no{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#7c4a16;text-transform:uppercase}
-    .casefile-docs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .casefile-doc{display:flex;flex-direction:column;background:#fffaf0;border:1px solid #d4c08a;border-radius:6px;padding:16px;min-height:160px;text-decoration:none;color:inherit;position:relative;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s;transform-origin:bottom left;box-shadow:0 2px 8px rgba(60,40,20,.1)}
-    .casefile-doc:nth-child(1){transform:rotate(-2deg)}
-    .casefile-doc:nth-child(2){transform:rotate(1deg)}
-    .casefile-doc:nth-child(3){transform:rotate(-1deg)}
-    .casefile-doc:nth-child(4){transform:rotate(2deg)}
-    .casefile-doc:hover{transform:rotate(0deg) translateY(-6px) scale(1.04);box-shadow:0 14px 30px rgba(60,40,20,.2);z-index:2}
-    .casefile-doc::before{content:"";position:absolute;top:8px;right:12px;width:6px;height:6px;border-radius:50%;background:var(--terra);opacity:.7}
-    .casefile-doc .doc-tag{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:#7c4a16;text-transform:uppercase;margin-bottom:8px}
-    .casefile-doc h4{font-family:var(--serif);font-size:17px;font-weight:400;line-height:1.15;letter-spacing:-.005em;color:#3d2c12;margin-bottom:6px}
-    .casefile-doc h4 em{font-style:italic;color:#7c4a16}
-    .casefile-doc p{font-size:11.5px;color:#5d4a28;line-height:1.5;flex:1}
-    .casefile-doc .doc-cta{margin-top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:#7c4a16;text-transform:uppercase;padding-top:8px;border-top:1px dashed #c9b88e}
-    @media (max-width:880px){.casefile-docs{grid-template-columns:1fr 1fr}}
-    @media (max-width:520px){.casefile-docs{grid-template-columns:1fr}.casefile-doc{transform:none!important}}
+    /* ── Supporting docs tiles (clean) ── */
+    .docs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+    .doc-tile{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden}
+    .doc-tile::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--terra);transition:width .25s}
+    .doc-tile:hover{transform:translateY(-3px);box-shadow:var(--shadow-1);border-color:var(--line-2)}
+    .doc-tile:hover::before{width:5px}
+    .doc-tile .doc-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;font-weight:600}
+    .doc-tile h4{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.2;letter-spacing:-.005em;color:var(--ink);margin-bottom:6px}
+    .doc-tile h4 em{font-style:italic;color:var(--terra)}
+    .doc-tile p{font-size:12.5px;color:var(--ink-2);line-height:1.55;flex:1}
+    .doc-tile .doc-cta{margin-top:12px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase;padding-top:10px;border-top:1px dashed var(--line);display:flex;align-items:center;gap:4px;font-weight:600}
+    .doc-tile .doc-cta::after{content:"↗";transition:transform .25s}
+    .doc-tile:hover .doc-cta::after{transform:translate(2px,-2px)}
+    @media (max-width:880px){.docs-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:520px){.docs-grid{grid-template-columns:1fr}}
   </style>
 
   <PageHeader
@@ -365,39 +357,31 @@ import SiteLayout from "../components/SiteLayout.astro";
       <div class="sec-head-r"><a href="/evidence">Full evidence index →</a></div>
     </div>
 
-    <div class="casefile-wrap rv">
-      <div class="casefile">
-        <div class="casefile-h">
-          <h3>Case-file · <em>2026</em></h3>
-          <span class="file-no">File AR-2026-001 · Tayyub Yaqoob</span>
-        </div>
-        <div class="casefile-docs">
-          <a class="casefile-doc" href="/evidence">
-            <span class="doc-tag">/ Doc 01</span>
-            <h4>Evidence <em>index</em></h4>
-            <p>Source list with status, type, and access route for every public claim.</p>
-            <span class="doc-cta">Open ↗</span>
-          </a>
-          <a class="casefile-doc" href="/recognition">
-            <span class="doc-tag">/ Doc 02</span>
-            <h4>Recognition <em>record</em></h4>
-            <p>CCN expert citations, IGI Global peer review, publication context.</p>
-            <span class="doc-cta">Open ↗</span>
-          </a>
-          <a class="casefile-doc" href="/publications">
-            <span class="doc-tag">/ Doc 03</span>
-            <h4>Publication <em>archive</em></h4>
-            <p>Live URLs for Cointelegraph and AlphaWire, plus a PDF archive.</p>
-            <span class="doc-cta">Open ↗</span>
-          </a>
-          <a class="casefile-doc" href="/testimonials">
-            <span class="doc-tag">/ Doc 04</span>
-            <h4>Client <em>feedback</em></h4>
-            <p>Verbatim quotes from BBC, General Mills, MRI, Diligent Pharma.</p>
-            <span class="doc-cta">Open ↗</span>
-          </a>
-        </div>
-      </div>
+    <div class="docs-grid rv">
+      <a class="doc-tile" href="/evidence">
+        <span class="doc-tag">/ 01</span>
+        <h4>Evidence <em>index</em></h4>
+        <p>Source list with status, type, and access route for every public claim.</p>
+        <span class="doc-cta">Open</span>
+      </a>
+      <a class="doc-tile" href="/recognition">
+        <span class="doc-tag">/ 02</span>
+        <h4>Recognition <em>record</em></h4>
+        <p>CCN expert citations, IGI Global peer review, publication context.</p>
+        <span class="doc-cta">Open</span>
+      </a>
+      <a class="doc-tile" href="/publications">
+        <span class="doc-tag">/ 03</span>
+        <h4>Publication <em>archive</em></h4>
+        <p>Live URLs for Cointelegraph and AlphaWire, plus a PDF archive.</p>
+        <span class="doc-cta">Open</span>
+      </a>
+      <a class="doc-tile" href="/testimonials">
+        <span class="doc-tag">/ 04</span>
+        <h4>Client <em>feedback</em></h4>
+        <p>Verbatim quotes from BBC, General Mills, MRI, Diligent Pharma.</p>
+        <span class="doc-cta">Open</span>
+      </a>
     </div>
   </section>
 </SiteLayout>

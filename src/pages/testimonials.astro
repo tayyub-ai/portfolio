@@ -10,103 +10,51 @@ import SiteLayout from "../components/SiteLayout.astro";
   crumbs={[{ label: "Home", href: "/" }, { label: "Testimonials" }]}
 >
   <style slot="head">
-    .tst-shell{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:18px}
-    @media (max-width:880px){.tst-shell{grid-template-columns:1fr}}
+    /* ── Quote cards (consistent, clean) ── */
+    .quote-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px}
+    @media (max-width:780px){.quote-grid{grid-template-columns:1fr}}
 
-    /* === Email screenshot (BBC) === */
-    .email{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 14px 40px rgba(60,40,20,.14);transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
-    .email:hover{transform:translateY(-4px);box-shadow:0 22px 60px rgba(60,40,20,.22)}
-    .email-bar{display:flex;align-items:center;gap:10px;padding:11px 16px;background:linear-gradient(180deg,#f5f3ee,#e8e2d2);border-bottom:1px solid var(--line)}
-    .email-bar .dots{display:flex;gap:5px}
-    .email-bar .dots span{width:8px;height:8px;border-radius:50%}
-    .email-bar .dots span:nth-child(1){background:#ff5f57}
-    .email-bar .dots span:nth-child(2){background:#febc2e}
-    .email-bar .dots span:nth-child(3){background:#28c840}
-    .email-bar .url{flex:1;text-align:center;font-family:var(--mono);font-size:10.5px;color:var(--ink-2);background:#fff;padding:5px 14px;border-radius:6px;border:1px solid var(--line)}
-    .email-toolbar{display:flex;align-items:center;gap:14px;padding:10px 18px;background:#fff;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-    .email-toolbar .star{color:var(--ochre)}
-    .email-headers{padding:18px 22px 12px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-family:var(--mono);font-size:12px}
-    .email-headers .lbl{color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-size:10px;align-self:center}
-    .email-headers .val{color:var(--ink);font-family:var(--sans)}
-    .email-headers .from{color:var(--ink);font-weight:600;font-family:var(--sans);font-size:14px}
-    .email-headers .from .org{color:var(--terra);font-size:12px;font-weight:500;margin-left:8px}
-    .email-headers .subject{font-family:var(--serif);font-size:18px;letter-spacing:-.01em;font-style:italic;color:var(--ink);grid-column:span 2;margin-top:4px}
-    .email-body{padding:22px 22px 24px;font-family:Georgia,serif;font-size:14.5px;line-height:1.65;color:var(--ink-2)}
-    .email-body p{margin-bottom:10px}
-    .email-body b{color:var(--ink);background:linear-gradient(180deg,transparent 60%,rgba(200,153,66,.3) 60%);padding:0 2px}
-    .email-body .sign{margin-top:18px;color:var(--muted);font-size:13px;font-style:italic}
+    .qcard{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px 30px;display:flex;flex-direction:column;gap:18px;box-shadow:var(--shadow-1);transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s;overflow:hidden}
+    .qcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .qcard::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
+    .qcard.q-2::before{background:var(--ochre)}
+    .qcard.q-3::before{background:var(--moss)}
+    .qcard.q-4::before{background:var(--coral)}
 
-    /* === Letterhead memo (General Mills) === */
-    .memo{position:relative;background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;box-shadow:0 14px 40px rgba(60,40,20,.14);transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
-    .memo:hover{transform:translateY(-4px) rotate(.6deg);box-shadow:0 22px 60px rgba(60,40,20,.22)}
-    .memo-letterhead{padding:24px 28px 18px;border-bottom:2px solid var(--ink);position:relative;display:flex;justify-content:space-between;align-items:end;background:linear-gradient(180deg,#fff,#fafaf5)}
-    .memo-letterhead::after{content:"";position:absolute;left:28px;right:28px;bottom:-6px;height:1px;background:var(--ink);opacity:.4}
-    .memo-crest{display:flex;align-items:center;gap:14px}
-    .memo-crest svg{width:48px;height:48px;color:#0046ad}
-    .memo-crest .crest-text h4{font-family:'Inter',sans-serif;font-weight:800;font-size:18px;color:#0046ad;letter-spacing:-.02em;line-height:1}
-    .memo-crest .crest-text .sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-2);text-transform:uppercase;margin-top:2px}
-    .memo-stamp{display:flex;flex-direction:column;align-items:center;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--terra);text-transform:uppercase;text-align:center;line-height:1.4;border:1.5px solid var(--terra);padding:6px 10px;transform:rotate(-3deg);background:rgba(254,247,237,.85)}
-    .memo-stamp b{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:14px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--terra)}
-    .memo-fields{padding:20px 28px 14px;display:grid;grid-template-columns:auto 1fr;gap:8px 22px;font-family:var(--mono);font-size:11.5px;border-bottom:1px dashed var(--line)}
-    .memo-fields .lbl{color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-size:10px}
-    .memo-fields .val{color:var(--ink);font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0;text-transform:none}
-    .memo-fields .val b{font-weight:600}
-    .memo-title{padding:18px 28px 6px;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);letter-spacing:-.01em}
-    .memo-body{padding:8px 28px 28px;font-family:Georgia,serif;font-size:14.5px;line-height:1.7;color:var(--ink-2)}
-    .memo-body p{margin-bottom:10px}
-    .memo-body b{color:var(--ink);font-weight:600}
-    .memo-sign{margin-top:16px;font-family:'Instrument Serif',Georgia,serif;font-style:italic;color:var(--ink);font-size:18px;border-bottom:1px solid var(--ink);padding-bottom:4px;display:inline-block;letter-spacing:-.005em}
+    .qcard-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:14px;border-bottom:1px dashed var(--line)}
+    .qcard-h .who{display:flex;flex-direction:column;gap:2px}
+    .qcard-h .who b{font-family:'Inter',sans-serif;font-weight:700;font-size:15px;letter-spacing:-.005em;color:var(--ink)}
+    .qcard-h .who .role{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+    .qcard-h .tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase;text-align:right;line-height:1.4}
+    .qcard.q-2 .qcard-h .tag{color:#8a5e15}
+    .qcard.q-3 .qcard-h .tag{color:var(--moss)}
+    .qcard.q-4 .qcard-h .tag{color:var(--coral)}
 
-    /* === Slack chat bubble (Diligent Pharma) === */
-    .chat{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 14px 40px rgba(60,40,20,.14);transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
-    .chat:hover{transform:translateY(-4px);box-shadow:0 22px 60px rgba(60,40,20,.22)}
-    .chat-bar{display:flex;align-items:center;gap:10px;padding:12px 18px;background:#3f0f3f;color:#fff;font-family:'Inter',sans-serif}
-    .chat-bar .channel{display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600}
-    .chat-bar .channel::before{content:"#";font-weight:400;opacity:.7}
-    .chat-bar .topic{font-size:11.5px;opacity:.7;border-left:1px solid rgba(255,255,255,.2);padding-left:12px;margin-left:6px}
-    .chat-bar .meta{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;opacity:.55}
-    .chat-body{padding:24px 22px}
-    .chat-msg{display:grid;grid-template-columns:auto 1fr;gap:14px;margin-bottom:18px}
-    .chat-avatar{width:44px;height:44px;border-radius:9px;background:linear-gradient(160deg,var(--moss),var(--sage));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:#fff;font-size:18px;line-height:1}
-    .chat-content .head{display:flex;align-items:baseline;gap:8px;font-family:'Inter',sans-serif;margin-bottom:4px}
-    .chat-content .name{font-weight:700;color:var(--ink);font-size:14px}
-    .chat-content .role{font-size:11.5px;color:var(--muted);font-family:var(--mono);letter-spacing:.04em}
-    .chat-content .ts{font-size:11px;color:var(--muted);margin-left:auto}
-    .chat-content p{font-family:'Inter',sans-serif;font-size:14.5px;line-height:1.6;color:var(--ink);margin-bottom:8px}
-    .chat-content p b{font-weight:600;background:rgba(122,143,94,.15);padding:0 4px;border-radius:3px;color:var(--moss)}
-    .chat-reactions{display:flex;gap:6px;margin-top:6px}
-    .chat-reactions span{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;background:#fafaf5;border:1px solid var(--line);border-radius:12px;font-family:'Inter',sans-serif;font-size:11.5px;color:var(--ink-2)}
-    .chat-input{padding:12px 18px;background:#fafaf5;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:13px;color:var(--muted)}
-    .chat-input .field{flex:1;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--muted)}
+    .qbody{font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.45;letter-spacing:-.008em;color:var(--ink);position:relative;padding-left:18px}
+    .qbody::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--terra)}
+    .qcard.q-2 .qbody::before{background:var(--ochre)}
+    .qcard.q-3 .qbody::before{background:var(--moss)}
+    .qcard.q-4 .qbody::before{background:var(--coral)}
+    .qbody b{font-style:normal;color:var(--ink);font-weight:600;background:linear-gradient(180deg,transparent 65%,rgba(200,153,66,.32) 65%);padding:0 2px}
 
-    /* === Handwritten notebook note (MRI Management) === */
-    .notebook-note{position:relative;background:linear-gradient(180deg,#fefcf6,#f9f3e4);background-image:linear-gradient(180deg,#fefcf6,#f9f3e4),repeating-linear-gradient(0deg,transparent 0,transparent 27px,rgba(122,143,94,.15) 27px,rgba(122,143,94,.15) 28px);background-blend-mode:multiply;border:1px solid #d8c79c;border-radius:6px;padding:42px 36px 28px 64px;box-shadow:0 14px 40px rgba(60,40,20,.18);position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
-    .notebook-note:hover{transform:translateY(-4px) rotate(-.6deg);box-shadow:0 22px 60px rgba(60,40,20,.25)}
-    .notebook-note::before{content:"";position:absolute;left:40px;top:0;bottom:0;width:1px;background:#d97757;opacity:.6}
-    .notebook-note::after{content:"";position:absolute;bottom:-1px;right:-1px;width:60px;height:60px;background:linear-gradient(225deg,transparent 50%,#e9d9b5 50%);box-shadow:-2px -2px 8px rgba(60,40,20,.15)}
-    .notebook-holes{position:absolute;left:14px;top:14px;bottom:14px;display:flex;flex-direction:column;justify-content:space-around;width:10px}
-    .notebook-holes span{width:10px;height:10px;border-radius:50%;background:#fff;border:1px solid #c9b88e;box-shadow:inset 1px 1px 2px rgba(60,40,20,.12)}
-    .notebook-note .date{font-family:'Caveat',cursive,var(--serif);font-size:16px;color:#7c4a16;margin-bottom:10px}
-    .notebook-note .title{font-family:'Caveat',cursive,var(--serif);font-size:24px;color:#3d2c12;margin-bottom:14px;font-weight:600;line-height:1.1}
-    .notebook-note .quote{font-family:'Caveat',cursive,var(--serif);font-size:21px;line-height:1.45;color:#3d2c12;font-weight:400}
-    .notebook-note .quote b{font-weight:700;background:linear-gradient(180deg,transparent 70%,rgba(217,119,87,.4) 70%);padding:0 3px}
-    .notebook-note .sign{margin-top:18px;display:flex;justify-content:space-between;align-items:end;font-family:'Caveat',cursive,var(--serif);font-size:18px;color:#3d2c12}
-    .notebook-note .sign b{font-size:20px;border-bottom:2px solid #7c4a16;padding-bottom:0;display:inline-block}
+    .qfoot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+    .qfoot .source{display:inline-flex;align-items:center;gap:5px}
+    .qfoot .source::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5}
 
-    /* ── Header counter strip ── */
-    .tst-counter{display:flex;flex-wrap:wrap;gap:18px;margin-top:8px}
-    .tst-counter .stat{flex:1;min-width:140px;display:flex;flex-direction:column;gap:2px;padding:14px 18px;background:#fff;border:1px solid var(--line);border-radius:10px}
-    .tst-counter .stat .v{font-family:var(--serif);font-size:32px;letter-spacing:-.02em;color:var(--ink);line-height:1}
+    /* Counter strip */
+    .tst-counter{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+    .tst-counter .stat{flex:1;min-width:140px;display:flex;flex-direction:column;gap:4px;padding:18px 22px;background:#fff;border:1px solid var(--line);border-radius:12px}
+    .tst-counter .stat .v{font-family:var(--serif);font-size:36px;letter-spacing:-.02em;color:var(--ink);line-height:1}
     .tst-counter .stat .v em{font-style:italic;color:var(--terra)}
     .tst-counter .stat .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
 
-    /* ── Trailing context block ── */
-    .tst-foot{margin-top:36px;padding:22px 26px;background:linear-gradient(160deg,var(--bg-soft),#fff);border:1px solid var(--line);border-radius:14px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
-    .tst-foot .text{font-size:14px;color:var(--ink-2);line-height:1.55;max-width:60ch}
-    .tst-foot .text b{color:var(--ink);font-weight:600;display:block;font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:-.01em;margin-bottom:4px}
-    .tst-foot .links{display:flex;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase}
-    .tst-foot .links a{display:inline-flex;align-items:center;gap:4px}
-    .tst-foot .links a::after{content:"→"}
+    /* Footer route */
+    .qfooter{margin-top:36px;padding:24px 28px;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+    .qfooter .text b{display:block;font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:-.01em;color:var(--ink);margin-bottom:2px}
+    .qfooter .text span{font-size:14px;color:var(--ink-2);line-height:1.55}
+    .qfooter .links{display:flex;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase}
+    .qfooter .links a{display:inline-flex;align-items:center;gap:4px}
+    .qfooter .links a::after{content:"→"}
   </style>
 
   <PageHeader
@@ -120,132 +68,74 @@ import SiteLayout from "../components/SiteLayout.astro";
       <div class="stat"><span class="v"><em><span data-count="4">0</span></em></span><span class="k">Verbatim quotes</span></div>
       <div class="stat"><span class="v"><span data-count="12">0</span><em>+</em></span><span class="k">Named client programmes</span></div>
       <div class="stat"><span class="v"><span data-count="11">0</span><em>+</em></span><span class="k">Verticals served</span></div>
-      <div class="stat"><span class="v">★</span><span class="k">Direct stakeholders</span></div>
+      <div class="stat"><span class="v">★</span><span class="k">Direct stakeholder feedback</span></div>
     </div>
   </section>
 
-  <section class="section wrap" data-screen-label="Artifacts">
+  <section class="section wrap" data-screen-label="Quotes">
     <div class="sec-head rv">
       <div class="sec-head-l">
         <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Verbatim record</span>
-        <h2>Four <em>artifacts</em>, four media.</h2>
-        <p>Each quote stays in the medium it arrived in: a stakeholder email, an interoffice memo, a Slack message, and a notebook entry.</p>
+        <h2>What clients <em>said</em>.</h2>
+        <p>Each quote is reproduced unedited from the source. Stakeholder names withheld where the engagement is private.</p>
       </div>
       <div class="sec-head-r">/ unedited</div>
     </div>
 
-    <div class="tst-shell">
-      <!-- Email screenshot (BBC) -->
-      <article class="email rv">
-        <div class="email-bar">
-          <span class="dots"><span></span><span></span><span></span></span>
-          <span class="url">mail.app · BBC project · inbox</span>
-        </div>
-        <div class="email-toolbar">
-          <span class="star">★ starred</span>
-          <span>· important</span>
-          <span style="margin-left:auto">14 May · 09:42 BST</span>
-        </div>
-        <div class="email-headers">
-          <span class="lbl">From</span>
-          <span class="from">Project stakeholder<span class="org">· BBC · Media · UK</span></span>
-          <span class="lbl">To</span>
-          <span class="val">Tayyub Yaqoob</span>
-          <span class="lbl">Subject</span>
-          <span class="subject">Re: tool update · shared with wider teams</span>
-        </div>
-        <div class="email-body">
-          <p>Hi Tayyub,</p>
-          <p>The tool is working fully, and we've been able to <b>share the update with wider teams</b>. Thanks for landing this so quickly.</p>
-          <p>Will loop you back in when the next iteration is on the table.</p>
-          <p class="sign">· Project stakeholder · BBC</p>
-        </div>
-      </article>
-
-      <!-- Letterhead memo (General Mills) -->
-      <article class="memo rv d1">
-        <header class="memo-letterhead">
-          <div class="memo-crest">
-            <svg viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 4 L42 14 V34 L24 44 L6 34 V14 Z" fill="none" stroke="currentColor" stroke-width="2"/>
-              <path d="M24 12 L36 19 V29 L24 36 L12 29 V19 Z" fill="currentColor" opacity=".3"/>
-              <text x="24" y="30" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="14" fill="currentColor">GM</text>
-            </svg>
-            <div class="crest-text">
-              <h4>General Mills</h4>
-              <div class="sub">Blue Buffalo · Account</div>
-            </div>
-          </div>
-          <span class="memo-stamp">High praise<b>passed on</b>internal</span>
+    <div class="quote-grid">
+      <article class="qcard q-1 rv">
+        <header class="qcard-h">
+          <div class="who"><b>BBC</b><span class="role">Project stakeholder</span></div>
+          <span class="tag">Media · UK</span>
         </header>
-        <div class="memo-fields">
-          <span class="lbl">To</span><span class="val">Tayyub Yaqoob</span>
-          <span class="lbl">From</span><span class="val"><b>Account team · Blue Buffalo</b></span>
-          <span class="lbl">Re</span><span class="val">First-go feedback · positive</span>
-          <span class="lbl">Date</span><span class="val">14 May 2026</span>
-        </div>
-        <div class="memo-title">Interoffice <em>memo</em>.</div>
-        <div class="memo-body">
-          <p>The feedback was very positive… overall they are happy with the first go at this.</p>
-          <p>I appreciate all your help and of course <b>passed on high praise of your work</b>. Will sync on next phase shortly.</p>
-          <span class="memo-sign">General Mills · Blue Buffalo</span>
-        </div>
+        <blockquote class="qbody">The tool is working fully, and we've been able to <b>share the update with wider teams</b>.</blockquote>
+        <footer class="qfoot">
+          <span class="source">Email · 2026</span>
+          <span>Verbatim</span>
+        </footer>
       </article>
 
-      <!-- Slack chat (Diligent Pharma) -->
-      <article class="chat rv d2">
-        <div class="chat-bar">
-          <span class="channel">analytics-feedback</span>
-          <span class="topic">Diligent Pharma · stakeholder thread</span>
-          <span class="meta">Today · 14:08</span>
-        </div>
-        <div class="chat-body">
-          <div class="chat-msg">
-            <div class="chat-avatar">D</div>
-            <div class="chat-content">
-              <div class="head">
-                <span class="name">Diligent Pharma</span>
-                <span class="role">· stakeholder</span>
-                <span class="ts">14:08</span>
-              </div>
-              <p>Our analytics are <b>in great shape</b> at this point and we're feeling confident about the ways they will help us. Quick win.</p>
-              <p style="font-size:13px;color:var(--ink-2);margin-bottom:0">Will share with the wider team this afternoon.</p>
-              <div class="chat-reactions">
-                <span>👏 4</span>
-                <span>✅ 2</span>
-                <span>🙏 1</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="chat-input">
-          <span>+</span>
-          <span class="field">Reply in thread…</span>
-          <span style="font-family:var(--mono);font-size:10px;letter-spacing:.06em">⏎</span>
-        </div>
+      <article class="qcard q-2 rv d1">
+        <header class="qcard-h">
+          <div class="who"><b>General Mills</b><span class="role">Account team · Blue Buffalo</span></div>
+          <span class="tag">Consumer · global</span>
+        </header>
+        <blockquote class="qbody">The feedback was very positive. Overall they are happy with the first go at this. I appreciate all your help and of course <b>passed on high praise of your work</b>.</blockquote>
+        <footer class="qfoot">
+          <span class="source">Stakeholder review</span>
+          <span>Verbatim</span>
+        </footer>
       </article>
 
-      <!-- Handwritten note (MRI Management) -->
-      <article class="notebook-note rv d3">
-        <div class="notebook-holes">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <div class="date">Tuesday · 14 May 2026</div>
-        <div class="title">MRI Management · engagement partner</div>
-        <div class="quote">
-          "I really liked working with you and hope we can build a working relationship. <b>I have 3 to 4 clients that require your skills</b> on a routine basis."
-        </div>
-        <div class="sign">
-          <span>· engagement partner</span>
-          <b>MRI</b>
-        </div>
+      <article class="qcard q-3 rv d2">
+        <header class="qcard-h">
+          <div class="who"><b>Diligent Pharma</b><span class="role">Stakeholder</span></div>
+          <span class="tag">Pharma · life sciences</span>
+        </header>
+        <blockquote class="qbody">Our analytics are <b>in great shape</b> at this point and we're feeling confident about the ways they will help us.</blockquote>
+        <footer class="qfoot">
+          <span class="source">Stakeholder review</span>
+          <span>Verbatim</span>
+        </footer>
+      </article>
+
+      <article class="qcard q-4 rv d3">
+        <header class="qcard-h">
+          <div class="who"><b>MRI Management</b><span class="role">Engagement partner</span></div>
+          <span class="tag">Property tech · US</span>
+        </header>
+        <blockquote class="qbody">I really liked working with you and hope we can build a working relationship. <b>I have 3 to 4 clients that require your skills on a routine basis.</b></blockquote>
+        <footer class="qfoot">
+          <span class="source">Partner conversation</span>
+          <span>Verbatim</span>
+        </footer>
       </article>
     </div>
 
-    <div class="tst-foot rv">
+    <div class="qfooter rv">
       <div class="text">
         <b>Full engagement context.</b>
-        Named programmes, approved deliverables, and recommendation context are catalogued in the evidence index and detailed in the case studies.
+        <span>Named programmes, approved deliverables, and recommendation context are catalogued in the evidence index and detailed in the case studies.</span>
       </div>
       <div class="links">
         <a href="/evidence">Evidence index</a>

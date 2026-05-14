@@ -119,33 +119,17 @@ const publicationSchema = {
     .pub-card:hover .cta::after{transform:translate(2px,-2px)}
     @media (max-width:780px){.pub-cards{grid-template-columns:1fr}}
 
-    /* ── Microfilm reel archive ── */
-    .microfilm{margin-top:42px;background:linear-gradient(160deg,#1a1714,#2a2520);color:#e8e2d2;border-radius:18px;padding:42px 36px;display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;overflow:hidden;position:relative;box-shadow:0 18px 50px rgba(0,0,0,.25)}
-    .microfilm::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 18px,rgba(232,226,210,.04) 18px,rgba(232,226,210,.04) 19px);pointer-events:none}
-    .microfilm-body{position:relative;z-index:1}
-    .microfilm .lab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ochre);text-transform:uppercase;margin-bottom:6px;font-weight:600}
-    .microfilm h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.05;letter-spacing:-.015em;color:#fff}
-    .microfilm h3 em{font-style:italic;color:var(--ochre)}
-    .microfilm p{font-size:14.5px;color:#c8bfa8;line-height:1.65;margin-top:10px;max-width:48ch}
-    .microfilm p a{color:var(--terra);border-bottom:1px solid currentColor}
-    .microfilm .cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 16px;border-radius:999px;background:var(--terra);color:#fff;font-family:var(--sans);font-weight:600;font-size:13px;text-decoration:none;transition:background .25s}
-    .microfilm .cta:hover{background:var(--coral)}
-    .microfilm-reels{position:relative;z-index:1;display:flex;align-items:center;gap:18px}
-    .reel{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at center,#3a342c 12%,#1a1714 13% 22%,#3a342c 23%);position:relative;animation:spin 16s linear infinite}
-    .reel.r2{animation-direction:reverse;animation-duration:14s}
-    .reel::before{content:"";position:absolute;inset:8px;border-radius:50%;border:2px dashed rgba(232,226,210,.22)}
-    .reel::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:var(--ochre);box-shadow:0 0 12px rgba(200,153,66,.5)}
-    .reel-spoke{position:absolute;top:50%;left:50%;width:90px;height:2px;background:#3a342c;transform-origin:left center;transform:translate(0,-50%)}
-    .reel-spoke:nth-child(1){transform:translate(0,-50%) rotate(0deg)}
-    .reel-spoke:nth-child(2){transform:translate(0,-50%) rotate(60deg)}
-    .reel-spoke:nth-child(3){transform:translate(0,-50%) rotate(120deg)}
-    .reel-spoke:nth-child(4){transform:translate(0,-50%) rotate(180deg)}
-    .reel-spoke:nth-child(5){transform:translate(0,-50%) rotate(240deg)}
-    .reel-spoke:nth-child(6){transform:translate(0,-50%) rotate(300deg)}
-    .film-tape{position:absolute;left:0;right:0;top:50%;height:14px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,#3a342c 0,#3a342c 6px,#1a1714 6px,#1a1714 8px);border-top:1px solid #5d4a28;border-bottom:1px solid #5d4a28;z-index:-1}
-    .microfilm-plate{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--ochre);text-transform:uppercase;background:rgba(26,23,20,.85);padding:3px 10px;border:1px solid var(--ochre);border-radius:3px}
-    @keyframes spin{to{transform:rotate(360deg)}}
-    @media (max-width:780px){.microfilm{grid-template-columns:1fr;text-align:left}.microfilm-reels{justify-content:center}.reel{width:90px;height:90px}.reel-spoke{width:60px}}
+    /* ── Archive card (clean) ── */
+    .archive{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px 36px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow-1);transition:transform .35s,box-shadow .35s,border-color .25s}
+    .archive:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .archive .lab{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;font-weight:600}
+    .archive h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.6vw,32px);line-height:1.1;letter-spacing:-.015em;color:var(--ink)}
+    .archive h3 em{font-style:italic;color:var(--terra)}
+    .archive p{font-size:14px;color:var(--ink-2);line-height:1.65;margin-top:8px;max-width:54ch}
+    .archive .cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:999px;background:var(--ink);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;text-decoration:none;transition:background .25s,transform .25s;white-space:nowrap}
+    .archive .cta:hover{background:var(--terra);transform:translateY(-1px)}
+    .archive .cta::after{content:"↗"}
+    @media (max-width:780px){.archive{grid-template-columns:1fr;padding:24px 26px}}
   </style>
 
   <PageHeader
@@ -308,25 +292,13 @@ const publicationSchema = {
       <div class="sec-head-r"><a href="/evidence">Evidence index →</a></div>
     </div>
 
-    <div class="microfilm rv">
-      <div class="microfilm-body">
+    <div class="archive rv">
+      <div>
         <span class="lab">§ Archive · publisher restructure</span>
-        <h3>Microfilm <em>archive</em>.</h3>
+        <h3>Cointelegraph <em>PDF archive</em>.</h3>
         <p>{publicationArchive.description} A PDF record of older Cointelegraph pieces preserved after the publisher restructured its author pages. Where direct URLs remain live they are listed above.</p>
-        <a class="cta" href={publicationArchive.url} target="_blank" rel="noreferrer">Retrieve PDF →</a>
       </div>
-      <div class="microfilm-reels">
-        <div class="reel">
-          <span class="reel-spoke"></span><span class="reel-spoke"></span><span class="reel-spoke"></span>
-          <span class="reel-spoke"></span><span class="reel-spoke"></span><span class="reel-spoke"></span>
-        </div>
-        <div class="film-tape" style="position:relative;width:30px"></div>
-        <div class="reel r2">
-          <span class="reel-spoke"></span><span class="reel-spoke"></span><span class="reel-spoke"></span>
-          <span class="reel-spoke"></span><span class="reel-spoke"></span><span class="reel-spoke"></span>
-        </div>
-      </div>
-      <span class="microfilm-plate">REEL · CT-2022-2024</span>
+      <a class="cta" href={publicationArchive.url} target="_blank" rel="noreferrer">Open PDF</a>
     </div>
   </section>
 

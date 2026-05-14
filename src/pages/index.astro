@@ -10,47 +10,41 @@ import SiteLayout from "../components/SiteLayout.astro";
   footerLead="Senior roles, consulting, expert commentary, conference talks, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays."
 >
   <style slot="head">
-    /* ── Hero: credentials eyebrow + proof badges + latest-published card ── */
-    .hero-grid{align-items:start}
+    /* ── Hero ── */
+    .hero-grid{align-items:center}
+    .hero-grid h1{font-size:clamp(46px,6vw,86px);line-height:.98;letter-spacing:-.028em}
+    .lede.lines{display:flex;flex-direction:column;gap:4px;font-size:16px;line-height:1.5;color:var(--ink-2);max-width:46ch}
+    .lede.lines b{color:var(--ink);font-weight:600}
+    .outlet-strip{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}
+    .outlet-strip .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-right:14px}
+    .outlet-strip span:not(.lab){font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-2);padding:0 14px;border-right:1px solid var(--line);transition:color .25s}
+    .outlet-strip span:not(.lab):last-child{border-right:0}
+    .outlet-strip span:not(.lab):hover{color:var(--terra)}
+    @media (max-width:780px){
+      .outlet-strip span:not(.lab){font-size:14px;padding:0 10px}
+    }
 
-    /* Eyebrow with portrait */
-    .eyebrow-rich{display:inline-flex;align-items:center;gap:12px;padding:6px 16px 6px 6px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-1);font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--ink-2);text-transform:none;line-height:1.3;max-width:100%;flex-wrap:wrap}
-    .eyebrow-rich .eb-portrait{width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid #fff;box-shadow:0 1px 4px rgba(60,40,20,.18);filter:saturate(.92) contrast(1.04)}
-    .eyebrow-rich .eb-line{font-weight:500;color:var(--ink)}
-    .eyebrow-rich .eb-line b{color:var(--terra);font-weight:600}
-    @media (max-width:540px){.eyebrow-rich{font-size:10.5px;padding:6px 14px 6px 6px}.eyebrow-rich .eb-portrait{width:30px;height:30px}}
+    /* Portrait card (clean, no gimmicks) */
+    .portrait-card{position:relative;aspect-ratio:4/5;max-width:380px;margin-left:auto;border-radius:14px;overflow:hidden;background:var(--bg-soft);border:1px solid var(--line);box-shadow:0 18px 50px rgba(60,40,20,.18)}
+    .portrait-card img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.04)}
+    .portrait-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(26,23,20,.55));pointer-events:none}
+    .portrait-cap{position:absolute;left:18px;bottom:18px;right:18px;display:flex;justify-content:space-between;align-items:end;color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;z-index:2}
+    .portrait-cap b{font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:0;text-transform:none;font-weight:400;color:#fff;display:block;margin-bottom:2px}
+    .portrait-cap span.role{display:block;font-size:10.5px;letter-spacing:.04em;color:rgba(255,255,255,.75);text-transform:none;line-height:1.3;font-family:var(--sans);font-weight:500}
+    .portrait-cap .yr{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.65)}
+    @media (max-width:880px){.portrait-card{margin:24px auto 0;max-width:100%}}
 
-    /* Proof badges */
-    .proof-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-    .pb{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:-.005em;color:var(--ink-2);transition:border-color .25s,background .25s,transform .25s,box-shadow .25s}
-    .pb:hover{border-color:var(--terra);background:var(--terra-soft);transform:translateY(-1px);box-shadow:var(--shadow-1)}
-    .pb b{color:var(--ink);font-weight:600}
-    .pb .pb-ic{color:var(--ochre);font-size:13px;line-height:1}
+    /* ── Final CTA section ── */
+    .closer{background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:14px;padding:48px 52px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:end;box-shadow:var(--shadow-1)}
+    .closer h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.8vw,52px);line-height:1.02;letter-spacing:-.02em;text-wrap:balance}
+    .closer h2 em{font-style:italic;color:var(--terra)}
+    .closer .lead{font-size:15px;color:var(--ink-2);line-height:1.65;margin-top:14px;max-width:54ch}
+    .closer .right{display:flex;flex-direction:column;gap:18px;align-items:flex-end}
+    .closer .right ul{list-style:none;display:flex;flex-direction:column;gap:6px;text-align:right;font-family:var(--mono);font-size:11px;color:var(--ink-2);letter-spacing:.04em;text-transform:uppercase}
+    .closer .right ul li::after{content:"";display:inline-block;width:14px;height:1px;background:var(--terra);margin-left:8px;vertical-align:middle}
+    @media (max-width:780px){.closer{grid-template-columns:1fr;padding:32px 26px}.closer .right{align-items:flex-start}.closer .right ul{text-align:left}.closer .right ul li::after{display:none}}
 
-    /* Latest published magazine-cover card */
-    .latest{position:relative;display:flex;flex-direction:column;background:linear-gradient(170deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 18px 50px rgba(60,40,20,.16);max-width:440px;margin-left:auto;transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
-    .latest:hover{transform:translateY(-5px) rotate(-.6deg);box-shadow:0 28px 70px rgba(60,40,20,.26)}
-    .latest::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--terra),var(--coral),var(--ochre));z-index:2}
-    .latest-h{display:flex;justify-content:space-between;align-items:end;gap:12px;padding:22px 24px 12px;border-bottom:2px solid var(--ink);position:relative;z-index:1;flex-wrap:wrap}
-    .latest-h .outlet{font-family:Georgia,'Instrument Serif',serif;font-weight:900;font-size:30px;letter-spacing:-.045em;color:var(--ink);line-height:.85}
-    .latest-h .format{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;font-weight:600;text-align:right;line-height:1.4}
-    .latest-body{padding:18px 24px 14px;display:flex;flex-direction:column;gap:10px;flex:1}
-    .latest-tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--terra);text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:8px}
-    .latest-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--terra);animation:pulse 2s infinite;flex-shrink:0}
-    .latest-title{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.4vw,28px);line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin-top:2px}
-    .latest-title em{font-style:italic;color:var(--terra)}
-    .latest:hover .latest-title em{color:var(--coral)}
-    .latest-desc{font-size:13.5px;color:var(--ink-2);line-height:1.6;max-width:50ch;margin-top:2px}
-    .latest-foot{display:flex;justify-content:space-between;align-items:center;padding:14px 24px 18px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);gap:14px;flex-wrap:wrap;background:rgba(232,226,210,.25)}
-    .latest-cta{color:var(--terra);font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:.1em;display:inline-flex;align-items:center;gap:5px}
-    .latest-cta::after{content:"↗";transition:transform .25s}
-    .latest:hover .latest-cta::after{transform:translate(2px,-2px)}
-    .latest-more{color:var(--ink-2);font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
-    .latest .corner-stamp{position:absolute;top:18px;right:20px;width:54px;height:54px;border:1.5px solid var(--ochre);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ochre);font-family:var(--mono);font-size:7.5px;letter-spacing:.12em;line-height:1.3;background:rgba(254,247,237,.85);transform:rotate(-8deg);text-transform:uppercase;text-align:center;z-index:3;pointer-events:none}
-    .latest .corner-stamp b{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--ochre)}
-    @media (max-width:880px){.latest{margin:24px auto 0;max-width:100%}.latest .corner-stamp{display:none}}
-
-    /* ── Industry distribution bar ── */
+    /* Industry distribution bar */
     .indust-bar{display:flex;width:100%;height:18px;border-radius:9px;overflow:hidden;border:1px solid var(--line);margin-top:18px;background:#fff}
     .indust-bar span{display:block;height:100%;transform:scaleX(0);transform-origin:left;transition:transform 1.2s cubic-bezier(.4,0,.2,1)}
     .indust-bar.in span{transform:scaleX(1)}
@@ -68,7 +62,7 @@ import SiteLayout from "../components/SiteLayout.astro";
     .indust-key .k{display:inline-flex;align-items:center;gap:6px}
     .indust-key .sw{width:9px;height:9px;border-radius:2px;display:inline-block}
 
-    /* ── Radial dial metric strip ── */
+    /* Radial dial metric strip */
     .dials{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
     .dial{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:18px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
     .dial::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:2px;background:linear-gradient(90deg,transparent,var(--terra),transparent);opacity:0;transition:opacity .35s}
@@ -89,44 +83,19 @@ import SiteLayout from "../components/SiteLayout.astro";
     .dial .sub{font-size:12px;color:var(--ink-2);line-height:1.45;max-width:22ch}
     @media (max-width:880px){.dials{grid-template-columns:1fr 1fr}}
 
-    /* ── Network graph ── */
-    .netgraph-shell{position:relative;background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-1)}
-    .netgraph-shell::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(196,77,44,.07) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;opacity:.5}
-    .netgraph{display:block;width:100%;height:auto;position:relative;z-index:1}
-    .netgraph .edge{stroke:var(--line-2);stroke-width:1.4;fill:none;stroke-dasharray:6 4;stroke-dashoffset:120;animation:flow 3.5s linear infinite;opacity:.65;transition:stroke .3s,opacity .3s,stroke-width .3s}
-    .netgraph .edge.primary{stroke:var(--terra);opacity:.85}
-    .netgraph .edge.secondary{opacity:.5;stroke-width:1}
-    .netgraph g.node{cursor:pointer}
-    .netgraph g.node:hover .node-bg{fill:#fff;stroke:var(--terra);stroke-width:2}
-    .netgraph g.node:hover .node-label{fill:var(--terra)}
-    .netgraph g.node:hover ~ .edge[data-target],
-    .netgraph g.node:hover + .edge{stroke:var(--terra);stroke-width:2;opacity:1}
-    .netgraph .node-bg{fill:#fff;stroke:var(--line);stroke-width:1.4;transition:fill .25s,stroke .25s,stroke-width .25s;filter:drop-shadow(0 1px 3px rgba(26,23,20,.08))}
-    .netgraph .node-bg.primary{stroke:var(--terra);stroke-width:1.6}
-    .netgraph .centre-bg{fill:var(--ink);stroke:none}
-    .netgraph .centre-bg-halo{fill:none;stroke:var(--terra);stroke-width:1.4;opacity:.4;animation:haloRing 3s ease-in-out infinite}
-    .netgraph .centre-label{fill:#fff;font-family:var(--serif);font-style:italic;font-size:18px;text-anchor:middle;dominant-baseline:middle}
-    .netgraph .node-label{fill:var(--ink);font-family:var(--sans);font-size:12.5px;font-weight:600;text-anchor:middle;dominant-baseline:middle;transition:fill .25s}
-    .netgraph .node-sub{fill:var(--muted);font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-anchor:middle;dominant-baseline:middle;text-transform:uppercase}
-    @keyframes flow{to{stroke-dashoffset:0}}
-    @keyframes haloRing{0%,100%{transform:scale(1);opacity:.4}50%{transform:scale(1.15);opacity:.15}}
-    .netgraph g.node{transform-origin:center;transform-box:fill-box;transition:transform .3s cubic-bezier(.4,0,.2,1)}
-    .netgraph g.node:hover{transform:scale(1.08)}
-    @media (max-width:720px){.netgraph-shell{padding:10px}.netgraph .node-sub{display:none}}
-
-    /* ── Three case-study posters ── */
+    /* Posters */
     .poster-strip{display:flex;flex-direction:column;gap:14px;margin-top:18px}
-    .poster{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:stretch;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
+    .poster{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:stretch;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s;text-decoration:none;color:inherit}
     .poster:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
     .poster::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
     .poster.p-2::before{background:var(--ochre)}
     .poster.p-3::before{background:var(--moss)}
     .poster .ptag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase}
-    .poster.p-2 .ptag{color:var(--ochre-deep,#8a5e15)}
+    .poster.p-2 .ptag{color:#8a5e15}
     .poster.p-3 .ptag{color:var(--moss)}
     .poster .ph{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.4vw,32px);line-height:1.05;letter-spacing:-.015em;margin-top:6px;color:var(--ink)}
     .poster .ph em{font-style:italic;color:var(--terra)}
-    .poster.p-2 .ph em{color:var(--ochre-deep,#8a5e15)}
+    .poster.p-2 .ph em{color:#8a5e15}
     .poster.p-3 .ph em{color:var(--moss)}
     .poster .pdesc{font-size:14px;color:var(--ink-2);line-height:1.6;margin-top:8px;max-width:50ch}
     .poster-viz{margin-top:14px;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px;position:relative;overflow:hidden}
@@ -136,7 +105,7 @@ import SiteLayout from "../components/SiteLayout.astro";
     .pstat{display:flex;flex-direction:column;gap:2px}
     .pstat .pv{font-family:var(--serif);font-size:26px;line-height:1;letter-spacing:-.01em;color:var(--ink)}
     .pstat .pv em{font-style:italic;color:var(--terra)}
-    .poster.p-2 .pstat .pv em{color:var(--ochre-deep,#8a5e15)}
+    .poster.p-2 .pstat .pv em{color:#8a5e15}
     .poster.p-3 .pstat .pv em{color:var(--moss)}
     .pstat .pk{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
     .pchips{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
@@ -144,7 +113,6 @@ import SiteLayout from "../components/SiteLayout.astro";
     .pcta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase;margin-top:14px}
     .pcta::after{content:"→";transition:transform .25s}
     .poster:hover .pcta::after{transform:translateX(3px)}
-    /* Forecast poster */
     .pv-fc .grid line{stroke:var(--line);stroke-width:1;stroke-dasharray:2 4;opacity:.6}
     .pv-fc .axis-lbl{font-family:var(--mono);font-size:9px;fill:var(--muted);letter-spacing:.06em}
     .pv-fc .hist{stroke:var(--terra);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600}
@@ -155,7 +123,6 @@ import SiteLayout from "../components/SiteLayout.astro";
     .poster.in .pv-fc .hist{transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1);stroke-dashoffset:0}
     .poster.in .pv-fc .fc{transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1) 1.3s;stroke-dashoffset:0}
     .poster.in .pv-fc .band{opacity:1}
-    /* Sentiment river poster */
     .pv-rv .layer{fill:var(--line-2);transform-origin:bottom;transform:scaleY(0);transition:transform 1.1s cubic-bezier(.4,0,.2,1)}
     .pv-rv .layer.l-pos{fill:#a8c08a;transition-delay:.5s}
     .pv-rv .layer.l-neu{fill:#e7d6a8;transition-delay:.7s}
@@ -164,7 +131,6 @@ import SiteLayout from "../components/SiteLayout.astro";
     .pv-rv .axis-lbl{font-family:var(--mono);font-size:9px;fill:var(--muted);letter-spacing:.06em}
     .pv-rv .flag-line{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 3}
     .pv-rv .flag{font-family:var(--mono);font-size:8.5px;fill:var(--ink);letter-spacing:.04em}
-    /* SERP comparison poster */
     .pv-sp .panel{fill:#fff;stroke:var(--line);stroke-width:1}
     .pv-sp .panel-h{font-family:var(--mono);font-size:9px;fill:var(--muted);letter-spacing:.1em;text-transform:uppercase}
     .pv-sp .result{font-family:var(--sans);font-size:9px;fill:var(--ink-2)}
@@ -172,74 +138,66 @@ import SiteLayout from "../components/SiteLayout.astro";
     .pv-sp .row{fill:#fff;stroke:var(--line);stroke-width:.8}
     .pv-sp .row-hit{fill:#fff5d7;stroke:var(--ochre)}
     .pv-sp .arrow{stroke:var(--terra);stroke-width:1.5;fill:var(--terra);stroke-dasharray:200;stroke-dashoffset:200;animation:none}
-    .poster.in .pv-sp .arrow{animation:drawSpark 1.4s cubic-bezier(.4,0,.2,1) .8s forwards}
+    .poster.in .pv-sp .arrow{animation:drawSparkArrow 1.4s cubic-bezier(.4,0,.2,1) .8s forwards}
+    @keyframes drawSparkArrow{to{stroke-dashoffset:0}}
     .pv-sp .scrub-line{stroke:var(--line);stroke-width:1}
     .pv-sp .scrub-marker{fill:var(--terra)}
     .pv-sp .scrub-lbl{font-family:var(--mono);font-size:8.5px;fill:var(--muted);letter-spacing:.06em}
     @media (max-width:780px){.poster{grid-template-columns:1fr}.pgutter{flex-direction:row;align-items:end;flex-wrap:wrap}.pgutter .pstats{flex-direction:row;flex-wrap:wrap;border-top:0}}
 
-    /* ── Envelope CTA ── */
-    .env-wrap{position:relative;margin-top:18px}
-    .envelope{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-1)}
-    .env-flap{position:absolute;top:0;left:0;width:100%;height:60%;background:linear-gradient(180deg,var(--bg-soft),#fff);border-bottom:1px solid var(--line);transform-origin:top;transform:rotateX(0);transition:transform 1.2s cubic-bezier(.6,.05,.3,1) .25s;z-index:3;clip-path:polygon(0 0,100% 0,50% 100%)}
-    .env-wrap.in .env-flap{transform:rotateX(180deg)}
-    .env-stamp{position:absolute;top:20px;right:24px;width:78px;height:78px;border:1.5px solid var(--terra);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--terra);font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;line-height:1.3;background:rgba(254,247,237,.5);transform:rotate(-8deg);z-index:4;opacity:0;transition:opacity .8s ease 1.5s,transform .8s ease 1.5s}
-    .env-wrap.in .env-stamp{opacity:1;transform:rotate(-8deg) translateY(-4px)}
-    .env-stamp b{font-family:var(--serif);font-size:18px;letter-spacing:0;line-height:1;font-style:italic;text-transform:none;margin-top:2px}
-    .env-body{position:relative;padding:90px 40px 38px;display:grid;grid-template-columns:1.5fr 1fr;gap:32px;align-items:end;z-index:1}
-    .env-body::before{content:"";position:absolute;inset:18px;border:1px dashed var(--line);border-radius:8px;pointer-events:none;opacity:.6}
-    .env-message .typed{font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--ink);max-width:60ch;opacity:0;transition:opacity .8s ease 1.2s;border-left:2px solid var(--terra);padding-left:16px}
-    .env-wrap.in .env-message .typed{opacity:1}
-    .env-message h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);line-height:1.05;letter-spacing:-.018em;margin-top:6px}
-    .env-message h2 em{font-style:italic;color:var(--terra)}
-    .env-message .from{margin-top:18px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-    .env-cta{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-    .env-cta .reqs{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;text-align:right}
-    .env-cta .reqs li{list-style:none;padding:3px 0;display:flex;align-items:center;gap:6px;justify-content:flex-end}
-    .env-cta .reqs li::after{content:"";width:16px;height:1px;background:var(--terra);opacity:.6}
-    @media (max-width:780px){.env-body{grid-template-columns:1fr;padding:84px 24px 28px}.env-cta{align-items:flex-start}.env-cta .reqs li{justify-content:flex-start}.env-cta .reqs li::after{display:none}.env-stamp{top:14px;right:14px;width:64px;height:64px}}
+    /* Press cell legacy styles (used by marquee) */
+    .press-cell{padding:22px 16px;min-height:104px;gap:10px;align-items:center;text-align:center}
+    .press-cell .pn-fallback{display:flex;align-items:center;justify-content:center;height:34px;line-height:1;letter-spacing:-.02em;font-weight:800;font-size:18px}
+    .press-cell .pk{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+    .brand-bbc .pn-fallback{font-family:Arial,sans-serif;font-weight:900;color:#000;letter-spacing:-1px}
+    .brand-bbc .pn-fallback b{background:#000;color:#fff;padding:5px 6px;margin-right:2px;font-size:15px;display:inline-block;line-height:1}
+    .brand-bbc .pn-fallback b:last-child{margin-right:0}
+    .brand-tesco .pn-fallback{color:#ee1c2e;font-family:Helvetica,Arial,sans-serif;font-style:italic;font-weight:800;font-size:24px;letter-spacing:-.03em;position:relative;display:inline-flex;padding-bottom:3px}
+    .brand-tesco .pn-fallback::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#0064b1;border-radius:1px}
+    .brand-gm .pn-fallback{color:#0046ad;font-family:Inter,sans-serif;font-weight:800;font-size:17px;letter-spacing:-.02em}
+    .brand-royal-london .pn-fallback{color:#1d3a6e;font-family:Georgia,serif;font-weight:600;font-size:18px;letter-spacing:.01em}
+    .brand-nerdwallet .pn-fallback{color:#008a05;font-family:Inter,sans-serif;font-weight:800;font-size:18px;letter-spacing:-.01em}
   </style>
 
   <section class="hero wrap" data-screen-label="01 Intro" id="top">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow-rich rv" data-parallax="6">
-          <img src="/assets/portrait.jpeg" class="eb-portrait" alt="Tayyub Yaqoob" />
-          <span class="eb-line"><b>Published in Cointelegraph</b> · Cited by CCN · Peer reviewer for IGI Global · Senior analyst, 8 Million Stories</span>
+        <div class="eyebrow rv" data-parallax="6">
+          <span class="dot"></span>
+          Tayyub Yaqoob · Stirling, UK · Open 2026
         </div>
         <h1 class="rv d1">
-          Writing, peer review, and analytics engineering at the intersection of <span class="grad">AI</span>, <span class="marked">measurement</span>, and digital trust.
+          Senior <span class="grad">analyst</span>, writer, and <span class="marked">engineer</span> working on AI, analytics, and measurement.
         </h1>
-        <p class="lede rv d2">
-          35+ technical features for <b>Cointelegraph</b> and <b>AlphaWire</b> on AI-driven trading, agentic fraud, and quantum-resistant systems. Three completed chapter reviews for <b>IGI Global</b> on CBDCs, IoT-banking consensus, and AI-FinTech. Expert source for <b>CCN</b> on AI-trading risk. Senior Digital Analyst at <b>8 Million Stories</b>, building forecasting, sentiment monitoring, and AI-search visibility systems for client teams.
+        <p class="lede lines rv d2">
+          <span>35+ technical features in <b>Cointelegraph</b> and <b>AlphaWire</b>.</span>
+          <span>Cited as expert source by <b>CCN</b>.</span>
+          <span>Peer reviewer for <b>IGI Global</b>.</span>
         </p>
-        <div class="proof-badges rv d3">
-          <span class="pb"><span class="pb-ic">★</span>Bylined · <b>35+ pieces</b></span>
-          <span class="pb"><span class="pb-ic">★</span>Expert source · <b>CCN</b></span>
-          <span class="pb"><span class="pb-ic">★</span>Peer reviewer · <b>IGI Global</b></span>
+        <div class="hero-cta rv d3">
+          <a href="/case-studies" class="btn btn-primary" data-magnet>See the work →</a>
+          <a href="/publications" class="btn btn-ghost" data-magnet>Read the publications ↗</a>
         </div>
-        <div class="hero-cta rv d4">
-          <a href="/publications" class="btn btn-primary" data-magnet>See the publications →</a>
-          <a href="/evidence" class="btn btn-ghost" data-magnet>Open the evidence ↗</a>
+        <div class="outlet-strip rv d4">
+          <span class="lab">Published / cited in</span>
+          <span>Cointelegraph</span>
+          <span>AlphaWire</span>
+          <span>CCN</span>
+          <span>IGI Global</span>
+          <span>8 Million Stories</span>
         </div>
       </div>
 
-      <a class="latest rv d2" href="https://cointelegraph.com/news/can-chatgpt-powered-ai-agents-really-trade-crypto-for-you" target="_blank" rel="noreferrer" aria-label="Latest published Cointelegraph feature: Can ChatGPT-powered AI agents really trade crypto for you?">
-        <div class="corner-stamp">Latest<b>2026</b>Feature</div>
-        <header class="latest-h">
-          <span class="outlet">cointelegraph</span>
-          <span class="format">Technical feature<br/>· bylined · 2026</span>
-        </header>
-        <div class="latest-body">
-          <span class="latest-tag">Latest published</span>
-          <h3 class="latest-title">Can ChatGPT-powered <em>AI agents</em> really trade crypto for you?</h3>
-          <p class="latest-desc">Bylined feature on agentic-AI trading, autonomous-agent risk, and the resilience constraint. Failure modes, threat models, and where the human stays in the loop.</p>
+      <div class="portrait-card rv d2">
+        <img src="/assets/portrait.jpeg" alt="Tayyub Yaqoob" />
+        <div class="portrait-cap">
+          <div>
+            <b>Tayyub Yaqoob</b>
+            <span class="role">Senior Digital Analyst · 8 Million Stories</span>
+          </div>
+          <span class="yr">2026</span>
         </div>
-        <footer class="latest-foot">
-          <span class="latest-cta">Read on Cointelegraph</span>
-          <span class="latest-more">+ 34 more features · 2 AlphaWire · 1 archive</span>
-        </footer>
-      </a>
+      </div>
     </div>
   </section>
 
@@ -248,7 +206,7 @@ import SiteLayout from "../components/SiteLayout.astro";
       <div class="sec-head-l">
         <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Client environments</span>
         <h2>Built for analyst and <em>client teams</em> at:</h2>
-        <p>A selection of named environments where the work has been deployed. The underlying systems are internal; the client list is the visible part.</p>
+        <p>A selection of named environments where the work has been deployed.</p>
       </div>
       <div class="sec-head-r">/ selected examples</div>
     </div>
@@ -268,7 +226,7 @@ import SiteLayout from "../components/SiteLayout.astro";
       </div>
     </div>
 
-    <div class="indust-bar rv" data-indust>
+    <div class="indust-bar rv">
       <span style="flex:0 0 35%"></span>
       <span style="flex:0 0 22%"></span>
       <span style="flex:0 0 18%"></span>
@@ -290,7 +248,7 @@ import SiteLayout from "../components/SiteLayout.astro";
           <div class="num"><span data-count="35">0</span><em>+</em></div>
         </div>
         <span class="k">Technical articles</span>
-        <span class="sub">Live URLs plus archive continuity where publisher structure changed.</span>
+        <span class="sub">Cointelegraph and AlphaWire combined, plus archive.</span>
       </div>
       <div class="dial d-2" style="--off:170">
         <div class="dial-svg">
@@ -298,7 +256,7 @@ import SiteLayout from "../components/SiteLayout.astro";
           <div class="num"><span data-count="3">0</span></div>
         </div>
         <span class="k">IGI Global reviews</span>
-        <span class="sub">Publisher-led peer-review activity on file.</span>
+        <span class="sub">Publisher-led peer-review record.</span>
       </div>
       <div class="dial d-3" style="--off:42">
         <div class="dial-svg">
@@ -314,98 +272,8 @@ import SiteLayout from "../components/SiteLayout.astro";
           <div class="num"><span data-count="12">0</span><em>+</em></div>
         </div>
         <span class="k">AI / ML credentials</span>
-        <span class="sub">Google, AWS, LinkedIn Learning, and related training.</span>
+        <span class="sub">Google, AWS, LinkedIn Learning, related training.</span>
       </div>
-    </div>
-  </section>
-
-  <section class="section wrap" id="proof" data-screen-label="02 Proof">
-    <div class="sec-head rv">
-      <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Where to look first</span>
-        <h2>The <em>site map</em>.</h2>
-        <p>Each node below is a section of the site. Click to open. The four primary nodes are the most-cited reviewer routes.</p>
-      </div>
-      <div class="sec-head-r">/ start anywhere</div>
-    </div>
-
-    <div class="netgraph-shell rv">
-      <svg class="netgraph" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid meet" aria-label="Site navigation graph">
-        <defs>
-          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--line-2)"/></marker>
-        </defs>
-
-        <!-- Edges from centre to primary nodes -->
-        <path class="edge primary" d="M400 250 Q400 170 400 110"/>
-        <path class="edge primary" d="M400 250 Q540 220 660 170"/>
-        <path class="edge primary" d="M400 250 Q540 290 660 340"/>
-        <path class="edge primary" d="M400 250 Q260 290 130 340"/>
-        <path class="edge primary" d="M400 250 Q260 220 130 170"/>
-
-        <!-- Edges from primaries to secondaries -->
-        <path class="edge secondary" d="M400 110 Q480 80 560 60"/>
-        <path class="edge secondary" d="M660 170 Q720 110 740 70"/>
-        <path class="edge secondary" d="M660 340 Q720 400 730 440"/>
-        <path class="edge secondary" d="M130 340 Q80 400 70 440"/>
-        <path class="edge secondary" d="M130 170 Q60 100 60 60"/>
-
-        <!-- Centre node -->
-        <g class="centre">
-          <circle class="centre-bg-halo" cx="400" cy="250" r="50"/>
-          <circle class="centre-bg-halo" cx="400" cy="250" r="62" style="animation-delay:.7s"/>
-          <circle class="centre-bg" cx="400" cy="250" r="42"/>
-          <text class="centre-label" x="400" y="252">TY</text>
-        </g>
-
-        <!-- Primary nodes -->
-        <a href="/case-studies"><g class="node">
-          <rect class="node-bg primary" x="332" y="74" width="136" height="50" rx="10"/>
-          <text class="node-label" x="400" y="92">Case studies</text>
-          <text class="node-sub" x="400" y="110">4 systems</text>
-        </g></a>
-        <a href="/publications"><g class="node">
-          <rect class="node-bg primary" x="582" y="138" width="156" height="50" rx="10"/>
-          <text class="node-label" x="660" y="156">Publications</text>
-          <text class="node-sub" x="660" y="174">35+ articles</text>
-        </g></a>
-        <a href="/recognition"><g class="node">
-          <rect class="node-bg primary" x="582" y="308" width="156" height="50" rx="10"/>
-          <text class="node-label" x="660" y="326">Recognition</text>
-          <text class="node-sub" x="660" y="344">CCN · IGI Global</text>
-        </g></a>
-        <a href="/evidence"><g class="node">
-          <rect class="node-bg primary" x="60" y="308" width="140" height="50" rx="10"/>
-          <text class="node-label" x="130" y="326">Evidence</text>
-          <text class="node-sub" x="130" y="344">Index</text>
-        </g></a>
-        <a href="/about"><g class="node">
-          <rect class="node-bg primary" x="60" y="138" width="140" height="50" rx="10"/>
-          <text class="node-label" x="130" y="156">About</text>
-          <text class="node-sub" x="130" y="174">Profile</text>
-        </g></a>
-
-        <!-- Secondary nodes -->
-        <a href="/press"><g class="node">
-          <rect class="node-bg" x="490" y="36" width="100" height="38" rx="8"/>
-          <text class="node-label" x="540" y="60" style="font-size:11px">Press</text>
-        </g></a>
-        <a href="/labs"><g class="node">
-          <rect class="node-bg" x="690" y="44" width="100" height="38" rx="8"/>
-          <text class="node-label" x="740" y="68" style="font-size:11px">Labs</text>
-        </g></a>
-        <a href="/testimonials"><g class="node">
-          <rect class="node-bg" x="660" y="424" width="140" height="38" rx="8"/>
-          <text class="node-label" x="730" y="448" style="font-size:11px">Testimonials</text>
-        </g></a>
-        <a href="/open-source"><g class="node">
-          <rect class="node-bg" x="10" y="424" width="120" height="38" rx="8"/>
-          <text class="node-label" x="70" y="448" style="font-size:11px">Open source</text>
-        </g></a>
-        <a href="/contact"><g class="node">
-          <rect class="node-bg" x="10" y="44" width="100" height="38" rx="8"/>
-          <text class="node-label" x="60" y="68" style="font-size:11px">Contact</text>
-        </g></a>
-      </svg>
     </div>
   </section>
 
@@ -464,7 +332,7 @@ import SiteLayout from "../components/SiteLayout.astro";
         <div>
           <span class="ptag">/ 02 · Sentiment · LLM-assisted</span>
           <h3 class="ph">Sentiment and topic <em>river</em>.</h3>
-          <p class="pdesc">LLM-assisted classification across press, review, and social. Stacked bands show how positive / neutral / negative coverage shifts month over month. Output is interpreted by the analyst, not auto-published.</p>
+          <p class="pdesc">LLM-assisted classification across press, review, and social. Stacked bands show how positive, neutral, and negative coverage shifts month over month.</p>
           <div class="poster-viz">
             <svg class="pv-rv" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
               <path class="layer l-neg" d="M0 220 L0 168 Q60 158 120 162 T240 152 T360 158 T480 148 T600 150 L600 220 Z"/>
@@ -497,10 +365,9 @@ import SiteLayout from "../components/SiteLayout.astro";
         <div>
           <span class="ptag">/ 03 · AI visibility · AI Overviews</span>
           <h3 class="ph">AI vs traditional <em>search</em>.</h3>
-          <p class="pdesc">Tracking when brands and queries surface differently across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and rendered citation so visibility shifts can be reviewed weeks later.</p>
+          <p class="pdesc">Tracking how brands and queries surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and rendered citation.</p>
           <div class="poster-viz">
             <svg class="pv-sp" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-              <!-- Left panel: traditional SERP -->
               <rect class="panel" x="20" y="30" width="240" height="140" rx="6"/>
               <text class="panel-h" x="32" y="50">Google · organic</text>
               <rect class="row" x="32" y="60" width="216" height="18" rx="3"/>
@@ -511,8 +378,6 @@ import SiteLayout from "../components/SiteLayout.astro";
               <text class="result result-hit" x="40" y="121">your brand · category page</text>
               <rect class="row" x="32" y="132" width="216" height="18" rx="3"/>
               <text class="result" x="40" y="145">forum · long-tail thread</text>
-
-              <!-- Right panel: AI Overviews -->
               <rect class="panel" x="340" y="30" width="240" height="140" rx="6"/>
               <text class="panel-h" x="352" y="50">AI Overviews · cited</text>
               <rect class="row row-hit" x="352" y="60" width="216" height="18" rx="3"/>
@@ -521,12 +386,7 @@ import SiteLayout from "../components/SiteLayout.astro";
               <text class="result" x="360" y="97">competitor a · cited 2/3</text>
               <rect class="row" x="352" y="108" width="216" height="18" rx="3"/>
               <text class="result" x="360" y="121">trade outlet · cited 3/3</text>
-
-              <!-- Migration arrow -->
-              <path class="arrow" d="M250 117 Q295 117 340 70" stroke="currentColor" fill="none" marker-end="url(#parrowh)"/>
-              <defs><marker id="parrowh" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--terra)"/></marker></defs>
-
-              <!-- Timeline scrubber -->
+              <path class="arrow" d="M260 117 Q300 117 340 70" stroke="currentColor" fill="none"/>
               <line class="scrub-line" x1="20" y1="195" x2="580" y2="195"/>
               <text class="scrub-lbl" x="20" y="212">Jan</text>
               <text class="scrub-lbl" x="290" y="212">Jun</text>
@@ -554,30 +414,23 @@ import SiteLayout from "../components/SiteLayout.astro";
     </div>
   </section>
 
-  <section class="section wrap" id="closer" data-screen-label="04 Contact">
-    <div class="env-wrap rv">
-      <div class="envelope" id="envelope">
-        <div class="env-flap"></div>
-        <div class="env-stamp">First-class<b>2026</b>Stirling · UK</div>
-        <div class="env-body">
-          <div class="env-message">
-            <span style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase">§ Closer detail on request</span>
-            <h2>Need the <em>closer detail</em>?</h2>
-            <p class="typed">Most of the strongest work is private to clients. If you need approved screenshots, before/after reporting outputs, recommendation context, or peer-review certificates, ask directly.</p>
-            <div class="from">Tayyub Yaqoob · Senior Digital Analyst · Stirling</div>
-          </div>
-          <div class="env-cta">
-            <ul class="reqs">
-              <li>Approved screenshots</li>
-              <li>Before / after outputs</li>
-              <li>Recommendation context</li>
-              <li>Peer-review certificates</li>
-            </ul>
-            <a href="/contact" class="btn btn-primary" data-magnet>Request closer detail →</a>
-          </div>
-        </div>
+  <section class="section wrap" id="closer-cta" data-screen-label="04 Contact">
+    <div class="closer rv">
+      <div>
+        <span class="sec-tag" style="margin-bottom:12px"><span class="dot" style="background:var(--terra)"></span>§ Closer detail on request</span>
+        <h2>Need the <em>closer detail</em>?</h2>
+        <p class="lead">Most of the strongest work is private to clients. Approved screenshots, before / after reporting outputs, recommendation context, and peer-review certificates available on request.</p>
+        <a href="/contact" class="btn btn-primary" data-magnet style="margin-top:18px">Get in touch →</a>
+      </div>
+      <div class="right">
+        <ul>
+          <li>Approved screenshots</li>
+          <li>Before / after outputs</li>
+          <li>Recommendation context</li>
+          <li>Peer-review certificates</li>
+          <li>Reference checks</li>
+        </ul>
       </div>
     </div>
   </section>
-
 </SiteLayout>
