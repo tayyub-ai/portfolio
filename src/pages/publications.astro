@@ -7,6 +7,24 @@ import {
   publicationArchive,
 } from "../data/publications";
 
+const allArticles = [...liveCointelegraphArticles, ...liveAlphaWireArticles];
+
+const themeOrder = ["Security", "AI agents", "AI trading", "Quantum", "Blockchain", "Fintech", "Payments", "Adoption", "Research workflow", "Business", "Technology"];
+const formatOrder = ["Explained", "How to", "Business", "Technology"];
+const themeColors: Record<string, string> = {
+  "Security": "#c44d2c",
+  "AI agents": "#d97757",
+  "AI trading": "#c89942",
+  "Quantum": "#7a8f5e",
+  "Blockchain": "#5d7a4a",
+  "Fintech": "#8a5e15",
+  "Payments": "#b5763b",
+  "Adoption": "#a8835c",
+  "Research workflow": "#3d5535",
+  "Business": "#c44d2c",
+  "Technology": "#d97757",
+};
+
 const publicationSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -16,7 +34,7 @@ const publicationSchema = {
     "Direct live article URLs plus archive continuity proof for publications across Cointelegraph and AlphaWire.",
   mainEntity: {
     "@type": "ItemList",
-    itemListElement: [...liveCointelegraphArticles, ...liveAlphaWireArticles].map((article, index) => ({
+    itemListElement: allArticles.map((article, index) => ({
       "@type": "ListItem",
       position: index + 1,
       item: {
@@ -41,28 +59,93 @@ const publicationSchema = {
   structuredData={[publicationSchema]}
 >
   <style slot="head">
-    .pub-counter{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
-    .pub-counter .stat{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;display:flex;flex-direction:column;gap:4px;transition:transform .25s,border-color .25s}
-    .pub-counter .stat:hover{transform:translateY(-2px);border-color:var(--line-2)}
-    .pub-counter .stat .v{font-family:var(--serif);font-size:32px;line-height:1;letter-spacing:-.02em}
-    .pub-counter .stat .v em{font-style:italic;color:var(--terra)}
-    .pub-counter .stat .k{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
-    .pub-counter .stat .sub{font-size:12px;color:var(--ink-2);line-height:1.4;margin-top:2px}
-    .pub-list{display:flex;flex-direction:column;gap:0;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-1)}
-    .pub-item{display:grid;grid-template-columns:120px 1fr auto;gap:18px;align-items:center;padding:16px 22px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none;transition:background .2s,padding-left .25s cubic-bezier(.2,.7,.1,1)}
-    .pub-item:last-child{border-bottom:0}
-    .pub-item:hover{background:rgba(196,77,44,.04);padding-left:30px}
-    .pub-item .theme{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-    .pub-item .title{font-family:var(--serif);font-size:18px;line-height:1.3;letter-spacing:-.005em;color:var(--ink)}
-    .pub-item:hover .title{color:var(--terra)}
-    .pub-item .meta{display:flex;gap:8px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
-    .pub-item .meta span{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 8px;border-radius:999px;border:1px solid var(--line);background:#fff}
-    .archive-card{background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;box-shadow:var(--shadow-1)}
-    .archive-card h3{font-family:var(--serif);font-size:32px;font-weight:400;letter-spacing:-.018em;line-height:1.04;margin-bottom:10px}
-    .archive-card h3 em{font-style:italic;color:var(--terra)}
-    .archive-card p{font-size:14.5px;color:var(--ink-2);line-height:1.65;max-width:62ch}
-    .archive-card a{color:var(--terra);border-bottom:1px solid currentColor}
-    @media (max-width:880px){.pub-counter{grid-template-columns:1fr 1fr}.pub-item{grid-template-columns:1fr;gap:8px;padding:16px 18px}.pub-item:hover{padding-left:18px}.pub-item .meta{justify-content:flex-start}}
+    /* ── Radial dial counters (re-use home pattern) ── */
+    .pub-dials{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .pdial{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:18px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
+    .pdial:hover{transform:translateY(-2px);border-color:var(--line-2);box-shadow:var(--shadow-1)}
+    .pdial-svg{position:relative;width:100px;height:100px}
+    .pdial-svg svg{width:100%;height:100%}
+    .pdial .bg-ring{fill:none;stroke:var(--bg-soft);stroke-width:6}
+    .pdial .fg-ring{fill:none;stroke-width:6;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1)}
+    .pub-dials.in .fg-ring{stroke-dashoffset:var(--off)}
+    .pdial.d-1 .fg-ring{stroke:var(--terra)}
+    .pdial.d-2 .fg-ring{stroke:var(--ochre)}
+    .pdial.d-3 .fg-ring{stroke:var(--moss)}
+    .pdial.d-4 .fg-ring{stroke:var(--coral)}
+    .pdial .num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:28px;font-style:italic;color:var(--ink);letter-spacing:-.01em;line-height:1}
+    .pdial .num em{font-style:normal;font-size:16px;color:var(--terra);margin-left:1px}
+    .pdial .k{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:6px}
+    .pdial .sub{font-size:11.5px;color:var(--ink-2);line-height:1.45;max-width:22ch;margin-top:2px}
+    @media (max-width:880px){.pub-dials{grid-template-columns:1fr 1fr}}
+
+    /* ── Theme constellation (scatter plot) ── */
+    .constellation-wrap{position:relative;background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:14px;padding:24px;overflow:hidden;margin-top:18px}
+    .constellation-wrap::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(196,77,44,.06) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;opacity:.6}
+    .const-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:14px;position:relative;z-index:1;flex-wrap:wrap;gap:10px}
+    .const-head h3{font-family:var(--serif);font-weight:400;font-size:22px;letter-spacing:-.01em}
+    .const-head h3 em{font-style:italic;color:var(--terra)}
+    .const-head .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+    .constellation{position:relative;width:100%;height:auto;display:block;z-index:1}
+    .constellation .axis{stroke:var(--line);stroke-width:1}
+    .constellation .axis-lbl{font-family:var(--mono);font-size:9.5px;fill:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .constellation .row-lbl{font-family:var(--mono);font-size:10.5px;fill:var(--ink-2);letter-spacing:.04em}
+    .constellation .grid-line{stroke:var(--line);stroke-dasharray:2 4;opacity:.5}
+    .constellation .article-dot{cursor:pointer;transition:r .3s cubic-bezier(.2,.7,.1,1),fill .25s;transform-box:fill-box;transform-origin:center;animation:fadeIn .6s ease forwards;opacity:0}
+    .constellation .article-dot:hover{r:9}
+    .constellation .article-dot.alphawire{stroke:var(--ink);stroke-width:1.4}
+    @keyframes fadeIn{to{opacity:1}}
+    .const-tip{position:absolute;background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;font-size:12px;line-height:1.4;max-width:280px;pointer-events:none;opacity:0;transition:opacity .2s;z-index:5;box-shadow:0 8px 20px rgba(26,23,20,.18);transform:translate(-50%,-100%) translateY(-10px)}
+    .const-tip.show{opacity:1}
+    .const-tip .ttl{font-family:var(--serif);font-style:italic;font-size:14px;display:block;margin-bottom:2px}
+    .const-tip .meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:rgba(255,255,255,.65);text-transform:uppercase}
+    .const-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink-2);position:relative;z-index:1}
+    .const-legend .lk{display:inline-flex;align-items:center;gap:6px}
+    .const-legend .sw{width:8px;height:8px;border-radius:50%;display:inline-block;border:1px solid transparent}
+
+    /* ── Article cards (themed) ── */
+    .pub-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .pub-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
+    .pub-card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--terra);transition:width .25s}
+    .pub-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .pub-card:hover::before{width:5px}
+    .pub-card .pub-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .pub-card .pub-tag .theme{padding:3px 8px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
+    .pub-card .pub-tag .outlet{color:var(--terra)}
+    .pub-card .pub-tag .format{color:var(--ink-2)}
+    .pub-card h4{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.3;letter-spacing:-.005em;color:var(--ink)}
+    .pub-card:hover h4{color:var(--terra)}
+    .pub-card .cta{margin-top:auto;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase;padding-top:8px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center}
+    .pub-card .cta::after{content:"↗";transition:transform .25s}
+    .pub-card:hover .cta::after{transform:translate(2px,-2px)}
+    @media (max-width:780px){.pub-cards{grid-template-columns:1fr}}
+
+    /* ── Microfilm reel archive ── */
+    .microfilm{margin-top:42px;background:linear-gradient(160deg,#1a1714,#2a2520);color:#e8e2d2;border-radius:18px;padding:42px 36px;display:grid;grid-template-columns:1fr auto;gap:36px;align-items:center;overflow:hidden;position:relative;box-shadow:0 18px 50px rgba(0,0,0,.25)}
+    .microfilm::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 18px,rgba(232,226,210,.04) 18px,rgba(232,226,210,.04) 19px);pointer-events:none}
+    .microfilm-body{position:relative;z-index:1}
+    .microfilm .lab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ochre);text-transform:uppercase;margin-bottom:6px;font-weight:600}
+    .microfilm h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.05;letter-spacing:-.015em;color:#fff}
+    .microfilm h3 em{font-style:italic;color:var(--ochre)}
+    .microfilm p{font-size:14.5px;color:#c8bfa8;line-height:1.65;margin-top:10px;max-width:48ch}
+    .microfilm p a{color:var(--terra);border-bottom:1px solid currentColor}
+    .microfilm .cta{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 16px;border-radius:999px;background:var(--terra);color:#fff;font-family:var(--sans);font-weight:600;font-size:13px;text-decoration:none;transition:background .25s}
+    .microfilm .cta:hover{background:var(--coral)}
+    .microfilm-reels{position:relative;z-index:1;display:flex;align-items:center;gap:18px}
+    .reel{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at center,#3a342c 12%,#1a1714 13% 22%,#3a342c 23%);position:relative;animation:spin 16s linear infinite}
+    .reel.r2{animation-direction:reverse;animation-duration:14s}
+    .reel::before{content:"";position:absolute;inset:8px;border-radius:50%;border:2px dashed rgba(232,226,210,.22)}
+    .reel::after{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:var(--ochre);box-shadow:0 0 12px rgba(200,153,66,.5)}
+    .reel-spoke{position:absolute;top:50%;left:50%;width:90px;height:2px;background:#3a342c;transform-origin:left center;transform:translate(0,-50%)}
+    .reel-spoke:nth-child(1){transform:translate(0,-50%) rotate(0deg)}
+    .reel-spoke:nth-child(2){transform:translate(0,-50%) rotate(60deg)}
+    .reel-spoke:nth-child(3){transform:translate(0,-50%) rotate(120deg)}
+    .reel-spoke:nth-child(4){transform:translate(0,-50%) rotate(180deg)}
+    .reel-spoke:nth-child(5){transform:translate(0,-50%) rotate(240deg)}
+    .reel-spoke:nth-child(6){transform:translate(0,-50%) rotate(300deg)}
+    .film-tape{position:absolute;left:0;right:0;top:50%;height:14px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,#3a342c 0,#3a342c 6px,#1a1714 6px,#1a1714 8px);border-top:1px solid #5d4a28;border-bottom:1px solid #5d4a28;z-index:-1}
+    .microfilm-plate{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--ochre);text-transform:uppercase;background:rgba(26,23,20,.85);padding:3px 10px;border:1px solid var(--ochre);border-radius:3px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media (max-width:780px){.microfilm{grid-template-columns:1fr;text-align:left}.microfilm-reels{justify-content:center}.reel{width:90px;height:90px}.reel-spoke{width:60px}}
   </style>
 
   <PageHeader
@@ -72,61 +155,145 @@ const publicationSchema = {
   />
 
   <section class="section wrap first" data-screen-label="Volume">
-    <div class="pub-counter rv">
-      <div class="stat"><span class="v"><span data-count="35">0</span><em>+</em></span><span class="k">Published technical articles</span><span class="sub">Total body of work across live URLs and archived publication history.</span></div>
-      <div class="stat"><span class="v"><em><span data-count="8">0</span></em></span><span class="k">Verified Cointelegraph links</span><span class="sub">Direct URLs confirmed through browser-accessible retrieval on 2026-05-14.</span></div>
-      <div class="stat"><span class="v"><em><span data-count="2">0</span></em></span><span class="k">Verified live AlphaWire links</span><span class="sub">Current direct URLs still resolving publicly.</span></div>
-      <div class="stat"><span class="v"><em><span data-count="1">0</span></em></span><span class="k">Archive continuity asset</span><span class="sub">PDF record used because publisher structure changed.</span></div>
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Volume</span>
+        <h2>The body of <em>work</em>.</h2>
+        <p>Counts across live URLs and archive continuity. Each dial sweeps to its target value when this section enters the viewport.</p>
+      </div>
+      <div class="sec-head-r">/ verified 2026-05-14</div>
+    </div>
+
+    <div class="pub-dials rv">
+      <div class="pdial d-1" style="--off:75">
+        <div class="pdial-svg">
+          <svg viewBox="0 0 90 90"><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="fg-ring" cx="45" cy="45" r="40"/></svg>
+          <div class="num"><span data-count="35">0</span><em>+</em></div>
+        </div>
+        <span class="k">Technical articles</span>
+        <span class="sub">Body of work across live URLs and archive.</span>
+      </div>
+      <div class="pdial d-2" style="--off:140">
+        <div class="pdial-svg">
+          <svg viewBox="0 0 90 90"><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="fg-ring" cx="45" cy="45" r="40"/></svg>
+          <div class="num"><span data-count="8">0</span></div>
+        </div>
+        <span class="k">Cointelegraph live</span>
+        <span class="sub">Direct URLs verified 2026-05-14.</span>
+      </div>
+      <div class="pdial d-3" style="--off:200">
+        <div class="pdial-svg">
+          <svg viewBox="0 0 90 90"><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="fg-ring" cx="45" cy="45" r="40"/></svg>
+          <div class="num"><span data-count="2">0</span></div>
+        </div>
+        <span class="k">AlphaWire live</span>
+        <span class="sub">Direct URLs still resolving.</span>
+      </div>
+      <div class="pdial d-4" style="--off:220">
+        <div class="pdial-svg">
+          <svg viewBox="0 0 90 90"><circle class="bg-ring" cx="45" cy="45" r="40"/><circle class="fg-ring" cx="45" cy="45" r="40"/></svg>
+          <div class="num"><span data-count="1">0</span></div>
+        </div>
+        <span class="k">Archive asset</span>
+        <span class="sub">PDF record for restructured pages.</span>
+      </div>
     </div>
   </section>
 
-  <section class="section wrap" data-screen-label="Cointelegraph">
+  <section class="section wrap" data-screen-label="Constellation">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Cointelegraph</span>
-        <h2>Articles on <em>crypto-security</em> and AI.</h2>
-        <p>Technical writing on crypto-security, AI in trading, and protocol design. All URLs verified on 2026-05-14.</p>
+        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ Topics and formats</span>
+        <h2>The <em>shape</em> of the writing.</h2>
+        <p>Each dot is a published article positioned by theme and format. Hover for the title; click to open. Filled dots are Cointelegraph; ringed dots are AlphaWire.</p>
       </div>
-      <div class="sec-head-r">/ live links only</div>
+      <div class="sec-head-r">/ {allArticles.length} positioned</div>
     </div>
 
-    <div class="pub-list rv">
-      {liveCointelegraphArticles.map((article) => (
-        <a class="pub-item" href={article.url} target="_blank" rel="noreferrer">
-          <span class="theme">{article.theme}</span>
-          <span>
-            <span class="title">{article.title}</span>
-          </span>
-          <span class="meta">
-            <span>{article.outlet}</span>
-            <span>{article.format}</span>
-          </span>
-        </a>
-      ))}
+    <div class="constellation-wrap rv">
+      <div class="const-head">
+        <h3>Theme × <em>format</em> map.</h3>
+        <span class="meta">/ hover · click to open</span>
+      </div>
+      <svg class="constellation" viewBox="0 0 720 460" preserveAspectRatio="xMidYMid meet" id="constellation">
+        {/* Grid lines */}
+        {formatOrder.map((_, i) => (
+          <line class="grid-line" x1="160" y1={70 + i * 90} x2="700" y2={70 + i * 90}/>
+        ))}
+        {themeOrder.slice(0, 9).map((_, i) => (
+          <line class="grid-line" x1={160 + (i + 1) * 55} y1="40" x2={160 + (i + 1) * 55} y2="400"/>
+        ))}
+        {/* Axes */}
+        <line class="axis" x1="160" y1="400" x2="700" y2="400"/>
+        <line class="axis" x1="160" y1="40" x2="160" y2="400"/>
+        {/* Format row labels (y-axis) */}
+        {formatOrder.map((fmt, i) => (
+          <text class="row-lbl" x="20" y={75 + i * 90} dominant-baseline="middle">{fmt}</text>
+        ))}
+        {/* Theme column labels (x-axis), rotated */}
+        {themeOrder.slice(0, 9).map((theme, i) => (
+          <text class="axis-lbl" x={160 + (i + 1) * 55} y="420" text-anchor="middle" transform={`rotate(-30, ${160 + (i + 1) * 55}, 420)`}>{theme}</text>
+        ))}
+        {/* Article dots */}
+        {allArticles.map((article, i) => {
+          const themeIdx = themeOrder.indexOf(article.theme);
+          const fmtIdx = formatOrder.indexOf(article.format);
+          if (themeIdx === -1 || fmtIdx === -1) return null;
+          const cx = 160 + (themeIdx + 1) * 55;
+          const cy = 70 + fmtIdx * 90;
+          // jitter to avoid overlap
+          const jitterX = ((i * 37) % 24) - 12;
+          const jitterY = ((i * 53) % 18) - 9;
+          const color = themeColors[article.theme] || "#c44d2c";
+          return (
+            <a href={article.url} target="_blank" rel="noreferrer">
+              <circle
+                class={`article-dot ${article.outlet === "AlphaWire" ? "alphawire" : ""}`}
+                cx={cx + jitterX}
+                cy={cy + jitterY}
+                r="6.5"
+                fill={article.outlet === "AlphaWire" ? "#fff" : color}
+                stroke={article.outlet === "AlphaWire" ? color : "none"}
+                stroke-width="2"
+                style={`animation-delay:${0.6 + i * 0.08}s`}
+                data-title={article.title}
+                data-outlet={article.outlet}
+                data-format={article.format}
+                data-theme={article.theme}
+              />
+            </a>
+          );
+        })}
+      </svg>
+      <div class="const-tip" id="const-tip"></div>
+      <div class="const-legend">
+        <span class="lk"><span class="sw" style="background:var(--terra)"></span>Cointelegraph</span>
+        <span class="lk"><span class="sw" style="background:#fff;border-color:var(--terra)"></span>AlphaWire</span>
+        <span class="lk" style="margin-left:auto;color:var(--muted)">y-axis · format · x-axis · theme</span>
+      </div>
     </div>
   </section>
 
-  <section class="section wrap" data-screen-label="AlphaWire">
+  <section class="section wrap" data-screen-label="Articles">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ AlphaWire</span>
-        <h2>Explainers on <em>AI infrastructure</em>.</h2>
-        <p>Explainers and reported pieces on AI infrastructure and digital measurement. All URLs verified on 2026-05-14.</p>
+        <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ Articles</span>
+        <h2>Live <em>article</em> record.</h2>
       </div>
-      <div class="sec-head-r">/ direct article links</div>
+      <div class="sec-head-r">/ all verified</div>
     </div>
 
-    <div class="pub-list rv">
-      {liveAlphaWireArticles.map((article) => (
-        <a class="pub-item" href={article.url} target="_blank" rel="noreferrer">
-          <span class="theme">{article.theme}</span>
-          <span>
-            <span class="title">{article.title}</span>
-          </span>
-          <span class="meta">
-            <span>{article.outlet}</span>
-            <span>{article.format}</span>
-          </span>
+    <div class="pub-cards rv">
+      {allArticles.map((article) => (
+        <a class="pub-card" href={article.url} target="_blank" rel="noreferrer">
+          <div class="pub-tag">
+            <span class="theme" style={`color:${themeColors[article.theme] || "var(--terra)"}`}>{article.theme}</span>
+            <span class="outlet">{article.outlet}</span>
+            <span>·</span>
+            <span class="format">{article.format}</span>
+          </div>
+          <h4>{article.title}</h4>
+          <span class="cta">Open article</span>
         </a>
       ))}
     </div>
@@ -135,16 +302,55 @@ const publicationSchema = {
   <section class="section wrap" data-screen-label="Archive">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ Historical record</span>
-        <h2>Archive of older <em>Cointelegraph</em> pieces.</h2>
+        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ Historical record</span>
+        <h2>Cointelegraph <em>archive</em>.</h2>
       </div>
       <div class="sec-head-r"><a href="/evidence">Evidence index →</a></div>
     </div>
 
-    <div class="archive-card rv">
-      <h3>{publicationArchive.title.replace(" archive", "")} <em>archive</em>.</h3>
-      <p>{publicationArchive.description} A PDF record of older Cointelegraph pieces preserved after the publisher restructured its author pages.</p>
-      <p style="margin-top:14px"><a href={publicationArchive.url}>Open the PDF archive ↗</a></p>
+    <div class="microfilm rv">
+      <div class="microfilm-body">
+        <span class="lab">§ Archive · publisher restructure</span>
+        <h3>Microfilm <em>archive</em>.</h3>
+        <p>{publicationArchive.description} A PDF record of older Cointelegraph pieces preserved after the publisher restructured its author pages. Where direct URLs remain live they are listed above.</p>
+        <a class="cta" href={publicationArchive.url} target="_blank" rel="noreferrer">Retrieve PDF →</a>
+      </div>
+      <div class="microfilm-reels">
+        <div class="reel">
+          <span class="reel-spoke"></span><span class="reel-spoke"></span><span class="reel-spoke"></span>
+          <span class="reel-spoke"></span><span class="reel-spoke"></span><span class="reel-spoke"></span>
+        </div>
+        <div class="film-tape" style="position:relative;width:30px"></div>
+        <div class="reel r2">
+          <span class="reel-spoke"></span><span class="reel-spoke"></span><span class="reel-spoke"></span>
+          <span class="reel-spoke"></span><span class="reel-spoke"></span><span class="reel-spoke"></span>
+        </div>
+      </div>
+      <span class="microfilm-plate">REEL · CT-2022-2024</span>
     </div>
   </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded',()=>{
+      const tip=document.getElementById('const-tip');
+      const constellation=document.getElementById('constellation');
+      if(!tip||!constellation)return;
+      const wrap=constellation.parentElement;
+      constellation.querySelectorAll('.article-dot').forEach(dot=>{
+        dot.addEventListener('mouseenter',e=>{
+          const title=dot.dataset.title;
+          const outlet=dot.dataset.outlet;
+          const format=dot.dataset.format;
+          const theme=dot.dataset.theme;
+          tip.innerHTML='<span class="ttl">'+title+'</span><span class="meta">'+outlet+' · '+format+' · '+theme+'</span>';
+          const r=dot.getBoundingClientRect();
+          const wr=wrap.getBoundingClientRect();
+          tip.style.left=(r.left-wr.left+r.width/2)+'px';
+          tip.style.top=(r.top-wr.top)+'px';
+          tip.classList.add('show');
+        });
+        dot.addEventListener('mouseleave',()=>tip.classList.remove('show'));
+      });
+    });
+  </script>
 </SiteLayout>

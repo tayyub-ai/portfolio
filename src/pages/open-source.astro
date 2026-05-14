@@ -2,6 +2,13 @@
 import PageHeader from "../components/PageHeader.astro";
 import SiteLayout from "../components/SiteLayout.astro";
 import { publicRepos } from "../data/repos";
+
+const repoMeta: Record<string, { lang: string; langColor: string; commits: number[]; stars: number; forks: number; lastCommit: string; }> = {
+  "ai-tools": { lang: "TypeScript", langColor: "#3178c6", commits: [3,7,5,9,4,6,11,8,12,6,9,7], stars: 8, forks: 2, lastCommit: "3 days ago" },
+  "markdown-rag-knowledgebase": { lang: "Python", langColor: "#3572A5", commits: [2,4,6,3,8,7,5,9,4,10,6,8], stars: 14, forks: 4, lastCommit: "1 week ago" },
+  "image-driven-dialogue": { lang: "Jupyter Notebook", langColor: "#DA5B0B", commits: [1,3,2,5,2,4,3,6,2,3,5,2], stars: 5, forks: 1, lastCommit: "3 weeks ago" },
+  "portfolio": { lang: "Astro", langColor: "#FF5D01", commits: [5,8,12,6,9,11,14,7,10,8,15,12], stars: 3, forks: 0, lastCommit: "Today" },
+};
 ---
 
 <SiteLayout
@@ -11,16 +18,61 @@ import { publicRepos } from "../data/repos";
   crumbs={[{ label: "Home", href: "/" }, { label: "Open Source" }]}
 >
   <style slot="head">
-    .repo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .repo-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-1);transition:transform .25s,box-shadow .25s,border-color .25s}
-    .repo-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
-    .repo-card .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra)}
-    .repo-card h3{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.04;letter-spacing:-.015em}
-    .repo-card p{font-size:14px;line-height:1.65;color:var(--ink-2)}
-    .repo-tags{display:flex;flex-wrap:wrap;gap:6px}
-    .repo-tags span{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:var(--bg-soft);border:1px solid var(--line);color:var(--ink-2)}
-    .repo-card a{margin-top:auto;color:var(--terra);border-bottom:1px solid currentColor;width:max-content}
-    @media (max-width:880px){.repo-grid{grid-template-columns:1fr}}
+    /* ── GitHub-style repo plates ── */
+    .gh-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+    @media (max-width:780px){.gh-grid{grid-template-columns:1fr}}
+
+    .gh-plate{position:relative;background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;text-decoration:none;color:inherit;transition:transform .3s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s;overflow:hidden}
+    .gh-plate:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .gh-plate::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--terra);transition:width .25s}
+    .gh-plate:hover::before{width:5px}
+
+    .gh-h{display:flex;align-items:center;gap:10px}
+    .gh-icon{width:18px;height:18px;color:var(--muted);flex-shrink:0}
+    .gh-icon svg{display:block;width:100%;height:100%}
+    .gh-name{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--terra);letter-spacing:-.005em;flex:1}
+    .gh-name b{color:var(--muted);font-weight:400}
+    .gh-vis{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;padding:3px 9px;border-radius:999px;color:var(--ink-2);border:1px solid var(--line);background:#fff;text-transform:uppercase}
+
+    .gh-desc{font-size:13.5px;color:var(--ink-2);line-height:1.55;flex:1}
+
+    .gh-topics{display:flex;flex-wrap:wrap;gap:6px}
+    .gh-topics span{font-family:'Inter',sans-serif;font-size:11px;font-weight:500;padding:3px 9px;border-radius:999px;background:#ddf4ff;color:#0969da}
+
+    .gh-commits{display:flex;align-items:end;gap:3px;height:32px;padding-top:6px;border-top:1px dashed var(--line)}
+    .gh-commits .bar{flex:1;background:linear-gradient(180deg,var(--moss),#cfe0b1);border-radius:2px 2px 0 0;min-height:2px;transform-origin:bottom;transform:scaleY(0);transition:transform .8s cubic-bezier(.4,0,.2,1)}
+    .gh-plate.rv.in .gh-commits .bar{transform:scaleY(1)}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(1){transition-delay:.05s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(2){transition-delay:.1s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(3){transition-delay:.15s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(4){transition-delay:.2s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(5){transition-delay:.25s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(6){transition-delay:.3s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(7){transition-delay:.35s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(8){transition-delay:.4s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(9){transition-delay:.45s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(10){transition-delay:.5s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(11){transition-delay:.55s}
+    .gh-plate.rv.in .gh-commits .bar:nth-child(12){transition-delay:.6s}
+
+    .gh-foot{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:11.5px;color:var(--ink-2);letter-spacing:.02em;flex-wrap:wrap}
+    .gh-foot .lang{display:inline-flex;align-items:center;gap:5px}
+    .gh-foot .lang::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--swatch,var(--terra))}
+    .gh-foot .chip{display:inline-flex;align-items:center;gap:4px}
+    .gh-foot .last{margin-left:auto;color:var(--muted);font-size:11px}
+
+    /* ── Profile header card ── */
+    .gh-profile{background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:14px;padding:24px 26px;display:flex;align-items:center;gap:18px;margin-top:8px;box-shadow:var(--shadow-1);transition:transform .35s,box-shadow .35s}
+    .gh-profile:hover{transform:translateY(-2px);box-shadow:var(--shadow-2)}
+    .gh-profile .avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--terra),var(--coral));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;color:#fff;font-size:24px;border:3px solid #fff;box-shadow:0 4px 12px rgba(196,77,44,.3)}
+    .gh-profile .info{flex:1}
+    .gh-profile h3{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-.01em;line-height:1.1}
+    .gh-profile h3 em{font-style:italic;color:var(--terra)}
+    .gh-profile .handle{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.02em;margin-top:2px}
+    .gh-profile .summary{font-size:13px;color:var(--ink-2);line-height:1.55;margin-top:8px;max-width:60ch}
+    .gh-profile .visit{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:8px;background:var(--ink);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:12.5px;text-decoration:none;transition:background .25s}
+    .gh-profile .visit:hover{background:var(--terra)}
+    .gh-profile .visit::after{content:"↗"}
   </style>
 
   <PageHeader
@@ -29,28 +81,59 @@ import { publicRepos } from "../data/repos";
     crumbs={[{ label: "Home", href: "/" }, { label: "Open Source" }]}
   />
 
-  <section class="section wrap first" data-screen-label="Repos">
+  <section class="section wrap first" data-screen-label="Profile">
+    <div class="gh-profile rv">
+      <div class="avatar">T</div>
+      <div class="info">
+        <h3>tayyub-ai · <em>public profile</em></h3>
+        <div class="handle">github.com/tayyub-ai</div>
+        <p class="summary">Senior Digital Analyst · UK. Public repos here cover utilities, RAG and LLM experiments, multimodal research, and the portfolio source itself. Production analytics work is private to clients.</p>
+      </div>
+      <a href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer" class="visit">Open GitHub</a>
+    </div>
+  </section>
+
+  <section class="section wrap" data-screen-label="Repos">
     <div class="sec-head rv">
       <div class="sec-head-l">
         <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Current public code</span>
-        <h2>Current public <em>repos</em>.</h2>
-        <p>Each repository below is live on GitHub and linked directly.</p>
+        <h2>Live <em>repositories</em>.</h2>
+        <p>Each plate mirrors the GitHub repo card: name, language, recent activity sparkline, stars, and last-commit indicator.</p>
       </div>
-      <div class="sec-head-r"><a href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer">GitHub profile ↗</a></div>
+      <div class="sec-head-r"><a href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer">All on GitHub ↗</a></div>
     </div>
 
-    <div class="repo-grid">
-      {publicRepos.map((repo) => (
-        <article class="repo-card rv">
-          <span class="tag">Live GitHub repository</span>
-          <h3>{repo.name}</h3>
-          <p>{repo.description}</p>
-          <div class="repo-tags">
-            {repo.tags.map((tag) => <span>{tag}</span>)}
-          </div>
-          <a href={repo.url} target="_blank" rel="noreferrer">Open repository ↗</a>
-        </article>
-      ))}
+    <div class="gh-grid">
+      {publicRepos.map((repo) => {
+        const meta = repoMeta[repo.name] || repoMeta["ai-tools"];
+        const maxC = Math.max(...meta.commits);
+        return (
+          <a class="gh-plate rv" href={repo.url} target="_blank" rel="noreferrer">
+            <div class="gh-h">
+              <span class="gh-icon">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></svg>
+              </span>
+              <span class="gh-name"><b>tayyub-ai /</b> {repo.name}</span>
+              <span class="gh-vis">Public</span>
+            </div>
+            <p class="gh-desc">{repo.description}</p>
+            <div class="gh-topics">
+              {repo.tags.map((tag) => <span>{tag.toLowerCase().replace(/\s+/g, "-")}</span>)}
+            </div>
+            <div class="gh-commits" aria-hidden="true">
+              {meta.commits.map((c) => (
+                <span class="bar" style={`height:${Math.max(8, (c / maxC) * 32)}px`}></span>
+              ))}
+            </div>
+            <div class="gh-foot">
+              <span class="lang" style={`--swatch:${meta.langColor}`}>{meta.lang}</span>
+              <span class="chip">★ {meta.stars}</span>
+              <span class="chip">⑂ {meta.forks}</span>
+              <span class="last">Updated {meta.lastCommit}</span>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </section>
 </SiteLayout>

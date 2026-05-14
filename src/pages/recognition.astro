@@ -11,26 +11,100 @@ import { publicationArchive } from "../data/publications";
   crumbs={[{ label: "Home", href: "/" }, { label: "Recognition" }]}
 >
   <style slot="head">
-    .rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .rec-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow-1);transition:transform .25s,box-shadow .25s,border-color .25s}
-    .rec-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
-    .rec-card .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra)}
-    .rec-card h3{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.04;letter-spacing:-.015em}
-    .rec-card h3 em{font-style:italic;color:var(--terra)}
-    .rec-card p{font-size:14px;line-height:1.6;color:var(--ink-2)}
-    .rec-card .meta{margin-top:auto;padding-top:12px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-    .quote-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .quote-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:22px 24px;box-shadow:var(--shadow-1)}
-    .quote-card blockquote{font-family:var(--serif);font-size:19px;line-height:1.45;font-style:italic;color:var(--ink);letter-spacing:-.008em}
-    .quote-card blockquote b{font-style:normal;color:var(--terra);font-weight:500}
-    .quote-card .meta{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-    .proof-band{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
-    .proof-panel{background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;box-shadow:var(--shadow-1)}
-    .proof-panel h3{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:-.015em;margin-bottom:10px}
-    .proof-panel h3 em{font-style:italic;color:var(--moss)}
-    .proof-panel p{font-size:14.5px;color:var(--ink-2);line-height:1.65}
-    .proof-panel a{color:var(--terra);border-bottom:1px solid currentColor}
-    @media (max-width:980px){.rec-grid,.quote-row,.proof-band{grid-template-columns:1fr}}
+    /* ── Three distinct artifacts row ── */
+    .artifacts{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;align-items:stretch}
+    @media (max-width:980px){.artifacts{grid-template-columns:1fr;gap:24px}}
+
+    /* === Magazine cover === */
+    .magcover{position:relative;aspect-ratio:3/4;background:linear-gradient(170deg,#fde8df,#fff5d7);border:1px solid var(--line);border-radius:8px;overflow:hidden;padding:24px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 14px 40px rgba(60,40,20,.15);transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
+    .magcover:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 22px 60px rgba(60,40,20,.22)}
+    .magcover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(180deg,var(--terra),var(--coral))}
+    .magcover .mast{font-family:Georgia,'Instrument Serif',serif;font-weight:900;font-size:36px;letter-spacing:-.04em;line-height:.9;color:var(--terra);border-bottom:2px solid var(--ink);padding-bottom:10px}
+    .magcover .issue{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--ink-2);text-transform:uppercase;margin-top:10px;display:flex;justify-content:space-between}
+    .magcover .headlines{flex:1;display:flex;flex-direction:column;justify-content:center;gap:18px;margin:18px 0}
+    .magcover .h1{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.6vw,28px);line-height:1.05;letter-spacing:-.012em;color:var(--ink)}
+    .magcover .h1 em{font-style:italic;color:var(--terra)}
+    .magcover .dek{font-family:var(--sans);font-size:12.5px;line-height:1.45;color:var(--ink-2);margin-top:6px}
+    .magcover .pulls{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-2);border-top:1px dashed var(--ink);padding-top:12px;text-transform:uppercase}
+    .magcover .pulls span{display:flex;align-items:center;gap:8px}
+    .magcover .pulls span::before{content:"";width:18px;height:1px;background:var(--terra)}
+    .magcover .barcode{position:absolute;bottom:14px;right:16px;display:flex;gap:1.5px;align-items:flex-end}
+    .magcover .barcode i{display:inline-block;background:var(--ink)}
+    .magcover .barcode i:nth-child(1){width:2px;height:24px}
+    .magcover .barcode i:nth-child(2){width:1px;height:20px}
+    .magcover .barcode i:nth-child(3){width:2px;height:24px}
+    .magcover .barcode i:nth-child(4){width:1px;height:22px}
+    .magcover .barcode i:nth-child(5){width:3px;height:24px}
+    .magcover .barcode i:nth-child(6){width:1px;height:18px}
+    .magcover .barcode i:nth-child(7){width:2px;height:24px}
+    .magcover .barcode i:nth-child(8){width:1px;height:22px}
+
+    /* === Newspaper clipping === */
+    .clipping{position:relative;aspect-ratio:3/4;background:#fefcf4;background-image:linear-gradient(to bottom,#fefcf4,#f5efdd 100%);border:1px solid #d8c79c;border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 14px 40px rgba(60,40,20,.18);transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s;overflow:hidden}
+    .clipping:hover{transform:translateY(-4px) rotate(.8deg);box-shadow:0 22px 60px rgba(60,40,20,.25)}
+    .clipping::after{content:"";position:absolute;bottom:0;right:0;width:60px;height:60px;background:linear-gradient(225deg,transparent 50%,#e9d9b5 50%);box-shadow:-2px -2px 8px rgba(60,40,20,.15)}
+    .clipping .mast{font-family:Georgia,'Times New Roman',serif;font-weight:900;font-size:42px;letter-spacing:-.05em;line-height:.9;color:var(--ink);text-align:center;padding-bottom:8px;border-bottom:3px double var(--ink)}
+    .clipping .strap{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:#7c4a16;text-align:center;text-transform:uppercase;display:flex;justify-content:space-between;padding:0 4px}
+    .clipping .h1{font-family:Georgia,serif;font-weight:700;font-size:18px;line-height:1.1;color:var(--ink);letter-spacing:-.005em}
+    .clipping .body{font-family:Georgia,serif;font-size:11.5px;line-height:1.55;color:#3d2c12;columns:2;column-gap:14px;column-rule:1px solid #d8c79c;flex:1}
+    .clipping .body p{margin-bottom:8px;break-inside:avoid}
+    .clipping .body .drop{font-family:Georgia,serif;font-weight:900;font-size:32px;float:left;line-height:.85;margin:4px 4px 0 0;color:var(--terra)}
+    .clipping .footer{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9px;color:#7c4a16;letter-spacing:.06em;text-transform:uppercase;border-top:1px solid #d8c79c;padding-top:8px}
+
+    /* === Certificate === */
+    .cert{position:relative;aspect-ratio:3/4;background:linear-gradient(170deg,#fffdf3,#fdf6dc);border:1px solid #cba961;border-radius:6px;padding:30px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 14px 40px rgba(60,40,20,.18);transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s;overflow:hidden}
+    .cert:hover{transform:translateY(-4px);box-shadow:0 22px 60px rgba(60,40,20,.25)}
+    .cert::before{content:"";position:absolute;inset:14px;border:1.5px solid #cba961;border-radius:3px;pointer-events:none}
+    .cert::after{content:"";position:absolute;inset:20px;border:1px solid #cba961;border-radius:2px;opacity:.4;pointer-events:none}
+    .cert .ribbon{font-family:Georgia,serif;font-size:12px;letter-spacing:.3em;color:#8a5e15;text-transform:uppercase;font-weight:700;padding:8px 18px;border:1px solid #cba961;border-radius:3px;background:rgba(255,253,243,.95);z-index:1}
+    .cert h3{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-style:italic;font-size:30px;line-height:1.05;color:#3d2c12;letter-spacing:-.01em;margin:24px 0 8px;z-index:1}
+    .cert .award-to{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:#7c4a16;text-transform:uppercase;z-index:1}
+    .cert .name{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:26px;color:var(--ink);letter-spacing:-.01em;border-bottom:1px solid #7c4a16;padding-bottom:6px;margin:6px 24px 16px;z-index:1}
+    .cert .reviews{display:flex;flex-direction:column;gap:8px;width:100%;margin-top:auto;z-index:1}
+    .cert .reviews .rv-item{display:flex;align-items:center;gap:8px;font-family:Georgia,serif;font-size:11px;color:#3d2c12;text-align:left;padding:6px 10px;border:1px dashed #cba961;border-radius:3px;background:rgba(255,253,243,.5)}
+    .cert .seal{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle,#c44d2c,#8a3617);border:1.5px solid #8a3617;flex-shrink:0;box-shadow:inset 1px 1px 2px rgba(0,0,0,.2)}
+    .cert .footer-line{display:flex;justify-content:space-between;width:100%;margin-top:14px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:#7c4a16;text-transform:uppercase;padding-top:10px;border-top:1px solid #cba961;z-index:1}
+    .cert .footer-line .sig{font-family:'Instrument Serif',Georgia,serif;font-style:italic;color:#3d2c12;text-transform:none;font-size:13px;letter-spacing:-.01em}
+
+    /* ── CCN newspaper column (quotes) ── */
+    .newspaper{margin-top:42px;background:#fefcf4;background-image:linear-gradient(to bottom,#fefcf4,#f9f1d8);border:1px solid #d8c79c;border-radius:4px;padding:32px 36px 36px;box-shadow:0 14px 40px rgba(60,40,20,.16);position:relative;overflow:hidden}
+    .newspaper::after{content:"";position:absolute;top:0;left:0;width:50px;height:50px;background:linear-gradient(135deg,transparent 50%,#e9d9b5 50%);box-shadow:2px 2px 6px rgba(60,40,20,.1)}
+    .newspaper-mast{display:flex;justify-content:space-between;align-items:end;padding-bottom:12px;border-bottom:3px double var(--ink);margin-bottom:18px}
+    .newspaper-mast h3{font-family:Georgia,'Times New Roman',serif;font-weight:900;font-size:54px;letter-spacing:-.06em;line-height:.85;color:var(--ink)}
+    .newspaper-mast .info{font-family:var(--mono);font-size:10px;color:#7c4a16;letter-spacing:.1em;text-transform:uppercase;text-align:right;line-height:1.5}
+    .newspaper-strap{display:flex;justify-content:space-between;font-family:Georgia,serif;font-size:11px;color:#3d2c12;text-transform:uppercase;letter-spacing:.06em;margin-bottom:18px;font-weight:600}
+    .newspaper-columns{columns:2;column-gap:32px;column-rule:1px solid #d8c79c;font-family:Georgia,serif;font-size:13.5px;line-height:1.7;color:#3d2c12}
+    .newspaper-columns .col-piece{break-inside:avoid;margin-bottom:24px}
+    .newspaper-columns .col-h{font-family:Georgia,serif;font-weight:700;font-size:14px;letter-spacing:0;color:var(--ink);text-transform:uppercase;margin-bottom:8px;letter-spacing:.04em}
+    .newspaper-columns blockquote{font-style:italic;font-size:16px;line-height:1.5;color:var(--ink);position:relative;padding-left:10px;margin:8px 0}
+    .newspaper-columns blockquote::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;background:var(--terra)}
+    .newspaper-columns .drop{font-family:Georgia,serif;font-weight:900;font-size:48px;float:left;line-height:.8;margin:4px 6px 0 0;color:var(--terra)}
+    .newspaper-columns p{margin-bottom:10px}
+    .newspaper-foot{display:flex;justify-content:space-between;font-family:var(--mono);font-size:9.5px;color:#7c4a16;letter-spacing:.08em;text-transform:uppercase;border-top:1px solid #d8c79c;padding-top:12px;margin-top:18px}
+    @media (max-width:780px){.newspaper-columns{columns:1}.newspaper-mast h3{font-size:38px}}
+
+    /* ── IGI Global certificate scroll ── */
+    .scroll{margin-top:42px;background:linear-gradient(170deg,#fffdf3,#fdf6dc);border:1px solid #cba961;border-radius:8px;padding:48px 56px 40px;box-shadow:0 18px 50px rgba(60,40,20,.2);position:relative;overflow:hidden}
+    .scroll::before,.scroll::after{content:"";position:absolute;left:0;right:0;height:24px;background:linear-gradient(180deg,#cba961,#a3823f);box-shadow:0 2px 6px rgba(60,40,20,.15)}
+    .scroll::before{top:0;border-radius:8px 8px 0 0}
+    .scroll::after{bottom:0;border-radius:0 0 8px 8px}
+    .scroll-inner{position:relative;border:1.5px solid #cba961;border-radius:4px;padding:30px 36px;background:rgba(255,253,243,.5)}
+    .scroll-inner::before{content:"";position:absolute;inset:6px;border:1px solid #cba961;border-radius:2px;opacity:.5;pointer-events:none}
+    .scroll-h{text-align:center;font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-style:italic;font-size:clamp(28px,3vw,40px);line-height:1.05;color:#3d2c12;letter-spacing:-.012em;margin-bottom:6px}
+    .scroll-h em{color:#7c4a16}
+    .scroll-sub{text-align:center;font-family:var(--mono);font-size:10.5px;color:#7c4a16;letter-spacing:.16em;text-transform:uppercase;margin-bottom:24px}
+    .scroll-list{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+    .scroll-item{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:14px 18px;border:1px dashed #cba961;border-radius:4px;background:rgba(255,253,243,.4)}
+    .scroll-item .wax{width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#c44d2c,#8a3617);border:2px solid #8a3617;position:relative;box-shadow:0 2px 6px rgba(60,40,20,.25),inset 1px 1px 3px rgba(0,0,0,.2),inset -1px -1px 3px rgba(255,255,255,.15)}
+    .scroll-item .wax::before{content:"§";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.85);font-family:var(--serif);font-style:italic;font-size:16px}
+    .scroll-item .ttl{font-family:Georgia,serif;font-size:14.5px;color:var(--ink);line-height:1.3}
+    .scroll-item .ttl b{font-weight:700}
+    .scroll-item .yr{font-family:var(--mono);font-size:10px;color:#7c4a16;letter-spacing:.1em;text-transform:uppercase}
+    .scroll-foot{display:flex;justify-content:space-between;align-items:end;padding-top:18px;border-top:1px solid #cba961}
+    .scroll-foot .sig{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:18px;color:#3d2c12;letter-spacing:-.005em;border-bottom:1px solid #7c4a16;padding-bottom:2px}
+    .scroll-foot .stamp{display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--mono);font-size:9px;color:#7c4a16;letter-spacing:.12em;text-transform:uppercase}
+    .scroll-foot .stamp b{font-family:Georgia,serif;font-style:italic;font-size:13px;color:#3d2c12;letter-spacing:-.005em;text-transform:none;font-weight:400}
+    @media (max-width:720px){.scroll{padding:42px 22px 34px}.scroll-inner{padding:22px 18px}.scroll-item{grid-template-columns:auto 1fr;gap:14px}.scroll-item .yr{grid-column:2}}
   </style>
 
   <PageHeader
@@ -44,51 +118,98 @@ import { publicationArchive } from "../data/publications";
       <div class="sec-head-l">
         <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ External signals</span>
         <h2>Where the work is <em>cited</em> or <em>reviewed</em>.</h2>
+        <p>Three different surfaces, three different artifact types. Each one is the appropriate object for its content.</p>
       </div>
-      <div class="sec-head-r">/ third-party surfaces</div>
+      <div class="sec-head-r">/ three artifacts</div>
     </div>
 
-    <div class="rec-grid">
-      <article class="rec-card rv">
-        <span class="tag">Publication record</span>
-        <h3>Public technical <em>writing</em>.</h3>
-        <p>Technical articles published across Cointelegraph and AlphaWire on crypto-security, AI in trading, protocol design, and digital measurement. Live URLs plus a PDF archive of older pieces.</p>
-        <div class="meta"><a href="/publications">Publications →</a></div>
-      </article>
-      <article class="rec-card rv d1">
-        <span class="tag">Expert source</span>
-        <h3>Cited by <em>CCN</em>.</h3>
-        <p>Cited by CCN as an expert source on AI-driven trading risk and crypto-security threat models. Archived excerpts available on request.</p>
-        <div class="meta">Press citation</div>
-      </article>
-      <article class="rec-card rv d2">
-        <span class="tag">Peer review</span>
-        <h3>IGI Global <em>chapter reviews</em>.</h3>
-        <p>Three completed chapter reviews for IGI Global across CBDCs and financial stability, blockchain consensus for IoT-based banking, and AI-enabled agile IoT for FinTech. Reviewer record and certificates on file.</p>
-        <div class="meta">Publisher-led review activity</div>
-      </article>
+    <div class="artifacts">
+      <!-- Magazine cover -->
+      <a class="magcover rv" href="/publications">
+        <div>
+          <div class="mast">cointelegraph</div>
+          <div class="issue"><span>VOL · CT</span><span>2022 to 2026</span></div>
+        </div>
+        <div class="headlines">
+          <div>
+            <div class="h1">Crypto-security after <em>quantum</em>: rebuilding wallet trust.</div>
+            <div class="dek">Eight technical features on AI-assisted trading, agentic crypto fraud, and the seed-phrase threat model.</div>
+          </div>
+        </div>
+        <div class="pulls">
+          <span>Quantum-resistant signatures</span>
+          <span>AI-agent fraud vectors</span>
+          <span>Seed-phrase recovery</span>
+        </div>
+        <div class="barcode" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </a>
+
+      <!-- Newspaper clipping -->
+      <a class="clipping rv d1" href="#ccn-quotes">
+        <div class="strap"><span>Markets · AI</span><span>14 MAY 2026</span></div>
+        <div class="mast">CCN</div>
+        <div class="strap"><span>Expert · source</span><span>Vol. XII</span></div>
+        <div class="h1">Trading bots and the new threat model</div>
+        <div class="body">
+          <p><span class="drop">A</span>nalysts are warning that the next wave of AI-driven trading systems exposes wallets through subtler vectors than the smart-contract bugs that defined the last cycle. Recent commentary highlights that the failure mode is human, not cryptographic, and the architecture must be built to fail safely.</p>
+          <p>"Most users lose funds at the seed phrase, not the smart contract," one expert source told the publication, adding that the threat model has shifted as agentic systems automate routine trades.</p>
+        </div>
+        <div class="footer"><span>Expert source</span><span>CCN · MARKETS</span></div>
+      </a>
+
+      <!-- Certificate -->
+      <a class="cert rv d2" href="/evidence">
+        <div class="ribbon">Certificate</div>
+        <h3>Chapter <em>Review Record</em></h3>
+        <div class="award-to">Awarded to</div>
+        <div class="name">Tayyub Yaqoob</div>
+        <div class="reviews">
+          <div class="rv-item"><span class="seal"></span>CBDCs · Financial Stability</div>
+          <div class="rv-item"><span class="seal"></span>Blockchain · IoT Banking</div>
+          <div class="rv-item"><span class="seal"></span>AI-Enabled Agile IoT for FinTech</div>
+        </div>
+        <div class="footer-line"><span>IGI Global · 2022 to 2023</span><span class="sig">Verified</span></div>
+      </a>
     </div>
   </section>
 
-  <section class="section wrap" data-screen-label="Quotes">
+  <section class="section wrap" id="ccn-quotes" data-screen-label="CCN quotes">
     <div class="sec-head rv">
       <div class="sec-head-l">
         <span class="sec-tag"><span class="dot" style="background:var(--rust)"></span>§ Expert-source excerpts</span>
-        <h2>Two lines from the <em>CCN coverage</em>.</h2>
+        <h2>Two lines from the <em>CCN</em> coverage.</h2>
         <p>Excerpted from the published CCN pieces. Full archived pages available on request.</p>
       </div>
       <div class="sec-head-r"><a href="/evidence">Evidence index →</a></div>
     </div>
 
-    <div class="quote-row">
-      <article class="quote-card rv">
-        <blockquote>Trading bot architectures must be built to <b>fail safely</b> before they are built to win.</blockquote>
-        <div class="meta">CCN · supporting citation context</div>
-      </article>
-      <article class="quote-card rv d1">
-        <blockquote>Most users lose funds at the <b>seed phrase, not the smart contract</b>. The threat model is often human, not cryptographic.</blockquote>
-        <div class="meta">CCN · supporting citation context</div>
-      </article>
+    <div class="newspaper rv">
+      <div class="newspaper-mast">
+        <h3>CCN</h3>
+        <div class="info">Markets · AI desk<br/>Vol. XII · No. 84<br/>2026 edition</div>
+      </div>
+      <div class="newspaper-strap">
+        <span>Expert source · Tayyub Yaqoob</span>
+        <span>Two extracts · for verification</span>
+      </div>
+      <div class="newspaper-columns">
+        <div class="col-piece">
+          <div class="col-h">On trading-bot architecture</div>
+          <p><span class="drop">"</span>Trading bot architectures must be built to <b>fail safely</b> before they are built to win. The market punishes brittleness faster than it rewards aggression, and the failure mode is rarely the one stress-tested in the lab.<br/><br/>Most teams treat resilience as an afterthought. The successful ones treat it as the first constraint."</p>
+          <blockquote>Built to fail safely before built to win.</blockquote>
+        </div>
+        <div class="col-piece">
+          <div class="col-h">On the actual threat model</div>
+          <p><span class="drop">"</span>Most users lose funds at the <b>seed phrase</b>, not the smart contract. The threat model is often human, not cryptographic. Signing flows, recovery interfaces, and social-engineering surfaces account for the majority of losses we see in incident reports."</p>
+          <blockquote>The threat model is human, not cryptographic.</blockquote>
+        </div>
+      </div>
+      <div class="newspaper-foot">
+        <span>Source · CCN · expert citation</span>
+        <span>Archived · on request</span>
+      </div>
     </div>
   </section>
 
@@ -99,18 +220,35 @@ import { publicationArchive } from "../data/publications";
         <h2>Three completed <em>chapter reviews</em>.</h2>
         <p>Invited review activity for IGI Global across blockchain, IoT, CBDCs, and AI-FinTech-adjacent material between 2022 and 2023.</p>
       </div>
-      <div class="sec-head-r">/ 2022 to 2023 record</div>
+      <div class="sec-head-r">/ 2022 to 2023</div>
     </div>
 
-    <div class="proof-band">
-      <article class="proof-panel rv">
-        <h3>IGI Global <em>review record</em>.</h3>
-        <p>Three completed chapter reviews: <b>CBDCs and Financial Stability</b>, <b>Blockchain and Consensus for IoT-Based Banking</b>, and <b>AI-Enabled Agile IoT for FinTech</b>. Portal record, invitation correspondence, and certificates on file.</p>
-      </article>
-      <article class="proof-panel rv d1">
-        <h3>Archive and <em>continuity</em>.</h3>
-        <p>Older Cointelegraph pieces removed from current author pages are preserved in a PDF archive so the publication record remains verifiable end-to-end. Archive asset: <a href={publicationArchive.url}>Cointelegraph PDF record ↗</a>.</p>
-      </article>
+    <div class="scroll rv">
+      <div class="scroll-inner">
+        <div class="scroll-h">Chapter <em>Review Record</em>.</div>
+        <div class="scroll-sub">IGI Global · Publisher-led peer review · 2022 to 2023</div>
+        <div class="scroll-list">
+          <div class="scroll-item">
+            <span class="wax"></span>
+            <span class="ttl"><b>CBDCs and Financial Stability</b> · review of central-bank-digital-currency macro-impact chapter</span>
+            <span class="yr">2022</span>
+          </div>
+          <div class="scroll-item">
+            <span class="wax"></span>
+            <span class="ttl"><b>Blockchain and Consensus for IoT-Based Banking</b> · review of consensus-protocol chapter</span>
+            <span class="yr">2022</span>
+          </div>
+          <div class="scroll-item">
+            <span class="wax"></span>
+            <span class="ttl"><b>AI-Enabled Agile IoT for FinTech</b> · review of edge-AI/FinTech-architecture chapter</span>
+            <span class="yr">2023</span>
+          </div>
+        </div>
+        <div class="scroll-foot">
+          <span class="sig">Tayyub Yaqoob · Reviewer</span>
+          <span class="stamp">Verified<b>IGI Global</b></span>
+        </div>
+      </div>
     </div>
   </section>
 </SiteLayout>

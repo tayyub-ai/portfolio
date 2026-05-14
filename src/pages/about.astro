@@ -12,19 +12,107 @@ import { site } from "../data/site";
   pageType="about"
 >
   <style slot="head">
-    .creds{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
-    .cred{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;display:flex;gap:12px;align-items:flex-start;transition:transform .25s,border-color .25s,box-shadow .25s}
-    .cred:hover{transform:translateY(-2px);border-color:var(--line-2);box-shadow:var(--shadow-1)}
-    .cred-issuer{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-weight:800;font-size:14px;letter-spacing:-.02em;color:#fff}
-    .cred-issuer.google{background:linear-gradient(135deg,#4285f4,#34a853 33%,#fbbc05 66%,#ea4335)}
-    .cred-issuer.linkedin{background:#0a66c2}
-    .cred-issuer.aws{background:#ff9900;color:#1a1714}
-    .cred-body{flex:1;min-width:0}
-    .cred-body h5{font-family:var(--sans);font-weight:600;font-size:13.5px;line-height:1.3;color:var(--ink);letter-spacing:-.005em;margin-bottom:3px}
-    .cred-body .cred-meta{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
-    .cred-body .cred-skills{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
-    .cred-body .cred-skills span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--line)}
-    @media (max-width:680px){.creds{grid-template-columns:1fr}}
+    /* ── Passport ID card ── */
+    .about-layout{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:start}
+    .passport{position:relative;width:280px;background:linear-gradient(165deg,#fff,var(--bg-soft));border:1.5px solid var(--line-2);border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(60,40,20,.15);font-family:var(--mono);transition:transform .5s cubic-bezier(.2,.7,.1,1)}
+    .passport:hover{transform:rotate(-1deg) translateY(-4px)}
+    .passport::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--terra),var(--ochre),var(--moss),var(--coral))}
+    .passport-top{padding:18px 18px 12px;border-bottom:1px dashed var(--line)}
+    .passport-no{font-size:9px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+    .passport-no b{color:var(--terra);font-family:var(--sans);font-size:11px;letter-spacing:.04em;font-weight:600}
+    .passport-issuer{margin-top:6px;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink);letter-spacing:-.005em}
+    .passport-photo{width:100%;aspect-ratio:5/6;background:#1a1714;position:relative;overflow:hidden}
+    .passport-photo img{width:100%;height:100%;object-fit:cover;filter:sepia(.18) saturate(.85) contrast(1.05)}
+    .passport-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(26,23,20,.6));pointer-events:none}
+    .passport-photo .corner{position:absolute;width:14px;height:14px;border:1.5px solid #fff}
+    .passport-photo .corner.tl{top:10px;left:10px;border-right:0;border-bottom:0}
+    .passport-photo .corner.tr{top:10px;right:10px;border-left:0;border-bottom:0}
+    .passport-photo .corner.bl{bottom:10px;left:10px;border-right:0;border-top:0}
+    .passport-photo .corner.br{bottom:10px;right:10px;border-left:0;border-top:0}
+    .passport-id{padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px}
+    .passport-id .name{font-family:var(--serif);font-style:italic;font-size:22px;font-weight:400;color:var(--ink);line-height:1;letter-spacing:-.01em}
+    .passport-id .role{font-size:10.5px;color:var(--ink-2);letter-spacing:.04em;line-height:1.4}
+    .passport-id .role b{color:var(--ink);font-weight:600}
+    .passport-strip{display:flex;justify-content:space-between;align-items:center;padding:10px 18px;background:var(--ink);color:#e8e2d2;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase}
+    .passport-strip b{color:#fff;font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:.04em}
+    .passport-stamp{position:absolute;bottom:84px;right:-12px;width:88px;height:88px;border:1.5px solid var(--moss);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--moss);font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;line-height:1.3;background:rgba(232,236,217,.85);transform:rotate(-14deg);text-transform:uppercase;text-align:center}
+    .passport-stamp b{font-family:var(--serif);font-style:italic;font-size:14px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--moss)}
+
+    /* ── Bio block with venn ── */
+    .bio-block{display:flex;flex-direction:column;gap:28px}
+    .bio-h{font-family:var(--serif);font-size:clamp(28px,3.2vw,42px);font-weight:400;letter-spacing:-.018em;line-height:1.05}
+    .bio-h em{font-style:italic;color:var(--terra)}
+    .venn-wrap{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px;position:relative;overflow:hidden}
+    .venn-wrap::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--terra),transparent)}
+    .venn-lab{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--terra);text-transform:uppercase;margin-bottom:8px}
+    .venn{width:100%;height:auto;display:block;margin-top:8px}
+    .venn .circle{fill-opacity:.18;stroke-width:1.5;mix-blend-mode:multiply;transition:fill-opacity .6s ease}
+    .venn .c1{fill:var(--terra);stroke:var(--terra);opacity:0;transition:opacity 1s ease}
+    .venn .c2{fill:var(--ochre);stroke:var(--ochre);opacity:0;transition:opacity 1s ease .3s}
+    .venn .c3{fill:var(--moss);stroke:var(--moss);opacity:0;transition:opacity 1s ease .6s}
+    .venn-wrap.rv.in .venn .c1,.venn-wrap.rv.in .venn .c2,.venn-wrap.rv.in .venn .c3{opacity:1}
+    .venn .c-label{font-family:var(--serif);font-style:italic;font-size:22px;font-weight:400}
+    .venn .c-label.l1{fill:var(--terra)}
+    .venn .c-label.l2{fill:#8a5e15}
+    .venn .c-label.l3{fill:var(--moss)}
+    .venn .overlap-label{font-family:var(--mono);font-size:11px;letter-spacing:.04em;fill:var(--ink);text-anchor:middle;opacity:0;transition:opacity .8s ease 1.2s}
+    .venn-wrap.rv.in .venn .overlap-label{opacity:1}
+    .venn .overlap-label.center{font-family:var(--serif);font-style:italic;font-size:14px;font-weight:400}
+
+    .bio-prose{display:flex;flex-direction:column;gap:18px}
+    .bio-prose p{font-size:16px;line-height:1.75;color:var(--ink-2)}
+    .bio-prose p b{color:var(--ink);font-weight:600}
+
+    /* ── Bookshelf credentials ── */
+    .shelf-wrap{margin-top:42px;display:flex;flex-direction:column;gap:14px}
+    .shelf-h{display:flex;justify-content:space-between;align-items:end;padding-bottom:10px;border-bottom:1px solid var(--line)}
+    .shelf-h h3{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:-.01em}
+    .shelf-h h3 em{font-style:italic;color:var(--terra)}
+    .shelf-h .meta{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+    .shelf{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:18px 14px 8px;background:linear-gradient(180deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:12px;align-items:end;min-height:240px}
+    .shelf::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:6px;background:linear-gradient(180deg,#8b6a3c,#5d4528);border-radius:0 0 8px 8px;box-shadow:0 4px 8px rgba(60,40,20,.2)}
+    .book{position:relative;height:220px;border-radius:3px 3px 1px 1px;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;padding:14px 8px 12px;color:#fff;font-family:var(--mono);transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .35s;box-shadow:inset -3px 0 6px rgba(0,0,0,.18),inset 3px 0 0 rgba(255,255,255,.15),0 4px 8px rgba(60,40,20,.18)}
+    .book:hover{transform:translateY(-12px);z-index:2;box-shadow:inset -3px 0 6px rgba(0,0,0,.18),inset 3px 0 0 rgba(255,255,255,.15),0 16px 28px rgba(60,40,20,.32)}
+    .book::before{content:"";position:absolute;top:8px;left:0;right:0;height:1px;background:rgba(255,255,255,.2)}
+    .book::after{content:"";position:absolute;bottom:18px;left:0;right:0;height:1px;background:rgba(255,255,255,.2)}
+    .book .issuer{font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;text-align:center;writing-mode:horizontal-tb;align-self:center}
+    .book .title{font-family:var(--serif);font-style:italic;font-size:14px;font-weight:400;line-height:1.1;writing-mode:vertical-rl;transform:rotate(180deg);align-self:center;text-align:center;letter-spacing:-.005em;flex:1;display:flex;align-items:center;justify-content:center;padding:4px 0}
+    .book .year{font-size:9px;letter-spacing:.1em;opacity:.7;text-align:center;font-weight:600}
+    .book.b1{background:linear-gradient(180deg,#4285f4,#2c5fb8)}
+    .book.b2{background:linear-gradient(180deg,#0a66c2,#06407a)}
+    .book.b3{background:linear-gradient(180deg,#6a3da8,#3d2065)}
+    .book.b4{background:linear-gradient(180deg,#ff9900,#cc7a00);color:#1a1714}
+    .book.b4 .issuer,.book.b4 .year{opacity:.85}
+    .book.b5{background:linear-gradient(180deg,#0a66c2,#06407a)}
+    .book.b6{background:linear-gradient(180deg,#7a8f5e,#4a5d2f)}
+    @media (max-width:720px){
+      .about-layout{grid-template-columns:1fr;gap:32px}
+      .passport{margin:0 auto}
+      .shelf{grid-template-columns:repeat(3,1fr);min-height:auto}
+      .book{height:180px}
+    }
+
+    /* ── Field notebook principles ── */
+    .notebook{margin-top:42px;background:linear-gradient(180deg,#fefcf6,#f9f3e4);background-image:linear-gradient(180deg,#fefcf6,#f9f3e4),repeating-linear-gradient(0deg,transparent 0,transparent 31px,rgba(196,77,44,.08) 31px,rgba(196,77,44,.08) 32px);background-blend-mode:multiply;border:1px solid #d8c79c;border-radius:8px;padding:40px 44px 32px 56px;position:relative;box-shadow:0 8px 24px rgba(60,40,20,.12)}
+    .notebook::before{content:"";position:absolute;left:30px;top:0;bottom:0;width:1px;background:#d97757;opacity:.6}
+    .notebook::after{content:"";position:absolute;bottom:0;right:0;width:80px;height:80px;background:linear-gradient(225deg,transparent 50%,#e9d9b5 50%);box-shadow:-2px -2px 6px rgba(60,40,20,.1)}
+    .notebook-h{font-family:'Caveat',cursive,var(--serif);font-size:28px;color:#3d2c12;margin-bottom:24px;display:flex;align-items:center;gap:14px}
+    .notebook-h::before{content:"§";font-family:var(--serif);font-style:italic;color:#7c4a16;font-size:32px}
+    .notebook-h em{color:#7c4a16;font-style:italic}
+    .principles-list{display:grid;grid-template-columns:1fr 1fr;gap:26px 36px}
+    .ppl{position:relative;padding-left:26px}
+    .ppl::before{content:"●";position:absolute;left:0;top:6px;color:#d97757;font-size:14px}
+    .ppl h4{font-family:var(--serif);font-size:18px;font-weight:400;color:#3d2c12;line-height:1.2;letter-spacing:-.005em;margin-bottom:6px;display:flex;align-items:baseline;gap:10px}
+    .ppl h4 .num{font-family:var(--mono);font-size:9.5px;color:#7c4a16;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+    .ppl h4::after{content:"";position:absolute;left:26px;right:0;bottom:auto;top:24px;height:1px;background:#7c4a16;opacity:.35;transform-origin:left;animation:wobble 8s ease-in-out infinite}
+    .ppl p{font-size:14px;color:#5d4a28;line-height:1.65;margin-top:8px}
+    .ppl .margin{position:absolute;left:-32px;top:6px;font-family:'Caveat',cursive,var(--serif);font-size:15px;color:#d97757;opacity:.85;transform:rotate(-6deg);white-space:nowrap}
+    @keyframes wobble{0%,100%{transform:scaleX(1) rotate(0deg)}50%{transform:scaleX(.96) rotate(-.3deg)}}
+    @media (max-width:720px){
+      .notebook{padding:32px 24px 24px 36px}
+      .principles-list{grid-template-columns:1fr;gap:22px}
+      .ppl .margin{display:none}
+    }
   </style>
 
   <PageHeader
@@ -34,42 +122,114 @@ import { site } from "../data/site";
   />
 
   <section class="section wrap first" data-screen-label="Bio">
-    <div class="about">
-      <div class="about-card rv">
-        <div class="about-photo"><img src={site.image} alt={site.name} /></div>
-        <div class="about-id">
+    <div class="about-layout">
+      <aside class="passport rv">
+        <div class="passport-top">
+          <div class="passport-no"><span>Archive · AR-2026-001</span><b>UK</b></div>
+          <div class="passport-issuer">tayyubyaqoob.com</div>
+        </div>
+        <div class="passport-photo">
+          <img src={site.image} alt={site.name} />
+          <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+        </div>
+        <div class="passport-id">
           <div class="name">{site.name}</div>
-          <div class="role">{site.role}</div>
-          <div class="meta">
-            <span>Discipline · <b>Digital analytics, AI systems, measurement engineering</b></span>
-            <span>Based · <b>{site.location}</b></span>
-            <span>Education · <b>MSc Computing Science, University of Stirling</b></span>
-            <span>Status · <b>Open · 2026</b></span>
-          </div>
+          <div class="role"><b>{site.role}</b><br/>Stirling · United Kingdom<br/>MSc Computing Science · Stirling</div>
+        </div>
+        <div class="passport-strip">
+          <span>Valid · 2026</span>
+          <b>Open</b>
+        </div>
+        <div class="passport-stamp">Reviewed<b>2026</b></div>
+      </aside>
+
+      <div class="bio-block rv d1">
+        <h3 class="bio-h">I build analytics workflows teams <em>trust</em>.</h3>
+
+        <div class="venn-wrap rv">
+          <div class="venn-lab">§ Where the work sits</div>
+          <svg class="venn" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet">
+            <circle class="circle c1" cx="220" cy="160" r="120"/>
+            <circle class="circle c2" cx="380" cy="160" r="120"/>
+            <circle class="circle c3" cx="300" cy="270" r="120"/>
+            <text class="c-label l1" x="130" y="90">AI</text>
+            <text class="c-label l2" x="430" y="90" text-anchor="end">Automation</text>
+            <text class="c-label l3" x="300" y="350" text-anchor="middle">Measurement</text>
+            <text class="overlap-label" x="300" y="130">LLM-assisted analytics</text>
+            <text class="overlap-label" x="220" y="240">AI-search visibility</text>
+            <text class="overlap-label" x="380" y="240">Reporting QA</text>
+            <text class="overlap-label center" x="300" y="200">Day-to-day</text>
+          </svg>
+        </div>
+
+        <div class="bio-prose">
+          <p>My day-to-day spans <b>AI-assisted analytics</b>, <b>automation in BigQuery and Python</b>, <b>GA4 and GTM measurement engineering</b>, <b>consent and tracking quality</b>, and <b>AI-search visibility research</b>. The work shows up in three places: production systems inside client environments, technical articles for outlets like Cointelegraph and AlphaWire, and chapter reviews for IGI Global.</p>
+          <p>Each section of the site links to a primary source: live article URLs, employer record, peer-review certificates, public repositories, and named client engagements. Confidential work is named but not exposed; supporting documents are available on request.</p>
         </div>
       </div>
-      <div class="about-text rv d1">
-        <h3>I build analytics workflows teams <em>trust</em>.</h3>
-        <p>My day-to-day spans <b>AI-assisted analytics</b>, <b>automation in BigQuery and Python</b>, <b>GA4 and GTM measurement engineering</b>, <b>consent and tracking quality</b>, and <b>AI-search visibility research</b>. The work shows up in three places: production systems inside client environments, technical articles for outlets like Cointelegraph and AlphaWire, and chapter reviews for IGI Global.</p>
-        <p>Each section of the site links to a primary source: live article URLs, employer record, peer-review certificates, public repositories, and named client engagements. Confidential work is named but not exposed; supporting documents are available on request.</p>
-        <p>Current focus areas: <b>AI-assisted analytics workflows</b>, <b>measurement QA automation</b>, <b>consent and reporting transparency</b>, and <b>AI-search visibility research</b>.</p>
+    </div>
 
-        <h4 style="font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);margin:32px 0 12px">§ Training and credentials</h4>
-
-        <div class="creds">
-          <div class="cred"><div class="cred-issuer google">G</div><div class="cred-body"><h5>5-Day AI Agents Intensive Course</h5><div class="cred-meta">Google · Dec 2025</div><div class="cred-skills"><span>AI Agents</span><span>Python</span></div></div></div>
-          <div class="cred"><div class="cred-issuer linkedin">in</div><div class="cred-body"><h5>Vertex AI: MLOps with Google Cloud</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>Vertex AI</span><span>MLOps</span></div></div></div>
-          <div class="cred"><div class="cred-issuer linkedin">in</div><div class="cred-body"><h5>Model Context Protocol: Hands-On with Agentic AI</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>MCP</span><span>AI Agents</span></div></div></div>
-          <div class="cred"><div class="cred-issuer aws">AWS</div><div class="cred-body"><h5>AWS Certified Machine Learning: Specialty Prep</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>Machine Learning</span><span>AWS</span></div></div></div>
-          <div class="cred"><div class="cred-issuer linkedin">in</div><div class="cred-body"><h5>Agentic AI for Developers</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>AI Agents</span><span>Enterprise AI</span></div></div></div>
-          <div class="cred"><div class="cred-issuer linkedin">in</div><div class="cred-body"><h5>Generative AI with OpenAI API for Production</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>OpenAI API</span><span>Generative AI</span></div></div></div>
+    <div class="shelf-wrap rv">
+      <div class="shelf-h">
+        <h3>Training and <em>credentials</em>.</h3>
+        <span class="meta">/ 6 selected · 2024 to 26</span>
+      </div>
+      <div class="shelf">
+        <div class="book b1">
+          <span class="issuer">Google</span>
+          <span class="title">5-Day AI Agents Intensive</span>
+          <span class="year">DEC 2025</span>
         </div>
+        <div class="book b2">
+          <span class="issuer">LinkedIn</span>
+          <span class="title">Vertex AI · MLOps</span>
+          <span class="year">JUN 2025</span>
+        </div>
+        <div class="book b3">
+          <span class="issuer">LinkedIn</span>
+          <span class="title">Model Context Protocol</span>
+          <span class="year">JUN 2025</span>
+        </div>
+        <div class="book b4">
+          <span class="issuer">AWS</span>
+          <span class="title">ML · Specialty Prep</span>
+          <span class="year">JUN 2025</span>
+        </div>
+        <div class="book b5">
+          <span class="issuer">LinkedIn</span>
+          <span class="title">Agentic AI for Devs</span>
+          <span class="year">JUN 2025</span>
+        </div>
+        <div class="book b6">
+          <span class="issuer">LinkedIn</span>
+          <span class="title">Generative AI · OpenAI API</span>
+          <span class="year">JUN 2025</span>
+        </div>
+      </div>
+    </div>
 
-        <div class="principles" style="margin-top:36px">
-          <div class="principle"><span class="num">/ 01</span><h4>Reporting before automation.</h4><p>New automation only lands after the manual version of the same report has been stress-tested across a few cycles.</p></div>
-          <div class="principle"><span class="num">/ 02</span><h4>AI is assistive, not authoritative.</h4><p>LLMs accelerate triage, classification, and summarisation. The analyst still owns the call and the interpretation.</p></div>
-          <div class="principle"><span class="num">/ 03</span><h4>Consent and tracking quality are not optional.</h4><p>Measurement that is technically clever but legally fragile is worse than no measurement.</p></div>
-          <div class="principle"><span class="num">/ 04</span><h4>Documentation travels with the system.</h4><p>Every workflow ships with a written rationale, an owner, and a rollback path.</p></div>
+    <div class="notebook rv">
+      <div class="notebook-h">How I <em>work</em>.</div>
+      <div class="principles-list">
+        <div class="ppl">
+          <span class="margin">→ test first</span>
+          <h4><span class="num">/ 01</span>Reporting before automation.</h4>
+          <p>New automation only lands after the manual version of the same report has been stress-tested across a few cycles.</p>
+        </div>
+        <div class="ppl">
+          <span class="margin">→ analyst owns it</span>
+          <h4><span class="num">/ 02</span>AI is assistive, not authoritative.</h4>
+          <p>LLMs accelerate triage, classification, and summarisation. The analyst still owns the call and the interpretation.</p>
+        </div>
+        <div class="ppl">
+          <span class="margin">→ legal first</span>
+          <h4><span class="num">/ 03</span>Consent and tracking quality matter.</h4>
+          <p>Measurement that is technically clever but legally fragile is worse than no measurement.</p>
+        </div>
+        <div class="ppl">
+          <span class="margin">→ rollback ready</span>
+          <h4><span class="num">/ 04</span>Documentation travels with the system.</h4>
+          <p>Every workflow ships with a written rationale, an owner, and a rollback path.</p>
         </div>
       </div>
     </div>

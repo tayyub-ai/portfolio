@@ -9,6 +9,54 @@ import SiteLayout from "../components/SiteLayout.astro";
   pathname="/labs"
   crumbs={[{ label: "Home", href: "/" }, { label: "Labs" }]}
 >
+  <style slot="head">
+    /* ── Blueprint sheets ── */
+    .bp{position:relative;background:#0e2a44;background-image:linear-gradient(135deg,#0e2a44 0%,#0a223a 100%),repeating-linear-gradient(0deg,transparent 0,transparent 23px,rgba(120,170,210,.08) 23px,rgba(120,170,210,.08) 24px),repeating-linear-gradient(90deg,transparent 0,transparent 23px,rgba(120,170,210,.08) 23px,rgba(120,170,210,.08) 24px);background-blend-mode:multiply;border-radius:10px;color:#e0eef8;font-family:var(--mono);overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35);position:relative;transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
+    .bp::before{content:"";position:absolute;inset:14px;border:1px solid rgba(120,170,210,.35);border-radius:6px;pointer-events:none}
+    .bp::after{content:"";position:absolute;inset:18px;border:1px dashed rgba(120,170,210,.18);border-radius:4px;pointer-events:none}
+    .bp:hover{transform:translateY(-4px);box-shadow:0 26px 70px rgba(0,0,0,.45)}
+    .bp.bp-feature{grid-column:span 2;min-height:520px}
+    .bp-content{position:relative;z-index:1;padding:32px 36px 36px;display:flex;flex-direction:column;height:100%}
+    .bp-corner{position:absolute;z-index:2;font-size:9px;letter-spacing:.18em;color:rgba(224,238,248,.55);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+    .bp-corner.tr{top:22px;right:30px}
+    .bp-corner.tr::after{content:"v0.1-alpha";color:#f0c87a;border:1px solid #f0c87a;padding:3px 8px;border-radius:3px;letter-spacing:.12em}
+    .bp-corner.bl{bottom:30px;left:30px;display:flex;gap:6px;align-items:center}
+    .bp-corner.bl::before{content:"";width:10px;height:10px;border-radius:50%;background:#f0c87a;box-shadow:0 0 8px #f0c87a}
+    .bp-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7cb0d8;margin-bottom:8px;font-weight:600}
+    .bp h3{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(28px,3.4vw,46px);line-height:1.05;letter-spacing:-.018em;color:#fff;margin-bottom:10px}
+    .bp h3 em{color:#f0c87a;font-style:italic}
+    .bp .desc{font-family:'Inter',sans-serif;font-size:14px;line-height:1.65;color:#a8c4d8;max-width:48ch;margin-bottom:24px}
+    .bp .desc b{color:#fff;font-weight:600}
+
+    /* Schematic system diagram */
+    .bp-schem{flex:1;display:flex;align-items:center;justify-content:center;position:relative;margin:8px 0;min-height:220px}
+    .bp-schem svg{width:100%;height:100%;max-height:300px}
+    .bp-schem .node{fill:rgba(14,42,68,.85);stroke:#7cb0d8;stroke-width:1.4}
+    .bp-schem .node-key{fill:rgba(14,42,68,.85);stroke:#f0c87a;stroke-width:1.6}
+    .bp-schem .node-lbl{font-family:var(--mono);font-size:10px;fill:#e0eef8;letter-spacing:.06em;text-anchor:middle;text-transform:uppercase}
+    .bp-schem .node-key-lbl{fill:#f0c87a}
+    .bp-schem .sub-lbl{font-family:var(--mono);font-size:8px;fill:#7cb0d8;letter-spacing:.04em;text-anchor:middle;text-transform:uppercase}
+    .bp-schem .conn{stroke:#7cb0d8;stroke-width:1;fill:none;stroke-dasharray:4 3;opacity:.6;stroke-dashoffset:80;animation:bpflow 4s linear infinite}
+    .bp-schem .dim-line{stroke:#7cb0d8;stroke-width:.8;opacity:.5}
+    .bp-schem .dim-lbl{font-family:var(--mono);font-size:8.5px;fill:#7cb0d8;letter-spacing:.04em;text-anchor:middle}
+    .bp-schem .callout{font-family:'Caveat',cursive,sans-serif;font-size:14px;fill:#f0c87a}
+    .bp-schem .callout-line{stroke:#f0c87a;stroke-width:.8;fill:none;stroke-dasharray:3 3}
+    @keyframes bpflow{to{stroke-dashoffset:0}}
+
+    .bp-titleblock{border-top:1px dashed rgba(120,170,210,.4);padding-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:#a8c4d8;text-transform:uppercase}
+    .bp-titleblock .tb{padding:8px 12px;border-right:1px dashed rgba(120,170,210,.3)}
+    .bp-titleblock .tb:last-child{border-right:0}
+    .bp-titleblock .lbl{color:rgba(124,176,216,.65);font-size:8.5px;letter-spacing:.14em;margin-bottom:2px}
+    .bp-titleblock .val{color:#fff;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0;text-transform:none;font-weight:600}
+
+    .bp-cta{margin-top:20px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:8px 16px;background:#f0c87a;color:#0e2a44;font-family:'Inter',sans-serif;font-weight:700;font-size:12.5px;border-radius:999px;text-decoration:none;transition:background .25s,transform .25s}
+    .bp-cta:hover{background:#fff;transform:translateY(-1px)}
+    .bp-cta::after{content:"→"}
+
+    .bp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+    @media (max-width:780px){.bp-grid{grid-template-columns:1fr}.bp.bp-feature{grid-column:auto;min-height:auto}.bp-titleblock{grid-template-columns:1fr 1fr}.bp-titleblock .tb{border-bottom:1px dashed rgba(120,170,210,.2)}}
+  </style>
+
   <PageHeader
     title="Labs and <em>in-development</em> work."
     subtitle="In-development product and tooling work focused on <b>measurement QA</b>, <b>consent visibility</b>, and <b>analytics audit</b>. None of these are shipped products yet."
@@ -20,66 +68,183 @@ import SiteLayout from "../components/SiteLayout.astro";
       <div class="sec-head-l">
         <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ R&amp;D direction</span>
         <h2>Where the tooling work is going <em>next</em>.</h2>
-        <p>Architecture and scope are documented; ship dates are not promised. Each item is in active development and would benefit from design partners.</p>
+        <p>Each lab is a blueprint sheet, drawn, dimensioned, and stamped with status. Architecture and scope are documented; ship dates are not promised.</p>
       </div>
-      <div class="sec-head-r">/ active development</div>
+      <div class="sec-head-r">/ design partners welcome</div>
     </div>
 
-    <div class="prod-bento">
-      <article class="product feature rv" data-tilt>
-        <span class="status status-dev">◐ In development · founder</span>
+    <!-- LedgerTouch · feature blueprint -->
+    <article class="bp bp-feature rv">
+      <span class="bp-corner tr">Sheet 01 / 03</span>
+      <span class="bp-corner bl">Active dev · in lab</span>
+      <div class="bp-content">
+        <span class="bp-tag">/ 01 · LedgerTouch · independent product</span>
         <h3><em>LedgerTouch</em>.</h3>
-        <p>Independent product work in measurement QA, consent checks, reporting risk, and stack-level visibility. Architecture documents, schema drafts, and feature scope available for review under NDA.</p>
-        <div class="product-screen">
-          <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid meet">
-            <rect width="600" height="340" fill="#fff"/>
-            <rect x="0" y="0" width="600" height="36" fill="#1a1714"/>
-            <g><circle cx="20" cy="18" r="5" fill="#d97757"/><circle cx="38" cy="18" r="5" fill="#c89942"/><circle cx="56" cy="18" r="5" fill="#7a8f5e"/></g>
-            <text x="300" y="22" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#85807a">ledgertouch · labs surface · in development</text>
-            <rect x="24" y="60" width="552" height="44" rx="8" fill="#fde8df" stroke="#c44d2c"/>
-            <text x="40" y="88" font-family="Inter,sans-serif" font-size="14" fill="#c44d2c" font-weight="600">R&amp;D framing only · public proof is architecture, not launch status</text>
-            <g font-family="JetBrains Mono,monospace" font-size="11" fill="#3d3833">
-              <rect x="24" y="120" width="552" height="36" rx="6" fill="#fff" stroke="#e8e2d2"/><text x="40" y="142">Scope: measurement QA and consent visibility</text>
-              <rect x="24" y="162" width="552" height="36" rx="6" fill="#fff" stroke="#e8e2d2"/><text x="40" y="184">Proof available: notes, diagrams, flow definitions</text>
-              <rect x="24" y="204" width="552" height="36" rx="6" fill="#fbeec9" stroke="#c89942"/><text x="40" y="226" fill="#8a5e15">Do not treat as shipped product proof</text>
-              <rect x="24" y="246" width="552" height="36" rx="6" fill="#e6ecd9" stroke="#7a8f5e"/><text x="40" y="268" fill="#4a5d2f">Useful as innovation context</text>
-            </g>
+        <p class="desc">Independent product work in <b>measurement QA</b>, <b>consent checks</b>, <b>reporting risk</b>, and <b>stack-level visibility</b>. Architecture documents, schema drafts, and feature scope are available for review under NDA. The schematic below is the v0.1-alpha module layout.</p>
+
+        <div class="bp-schem">
+          <svg viewBox="0 0 720 280" preserveAspectRatio="xMidYMid meet">
+            <!-- Dimension lines top -->
+            <line class="dim-line" x1="40" y1="20" x2="680" y2="20"/>
+            <line class="dim-line" x1="40" y1="14" x2="40" y2="26"/>
+            <line class="dim-line" x1="680" y1="14" x2="680" y2="26"/>
+            <text class="dim-lbl" x="360" y="14">SYSTEM · LEDGERTOUCH · CORE</text>
+
+            <!-- Ingestion layer (left) -->
+            <rect class="node" x="60" y="60" width="120" height="50" rx="4"/>
+            <text class="node-lbl" x="120" y="84">Ingestion</text>
+            <text class="sub-lbl" x="120" y="100">GA4 · GSC · Ads</text>
+
+            <rect class="node" x="60" y="130" width="120" height="50" rx="4"/>
+            <text class="node-lbl" x="120" y="154">Tag layer</text>
+            <text class="sub-lbl" x="120" y="170">GTM · CMP</text>
+
+            <rect class="node" x="60" y="200" width="120" height="50" rx="4"/>
+            <text class="node-lbl" x="120" y="224">Consent</text>
+            <text class="sub-lbl" x="120" y="240">Mode · ToS</text>
+
+            <!-- Core (centre) -->
+            <rect class="node-key" x="280" y="100" width="160" height="110" rx="6"/>
+            <text class="node-lbl node-key-lbl" x="360" y="138">LedgerTouch</text>
+            <text class="node-lbl node-key-lbl" x="360" y="158" style="font-size:9px">CORE</text>
+            <text class="sub-lbl" x="360" y="180">qa · risk · audit</text>
+            <text class="sub-lbl" x="360" y="195">visibility · alerts</text>
+
+            <!-- Output layer (right) -->
+            <rect class="node" x="540" y="60" width="120" height="50" rx="4"/>
+            <text class="node-lbl" x="600" y="84">QA report</text>
+            <text class="sub-lbl" x="600" y="100">Coverage gaps</text>
+
+            <rect class="node" x="540" y="130" width="120" height="50" rx="4"/>
+            <text class="node-lbl" x="600" y="154">Risk score</text>
+            <text class="sub-lbl" x="600" y="170">Per surface</text>
+
+            <rect class="node" x="540" y="200" width="120" height="50" rx="4"/>
+            <text class="node-lbl" x="600" y="224">Audit log</text>
+            <text class="sub-lbl" x="600" y="240">Inspectable</text>
+
+            <!-- Connections -->
+            <path class="conn" d="M180 85 L280 130"/>
+            <path class="conn" d="M180 155 L280 155"/>
+            <path class="conn" d="M180 225 L280 180"/>
+            <path class="conn" d="M440 130 L540 85"/>
+            <path class="conn" d="M440 155 L540 155"/>
+            <path class="conn" d="M440 180 L540 225"/>
+
+            <!-- Callouts -->
+            <path class="callout-line" d="M280 100 L240 50"/>
+            <text class="callout" x="50" y="50" style="font-size:13px">core qa engine →</text>
+            <path class="callout-line" d="M540 155 L600 270"/>
+            <text class="callout" x="500" y="275">→ inspectable outputs</text>
           </svg>
         </div>
-        <span class="prod-cta">Architecture and roadmap available under NDA</span>
+
+        <div class="bp-titleblock">
+          <div class="tb"><span class="lbl">Project</span><span class="val">LedgerTouch · core</span></div>
+          <div class="tb"><span class="lbl">Drawn</span><span class="val">T. Yaqoob</span></div>
+          <div class="tb"><span class="lbl">Status</span><span class="val">v0.1-alpha</span></div>
+          <div class="tb"><span class="lbl">Date</span><span class="val">2026-05-14</span></div>
+        </div>
+
+        <a href="/contact" class="bp-cta">Request architecture under NDA</a>
+      </div>
+    </article>
+
+    <div class="bp-grid">
+      <!-- GTM audit module -->
+      <article class="bp rv d1">
+        <span class="bp-corner tr">Sheet 02 / 03</span>
+        <span class="bp-corner bl">Module · in dev</span>
+        <div class="bp-content">
+          <span class="bp-tag">/ 02 · GTM audit module</span>
+          <h3>GTM audit <em>module</em>.</h3>
+          <p class="desc">Container audit, tag coverage, duplicate detection, consent-mode mapping, and conversion-tag checks. Module spec available on request.</p>
+
+          <div class="bp-schem">
+            <svg viewBox="0 0 480 220" preserveAspectRatio="xMidYMid meet">
+              <line class="dim-line" x1="20" y1="14" x2="460" y2="14"/>
+              <text class="dim-lbl" x="240" y="12">MODULE · GTM-AUDIT</text>
+
+              <rect class="node" x="40" y="40" width="110" height="50" rx="4"/>
+              <text class="node-lbl" x="95" y="62">Container</text>
+              <text class="sub-lbl" x="95" y="78">tags · triggers</text>
+
+              <rect class="node" x="40" y="120" width="110" height="50" rx="4"/>
+              <text class="node-lbl" x="95" y="142">Conversion</text>
+              <text class="sub-lbl" x="95" y="158">tags · paths</text>
+
+              <rect class="node-key" x="200" y="80" width="80" height="50" rx="6"/>
+              <text class="node-lbl node-key-lbl" x="240" y="102">Audit</text>
+              <text class="sub-lbl" x="240" y="118">engine</text>
+
+              <rect class="node" x="330" y="40" width="110" height="50" rx="4"/>
+              <text class="node-lbl" x="385" y="62">Dupes</text>
+              <text class="sub-lbl" x="385" y="78">flagged</text>
+
+              <rect class="node" x="330" y="120" width="110" height="50" rx="4"/>
+              <text class="node-lbl" x="385" y="142">Consent</text>
+              <text class="sub-lbl" x="385" y="158">mapping</text>
+
+              <path class="conn" d="M150 65 L200 95"/>
+              <path class="conn" d="M150 145 L200 115"/>
+              <path class="conn" d="M280 95 L330 65"/>
+              <path class="conn" d="M280 115 L330 145"/>
+            </svg>
+          </div>
+
+          <div class="bp-titleblock">
+            <div class="tb"><span class="lbl">Module</span><span class="val">GTM audit</span></div>
+            <div class="tb"><span class="lbl">Status</span><span class="val">v0.1-alpha</span></div>
+          </div>
+        </div>
       </article>
 
-      <article class="product rv d1" data-tilt>
-        <span class="status status-dev">◐ In development</span>
-        <h3>GTM audit <em>module</em>.</h3>
-        <p>Container audit, tag coverage, duplicate detection, consent-mode mapping, and conversion-tag checks.</p>
-        <div class="product-screen">
-          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
-            <rect width="400" height="200" fill="#fff"/>
-            <g><rect x="20" y="20" width="100" height="50" rx="6" fill="#fbeec9" stroke="#c89942"/><text x="70" y="42" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#8a5e15">GA4 tags</text><text x="70" y="58" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#85807a">coverage</text></g>
-            <g><rect x="150" y="20" width="100" height="50" rx="6" fill="#fde8df" stroke="#c44d2c"/><text x="200" y="42" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#c44d2c">duplicates</text><text x="200" y="58" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#85807a">detection</text></g>
-            <g><rect x="280" y="20" width="100" height="50" rx="6" fill="#e6ecd9" stroke="#7a8f5e"/><text x="330" y="42" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#4a5d2f">consent</text><text x="330" y="58" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#85807a">mapping</text></g>
-          </svg>
-        </div>
-        <span class="muted">Module spec available on request.</span>
-      </article>
+      <!-- Consent audit module -->
+      <article class="bp rv d2">
+        <span class="bp-corner tr">Sheet 03 / 03</span>
+        <span class="bp-corner bl">Module · in dev</span>
+        <div class="bp-content">
+          <span class="bp-tag">/ 03 · Consent audit module</span>
+          <h3>Consent audit <em>module</em>.</h3>
+          <p class="desc">CMP detection, consent-mode validation, cookie-behaviour inspection, and regional risk overlays. Module spec available on request.</p>
 
-      <article class="product rv d2" data-tilt>
-        <span class="status status-dev">◐ In development</span>
-        <h3><em>Consent</em> audit module.</h3>
-        <p>CMP detection, consent-mode validation, cookie-behaviour inspection, and regional risk overlays.</p>
-        <div class="product-screen">
-          <svg viewBox="0 0 400 200" preserveAspectRatio="xMidYMid meet">
-            <rect width="400" height="200" fill="#fff"/>
-            <g font-family="JetBrains Mono,monospace" font-size="11" fill="#3d3833">
-              <rect x="20" y="20" width="170" height="80" rx="8" fill="#fafaf5" stroke="#e8e2d2"/>
-              <rect x="210" y="20" width="170" height="80" rx="8" fill="#fafaf5" stroke="#e8e2d2"/>
-              <rect x="20" y="120" width="360" height="60" rx="8" fill="#fde8df" stroke="#c44d2c"/>
-              <text x="35" y="144" font-weight="600" fill="#c44d2c">Regional consent handling under review</text>
-            </g>
-          </svg>
+          <div class="bp-schem">
+            <svg viewBox="0 0 480 220" preserveAspectRatio="xMidYMid meet">
+              <line class="dim-line" x1="20" y1="14" x2="460" y2="14"/>
+              <text class="dim-lbl" x="240" y="12">MODULE · CONSENT-AUDIT</text>
+
+              <rect class="node" x="40" y="50" width="120" height="50" rx="4"/>
+              <text class="node-lbl" x="100" y="72">CMP detect</text>
+              <text class="sub-lbl" x="100" y="88">vendor · version</text>
+
+              <rect class="node" x="40" y="120" width="120" height="50" rx="4"/>
+              <text class="node-lbl" x="100" y="142">Cookie scan</text>
+              <text class="sub-lbl" x="100" y="158">behaviour</text>
+
+              <rect class="node-key" x="200" y="80" width="100" height="60" rx="6"/>
+              <text class="node-lbl node-key-lbl" x="250" y="108">Validator</text>
+              <text class="sub-lbl" x="250" y="124">consent · regions</text>
+
+              <rect class="node" x="340" y="50" width="120" height="50" rx="4"/>
+              <text class="node-lbl" x="400" y="72">EU · GDPR</text>
+              <text class="sub-lbl" x="400" y="88">risk overlay</text>
+
+              <rect class="node" x="340" y="120" width="120" height="50" rx="4"/>
+              <text class="node-lbl" x="400" y="142">US · state laws</text>
+              <text class="sub-lbl" x="400" y="158">CCPA · CPRA</text>
+
+              <path class="conn" d="M160 75 L200 105"/>
+              <path class="conn" d="M160 145 L200 115"/>
+              <path class="conn" d="M300 105 L340 75"/>
+              <path class="conn" d="M300 115 L340 145"/>
+            </svg>
+          </div>
+
+          <div class="bp-titleblock">
+            <div class="tb"><span class="lbl">Module</span><span class="val">Consent audit</span></div>
+            <div class="tb"><span class="lbl">Status</span><span class="val">v0.1-alpha</span></div>
+          </div>
         </div>
-        <span class="muted">Active R&amp;D. Design partners welcome.</span>
       </article>
     </div>
   </section>

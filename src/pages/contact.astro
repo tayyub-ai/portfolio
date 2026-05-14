@@ -13,28 +13,79 @@ import { site } from "../data/site";
   footerLead="Replies come from my inbox, usually within 48 hours on weekdays."
 >
   <style slot="head">
-    .contact-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:start}
-    .contact-form,.contact-card,.contact-sent{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-1)}
-    .contact-form{padding:24px 26px}
-    .contact-side{display:flex;flex-direction:column;gap:12px}
-    .contact-card{padding:18px 20px;display:flex;flex-direction:column;gap:8px}
-    .contact-card h4{font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.05}
-    .contact-card h4 em{font-style:italic;color:var(--terra)}
-    .contact-card p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
-    .contact-card a{color:var(--terra);border-bottom:1px solid currentColor;width:max-content}
-    .row{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
-    .row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .row label{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-    .row input,.row select,.row textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;font:inherit;color:var(--ink)}
-    .row textarea{min-height:180px;resize:vertical}
-    .row input:focus,.row select:focus,.row textarea:focus{outline:none;border-color:var(--terra);box-shadow:0 0 0 3px rgba(196,77,44,.12)}
-    .actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:10px}
-    .actions .note{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-    .actions button{padding:10px 18px;border-radius:999px;background:var(--ink);color:#fff;font-weight:600}
-    .actions button:hover{background:var(--terra)}
-    .contact-sent{display:flex;gap:14px;padding:16px 18px;margin-bottom:18px;background:linear-gradient(155deg,#fff,var(--sage-soft));border-color:#cfe0b1}
-    .contact-sent .ic{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--moss);color:#fff;flex-shrink:0}
-    @media (max-width:980px){.contact-wrap{grid-template-columns:1fr}.row-2{grid-template-columns:1fr}.actions{flex-direction:column;align-items:flex-start}}
+    .cx-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:start;margin-top:8px}
+    @media (max-width:980px){.cx-layout{grid-template-columns:1fr}}
+
+    /* ── Form card ── */
+    .cxform{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 30px 24px;box-shadow:var(--shadow-1);overflow:hidden;transition:box-shadow .4s}
+    .cxform:hover{box-shadow:var(--shadow-2)}
+    .cxform-h{display:flex;justify-content:space-between;align-items:end;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:22px}
+    .cxform-h h3{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:-.01em}
+    .cxform-h h3 em{font-style:italic;color:var(--terra)}
+    .cxform-h .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+    .cxform-h .meta::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--moss);margin-right:6px;vertical-align:middle;animation:pulse 2s infinite}
+
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .field{position:relative;display:flex;flex-direction:column;gap:0}
+    .field.full{grid-column:span 2}
+    .field label{position:absolute;top:18px;left:14px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;pointer-events:none;transition:transform .25s cubic-bezier(.2,.7,.1,1),color .25s,background .25s,padding .25s;background:#fff;padding:0 2px;font-weight:500}
+    .field input,.field select,.field textarea{width:100%;padding:18px 14px 8px;border:1px solid var(--line);border-radius:8px;background:#fff;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);transition:border-color .25s,box-shadow .25s;outline:none}
+    .field textarea{padding-top:24px;min-height:140px;resize:vertical;line-height:1.5}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--terra);box-shadow:0 0 0 3px rgba(196,77,44,.1)}
+    .field input:focus+label,.field input:not(:placeholder-shown)+label,
+    .field textarea:focus+label,.field textarea:not(:placeholder-shown)+label{transform:translate(-4px,-22px) scale(.85);color:var(--terra);padding:0 6px}
+    .field select+label{transform:translate(-4px,-22px) scale(.85);color:var(--terra);padding:0 6px}
+    .field-underline{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--terra);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.4,0,.2,1);pointer-events:none;border-radius:0 0 8px 8px}
+    .field input:focus~.field-underline,.field textarea:focus~.field-underline,.field select:focus~.field-underline{transform:scaleX(1)}
+
+    .field-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
+    .field-actions .note{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;line-height:1.4}
+    .field-actions .note b{color:var(--ink);font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:0;text-transform:none;display:block;margin-bottom:2px}
+    .submit{position:relative;display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;background:var(--ink);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;border:0;cursor:pointer;transition:background .25s,transform .25s,box-shadow .25s;overflow:hidden}
+    .submit:hover{background:var(--terra);transform:translateY(-1px);box-shadow:0 8px 16px rgba(196,77,44,.25)}
+    .submit::after{content:"→";transition:transform .25s}
+    .submit:hover::after{transform:translateX(4px)}
+
+    .cx-sent{display:none;align-items:center;gap:14px;padding:18px 20px;background:linear-gradient(160deg,var(--sage-soft),#fff);border:1px solid #cfe0b1;border-radius:12px;margin-bottom:18px;position:relative;overflow:hidden}
+    .cx-sent.show{display:flex}
+    .cx-sent::before{content:"";position:absolute;top:-12px;right:-12px;width:80px;height:80px;border:2px solid var(--moss);border-radius:50%;background:rgba(232,236,217,.8);transform:rotate(-12deg);display:flex;align-items:center;justify-content:center}
+    .cx-sent .stamp{position:absolute;top:14px;right:14px;width:60px;height:60px;border:1.5px solid var(--moss);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--moss);font-family:var(--mono);font-size:8px;letter-spacing:.12em;line-height:1.3;background:rgba(232,236,217,.85);transform:rotate(-8deg);text-transform:uppercase;z-index:1}
+    .cx-sent .stamp b{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;font-weight:400}
+    .cx-sent .ic{width:36px;height:36px;border-radius:50%;background:var(--moss);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .cx-sent .text{flex:1}
+    .cx-sent .text b{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--ink);display:block}
+    .cx-sent .text p{font-size:13px;color:var(--ink-2);line-height:1.5;margin-top:2px}
+
+    @media (max-width:680px){.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.field-actions{flex-direction:column;align-items:flex-start}}
+
+    /* ── Status board (side) ── */
+    .statboard{background:#1a1714;color:#e8e2d2;border-radius:14px;padding:24px 24px 20px;font-family:var(--mono);box-shadow:0 18px 50px rgba(0,0,0,.25);position:relative;overflow:hidden}
+    .statboard::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 22px,rgba(232,226,210,.04) 22px,rgba(232,226,210,.04) 23px);pointer-events:none}
+    .statboard-h{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px dashed rgba(232,226,210,.3);margin-bottom:14px;position:relative;z-index:1}
+    .statboard-h .ttl{font-size:10px;letter-spacing:.2em;color:var(--ochre);text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:8px}
+    .statboard-h .ttl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ochre);animation:pulse 2s infinite}
+    .statboard-h .time{font-size:11px;color:rgba(232,226,210,.7);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+    .statboard-rows{display:flex;flex-direction:column;gap:0;position:relative;z-index:1}
+    .statboard-row{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px dashed rgba(232,226,210,.15);font-size:11.5px}
+    .statboard-row:last-child{border-bottom:0}
+    .statboard-row .k{color:rgba(232,226,210,.55);letter-spacing:.16em;text-transform:uppercase;font-size:9.5px}
+    .statboard-row .v{color:#fff;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0;text-transform:none}
+    .statboard-row .v a{color:#f0c87a;border-bottom:1px solid rgba(240,200,122,.4);transition:color .25s,border-color .25s}
+    .statboard-row .v a:hover{color:#fff;border-color:#fff}
+    .statboard-row .pill{padding:3px 9px;border-radius:999px;background:rgba(122,143,94,.2);color:#cfe0b1;border:1px solid rgba(207,224,177,.3);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase}
+    .statboard-foot{position:relative;z-index:1;margin-top:16px;padding-top:14px;border-top:1px dashed rgba(232,226,210,.3);display:flex;justify-content:space-between;align-items:center;font-size:9.5px;color:rgba(232,226,210,.55);letter-spacing:.06em;text-transform:uppercase}
+    .statboard-foot .seal{display:inline-flex;align-items:center;gap:4px;color:var(--ochre)}
+    .statboard-foot .seal::before{content:"§"}
+    @media (max-width:680px){.statboard-row{grid-template-columns:64px 1fr}.statboard-row .pill{grid-column:2;justify-self:start;margin-top:4px}}
+
+    /* ── Topic select chips ── */
+    .topic-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .topic-chips label{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;color:var(--ink-2);cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+    .topic-chips input{position:absolute;opacity:0;pointer-events:none}
+    .topic-chips label:hover{border-color:var(--terra-soft);color:var(--terra)}
+    .topic-chips input:checked + span{background:var(--terra);color:#fff;border-color:var(--terra)}
+    .topic-chips label span{display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;transition:inherit}
+    .topic-chips label:has(input:checked) span{background:var(--terra);color:#fff;border-color:var(--terra)}
   </style>
 
   <PageHeader
@@ -44,81 +95,113 @@ import { site } from "../data/site";
   />
 
   <section class="section wrap first" data-screen-label="Contact">
-    <div id="contact-sent" class="contact-sent rv" style="display:none">
+    <div id="contact-sent" class="cx-sent rv">
       <span class="ic">✓</span>
-      <div>
+      <div class="text">
         <b>Message received.</b>
-        <p>I’ll reply from <span style="color:var(--ink);font-weight:600">{site.email}</span> within 48 hours on weekdays.</p>
+        <p>I'll reply from <span style="color:var(--ink);font-weight:600">{site.email}</span> within 48 hours on weekdays.</p>
       </div>
+      <div class="stamp">Received<b>{new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</b>2026</div>
     </div>
 
-    <div class="contact-wrap">
-      <form class="contact-form rv" action={`https://formsubmit.co/${site.email}`} method="POST">
+    <div class="cx-layout">
+      <!-- Form -->
+      <form class="cxform rv" action={`https://formsubmit.co/${site.email}`} method="POST">
         <input type="hidden" name="_subject" value="New contact via portfolio" />
         <input type="hidden" name="_captcha" value="true" />
         <input type="hidden" name="_template" value="table" />
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
-        <div class="row-2">
-          <div class="row">
-            <label for="cf-name">Your name</label>
-            <input id="cf-name" type="text" name="name" required autocomplete="name" placeholder="Full name" />
-          </div>
-          <div class="row">
-            <label for="cf-email">Email</label>
-            <input id="cf-email" type="email" name="email" required autocomplete="email" placeholder="you@company.com" />
-          </div>
-        </div>
+        <header class="cxform-h">
+          <h3>Direct <em>line</em>.</h3>
+          <span class="meta">Open · 2026</span>
+        </header>
 
-        <div class="row-2">
-          <div class="row">
-            <label for="cf-org">Organisation</label>
-            <input id="cf-org" type="text" name="organisation" autocomplete="organization" placeholder="Optional" />
+        <div class="field-grid">
+          <div class="field">
+            <input id="cf-name" type="text" name="name" required autocomplete="name" placeholder=" " />
+            <label for="cf-name">Your name</label>
+            <span class="field-underline"></span>
           </div>
-          <div class="row">
-            <label for="cf-topic">Topic</label>
-            <select id="cf-topic" name="topic">
-              <option>Senior role / hiring conversation</option>
+          <div class="field">
+            <input id="cf-email" type="email" name="email" required autocomplete="email" placeholder=" " />
+            <label for="cf-email">Email</label>
+            <span class="field-underline"></span>
+          </div>
+          <div class="field">
+            <input id="cf-org" type="text" name="organisation" autocomplete="organization" placeholder=" " />
+            <label for="cf-org">Organisation (optional)</label>
+            <span class="field-underline"></span>
+          </div>
+          <div class="field">
+            <select id="cf-topic" name="topic" required>
+              <option value="">Senior role / hiring conversation</option>
               <option>Consulting / analytics systems work</option>
               <option>Request supporting documents</option>
               <option>Speaking / panel / podcast</option>
               <option>Publication / expert commentary</option>
               <option>Other</option>
             </select>
+            <label for="cf-topic">Topic</label>
+            <span class="field-underline"></span>
+          </div>
+          <div class="field full">
+            <textarea id="cf-message" name="message" required placeholder=" "></textarea>
+            <label for="cf-message">Share the context, timeline, and what you need</label>
+            <span class="field-underline"></span>
           </div>
         </div>
 
-        <div class="row">
-          <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" required placeholder="Share the context, timeline, and what you need from me."></textarea>
-        </div>
-
-        <div class="actions">
-          <span class="note">Direct reply only. No mailing list.</span>
-          <button type="submit">Send message →</button>
+        <div class="field-actions">
+          <div class="note">
+            <b>Direct reply only.</b>
+            No mailing list, no PR layer. Replies usually within 48 hours on weekdays.
+          </div>
+          <button type="submit" class="submit">Send message</button>
         </div>
       </form>
 
-      <aside class="contact-side rv d1">
-        <div class="contact-card">
-          <h4>Direct <em>email</em>.</h4>
-          <p>Prefer email? The form sends to the same inbox.</p>
-          <a href={`mailto:${site.email}`}>{site.email} →</a>
+      <!-- Status board -->
+      <aside class="statboard rv d1">
+        <header class="statboard-h">
+          <span class="ttl">Status board</span>
+          <span class="time" id="status-time">· BST</span>
+        </header>
+        <div class="statboard-rows">
+          <div class="statboard-row">
+            <span class="k">Open</span>
+            <span class="v">2026 conversations</span>
+            <span class="pill">Active</span>
+          </div>
+          <div class="statboard-row">
+            <span class="k">Inbox</span>
+            <span class="v"><a href={`mailto:${site.email}`}>{site.email}</a></span>
+            <span class="pill">Direct</span>
+          </div>
+          <div class="statboard-row">
+            <span class="k">Linked</span>
+            <span class="v"><a href={site.social.linkedin} target="_blank" rel="noreferrer">/in/tayyubyaqoob</a></span>
+            <span class="pill">Verify</span>
+          </div>
+          <div class="statboard-row">
+            <span class="k">Code</span>
+            <span class="v"><a href={site.social.github} target="_blank" rel="noreferrer">/tayyub-ai</a></span>
+            <span class="pill">Public</span>
+          </div>
+          <div class="statboard-row">
+            <span class="k">Evidence</span>
+            <span class="v"><a href="/evidence">/evidence index</a></span>
+            <span class="pill">Audit</span>
+          </div>
+          <div class="statboard-row">
+            <span class="k">Press</span>
+            <span class="v"><a href="/press">Bios · fact sheet</a></span>
+            <span class="pill">Kit</span>
+          </div>
         </div>
-        <div class="contact-card">
-          <h4>Supporting <em>documents</em>.</h4>
-          <p>Approved screenshots, before/after reporting outputs, archived publication proof, peer-review certificates, and recommendation context. All available on request.</p>
-          <a href="/evidence">Open evidence index ↗</a>
-        </div>
-        <div class="contact-card">
-          <h4><em>LinkedIn</em>.</h4>
-          <p>Useful for profile verification and career context.</p>
-          <a href={site.social.linkedin} target="_blank" rel="noreferrer">linkedin.com/in/tayyubyaqoob ↗</a>
-        </div>
-        <div class="contact-card">
-          <h4><em>GitHub</em>.</h4>
-          <p>Current public repositories: utilities, audit modules, and exploratory work.</p>
-          <a href={site.social.github} target="_blank" rel="noreferrer">github.com/tayyub-ai ↗</a>
+        <div class="statboard-foot">
+          <span>Stirling · United Kingdom</span>
+          <span class="seal">AR-2026-001</span>
         </div>
       </aside>
     </div>
@@ -126,11 +209,20 @@ import { site } from "../data/site";
 
   <script is:inline>
     (function(){
+      // Sent banner
       const params=new URLSearchParams(location.search);
       if(params.get('sent')==='1'){
         const el=document.getElementById('contact-sent');
-        if(el){el.style.display='flex';el.scrollIntoView({behavior:'smooth',block:'start'});}
+        if(el){el.classList.add('show');el.scrollIntoView({behavior:'smooth',block:'start'});}
       }
+      // Live UK clock
+      function tick(){
+        const t=document.getElementById('status-time');if(!t)return;
+        const now=new Date();
+        const opts={hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Europe/London',hour12:false};
+        t.textContent=new Intl.DateTimeFormat('en-GB',opts).format(now)+' BST';
+      }
+      tick();setInterval(tick,1000);
     })();
   </script>
 </SiteLayout>
