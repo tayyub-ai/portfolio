@@ -2,7 +2,7 @@
 User-agent: *
 Allow: /
 
-# AI search crawlers — explicitly allow
+# AI search crawlers · explicitly allow
 User-agent: GPTBot
 Allow: /
 

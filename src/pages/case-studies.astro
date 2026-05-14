@@ -11,7 +11,7 @@ import SiteLayout from "../components/SiteLayout.astro";
 >
   <PageHeader
     title="Production <em>case studies</em>."
-    subtitle="Internal analytics systems designed, built, and shipped in live environments. The emphasis here is on <b>what the system does</b>, <b>why it mattered</b>, and <b>what proof exists</b>."
+    subtitle="Four production systems running inside client analytics environments. Each entry covers the <b>problem</b>, the <b>technical approach</b>, the <b>tools</b>, and the form of <b>evidence</b> available on request."
     crumbs={[{ label: "Home", href: "/" }, { label: "Case Studies" }]}
   />
 
@@ -19,8 +19,8 @@ import SiteLayout from "../components/SiteLayout.astro";
     <div class="sec-head rv">
       <div class="sec-head-l">
         <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Shipped systems</span>
-        <h2>Four flagship <em>examples</em>.</h2>
-        <p>These are intentionally framed as evidence-backed case studies rather than stylised product names. Supporting diagrams, screenshots, or approved outputs sit in the evidence pack.</p>
+        <h2>Four <em>examples</em>.</h2>
+        <p>Each is a real engagement. The system and client names sit behind approvals; supporting diagrams, screenshots, and before/after outputs are available on request.</p>
       </div>
       <div class="sec-head-r">/ shipped, not speculative</div>
     </div>
@@ -29,20 +29,22 @@ import SiteLayout from "../components/SiteLayout.astro";
       <article class="cdx feature rv" data-cat="search reporting">
         <div class="cdx-top">
           <div>
-            <span class="cdx-tag">/ 01 — Forecasting</span>
+            <span class="cdx-tag">/ 01 · Forecasting</span>
             <h3 style="margin-top:6px">Search and traffic <em>forecasting</em> workflows.</h3>
           </div>
           <span class="cdx-status">Live · recurring</span>
         </div>
-        <p>Forecasting workflows for GSC queries, channel traffic, and reporting cycles. Used to support planning conversations and identify meaningful variance early rather than after the reporting cycle closes.</p>
+        <p>Forecasting workflows in BigQuery covering GSC query trends, channel traffic, and monthly reporting cycles. Used by analyst and account teams to flag variance against forecast inside the cycle rather than after it. Stack: BigQuery, Python, GSC API, GA4.</p>
         <div class="cdx-viz">
           <svg viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
             <defs><linearGradient id="case-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c44d2c" stop-opacity=".22"/><stop offset="1" stop-color="#c44d2c" stop-opacity="0"/></linearGradient></defs>
             <g stroke="#e8e2d2" stroke-dasharray="3 5" fill="none"><line x1="0" y1="60" x2="600" y2="60"/><line x1="0" y1="120" x2="600" y2="120"/><line x1="0" y1="180" x2="600" y2="180"/></g>
-            <path d="M0 170 Q60 150 120 155 T240 130 T360 110" fill="none" stroke="#c44d2c" stroke-width="2.5" stroke-linecap="round"/>
+            <path class="glow-line" d="M0 170 Q60 150 120 155 T240 130 T360 110" fill="none" stroke="#c44d2c" stroke-width="2.5" stroke-linecap="round"/>
             <path d="M360 110 Q420 90 480 80 T600 50 L600 110 Q540 130 480 140 T360 110 Z" fill="#c89942" fill-opacity=".22"/>
             <path d="M360 110 Q420 100 480 92 T600 70" fill="none" stroke="#c89942" stroke-width="2" stroke-dasharray="5 4" stroke-linecap="round"/>
             <line x1="360" y1="20" x2="360" y2="200" stroke="#e8e2d2" stroke-dasharray="2 4"/>
+            <circle class="pulse-node" cx="360" cy="110" r="5" fill="#c44d2c"/>
+            <circle class="ripple" cx="360" cy="110" r="10" fill="none" stroke="#c44d2c" stroke-width="1.5" opacity=".5"/>
           </svg>
         </div>
         <div class="cdx-foot">
@@ -54,19 +56,19 @@ import SiteLayout from "../components/SiteLayout.astro";
       <article class="cdx t-coral rv d1" data-cat="brand detection">
         <div class="cdx-top">
           <div>
-            <span class="cdx-tag">/ 02 — Brand monitoring</span>
+            <span class="cdx-tag">/ 02 · Brand monitoring</span>
             <h3 style="margin-top:6px">Sentiment and topic <em>monitoring</em>.</h3>
           </div>
           <span class="cdx-status">Live</span>
         </div>
-        <p>LLM-assisted workflows for measuring brand sentiment and topic movement across press, review, and social surfaces. Built to support analyst interpretation rather than replace it.</p>
+        <p>LLM-assisted sentiment and topic monitoring across press, review, and social surfaces. The system classifies, deduplicates, and surfaces shifts for the analyst to interpret; nothing is auto-published. Stack: Python, LLM API, structured outputs, BigQuery.</p>
         <div class="cdx-viz">
           <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid meet">
             <defs><linearGradient id="case-arc" x1="0" x2="1"><stop offset="0" stop-color="#d97757"/><stop offset=".5" stop-color="#c89942"/><stop offset="1" stop-color="#7a8f5e"/></linearGradient></defs>
             <path d="M50 140 A100 100 0 0 1 350 140" fill="none" stroke="#e8e2d2" stroke-width="14" stroke-linecap="round"/>
-            <path d="M50 140 A100 100 0 0 1 350 140" fill="none" stroke="url(#case-arc)" stroke-width="14" stroke-linecap="round"/>
+            <path class="gauge-arc" d="M50 140 A100 100 0 0 1 350 140" fill="none" stroke="url(#case-arc)" stroke-width="14" stroke-linecap="round"/>
             <line x1="200" y1="140" x2="270" y2="68" stroke="#1a1714" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="200" cy="140" r="8" fill="#1a1714"/>
+            <circle class="pulse-node" cx="200" cy="140" r="8" fill="#1a1714"/>
           </svg>
         </div>
         <div class="cdx-foot">
@@ -78,19 +80,21 @@ import SiteLayout from "../components/SiteLayout.astro";
       <article class="cdx t-ochre rv d2" data-cat="search brand">
         <div class="cdx-top">
           <div>
-            <span class="cdx-tag">/ 03 — AI visibility</span>
+            <span class="cdx-tag">/ 03 · AI visibility</span>
             <h3 style="margin-top:6px">AI-mention and search-surface <em>tracking</em>.</h3>
           </div>
           <span class="cdx-status">Operational</span>
         </div>
-        <p>Workflows built to identify when brands, queries, or themes begin to appear differently across AI-facing and conventional search environments, with evidence captured for later analysis.</p>
+        <p>Tracking how brands and queries surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change is captured with date, prompt, and rendered citation so visibility shifts can be reviewed weeks later.</p>
         <div class="cdx-viz">
           <svg viewBox="0 0 420 190" preserveAspectRatio="xMidYMid meet">
-            <rect x="24" y="24" width="160" height="56" rx="10" fill="#fff5d7" stroke="#c89942"/>
-            <rect x="236" y="24" width="160" height="56" rx="10" fill="#fde8df" stroke="#c44d2c"/>
-            <rect x="130" y="110" width="160" height="56" rx="10" fill="#e6ecd9" stroke="#7a8f5e"/>
-            <path d="M184 52 H236" stroke="#c89942" stroke-width="2" stroke-dasharray="5 4"/>
-            <path d="M210 80 V110" stroke="#7a8f5e" stroke-width="2" stroke-dasharray="5 4"/>
+            <g class="tree-grow" fill="none" stroke-width="2" stroke-linecap="round">
+              <path d="M184 52 H236" stroke="#c89942" stroke-dasharray="5 4"/>
+              <path d="M210 80 V110" stroke="#7a8f5e" stroke-dasharray="5 4"/>
+            </g>
+            <rect class="pulse-node" x="24" y="24" width="160" height="56" rx="10" fill="#fff5d7" stroke="#c89942"/>
+            <rect class="pulse-node" x="236" y="24" width="160" height="56" rx="10" fill="#fde8df" stroke="#c44d2c" style="animation-delay:.5s"/>
+            <rect class="pulse-node" x="130" y="110" width="160" height="56" rx="10" fill="#e6ecd9" stroke="#7a8f5e" style="animation-delay:1s"/>
           </svg>
         </div>
         <div class="cdx-foot">
@@ -102,21 +106,21 @@ import SiteLayout from "../components/SiteLayout.astro";
       <article class="cdx t-sage rv d3" data-cat="reporting detection">
         <div class="cdx-top">
           <div>
-            <span class="cdx-tag">/ 04 — Reporting automation</span>
+            <span class="cdx-tag">/ 04 · Reporting automation</span>
             <h3 style="margin-top:6px">Automated deck and reporting <em>assembly</em>.</h3>
           </div>
           <span class="cdx-status">Live</span>
         </div>
-        <p>Internal automation that turns analytics data into consistent reporting artefacts. The strongest proof here is approved before/after reporting output rather than public code.</p>
+        <p>Automated assembly of recurring reports and decks from GA4, GSC, and ad-platform data. Replaces a multi-hour manual build with a short analyst review pass. Stack: Python, Google Slides API, BigQuery. Before/after samples available on request.</p>
         <div class="cdx-viz">
           <svg viewBox="0 0 420 190" preserveAspectRatio="xMidYMid meet">
             <rect x="30" y="28" width="130" height="134" rx="12" fill="#fff" stroke="#e8e2d2"/>
             <rect x="180" y="28" width="210" height="134" rx="12" fill="#fafaf5" stroke="#e8e2d2"/>
             <rect x="46" y="44" width="98" height="12" rx="4" fill="#e8e2d2"/>
-            <rect x="46" y="66" width="78" height="10" rx="4" fill="#f0d690"/>
+            <rect class="bar-grow" x="46" y="66" width="78" height="10" rx="4" fill="#f0d690"/>
             <rect x="196" y="44" width="120" height="12" rx="4" fill="#e8e2d2"/>
-            <rect x="196" y="70" width="170" height="12" rx="4" fill="#fde8df"/>
-            <rect x="196" y="96" width="160" height="44" rx="8" fill="#e6ecd9"/>
+            <rect class="bar-grow" x="196" y="70" width="170" height="12" rx="4" fill="#fde8df" style="animation-delay:.3s"/>
+            <rect class="bar-grow" x="196" y="96" width="160" height="44" rx="8" fill="#e6ecd9" style="animation-delay:.6s"/>
           </svg>
         </div>
         <div class="cdx-foot">
@@ -130,18 +134,18 @@ import SiteLayout from "../components/SiteLayout.astro";
   <section class="section wrap" data-screen-label="Proof notes">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ What the proof looks like</span>
-        <h2>Evidence <em>attached</em> to the work.</h2>
+        <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ How the evidence is held</span>
+        <h2>Evidence <em>available</em> on request.</h2>
       </div>
       <div class="sec-head-r"><a href="/evidence">Full evidence index →</a></div>
     </div>
 
     <div class="bento">
       <a class="cap feature rv" href="/evidence">
-        <span class="cap-num">/ 01 — Evidence index</span>
+        <span class="cap-num">/ 01 · Evidence index</span>
         <div class="cap-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4 H17 A2 2 0 0 1 19 6 V18 A2 2 0 0 1 17 20 H7 A2 2 0 0 1 5 18 V6 A2 2 0 0 1 7 4 Z"/><path d="M8 9 H16"/><path d="M8 13 H16"/><path d="M8 17 H13"/></svg></div>
-        <h3>Each case study points to a <em>proof type</em>.</h3>
-        <p>Approved screenshots, diagrams, methodology notes, before/after reporting outputs, and recommendation context are grouped separately in the evidence route so the core case-study page stays readable.</p>
+        <h3>Each case study has <em>supporting documents</em>.</h3>
+        <p>Approved screenshots, diagrams, methodology notes, before/after reporting outputs, and recommendation context are catalogued in the evidence index and shared on request.</p>
         <span class="cap-go">Open evidence →</span>
       </a>
       <a class="cap rv d1 t-ochre" href="/recognition">

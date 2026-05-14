@@ -12,5 +12,5 @@
 /* SITE */
   Last update: 2026/05/14
   Built with: Astro, TypeScript, Tailwind CSS
-  Purpose: Evidence-first personal portfolio — AI, analytics and applied research
+  Purpose: Evidence-first personal portfolio · AI, analytics and applied research
   Press kit: https://www.tayyubyaqoob.com/press

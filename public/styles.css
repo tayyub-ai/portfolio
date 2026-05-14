@@ -1,4 +1,4 @@
-/* Tayyub Yaqoob — portfolio
+/* Tayyub Yaqoob · portfolio
    Warm terracotta + ochre palette · multi-page */
 
 :root{
@@ -13,7 +13,7 @@
   --line:#e8e2d2;
   --line-2:#d6cebb;
 
-  /* accents — warm, no purple/blue */
+  /* accents · warm, no purple/blue */
   --terra:#c44d2c;          /* primary accent · terracotta */
   --terra-soft:#fde8df;
   --rust:#8e3a1c;           /* deep red */
@@ -250,7 +250,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .mar-item em{font-style:italic;color:var(--ochre)}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ── Work — expandable case rows ── */
+/* ── Work · expandable case rows ── */
 .cases-list{display:flex;flex-direction:column;gap:10px}
 .case-l{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:border-color .25s,box-shadow .35s}
 .case-l:hover{border-color:var(--line-2);box-shadow:var(--shadow-1)}
@@ -282,7 +282,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .kv b{color:var(--ink);font-family:var(--sans);font-weight:600;font-size:12px;letter-spacing:0;text-transform:none;text-align:right}
 .kv b a{color:var(--terra);border-bottom:1px solid currentColor}
 
-/* ── Products — bento ── */
+/* ── Products · bento ── */
 .prod-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;grid-auto-rows:auto}
 .product{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;display:flex;flex-direction:column;gap:12px;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s;overflow:hidden}
 .product:hover{transform:translateY(-4px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
@@ -385,7 +385,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .term-note{margin-top:24px;padding:16px;background:rgba(200,153,66,.1);border:1px solid #4a3a2a;border-radius:8px;color:#c89942;font-size:12.5px;line-height:1.55}
 .term-note b{color:#e8e2d2;font-weight:500}
 
-/* ── About — letter format ── */
+/* ── About · letter format ── */
 .about{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}
 .about-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-1);position:sticky;top:90px}
 .about-photo{aspect-ratio:4/5;background:var(--bg-soft);overflow:hidden;position:relative}
@@ -470,7 +470,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 @media (max-width:880px){.press-strip{grid-template-columns:repeat(2,1fr)}.press-cell:nth-child(5n){border-right:1px solid var(--line)}.press-cell:nth-child(2n){border-right:0}.press-cell:nth-last-child(-n+5){border-bottom:1px solid var(--line)}.press-cell:nth-last-child(-n+2){border-bottom:0}}
 
 /* ──────────────────────────────────────────────
-   Codex — agency product suite (extensible bento)
+   Codex · agency product suite (extensible bento)
    ────────────────────────────────────────────── */
 .codex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;grid-auto-rows:minmax(320px,auto)}
 .cdx{
@@ -505,7 +505,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .cdx-arrow{transition:transform .25s,color .25s}
 .cdx:hover .cdx-arrow{transform:translateX(4px);color:var(--terra)}
 
-/* live visuals — forecast band animation */
+/* live visuals · forecast band animation */
 .cdx-viz .glow-line{
   stroke-dasharray:500;stroke-dashoffset:500;
   animation:drawLine 3.6s cubic-bezier(.4,0,.2,1) .2s infinite;
@@ -533,7 +533,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 @media (max-width:680px){.codex-grid{grid-template-columns:1fr}.cdx.feature{grid-column:auto}}
 
 /* ──────────────────────────────────────────────
-   Testimonials — varied layouts
+   Testimonials · varied layouts
    ────────────────────────────────────────────── */
 .tst-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
 .tst{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px 26px;display:flex;flex-direction:column;gap:12px;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s;overflow:hidden}
@@ -616,7 +616,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .tl-clean .tl-item p{font-size:15px;margin-top:8px}
 
 /* ──────────────────────────────────────────────
-   Featured & cited in — large mastheads
+   Featured & cited in · large mastheads
    ────────────────────────────────────────────── */
 .feat-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px;margin-bottom:48px}
 .mc{
@@ -639,7 +639,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .mc-meta{display:flex;justify-content:space-between;align-items:end;margin-top:auto;padding-top:10px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
 .mc-meta b{font-family:var(--serif);font-size:18px;color:var(--ink);letter-spacing:-.01em;text-transform:none;font-weight:400;font-style:italic}
 
-/* Cointelegraph — magazine cover */
+/* Cointelegraph · magazine cover */
 .mc.ct{grid-row:span 1}
 .mc.ct .mc-art{
   background:linear-gradient(155deg,#0e0e10,#1a1714);
@@ -658,7 +658,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
   background:radial-gradient(circle,rgba(200,153,66,.4),transparent 60%);
 }
 
-/* CCN — newspaper clipping */
+/* CCN · newspaper clipping */
 .mc.ccn .mc-art{
   background:#fafaf5;
   background-image:repeating-linear-gradient(180deg,transparent 0 22px,rgba(26,23,20,.04) 22px 23px);
@@ -675,7 +675,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 }
 .mc.ccn .clip b{font-style:normal;color:var(--terra);font-weight:500}
 
-/* IGI Global — certificate */
+/* IGI Global · certificate */
 .mc.igi .mc-art{
   background:linear-gradient(155deg,#fafaf5,#f4f0e6);
   border-bottom:1px solid var(--line);align-items:center;justify-content:center;
@@ -695,7 +695,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .mc.igi .cert h4{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.1;letter-spacing:-.01em;color:var(--ink)}
 .mc.igi .cert .sig{font-family:var(--hand);font-size:22px;color:var(--rust);margin-top:8px;transform:rotate(-3deg);display:inline-block}
 
-/* Top picks — featured articles list */
+/* Top picks · featured articles list */
 .picks{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line);margin-top:8px}
 .pick{
   display:grid;grid-template-columns:60px 1fr auto auto;gap:24px;align-items:center;
@@ -715,7 +715,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .pick-meta b{color:var(--ink);display:block;font-family:var(--sans);font-size:12px;letter-spacing:0;text-transform:none;font-weight:600}
 .pick-arr{font-family:var(--serif);font-size:24px;color:var(--ink-2);transition:transform .25s,color .25s}
 
-/* Quote spotlights — newspaper clipping cards */
+/* Quote spotlights · newspaper clipping cards */
 .spots{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
 .spot{
   position:relative;background:#fff;border:1px solid var(--line);border-radius:6px;
@@ -735,7 +735,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .spot-foot{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-top:auto;padding-top:10px;border-top:1px dashed var(--line)}
 .spot-foot b{color:var(--terra)}
 
-/* Drafts strip — compact */
+/* Drafts strip · compact */
 .drafts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px}
 .draft{
   background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:18px 20px;
@@ -855,7 +855,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .ev-item[data-s="progress"]{border-left:3px solid var(--coral)}
 
 /* ──────────────────────────────────────────────
-   Featured work — hover-animated SVGs
+   Featured work · hover-animated SVGs
    ────────────────────────────────────────────── */
 .feat-card-viz .anim-line{stroke-dasharray:800;stroke-dashoffset:800;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1)}
 .feat-card:hover .feat-card-viz .anim-line{stroke-dashoffset:0}
@@ -867,7 +867,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
 .feat-card-viz .anim-pop.d1{transition-delay:.2s}.feat-card-viz .anim-pop.d2{transition-delay:.4s}
 
 /* ──────────────────────────────────────────────
-   Research timeline — status-coloured dots
+   Research timeline · status-coloured dots
    ────────────────────────────────────────────── */
 .tl-clean .tl-item::before{transition:transform .25s,background .25s,border-color .25s}
 .tl-clean .tl-item.done::before{border-color:var(--signal);background:var(--signal)}
@@ -942,3 +942,59 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:3;back
   .aurora{animation:none}
   .mar{animation:none}
 }
+
+/* ── Live visualization layer (broadened scope) ── */
+.feat-card-viz .anim-line{stroke-dasharray:800;stroke-dashoffset:800;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1) .15s}
+.feat-card.rv.in .feat-card-viz .anim-line,
+.feat-card:hover .feat-card-viz .anim-line{stroke-dashoffset:0}
+
+.feat-card-viz .pulse-node{animation:pulseDot 2.2s ease-in-out infinite;transform-origin:center;transform-box:fill-box}
+.feat-card-viz .gauge-arc{stroke-dasharray:480;stroke-dashoffset:480;transition:stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1) .2s}
+.feat-card.rv.in .feat-card-viz .gauge-arc,
+.feat-card:hover .feat-card-viz .gauge-arc{stroke-dashoffset:0}
+
+.feat-card-viz .tree-grow path{stroke-dasharray:120;stroke-dashoffset:120;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1)}
+.feat-card-viz .tree-grow path:nth-child(2){transition-delay:.25s}
+.feat-card-viz .tree-grow path:nth-child(3){transition-delay:.5s}
+.feat-card.rv.in .feat-card-viz .tree-grow path,
+.feat-card:hover .feat-card-viz .tree-grow path{stroke-dashoffset:0}
+
+/* hero parallax depth: subtle floating */
+@keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero-card{animation:heroFloat 6.5s ease-in-out infinite}
+
+/* hero gradient sheen on h1 .grad span */
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero h1 .grad{background:linear-gradient(90deg,var(--terra),var(--ochre),var(--coral),var(--terra));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradShift 8s ease-in-out infinite}
+
+/* press-strip: continuous marquee */
+.press-marquee{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--r-md);background:#fff;margin-top:8px}
+.press-marquee::before,.press-marquee::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
+.press-marquee::before{left:0;background:linear-gradient(90deg,#fff,transparent)}
+.press-marquee::after{right:0;background:linear-gradient(270deg,#fff,transparent)}
+.press-marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite}
+.press-marquee:hover .press-marquee-track{animation-play-state:paused}
+.press-marquee .press-cell{flex:0 0 220px;border-right:1px solid var(--line);border-bottom:0;padding:20px 14px;min-height:96px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* counter values: simple style enhancement (the JS handles the count) */
+.metric .v[data-count],.stat .v[data-count]{font-variant-numeric:tabular-nums}
+
+/* side rail visibility on desktop */
+@media (min-width:1100px){
+  .rail{display:flex}
+}
+
+/* button click ripple */
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;left:var(--rx,50%);top:var(--ry,50%);width:0;height:0;border-radius:50%;background:rgba(255,255,255,.5);transform:translate(-50%,-50%);pointer-events:none}
+.btn.rippling::after{animation:btnRipple .6s ease-out}
+@keyframes btnRipple{0%{width:0;height:0;opacity:.55}100%{width:320px;height:320px;opacity:0}}
+
+/* hero-card subtle sheen */
+.hero-card::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);transform:translateX(-100%);animation:cardSheen 5.5s ease-in-out infinite;z-index:1;pointer-events:none}
+@keyframes cardSheen{0%,40%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+
+/* case-study viz: when in view (.rv.in on .cdx), un-pause */
+.cdx.rv.in .cdx-viz{opacity:1}
+.cdx-viz{opacity:.85;transition:opacity .6s ease}

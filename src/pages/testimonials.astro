@@ -11,15 +11,15 @@ import SiteLayout from "../components/SiteLayout.astro";
 >
   <PageHeader
     title="Testimonials and <em>recommendation context</em>."
-    subtitle="Short, verbatim feedback from client and partner contexts. This page treats testimonials as <b>supporting evidence</b>, not as the primary basis of the case."
+    subtitle="Verbatim feedback from client and partner contexts. Each quote is reproduced word-for-word from email or stakeholder review."
     crumbs={[{ label: "Home", href: "/" }, { label: "Testimonials" }]}
   />
 
   <section class="section wrap first" data-screen-label="Testimonials">
     <div class="tst-counter rv">
-      <div class="stat"><span class="v"><em>4</em></span><span class="k">Verbatim quotes</span></div>
-      <div class="stat"><span class="v">12<em>+</em></span><span class="k">Named client programmes</span></div>
-      <div class="stat"><span class="v">11<em>+</em></span><span class="k">Verticals served</span></div>
+      <div class="stat"><span class="v"><em><span data-count="4">0</span></em></span><span class="k">Verbatim quotes</span></div>
+      <div class="stat"><span class="v"><span data-count="12">0</span><em>+</em></span><span class="k">Named client programmes</span></div>
+      <div class="stat"><span class="v"><span data-count="11">0</span><em>+</em></span><span class="k">Verticals served</span></div>
     </div>
 
     <div class="tst-grid">
@@ -62,7 +62,7 @@ import SiteLayout from "../components/SiteLayout.astro";
     </div>
 
     <div class="rv" style="margin-top:48px;padding:18px 22px;background:rgba(200,153,66,.12);border:1px solid rgba(200,153,66,.4);border-radius:14px;font-size:14px;color:var(--ink-2);line-height:1.55">
-      <b style="color:var(--ink);font-weight:600">These quotes support the broader case; they do not replace it.</b> The main proof remains the combination of role context, shipped systems, publications, recognition, and supporting evidence. See <a href="/evidence" style="color:var(--terra);border-bottom:1px solid currentColor">the evidence route</a> for the wider proof structure.
+      <b style="color:var(--ink);font-weight:600">Full engagement context.</b> Named programmes, approved deliverables, and recommendation context sit in the <a href="/evidence" style="color:var(--terra);border-bottom:1px solid currentColor">evidence index</a> and <a href="/case-studies" style="color:var(--terra);border-bottom:1px solid currentColor">case studies</a>.
     </div>
   </section>
 </SiteLayout>

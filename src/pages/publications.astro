@@ -67,25 +67,25 @@ const publicationSchema = {
 
   <PageHeader
     title="Publications and <em>archive record</em>."
-    subtitle="This page now separates <b>live article URLs</b> from <b>archival continuity proof</b>. Unstable publisher author-index pages are no longer treated as the primary evidence layer."
+    subtitle="Technical articles on AI, crypto-security, and data systems for <b>Cointelegraph</b> and <b>AlphaWire</b>, plus an archive of older Cointelegraph pieces where the publisher has restructured its author pages."
     crumbs={[{ label: "Home", href: "/" }, { label: "Publications" }]}
   />
 
   <section class="section wrap first" data-screen-label="Volume">
     <div class="pub-counter rv">
-      <div class="stat"><span class="v">35<em>+</em></span><span class="k">Published technical articles</span><span class="sub">Total body of work across live URLs and archived publication history.</span></div>
-      <div class="stat"><span class="v"><em>8</em></span><span class="k">Verified Cointelegraph links</span><span class="sub">Direct URLs confirmed through browser-accessible retrieval on 2026-05-14.</span></div>
-      <div class="stat"><span class="v"><em>2</em></span><span class="k">Verified live AlphaWire links</span><span class="sub">Current direct URLs still resolving publicly.</span></div>
-      <div class="stat"><span class="v"><em>1</em></span><span class="k">Archive continuity asset</span><span class="sub">PDF record used because publisher structure changed.</span></div>
+      <div class="stat"><span class="v"><span data-count="35">0</span><em>+</em></span><span class="k">Published technical articles</span><span class="sub">Total body of work across live URLs and archived publication history.</span></div>
+      <div class="stat"><span class="v"><em><span data-count="8">0</span></em></span><span class="k">Verified Cointelegraph links</span><span class="sub">Direct URLs confirmed through browser-accessible retrieval on 2026-05-14.</span></div>
+      <div class="stat"><span class="v"><em><span data-count="2">0</span></em></span><span class="k">Verified live AlphaWire links</span><span class="sub">Current direct URLs still resolving publicly.</span></div>
+      <div class="stat"><span class="v"><em><span data-count="1">0</span></em></span><span class="k">Archive continuity asset</span><span class="sub">PDF record used because publisher structure changed.</span></div>
     </div>
   </section>
 
   <section class="section wrap" data-screen-label="Cointelegraph">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Live Cointelegraph record</span>
-        <h2>Direct article <em>URLs</em>.</h2>
-        <p>The site no longer depends on a publisher author page as the primary proof surface. These are direct article links confirmed through browser-accessible retrieval on 2026-05-14.</p>
+        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Cointelegraph</span>
+        <h2>Articles on <em>crypto-security</em> and AI.</h2>
+        <p>Technical writing on crypto-security, AI in trading, and protocol design. All URLs verified on 2026-05-14.</p>
       </div>
       <div class="sec-head-r">/ live links only</div>
     </div>
@@ -109,11 +109,11 @@ const publicationSchema = {
   <section class="section wrap" data-screen-label="AlphaWire">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ Live AlphaWire record</span>
-        <h2>Direct AlphaWire <em>articles</em>.</h2>
-        <p>The old author-index path was returning 404 when checked on 2026-05-14, so this page keeps only direct article URLs as public proof.</p>
+        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ AlphaWire</span>
+        <h2>Explainers on <em>AI infrastructure</em>.</h2>
+        <p>Explainers and reported pieces on AI infrastructure and digital measurement. All URLs verified on 2026-05-14.</p>
       </div>
-      <div class="sec-head-r">/ no dead author pages</div>
+      <div class="sec-head-r">/ direct article links</div>
     </div>
 
     <div class="pub-list rv">
@@ -135,15 +135,15 @@ const publicationSchema = {
   <section class="section wrap" data-screen-label="Archive">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ Historical continuity</span>
-        <h2>Archive-backed <em>publication proof</em>.</h2>
+        <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ Historical record</span>
+        <h2>Archive of older <em>Cointelegraph</em> pieces.</h2>
       </div>
-      <div class="sec-head-r"><a href="/evidence">Evidence route →</a></div>
+      <div class="sec-head-r"><a href="/evidence">Evidence index →</a></div>
     </div>
 
     <div class="archive-card rv">
       <h3>{publicationArchive.title.replace(" archive", "")} <em>archive</em>.</h3>
-      <p>{publicationArchive.description} This is not used to pretend the old public profile pages still work. It is used to preserve continuity when a publisher removes or restructures older surfaces.</p>
+      <p>{publicationArchive.description} A PDF record of older Cointelegraph pieces preserved after the publisher restructured its author pages.</p>
       <p style="margin-top:14px"><a href={publicationArchive.url}>Open the PDF archive ↗</a></p>
     </div>
   </section>

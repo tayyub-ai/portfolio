@@ -10,7 +10,7 @@ import { site } from "../data/site";
   pathname="/contact"
   crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
   footerTitle="Direct contact."
-  footerLead="No PR layer. No newsletter funnel. Just direct contact for the work and the evidence around it."
+  footerLead="Replies come from my inbox, usually within 48 hours on weekdays."
 >
   <style slot="head">
     .contact-wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:start}
@@ -39,7 +39,7 @@ import { site } from "../data/site";
 
   <PageHeader
     title="Work, evidence, and <em>contact</em>."
-    subtitle="For senior-role conversations, consulting, speaking, publication requests, or recommendation context. If you need a closer look at the evidence pack or case-study support material, ask directly."
+    subtitle="For senior-role conversations, consulting, expert commentary, conference invitations, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays."
     crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
   />
 
@@ -80,7 +80,7 @@ import { site } from "../data/site";
             <select id="cf-topic" name="topic">
               <option>Senior role / hiring conversation</option>
               <option>Consulting / analytics systems work</option>
-              <option>Request evidence pack / supporting material</option>
+              <option>Request supporting documents</option>
               <option>Speaking / panel / podcast</option>
               <option>Publication / expert commentary</option>
               <option>Other</option>
@@ -106,9 +106,9 @@ import { site } from "../data/site";
           <a href={`mailto:${site.email}`}>{site.email} →</a>
         </div>
         <div class="contact-card">
-          <h4>Evidence <em>requests</em>.</h4>
-          <p>Ask for the evidence pack, case-study support material, archive publication proof, or recommendation context.</p>
-          <a href="/evidence">Open evidence route ↗</a>
+          <h4>Supporting <em>documents</em>.</h4>
+          <p>Approved screenshots, before/after reporting outputs, archived publication proof, peer-review certificates, and recommendation context. All available on request.</p>
+          <a href="/evidence">Open evidence index ↗</a>
         </div>
         <div class="contact-card">
           <h4><em>LinkedIn</em>.</h4>
@@ -117,7 +117,7 @@ import { site } from "../data/site";
         </div>
         <div class="contact-card">
           <h4><em>GitHub</em>.</h4>
-          <p>Public repositories used as supporting technical evidence.</p>
+          <p>Current public repositories: utilities, audit modules, and exploratory work.</p>
           <a href={site.social.github} target="_blank" rel="noreferrer">github.com/tayyub-ai ↗</a>
         </div>
       </aside>

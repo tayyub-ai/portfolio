@@ -27,11 +27,11 @@
 - 35+ technical articles across Cointelegraph and AlphaWire, combining live URLs with archive continuity where needed
 - Quoted as expert source by CCN
 - 3 completed chapter reviews for IGI Global (CBDCs, blockchain consensus for IoT-based banking, AI-enabled IoT for FinTech)
-- 12 AI/ML credentials — Google AI Agents, AWS ML Specialty exam prep, Vertex AI MLOps, Model Context Protocol with Agentic AI, Agentic AI for Developers, OpenAI Generative AI, AI Ethics & Safety, TensorFlow Deep Learning
+- 12 AI/ML credentials · Google AI Agents, AWS ML Specialty exam prep, Vertex AI MLOps, Model Context Protocol with Agentic AI, Agentic AI for Developers, OpenAI Generative AI, AI Ethics & Safety, TensorFlow Deep Learning
 - MSc Computing Science, University of Stirling
 - Verbatim client testimonials from BBC, General Mills (Blue Buffalo), Diligent Pharma, MRI Management
 - 12+ named client programmes shipped via 8 Million Stories
 - 8 proprietary analytics systems in production; 50+ client teams on the platform on a weekly cadence
 
 ## Current focus
-AI agents and machine learning in production, AI-search disruption to organic visibility, consent-mode transparency, measurement-platform accountability. Building LedgerTouch — an independent analytics platform — outside agency work.
+AI agents and machine learning in production, AI-search disruption to organic visibility, consent-mode transparency, measurement-platform accountability. Building LedgerTouch · an independent analytics platform · outside agency work.

@@ -1,7 +1,7 @@
 export const site = {
   name: "Tayyub Yaqoob",
   siteUrl: "https://www.tayyubyaqoob.com",
-  title: "Tayyub Yaqoob — AI analytics systems, technical publications, and evidence",
+  title: "Tayyub Yaqoob · AI analytics systems, technical publications, and evidence",
   description:
     "UK-based senior digital analyst and AI analytics systems specialist. Case studies, publications, recognition, evidence, and direct contact.",
   email: "tayyabyaqoob.1@gmail.com",

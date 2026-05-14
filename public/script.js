@@ -1,4 +1,4 @@
-// Tayyub Yaqoob — portfolio interactions (multi-page)
+// Tayyub Yaqoob · portfolio interactions (multi-page)
 (function(){
 'use strict';
 
@@ -12,8 +12,8 @@
   addEventListener('mouseenter',()=>{s.style.opacity='1'});
 })();
 
-// ── Cursor glow ──
-document.querySelectorAll('.cap,.product,.feat-card,.ccn,.pub,.tl-item,.letter,.cdx,.tst,.lg-tile,.ev-item').forEach(el=>{
+// ── Cursor glow on cards ──
+document.querySelectorAll('.cap,.product,.feat-card,.ccn,.pub,.tl-item,.letter,.cdx,.tst,.lg-tile,.ev-item,.rec-card,.repo-card,.cred,.tst-card,.bio,.facts,.asset-card,.pick-row,.archive-card,.proof-panel,.quote-card,.contact-card').forEach(el=>{
   el.addEventListener('mousemove',e=>{
     const r=el.getBoundingClientRect();
     el.style.setProperty('--mx',(e.clientX-r.left)+'px');
@@ -41,7 +41,19 @@ document.querySelectorAll('[data-tilt]').forEach(el=>{
   el.addEventListener('mouseleave',()=>{el.style.transform=''});
 });
 
-// ── Hero eyebrow parallax ──
+// ── Click ripple on buttons ──
+document.querySelectorAll('.btn').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    const r=btn.getBoundingClientRect();
+    btn.style.setProperty('--rx',(e.clientX-r.left)+'px');
+    btn.style.setProperty('--ry',(e.clientY-r.top)+'px');
+    btn.classList.remove('rippling');
+    void btn.offsetWidth;
+    btn.classList.add('rippling');
+  });
+});
+
+// ── Hero parallax ──
 (function(){
   const els=document.querySelectorAll('[data-parallax]');
   if(!els.length)return;
@@ -61,6 +73,29 @@ document.querySelectorAll('[data-tilt]').forEach(el=>{
     es.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:.12,rootMargin:"0px 0px -40px 0px"});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+})();
+
+// ── Counter tick-up ──
+(function(){
+  const easeOut=t=>1-Math.pow(1-t,3);
+  const animate=el=>{
+    const target=+el.dataset.count||0;
+    const dur=1200;
+    const start=performance.now();
+    const step=now=>{
+      const t=Math.min(1,(now-start)/dur);
+      el.textContent=Math.round(target*easeOut(t));
+      if(t<1)requestAnimationFrame(step);
+      else el.textContent=target;
+    };
+    requestAnimationFrame(step);
+  };
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){animate(e.target);io.unobserve(e.target);}
+    });
+  },{threshold:.4});
+  document.querySelectorAll('[data-count]').forEach(el=>io.observe(el));
 })();
 
 // ── Expandable case studies ──
@@ -97,7 +132,7 @@ document.querySelectorAll('[data-tilt]').forEach(el=>{
   });
 })();
 
-// ── Codex filter + off-screen pause ──
+// ── Case-study filter + off-screen pause ──
 (function(){
   const chips=document.querySelectorAll('.cdx-chip');
   const cards=document.querySelectorAll('.cdx[data-cat]');
@@ -113,7 +148,6 @@ document.querySelectorAll('[data-tilt]').forEach(el=>{
       });
     });
   }
-  // pause heavy animations when off-screen
   const vizs=document.querySelectorAll('.cdx-viz');
   if(!vizs.length)return;
   const io=new IntersectionObserver(es=>{
@@ -137,7 +171,6 @@ document.querySelectorAll('[data-tilt]').forEach(el=>{
       });
     });
   }
-  // sticky jumper active state on scroll
   const jumper=document.getElementById('ev-jumper');
   if(!jumper)return;
   const sects=[...document.querySelectorAll('section[id^="cat-"]')];
@@ -167,7 +200,6 @@ document.querySelectorAll('[data-tilt]').forEach(el=>{
       a.dataset.target=s.id;
       rail.appendChild(a);
     });
-    // briefly show labels on first mount, fade out
     rail.classList.add('show-labels');
     setTimeout(()=>rail.classList.remove('show-labels'),2400);
   }

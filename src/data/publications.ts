@@ -76,7 +76,7 @@ export const liveAlphaWireArticles: PublicationItem[] = [
     theme: "Payments",
   },
   {
-    title: "Meet EmCoin – Where You Can Trade Crypto, Stocks, and Commodities Together",
+    title: "Meet EmCoin: Where You Can Trade Crypto, Stocks, and Commodities Together",
     url: "https://alphawire.xyz/news/meet-emcoin-where-you-can-trade-crypto-stocks-and-commodities-together/",
     outlet: "AlphaWire",
     format: "Business",

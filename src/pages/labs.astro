@@ -11,25 +11,25 @@ import SiteLayout from "../components/SiteLayout.astro";
 >
   <PageHeader
     title="Labs and <em>in-development</em> work."
-    subtitle="This route is deliberately separated from the case studies. These items matter because they show current product and tooling direction, but they are <b>not presented as shipped proof</b>."
+    subtitle="In-development product and tooling work focused on <b>measurement QA</b>, <b>consent visibility</b>, and <b>analytics audit</b>. None of these are shipped products yet."
     crumbs={[{ label: "Home", href: "/" }, { label: "Labs" }]}
   />
 
   <section class="section wrap first" data-screen-label="Labs">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ R&amp;D surface</span>
-        <h2>Current <em>labs</em> direction.</h2>
-        <p>Useful for understanding where the tooling work is going next, but intentionally kept subordinate to the evidence-backed production work.</p>
+        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ R&amp;D direction</span>
+        <h2>Where the tooling work is going <em>next</em>.</h2>
+        <p>Architecture and scope are documented; ship dates are not promised. Each item is in active development and would benefit from design partners.</p>
       </div>
-      <div class="sec-head-r">/ clearly labelled</div>
+      <div class="sec-head-r">/ active development</div>
     </div>
 
     <div class="prod-bento">
       <article class="product feature rv" data-tilt>
         <span class="status status-dev">◐ In development · founder</span>
         <h3><em>LedgerTouch</em>.</h3>
-        <p>Independent analytics product direction focused on measurement QA, consent checks, reporting risk, and stack-level visibility gaps. The proof available today is architecture and scope, not a public launch.</p>
+        <p>Independent product work in measurement QA, consent checks, reporting risk, and stack-level visibility. Architecture documents, schema drafts, and feature scope available for review under NDA.</p>
         <div class="product-screen">
           <svg viewBox="0 0 600 340" preserveAspectRatio="xMidYMid meet">
             <rect width="600" height="340" fill="#fff"/>
@@ -46,7 +46,7 @@ import SiteLayout from "../components/SiteLayout.astro";
             </g>
           </svg>
         </div>
-        <span class="prod-cta">Architecture and roadmap available in evidence context</span>
+        <span class="prod-cta">Architecture and roadmap available under NDA</span>
       </article>
 
       <article class="product rv d1" data-tilt>
@@ -61,7 +61,7 @@ import SiteLayout from "../components/SiteLayout.astro";
             <g><rect x="280" y="20" width="100" height="50" rx="6" fill="#e6ecd9" stroke="#7a8f5e"/><text x="330" y="42" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#4a5d2f">consent</text><text x="330" y="58" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#85807a">mapping</text></g>
           </svg>
         </div>
-        <span class="muted">Innovation context, not shipped proof.</span>
+        <span class="muted">Module spec available on request.</span>
       </article>
 
       <article class="product rv d2" data-tilt>
@@ -79,7 +79,7 @@ import SiteLayout from "../components/SiteLayout.astro";
             </g>
           </svg>
         </div>
-        <span class="muted">Presented honestly as active R&amp;D.</span>
+        <span class="muted">Active R&amp;D. Design partners welcome.</span>
       </article>
     </div>
   </section>
