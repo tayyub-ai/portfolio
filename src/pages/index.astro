@@ -10,47 +10,45 @@ import SiteLayout from "../components/SiteLayout.astro";
   footerLead="Senior roles, consulting, expert commentary, conference talks, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays."
 >
   <style slot="head">
-    /* ── Hero console panel ── */
+    /* ── Hero: credentials eyebrow + proof badges + latest-published card ── */
     .hero-grid{align-items:start}
-    .console{position:relative;background:linear-gradient(180deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--shadow-2);overflow:hidden;font-family:var(--mono);max-width:420px;margin-left:auto}
-    .console::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 220px at 80% -10%,rgba(196,77,44,.08),transparent 60%);pointer-events:none}
-    .console-bar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:1}
-    .console-bar .dots{display:flex;gap:5px}
-    .console-bar .dots span{width:7px;height:7px;border-radius:50%;background:var(--line-2)}
-    .console-bar .dots span:nth-child(1){background:#d97757}
-    .console-bar .dots span:nth-child(2){background:#c89942}
-    .console-bar .dots span:nth-child(3){background:#7a8f5e}
-    .console-bar .who{display:flex;align-items:center;gap:8px;font-size:10.5px;color:var(--ink-2);letter-spacing:.04em;margin-left:6px}
-    .console-bar .who img{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
-    .console-bar .who b{color:var(--ink);font-weight:600}
-    .console-bar .live-pill{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:9.5px;letter-spacing:.1em;color:var(--moss);text-transform:uppercase}
-    .console-bar .live-pill::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--moss);animation:pulse 2s infinite}
-    .console-rows{padding:14px 16px 16px;display:flex;flex-direction:column;gap:14px;position:relative;z-index:1}
-    .console-row{display:flex;flex-direction:column;gap:6px}
-    .console-row .label{font-size:9.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:8px}
-    .console-row .label .bar{flex:1;height:1px;background:var(--line)}
-    .console-ticker{height:34px;position:relative;overflow:hidden;font-family:var(--mono);font-size:12px;color:var(--ink)}
-    .console-ticker .line{position:absolute;inset:0;display:flex;align-items:center;gap:8px;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s}
-    .console-ticker .line.on{opacity:1;transform:none}
-    .console-ticker .line::before{content:"›";color:var(--terra);font-weight:600}
-    .console-ticker .line b{color:var(--terra);font-weight:500}
-    .spark{width:100%;height:64px}
-    .spark .hist{stroke:var(--terra);stroke-width:1.8;fill:none;stroke-dasharray:300;stroke-dashoffset:300;animation:drawSpark 1.6s cubic-bezier(.4,0,.2,1) .4s forwards}
-    .spark .fc{stroke:var(--ochre);stroke-width:1.6;fill:none;stroke-dasharray:5 4;stroke-dashoffset:200;animation:drawSpark 1.4s cubic-bezier(.4,0,.2,1) 1.4s forwards}
-    .spark .band{fill:var(--ochre);fill-opacity:.18}
-    .spark .axis{stroke:var(--line);stroke-width:1;stroke-dasharray:2 4;opacity:.7}
-    @keyframes drawSpark{to{stroke-dashoffset:0}}
-    .console-gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .cg{display:flex;flex-direction:column;align-items:center;gap:4px}
-    .cg svg{width:54px;height:54px}
-    .cg .v{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--ink);line-height:1}
-    .cg .k{font-size:8.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
-    .cg .ring-bg{fill:none;stroke:var(--line);stroke-width:3}
-    .cg .ring-fg{fill:none;stroke:var(--terra);stroke-width:3;stroke-linecap:round;stroke-dasharray:151;stroke-dashoffset:151;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1.3s cubic-bezier(.4,0,.2,1)}
-    .cg.cg-2 .ring-fg{stroke:var(--ochre)}
-    .cg.cg-3 .ring-fg{stroke:var(--moss)}
-    .console.in .cg .ring-fg{stroke-dashoffset:var(--off,40)}
-    @media (max-width:880px){.console{margin:24px auto 0;max-width:100%}}
+
+    /* Eyebrow with portrait */
+    .eyebrow-rich{display:inline-flex;align-items:center;gap:12px;padding:6px 16px 6px 6px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-1);font-family:var(--mono);font-size:11px;letter-spacing:.02em;color:var(--ink-2);text-transform:none;line-height:1.3;max-width:100%;flex-wrap:wrap}
+    .eyebrow-rich .eb-portrait{width:34px;height:34px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid #fff;box-shadow:0 1px 4px rgba(60,40,20,.18);filter:saturate(.92) contrast(1.04)}
+    .eyebrow-rich .eb-line{font-weight:500;color:var(--ink)}
+    .eyebrow-rich .eb-line b{color:var(--terra);font-weight:600}
+    @media (max-width:540px){.eyebrow-rich{font-size:10.5px;padding:6px 14px 6px 6px}.eyebrow-rich .eb-portrait{width:30px;height:30px}}
+
+    /* Proof badges */
+    .proof-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .pb{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;background:#fff;border:1px solid var(--line);font-family:'Inter',sans-serif;font-size:12.5px;letter-spacing:-.005em;color:var(--ink-2);transition:border-color .25s,background .25s,transform .25s,box-shadow .25s}
+    .pb:hover{border-color:var(--terra);background:var(--terra-soft);transform:translateY(-1px);box-shadow:var(--shadow-1)}
+    .pb b{color:var(--ink);font-weight:600}
+    .pb .pb-ic{color:var(--ochre);font-size:13px;line-height:1}
+
+    /* Latest published magazine-cover card */
+    .latest{position:relative;display:flex;flex-direction:column;background:linear-gradient(170deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;box-shadow:0 18px 50px rgba(60,40,20,.16);max-width:440px;margin-left:auto;transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
+    .latest:hover{transform:translateY(-5px) rotate(-.6deg);box-shadow:0 28px 70px rgba(60,40,20,.26)}
+    .latest::before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--terra),var(--coral),var(--ochre));z-index:2}
+    .latest-h{display:flex;justify-content:space-between;align-items:end;gap:12px;padding:22px 24px 12px;border-bottom:2px solid var(--ink);position:relative;z-index:1;flex-wrap:wrap}
+    .latest-h .outlet{font-family:Georgia,'Instrument Serif',serif;font-weight:900;font-size:30px;letter-spacing:-.045em;color:var(--ink);line-height:.85}
+    .latest-h .format{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;font-weight:600;text-align:right;line-height:1.4}
+    .latest-body{padding:18px 24px 14px;display:flex;flex-direction:column;gap:10px;flex:1}
+    .latest-tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--terra);text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:8px}
+    .latest-tag::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--terra);animation:pulse 2s infinite;flex-shrink:0}
+    .latest-title{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.4vw,28px);line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin-top:2px}
+    .latest-title em{font-style:italic;color:var(--terra)}
+    .latest:hover .latest-title em{color:var(--coral)}
+    .latest-desc{font-size:13.5px;color:var(--ink-2);line-height:1.6;max-width:50ch;margin-top:2px}
+    .latest-foot{display:flex;justify-content:space-between;align-items:center;padding:14px 24px 18px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted);gap:14px;flex-wrap:wrap;background:rgba(232,226,210,.25)}
+    .latest-cta{color:var(--terra);font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:.1em;display:inline-flex;align-items:center;gap:5px}
+    .latest-cta::after{content:"↗";transition:transform .25s}
+    .latest:hover .latest-cta::after{transform:translate(2px,-2px)}
+    .latest-more{color:var(--ink-2);font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+    .latest .corner-stamp{position:absolute;top:18px;right:20px;width:54px;height:54px;border:1.5px solid var(--ochre);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ochre);font-family:var(--mono);font-size:7.5px;letter-spacing:.12em;line-height:1.3;background:rgba(254,247,237,.85);transform:rotate(-8deg);text-transform:uppercase;text-align:center;z-index:3;pointer-events:none}
+    .latest .corner-stamp b{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;font-weight:400;color:var(--ochre)}
+    @media (max-width:880px){.latest{margin:24px auto 0;max-width:100%}.latest .corner-stamp{display:none}}
 
     /* ── Industry distribution bar ── */
     .indust-bar{display:flex;width:100%;height:18px;border-radius:9px;overflow:hidden;border:1px solid var(--line);margin-top:18px;background:#fff}
@@ -205,76 +203,43 @@ import SiteLayout from "../components/SiteLayout.astro";
   <section class="hero wrap" data-screen-label="01 Intro" id="top">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow rv" data-parallax="6">
-          <span class="dot"></span>
-          Senior Digital Analyst · 8 Million Stories · Stirling, UK
+        <div class="eyebrow-rich rv" data-parallax="6">
+          <img src="/assets/portrait.jpeg" class="eb-portrait" alt="Tayyub Yaqoob" />
+          <span class="eb-line"><b>Published in Cointelegraph</b> · Cited by CCN · Peer reviewer for IGI Global · Senior analyst, 8 Million Stories</span>
         </div>
         <h1 class="rv d1">
-          I build <span class="grad">AI-assisted analytics</span>, automation, and <span class="marked">measurement systems</span> for digital teams.
+          Writing, peer review, and analytics engineering at the intersection of <span class="grad">AI</span>, <span class="marked">measurement</span>, and digital trust.
         </h1>
         <p class="lede rv d2">
-          Production systems used by analyst and client teams, technical articles for Cointelegraph and AlphaWire, peer reviews for IGI Global, and expert commentary cited by CCN. Each section below links to the underlying work.
+          35+ technical features for <b>Cointelegraph</b> and <b>AlphaWire</b> on AI-driven trading, agentic fraud, and quantum-resistant systems. Three completed chapter reviews for <b>IGI Global</b> on CBDCs, IoT-banking consensus, and AI-FinTech. Expert source for <b>CCN</b> on AI-trading risk. Senior Digital Analyst at <b>8 Million Stories</b>, building forecasting, sentiment monitoring, and AI-search visibility systems for client teams.
         </p>
-        <div class="hero-cta rv d3">
-          <a href="/case-studies" class="btn btn-primary" data-magnet>See the case studies →</a>
-          <a href="/publications" class="btn btn-ghost" data-magnet>Publications and citations ↗</a>
+        <div class="proof-badges rv d3">
+          <span class="pb"><span class="pb-ic">★</span>Bylined · <b>35+ pieces</b></span>
+          <span class="pb"><span class="pb-ic">★</span>Expert source · <b>CCN</b></span>
+          <span class="pb"><span class="pb-ic">★</span>Peer reviewer · <b>IGI Global</b></span>
         </div>
-        <div class="hero-pills rv d4">
-          <a class="hero-pill" href="/publications">Live article URLs</a>
-          <a class="hero-pill" href="/recognition">External citations</a>
-          <a class="hero-pill" href="/testimonials">Client feedback</a>
-          <a class="hero-pill" href="/about">About</a>
+        <div class="hero-cta rv d4">
+          <a href="/publications" class="btn btn-primary" data-magnet>See the publications →</a>
+          <a href="/evidence" class="btn btn-ghost" data-magnet>Open the evidence ↗</a>
         </div>
       </div>
 
-      <aside class="console rv d2" id="hero-console" aria-label="Live status console">
-        <div class="console-bar">
-          <span class="dots"><span></span><span></span><span></span></span>
-          <span class="who"><img src="/assets/portrait.jpeg" alt="" /><b>Tayyub Yaqoob</b></span>
-          <span class="live-pill">Open · 2026</span>
+      <a class="latest rv d2" href="https://cointelegraph.com/news/can-chatgpt-powered-ai-agents-really-trade-crypto-for-you" target="_blank" rel="noreferrer" aria-label="Latest published Cointelegraph feature: Can ChatGPT-powered AI agents really trade crypto for you?">
+        <div class="corner-stamp">Latest<b>2026</b>Feature</div>
+        <header class="latest-h">
+          <span class="outlet">cointelegraph</span>
+          <span class="format">Technical feature<br/>· bylined · 2026</span>
+        </header>
+        <div class="latest-body">
+          <span class="latest-tag">Latest published</span>
+          <h3 class="latest-title">Can ChatGPT-powered <em>AI agents</em> really trade crypto for you?</h3>
+          <p class="latest-desc">Bylined feature on agentic-AI trading, autonomous-agent risk, and the resilience constraint. Failure modes, threat models, and where the human stays in the loop.</p>
         </div>
-        <div class="console-rows">
-          <div class="console-row">
-            <span class="label">Now<span class="bar"></span></span>
-            <div class="console-ticker" id="hero-ticker">
-              <div class="line on" data-i="0">current focus: <b>AI-search visibility research</b></div>
-              <div class="line" data-i="1">this week: <b>2 Cointelegraph drafts in review</b></div>
-              <div class="line" data-i="2">shipped: <b>forecasting workflow update</b></div>
-              <div class="line" data-i="3">open: <b>senior-role conversations</b></div>
-            </div>
-          </div>
-          <div class="console-row">
-            <span class="label">Channel forecast · GA4<span class="bar"></span></span>
-            <svg class="spark" viewBox="0 0 360 64" preserveAspectRatio="none">
-              <g class="axis"><line x1="0" y1="32" x2="360" y2="32"/></g>
-              <path class="band" d="M200 26 Q240 16 280 14 T360 8 L360 38 Q300 36 260 34 T200 26 Z"/>
-              <path class="hist" d="M10 50 Q40 44 70 38 T130 28 T200 26"/>
-              <path class="fc" d="M200 26 Q240 18 280 14 T360 8"/>
-              <circle cx="200" cy="26" r="3" fill="#c44d2c"/>
-            </svg>
-          </div>
-          <div class="console-row">
-            <span class="label">Citations<span class="bar"></span></span>
-            <div class="console-gauges">
-              <div class="cg cg-1" style="--off:38">
-                <svg viewBox="0 0 56 56"><circle class="ring-bg" cx="28" cy="28" r="24"/><circle class="ring-fg" cx="28" cy="28" r="24"/></svg>
-                <div class="v"><span data-count="8">0</span></div>
-                <div class="k">Cointelegraph</div>
-              </div>
-              <div class="cg cg-2" style="--off:55">
-                <svg viewBox="0 0 56 56"><circle class="ring-bg" cx="28" cy="28" r="24"/><circle class="ring-fg" cx="28" cy="28" r="24"/></svg>
-                <div class="v"><span data-count="4">0</span></div>
-                <div class="k">CCN</div>
-              </div>
-              <div class="cg cg-3" style="--off:75">
-                <svg viewBox="0 0 56 56"><circle class="ring-bg" cx="28" cy="28" r="24"/><circle class="ring-fg" cx="28" cy="28" r="24"/></svg>
-                <div class="v"><span data-count="3">0</span></div>
-                <div class="k">IGI Global</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
+        <footer class="latest-foot">
+          <span class="latest-cta">Read on Cointelegraph</span>
+          <span class="latest-more">+ 34 more features · 2 AlphaWire · 1 archive</span>
+        </footer>
+      </a>
     </div>
   </section>
 
@@ -615,16 +580,4 @@ import SiteLayout from "../components/SiteLayout.astro";
     </div>
   </section>
 
-  <script slot="head" is:inline>
-    // Hero ticker rotation
-    document.addEventListener('DOMContentLoaded',()=>{
-      const t=document.getElementById('hero-ticker');if(!t)return;
-      const lines=t.querySelectorAll('.line');let i=0;
-      setInterval(()=>{
-        lines.forEach(l=>l.classList.remove('on'));
-        i=(i+1)%lines.length;
-        lines[i].classList.add('on');
-      },3800);
-    });
-  </script>
 </SiteLayout>
