@@ -10,55 +10,46 @@ import SiteLayout from "../components/SiteLayout.astro";
   crumbs={[{ label: "Home", href: "/" }, { label: "Labs" }]}
 >
   <style slot="head">
-    /* ── Blueprint sheets ── */
-    .bp{position:relative;background:#0e2a44;background-image:linear-gradient(135deg,#0e2a44 0%,#0a223a 100%),repeating-linear-gradient(0deg,transparent 0,transparent 23px,rgba(120,170,210,.08) 23px,rgba(120,170,210,.08) 24px),repeating-linear-gradient(90deg,transparent 0,transparent 23px,rgba(120,170,210,.08) 23px,rgba(120,170,210,.08) 24px);background-blend-mode:multiply;border-radius:10px;color:#e0eef8;font-family:var(--mono);overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.35);position:relative;transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s}
-    .bp::before{content:"";position:absolute;inset:14px;border:1px solid rgba(120,170,210,.35);border-radius:6px;pointer-events:none}
-    .bp::after{content:"";position:absolute;inset:18px;border:1px dashed rgba(120,170,210,.18);border-radius:4px;pointer-events:none}
-    .bp:hover{transform:translateY(-4px);box-shadow:0 26px 70px rgba(0,0,0,.45)}
-    .bp.bp-feature{grid-column:span 2;min-height:520px}
-    .bp-content{position:relative;z-index:1;padding:32px 36px 36px;display:flex;flex-direction:column;height:100%}
-    .bp-corner{position:absolute;z-index:2;font-size:9px;letter-spacing:.18em;color:rgba(224,238,248,.55);text-transform:uppercase;display:flex;align-items:center;gap:8px}
-    .bp-corner.tr{top:22px;right:30px}
-    .bp-corner.tr::after{content:"v0.1-alpha";color:#f0c87a;border:1px solid #f0c87a;padding:3px 8px;border-radius:3px;letter-spacing:.12em}
-    .bp-corner.bl{bottom:30px;left:30px;display:flex;gap:6px;align-items:center}
-    .bp-corner.bl::before{content:"";width:10px;height:10px;border-radius:50%;background:#f0c87a;box-shadow:0 0 8px #f0c87a}
-    .bp-tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7cb0d8;margin-bottom:8px;font-weight:600}
-    .bp h3{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(28px,3.4vw,46px);line-height:1.05;letter-spacing:-.018em;color:#fff;margin-bottom:10px}
-    .bp h3 em{color:#f0c87a;font-style:italic}
-    .bp .desc{font-family:'Inter',sans-serif;font-size:14px;line-height:1.65;color:#a8c4d8;max-width:48ch;margin-bottom:24px}
-    .bp .desc b{color:#fff;font-weight:600}
+    /* Lab cards (clean, no blueprint paper) */
+    .bp{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
+    .bp::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
+    .bp:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .bp.bp-feature{grid-column:span 2}
+    .bp-content{padding:28px 32px}
+    .bp-corner{position:absolute;top:18px;right:24px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;z-index:2}
+    .bp-corner.bl{display:none}
+    .bp-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:8px}
+    .bp h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.6vw,34px);line-height:1.05;letter-spacing:-.018em;color:var(--ink);margin-bottom:10px}
+    .bp h3 em{font-style:italic;color:var(--ink)}
+    .bp .desc{font-size:14.5px;line-height:1.65;color:var(--ink-2);max-width:54ch;margin-bottom:20px}
+    .bp .desc b{color:var(--ink);font-weight:600}
 
-    /* Schematic system diagram */
-    .bp-schem{flex:1;display:flex;align-items:center;justify-content:center;position:relative;margin:8px 0;min-height:220px}
-    .bp-schem svg{width:100%;height:100%;max-height:300px}
-    .bp-schem .node{fill:rgba(14,42,68,.85);stroke:#7cb0d8;stroke-width:1.4}
-    .bp-schem .node-key{fill:rgba(14,42,68,.85);stroke:#f0c87a;stroke-width:1.6}
-    .bp-schem .node-lbl{font-family:var(--mono);font-size:10px;fill:#e0eef8;letter-spacing:.06em;text-anchor:middle;text-transform:uppercase}
-    .bp-schem .node-key-lbl{fill:#f0c87a}
-    .bp-schem .sub-lbl{font-family:var(--mono);font-size:8px;fill:#7cb0d8;letter-spacing:.04em;text-anchor:middle;text-transform:uppercase}
-    .bp-schem .conn{stroke:#7cb0d8;stroke-width:1;fill:none;stroke-dasharray:4 3;opacity:.6;stroke-dashoffset:80;animation:bpflow 4s linear infinite}
-    .bp-schem .dim-line{stroke:#7cb0d8;stroke-width:.8;opacity:.5}
-    .bp-schem .dim-lbl{font-family:var(--mono);font-size:8.5px;fill:#7cb0d8;letter-spacing:.04em;text-anchor:middle}
-    .bp-schem .callout{font-family:'Caveat',cursive,sans-serif;font-size:14px;fill:#f0c87a}
-    .bp-schem .callout-line{stroke:#f0c87a;stroke-width:.8;fill:none;stroke-dasharray:3 3}
-    @keyframes bpflow{to{stroke-dashoffset:0}}
+    /* Schematic diagram (now light, like other case-study viz) */
+    .bp-schem{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:18px;display:flex;align-items:center;justify-content:center;min-height:220px;margin-bottom:18px}
+    .bp-schem svg{width:100%;height:auto;max-height:300px}
+    .bp-schem .node{fill:#fff;stroke:var(--line-2);stroke-width:1.2}
+    .bp-schem .node-key{fill:#fff;stroke:var(--terra);stroke-width:1.6}
+    .bp-schem .node-lbl{font-family:var(--mono);font-size:10px;fill:var(--ink);letter-spacing:.06em;text-anchor:middle;text-transform:uppercase}
+    .bp-schem .node-key-lbl{fill:var(--terra)}
+    .bp-schem .sub-lbl{font-family:var(--mono);font-size:8px;fill:var(--muted);letter-spacing:.04em;text-anchor:middle;text-transform:uppercase}
+    .bp-schem .conn{stroke:var(--line-2);stroke-width:1;fill:none;stroke-dasharray:4 3;opacity:.7}
+    .bp-schem .dim-line{stroke:var(--line-2);stroke-width:.8;opacity:.6}
+    .bp-schem .dim-lbl{font-family:var(--mono);font-size:8.5px;fill:var(--muted);letter-spacing:.04em;text-anchor:middle}
+    .bp-schem .callout{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;fill:var(--terra)}
+    .bp-schem .callout-line{stroke:var(--terra);stroke-width:.8;fill:none;stroke-dasharray:3 3;opacity:.6}
 
-    .bp-titleblock{border-top:1px dashed rgba(120,170,210,.4);padding-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:#a8c4d8;text-transform:uppercase}
-    .bp-titleblock .tb{padding:8px 12px;border-right:1px dashed rgba(120,170,210,.3)}
-    .bp-titleblock .tb:last-child{border-right:0}
-    .bp-titleblock .lbl{color:rgba(124,176,216,.65);font-size:8.5px;letter-spacing:.14em;margin-bottom:2px}
-    .bp-titleblock .val{color:#fff;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0;text-transform:none;font-weight:600}
+    .bp-titleblock{display:none}
 
-    .bp-cta{margin-top:20px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:8px 16px;background:#f0c87a;color:#0e2a44;font-family:'Inter',sans-serif;font-weight:700;font-size:12.5px;border-radius:999px;text-decoration:none;transition:background .25s,transform .25s}
-    .bp-cta:hover{background:#fff;transform:translateY(-1px)}
-    .bp-cta::after{content:"→"}
+    .bp-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase;text-decoration:none}
+    .bp-cta::after{content:"→";transition:transform .25s}
+    .bp-cta:hover::after{transform:translateX(3px)}
 
     .bp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
-    @media (max-width:780px){.bp-grid{grid-template-columns:1fr}.bp.bp-feature{grid-column:auto;min-height:auto}.bp-titleblock{grid-template-columns:1fr 1fr}.bp-titleblock .tb{border-bottom:1px dashed rgba(120,170,210,.2)}}
+    @media (max-width:780px){.bp-grid{grid-template-columns:1fr}.bp.bp-feature{grid-column:auto}}
   </style>
 
   <PageHeader
-    title="Labs and <em>in-development</em> work."
+    title="Labs."
     subtitle="In-development product and tooling work focused on <b>measurement QA</b>, <b>consent visibility</b>, and <b>analytics audit</b>. None of these are shipped products yet."
     crumbs={[{ label: "Home", href: "/" }, { label: "Labs" }]}
   />
@@ -66,21 +57,19 @@ import SiteLayout from "../components/SiteLayout.astro";
   <section class="section wrap first" data-screen-label="Labs">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ R&amp;D direction</span>
-        <h2>Where the tooling work is going <em>next</em>.</h2>
+        <h2>Where the tooling work is going next.</h2>
         <p>Each lab is a blueprint sheet, drawn, dimensioned, and stamped with status. Architecture and scope are documented; ship dates are not promised.</p>
       </div>
-      <div class="sec-head-r">/ design partners welcome</div>
+      <div class="sec-head-r"></div>
     </div>
 
     <!-- LedgerTouch · feature blueprint -->
     <article class="bp bp-feature rv">
-      <span class="bp-corner tr">Sheet 01 / 03</span>
-      <span class="bp-corner bl">Active dev · in lab</span>
+      <span class="bp-corner">In development</span>
       <div class="bp-content">
-        <span class="bp-tag">/ 01 · LedgerTouch · independent product</span>
-        <h3><em>LedgerTouch</em>.</h3>
-        <p class="desc">Independent product work in <b>measurement QA</b>, <b>consent checks</b>, <b>reporting risk</b>, and <b>stack-level visibility</b>. Architecture documents, schema drafts, and feature scope are available for review under NDA. The schematic below is the v0.1-alpha module layout.</p>
+        <span class="bp-tag">LedgerTouch · independent product</span>
+        <h3>LedgerTouch.</h3>
+        <p class="desc">Independent product work in measurement QA, consent checks, reporting risk, and stack-level visibility. Architecture documents and feature scope are available on request. The schematic below shows the current module layout.</p>
 
         <div class="bp-schem">
           <svg viewBox="0 0 720 280" preserveAspectRatio="xMidYMid meet">
@@ -146,18 +135,17 @@ import SiteLayout from "../components/SiteLayout.astro";
           <div class="tb"><span class="lbl">Date</span><span class="val">2026-05-14</span></div>
         </div>
 
-        <a href="/contact" class="bp-cta">Request architecture under NDA</a>
+        <a href="/contact" class="bp-cta">Ask for the architecture notes</a>
       </div>
     </article>
 
     <div class="bp-grid">
       <!-- GTM audit module -->
       <article class="bp rv d1">
-        <span class="bp-corner tr">Sheet 02 / 03</span>
-        <span class="bp-corner bl">Module · in dev</span>
+        <span class="bp-corner">In development</span>
         <div class="bp-content">
-          <span class="bp-tag">/ 02 · GTM audit module</span>
-          <h3>GTM audit <em>module</em>.</h3>
+          <span class="bp-tag">GTM audit module</span>
+          <h3>GTM audit module.</h3>
           <p class="desc">Container audit, tag coverage, duplicate detection, consent-mode mapping, and conversion-tag checks. Module spec available on request.</p>
 
           <div class="bp-schem">
@@ -201,11 +189,10 @@ import SiteLayout from "../components/SiteLayout.astro";
 
       <!-- Consent audit module -->
       <article class="bp rv d2">
-        <span class="bp-corner tr">Sheet 03 / 03</span>
-        <span class="bp-corner bl">Module · in dev</span>
+        <span class="bp-corner">In development</span>
         <div class="bp-content">
-          <span class="bp-tag">/ 03 · Consent audit module</span>
-          <h3>Consent audit <em>module</em>.</h3>
+          <span class="bp-tag">Consent audit module</span>
+          <h3>Consent audit module.</h3>
           <p class="desc">CMP detection, consent-mode validation, cookie-behaviour inspection, and regional risk overlays. Module spec available on request.</p>
 
           <div class="bp-schem">

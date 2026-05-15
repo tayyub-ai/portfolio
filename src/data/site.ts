@@ -1,9 +1,9 @@
 export const site = {
   name: "Tayyub Yaqoob",
   siteUrl: "https://www.tayyubyaqoob.com",
-  title: "Tayyub Yaqoob · AI analytics systems, technical publications, and evidence",
+  title: "Tayyub Yaqoob · Senior Digital Analyst · AI analytics, automation, measurement",
   description:
-    "UK-based senior digital analyst and AI analytics systems specialist. Case studies, publications, recognition, evidence, and direct contact.",
+    "UK-based senior digital analyst at 8 Million Stories specialising in AI-assisted analytics, automation, and digital measurement engineering. Technical writing for Cointelegraph and AlphaWire, expert citations from CCN, peer reviews for IGI Global, and selected case studies.",
   email: "tayyabyaqoob.1@gmail.com",
   location: "Stirling, United Kingdom",
   role: "Senior Digital Analyst · 8 Million Stories",
@@ -17,26 +17,18 @@ export const site = {
 
 export const primaryNav = [
   { href: "/", label: "Home" },
-  { href: "/evidence", label: "Evidence" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/publications", label: "Publications" },
-  { href: "/recognition", label: "Recognition" },
+  { href: "/publications", label: "Writing" },
   { href: "/labs", label: "Labs" },
-  { href: "/testimonials", label: "Testimonials" },
   { href: "/about", label: "About" },
 ];
 
 export const footerNav = [
   { href: "/", label: "Home" },
-  { href: "/evidence", label: "Evidence" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/publications", label: "Publications" },
-  { href: "/recognition", label: "Recognition" },
+  { href: "/publications", label: "Writing" },
   { href: "/labs", label: "Labs" },
-  { href: "/testimonials", label: "Testimonials" },
   { href: "/about", label: "About" },
-  { href: "/press", label: "Press" },
-  { href: "/open-source", label: "Open Source" },
   { href: "/contact", label: "Contact" },
 ];
 

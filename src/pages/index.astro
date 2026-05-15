@@ -3,8 +3,8 @@ import SiteLayout from "../components/SiteLayout.astro";
 ---
 
 <SiteLayout
-  title="Tayyub Yaqoob · AI analytics systems, publications, and evidence"
-  description="UK-based senior digital analyst focused on AI analytics systems, technical publications, recognition, and evidence-backed technical credibility."
+  title="Tayyub Yaqoob · Senior Digital Analyst · AI analytics, automation, measurement"
+  description="UK-based senior digital analyst at 8 Million Stories. AI-assisted analytics, automation, and digital measurement engineering. Technical writing for Cointelegraph and AlphaWire, expert citations from CCN, peer reviews for IGI Global, and selected case studies."
   pathname="/"
   footerTitle="Work together or ask for closer detail."
   footerLead="Senior roles, consulting, expert commentary, conference talks, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays."
@@ -24,15 +24,10 @@ import SiteLayout from "../components/SiteLayout.astro";
       .outlet-strip span:not(.lab){font-size:14px;padding:0 10px}
     }
 
-    /* Portrait card (clean, no gimmicks) */
-    .portrait-card{position:relative;aspect-ratio:4/5;max-width:380px;margin-left:auto;border-radius:14px;overflow:hidden;background:var(--bg-soft);border:1px solid var(--line);box-shadow:0 18px 50px rgba(60,40,20,.18)}
-    .portrait-card img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.04)}
-    .portrait-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(26,23,20,.55));pointer-events:none}
-    .portrait-cap{position:absolute;left:18px;bottom:18px;right:18px;display:flex;justify-content:space-between;align-items:end;color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;z-index:2}
-    .portrait-cap b{font-family:var(--serif);font-style:italic;font-size:20px;letter-spacing:0;text-transform:none;font-weight:400;color:#fff;display:block;margin-bottom:2px}
-    .portrait-cap span.role{display:block;font-size:10.5px;letter-spacing:.04em;color:rgba(255,255,255,.75);text-transform:none;line-height:1.3;font-family:var(--sans);font-weight:500}
-    .portrait-cap .yr{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.65)}
-    @media (max-width:880px){.portrait-card{margin:24px auto 0;max-width:100%}}
+    /* Portrait card */
+    .portrait-card{position:relative;aspect-ratio:4/5;max-width:320px;margin-left:auto;border-radius:12px;overflow:hidden;background:var(--bg-soft);border:1px solid var(--line)}
+    .portrait-card img{width:100%;height:100%;object-fit:cover}
+    @media (max-width:880px){.portrait-card{margin:24px auto 0;max-width:280px}}
 
     /* ── Final CTA section ── */
     .closer{background:linear-gradient(160deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:14px;padding:48px 52px;display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:end;box-shadow:var(--shadow-1)}
@@ -88,15 +83,8 @@ import SiteLayout from "../components/SiteLayout.astro";
     .poster{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:stretch;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s;text-decoration:none;color:inherit}
     .poster:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
     .poster::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
-    .poster.p-2::before{background:var(--ochre)}
-    .poster.p-3::before{background:var(--moss)}
-    .poster .ptag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase}
-    .poster.p-2 .ptag{color:#8a5e15}
-    .poster.p-3 .ptag{color:var(--moss)}
+    .poster .ptag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
     .poster .ph{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.4vw,32px);line-height:1.05;letter-spacing:-.015em;margin-top:6px;color:var(--ink)}
-    .poster .ph em{font-style:italic;color:var(--terra)}
-    .poster.p-2 .ph em{color:#8a5e15}
-    .poster.p-3 .ph em{color:var(--moss)}
     .poster .pdesc{font-size:14px;color:var(--ink-2);line-height:1.6;margin-top:8px;max-width:50ch}
     .poster-viz{margin-top:14px;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:14px;position:relative;overflow:hidden}
     .poster-viz svg{width:100%;height:auto;display:block}
@@ -159,27 +147,18 @@ import SiteLayout from "../components/SiteLayout.astro";
     .brand-nerdwallet .pn-fallback{color:#008a05;font-family:Inter,sans-serif;font-weight:800;font-size:18px;letter-spacing:-.01em}
   </style>
 
-  <section class="hero wrap" data-screen-label="01 Intro" id="top">
+  <section class="hero wrap" data-screen-label="Intro" id="top">
     <div class="hero-grid">
       <div>
-        <div class="eyebrow rv" data-parallax="6">
-          <span class="dot"></span>
-          Tayyub Yaqoob · Stirling, UK · Open 2026
-        </div>
+        <div class="eyebrow rv" data-parallax="6">Senior Digital Analyst · Stirling, United Kingdom</div>
         <h1 class="rv d1">
-          Senior <span class="grad">analyst</span>, writer, and <span class="marked">engineer</span> working on AI, analytics, and measurement.
+          Senior analyst, writer, and engineer working on AI, analytics, and measurement.
         </h1>
-        <p class="lede lines rv d2">
-          <span>35+ technical features in <b>Cointelegraph</b> and <b>AlphaWire</b>.</span>
-          <span>Cited as expert source by <b>CCN</b>.</span>
-          <span>Peer reviewer for <b>IGI Global</b>.</span>
-        </p>
         <div class="hero-cta rv d3">
-          <a href="/case-studies" class="btn btn-primary" data-magnet>See the work →</a>
-          <a href="/publications" class="btn btn-ghost" data-magnet>Read the publications ↗</a>
+          <a href="/case-studies" class="btn btn-primary" data-magnet>See selected work →</a>
         </div>
         <div class="outlet-strip rv d4">
-          <span class="lab">Published / cited in</span>
+          <span class="lab">Selected work and citations</span>
           <span>Cointelegraph</span>
           <span>AlphaWire</span>
           <span>CCN</span>
@@ -190,13 +169,6 @@ import SiteLayout from "../components/SiteLayout.astro";
 
       <div class="portrait-card rv d2">
         <img src="/assets/portrait.jpeg" alt="Tayyub Yaqoob" />
-        <div class="portrait-cap">
-          <div>
-            <b>Tayyub Yaqoob</b>
-            <span class="role">Senior Digital Analyst · 8 Million Stories</span>
-          </div>
-          <span class="yr">2026</span>
-        </div>
       </div>
     </div>
   </section>
@@ -204,11 +176,9 @@ import SiteLayout from "../components/SiteLayout.astro";
   <section class="section wrap first" data-screen-label="Clients">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Client environments</span>
-        <h2>Built for analyst and <em>client teams</em> at:</h2>
+        <h2>Built for analyst and client teams at:</h2>
         <p>A selection of named environments where the work has been deployed.</p>
       </div>
-      <div class="sec-head-r">/ selected examples</div>
     </div>
 
     <div class="press-marquee rv">
@@ -280,9 +250,8 @@ import SiteLayout from "../components/SiteLayout.astro";
   <section class="section wrap" id="featured" data-screen-label="03 Selected work">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--ochre)"></span>§ Production work</span>
-        <h2>Three production <em>systems</em>.</h2>
-        <p>Each poster shows the technical approach, the visualization that fits the work, and the stack underneath.</p>
+        <h2>Selected work.</h2>
+        <p>Three production systems with the technical approach, the visualization that fits the work, and the stack underneath.</p>
       </div>
       <div class="sec-head-r"><a href="/case-studies">All case studies →</a></div>
     </div>
@@ -290,8 +259,8 @@ import SiteLayout from "../components/SiteLayout.astro";
     <div class="poster-strip">
       <a class="poster p-1 rv" href="/case-studies">
         <div>
-          <span class="ptag">/ 01 · Forecasting · BigQuery · GA4</span>
-          <h3 class="ph">Channel and query <em>forecasting</em>.</h3>
+          <span class="ptag">Forecasting · BigQuery · GA4</span>
+          <h3 class="ph">Channel and query forecasting.</h3>
           <p class="pdesc">Monthly forecast cycles for GSC query trends and channel traffic. Used by analyst and account teams to flag variance against forecast inside the cycle rather than after it.</p>
           <div class="poster-viz">
             <svg class="pv-fc" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
@@ -330,8 +299,8 @@ import SiteLayout from "../components/SiteLayout.astro";
 
       <a class="poster p-2 rv d1" href="/case-studies">
         <div>
-          <span class="ptag">/ 02 · Sentiment · LLM-assisted</span>
-          <h3 class="ph">Sentiment and topic <em>river</em>.</h3>
+          <span class="ptag">Sentiment · LLM-assisted</span>
+          <h3 class="ph">Sentiment and topic river.</h3>
           <p class="pdesc">LLM-assisted classification across press, review, and social. Stacked bands show how positive, neutral, and negative coverage shifts month over month.</p>
           <div class="poster-viz">
             <svg class="pv-rv" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
@@ -363,8 +332,8 @@ import SiteLayout from "../components/SiteLayout.astro";
 
       <a class="poster p-3 rv d2" href="/case-studies">
         <div>
-          <span class="ptag">/ 03 · AI visibility · AI Overviews</span>
-          <h3 class="ph">AI vs traditional <em>search</em>.</h3>
+          <span class="ptag">AI visibility · AI Overviews</span>
+          <h3 class="ph">AI vs traditional search.</h3>
           <p class="pdesc">Tracking how brands and queries surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and rendered citation.</p>
           <div class="poster-viz">
             <svg class="pv-sp" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
@@ -414,20 +383,18 @@ import SiteLayout from "../components/SiteLayout.astro";
     </div>
   </section>
 
-  <section class="section wrap" id="closer-cta" data-screen-label="04 Contact">
+  <section class="section wrap" id="closer-cta" data-screen-label="Contact">
     <div class="closer rv">
       <div>
-        <span class="sec-tag" style="margin-bottom:12px"><span class="dot" style="background:var(--terra)"></span>§ Closer detail on request</span>
-        <h2>Need the <em>closer detail</em>?</h2>
-        <p class="lead">Most of the strongest work is private to clients. Approved screenshots, before / after reporting outputs, recommendation context, and peer-review certificates available on request.</p>
+        <h2>Want the closer detail?</h2>
+        <p class="lead">Most of the strongest work is private to clients. For approved screenshots, before-and-after outputs, recommendation context, or reference checks, get in touch.</p>
         <a href="/contact" class="btn btn-primary" data-magnet style="margin-top:18px">Get in touch →</a>
       </div>
       <div class="right">
         <ul>
-          <li>Approved screenshots</li>
-          <li>Before / after outputs</li>
-          <li>Recommendation context</li>
-          <li>Peer-review certificates</li>
+          <li>Senior roles</li>
+          <li>Consulting</li>
+          <li>Speaking and panels</li>
           <li>Reference checks</li>
         </ul>
       </div>

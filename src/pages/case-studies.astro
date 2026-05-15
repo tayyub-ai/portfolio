@@ -14,23 +14,15 @@ import SiteLayout from "../components/SiteLayout.astro";
     .cs-strip{display:flex;flex-direction:column;gap:18px;margin-top:8px}
     .cs{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;display:grid;grid-template-columns:1.6fr 1fr;gap:28px;align-items:stretch;overflow:hidden;transition:transform .4s cubic-bezier(.2,.7,.1,1),box-shadow .4s,border-color .25s}
     .cs:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
-    .cs::before{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:var(--terra)}
-    .cs.cs-2::before{background:var(--ochre)}
-    .cs.cs-3::before{background:var(--coral)}
-    .cs.cs-4::before{background:var(--moss)}
-    .cs-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase;display:flex;align-items:center;gap:10px}
-    .cs.cs-2 .cs-tag{color:#8a5e15}
-    .cs.cs-3 .cs-tag{color:var(--coral)}
-    .cs.cs-4 .cs-tag{color:var(--moss)}
-    .cs-tag .status{font-family:var(--mono);font-size:9.5px;padding:3px 8px;border-radius:999px;background:var(--terra-soft);color:var(--terra);letter-spacing:.06em;border:1px solid #f6cdbb}
-    .cs.cs-2 .cs-tag .status{background:var(--ochre-soft);color:#8a5e15;border-color:#f0d690}
-    .cs.cs-3 .cs-tag .status{background:#fce5d8;color:var(--coral);border-color:#f6c8b1}
-    .cs.cs-4 .cs-tag .status{background:var(--sage-soft);color:var(--moss);border-color:#cfe0b1}
+    .cs::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
+    .cs-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:10px}
     .cs h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.05;letter-spacing:-.018em;margin-top:8px;color:var(--ink)}
-    .cs h3 em{font-style:italic;color:var(--terra)}
-    .cs.cs-2 h3 em{color:#8a5e15}
-    .cs.cs-3 h3 em{color:var(--coral)}
-    .cs.cs-4 h3 em{color:var(--moss)}
+    .cs h3 em{font-style:italic;color:var(--ink)}
+
+    /* Inline client quote inside cs-gutter */
+    .cs-quote{margin-top:auto;padding:14px 0 0;border-top:1px dashed var(--line)}
+    .cs-quote p{font-family:var(--serif);font-style:italic;font-size:14.5px;line-height:1.55;color:var(--ink);margin:0}
+    .cs-quote cite{display:block;margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;font-style:normal}
     .cs-desc{font-size:14.5px;color:var(--ink-2);line-height:1.65;margin-top:10px;max-width:52ch}
     .cs-viz{margin-top:18px;background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:18px;position:relative;overflow:hidden}
     .cs-viz svg{width:100%;height:auto;display:block}
@@ -41,13 +33,6 @@ import SiteLayout from "../components/SiteLayout.astro";
     .cs-stats .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
     .cs-stats .row .label{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
     .cs-stats .row .v{font-family:var(--serif);font-size:22px;font-style:italic;color:var(--ink);line-height:1}
-    .cs.cs-2 .cs-stats .row .v{color:#8a5e15}
-    .cs.cs-3 .cs-stats .row .v{color:var(--coral)}
-    .cs.cs-4 .cs-stats .row .v{color:var(--moss)}
-    .cs-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase}
-    .cs.cs-2 .cs-cta{color:#8a5e15}
-    .cs.cs-3 .cs-cta{color:var(--coral)}
-    .cs.cs-4 .cs-cta{color:var(--moss)}
     .cs-cta::after{content:"→";transition:transform .25s}
     .cs:hover .cs-cta::after{transform:translateX(3px)}
 
@@ -123,26 +108,18 @@ import SiteLayout from "../components/SiteLayout.astro";
   </style>
 
   <PageHeader
-    title="Production <em>case studies</em>."
-    subtitle="Four production systems running inside client analytics environments. Each entry covers the <b>problem</b>, the <b>technical approach</b>, the <b>tools</b>, and the form of <b>evidence</b> available on request."
+    title="Case studies."
+    subtitle="Four production systems running inside client analytics environments. Each entry covers the problem, the technical approach, the tools, and a short note from the team it shipped to."
     crumbs={[{ label: "Home", href: "/" }, { label: "Case Studies" }]}
   />
 
   <section class="section wrap first" data-screen-label="Case studies">
-    <div class="sec-head rv">
-      <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--terra)"></span>§ Shipped systems</span>
-        <h2>Four <em>examples</em>.</h2>
-        <p>Each is a real engagement. The system and client names sit behind approvals; supporting diagrams, screenshots, and before/after outputs are available on request.</p>
-      </div>
-      <div class="sec-head-r">/ shipped, not speculative</div>
-    </div>
 
     <div class="cs-strip">
       <!-- 01 Forecasting -->
       <article class="cs cs-1 rv">
         <div>
-          <div class="cs-tag"><span>/ 01 · Forecasting · BigQuery · GA4</span><span class="status">Live · recurring</span></div>
+          <div class="cs-tag"><span>Forecasting · BigQuery · GA4</span></div>
           <h3>Channel and query <em>forecasting</em>.</h3>
           <p class="cs-desc">Forecasting workflows in BigQuery covering GSC query trends, channel traffic, and monthly reporting cycles. Used by analyst and account teams to flag variance against forecast inside the cycle rather than after it. Forecast confidence bands surface the range, not just the point estimate.</p>
           <div class="cs-viz">
@@ -175,16 +152,18 @@ import SiteLayout from "../components/SiteLayout.astro";
             <div class="row"><span class="label">Median MAPE</span><span class="v">5.4%</span></div>
             <div class="row"><span class="label">Runs / month</span><span class="v">12</span></div>
             <div class="row"><span class="label">Channels</span><span class="v">4</span></div>
-            <div class="row"><span class="label">Evidence</span><span class="v">On request</span></div>
           </div>
-          <span class="cs-cta">Request approved samples</span>
+          <blockquote class="cs-quote">
+            <p>"The tool is working fully, and we've been able to share the update with wider teams."</p>
+            <cite>BBC, project stakeholder</cite>
+          </blockquote>
         </div>
       </article>
 
       <!-- 02 Sentiment river -->
       <article class="cs cs-2 rv d1">
         <div>
-          <div class="cs-tag"><span>/ 02 · Sentiment · LLM-assisted</span><span class="status">Live</span></div>
+          <div class="cs-tag"><span>Sentiment · LLM-assisted</span></div>
           <h3>Sentiment and topic <em>river</em>.</h3>
           <p class="cs-desc">LLM-assisted classification across press, review, and social. The system classifies, deduplicates, and surfaces shifts; nothing is auto-published. Annotated bands track positive, neutral, and negative coverage over time so analysts can interpret context, not just deltas.</p>
           <div class="cs-viz">
@@ -215,16 +194,18 @@ import SiteLayout from "../components/SiteLayout.astro";
             <div class="row"><span class="label">Surfaces tracked</span><span class="v">11</span></div>
             <div class="row"><span class="label">Mentions / week</span><span class="v">~3k</span></div>
             <div class="row"><span class="label">Alert classes</span><span class="v">4</span></div>
-            <div class="row"><span class="label">Evidence</span><span class="v">Approved decks</span></div>
           </div>
-          <span class="cs-cta">Request method notes</span>
+          <blockquote class="cs-quote">
+            <p>"The feedback was very positive. Overall they are happy with the first go at this. I appreciate all your help and of course passed on high praise of your work."</p>
+            <cite>General Mills, account team on Blue Buffalo</cite>
+          </blockquote>
         </div>
       </article>
 
       <!-- 03 SERP comparison -->
       <article class="cs cs-3 rv d2">
         <div>
-          <div class="cs-tag"><span>/ 03 · AI visibility · AI Overviews</span><span class="status">Operational</span></div>
+          <div class="cs-tag"><span>AI visibility · AI Overviews</span></div>
           <h3>AI vs traditional <em>search</em>.</h3>
           <p class="cs-desc">Tracking how brands and queries surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and rendered citation so visibility shifts can be reviewed weeks later, not just observed in real time.</p>
           <div class="cs-viz">
@@ -274,16 +255,14 @@ import SiteLayout from "../components/SiteLayout.astro";
             <div class="row"><span class="label">Queries tracked</span><span class="v">140+</span></div>
             <div class="row"><span class="label">Platforms</span><span class="v">4</span></div>
             <div class="row"><span class="label">Cadence</span><span class="v">Weekly</span></div>
-            <div class="row"><span class="label">Evidence</span><span class="v">Method notes</span></div>
           </div>
-          <span class="cs-cta">Request method notes</span>
         </div>
       </article>
 
       <!-- 04 Reporting automation -->
       <article class="cs cs-4 rv d3">
         <div>
-          <div class="cs-tag"><span>/ 04 · Reporting automation</span><span class="status">Live</span></div>
+          <div class="cs-tag"><span>Reporting automation</span></div>
           <h3>Manual reporting → <em>automated assembly</em>.</h3>
           <p class="cs-desc">Automated assembly of recurring reports and decks from GA4, GSC, and ad-platform data. Replaces a multi-hour manual build with a short analyst review pass. Each step on the before bar is a real stage; the after bar shows what remains.</p>
           <div class="cs-viz">
@@ -339,49 +318,23 @@ import SiteLayout from "../components/SiteLayout.astro";
             <div class="row"><span class="label">Reports / month</span><span class="v">36</span></div>
             <div class="row"><span class="label">Time saved</span><span class="v">~70%</span></div>
             <div class="row"><span class="label">Variance flags</span><span class="v">Inline</span></div>
-            <div class="row"><span class="label">Evidence</span><span class="v">Before / after</span></div>
           </div>
-          <span class="cs-cta">Request before / after</span>
+          <blockquote class="cs-quote">
+            <p>"Our analytics are in great shape at this point and we're feeling confident about the ways they will help us."</p>
+            <cite>Diligent Pharma, stakeholder</cite>
+          </blockquote>
         </div>
       </article>
     </div>
   </section>
 
-  <section class="section wrap" data-screen-label="Case file">
-    <div class="sec-head rv">
-      <div class="sec-head-l">
-        <span class="sec-tag"><span class="dot" style="background:var(--moss)"></span>§ Supporting documents</span>
-        <h2>What's <em>in the file</em>.</h2>
-        <p>Each case study has documents catalogued and shareable on request. Approvals required for some artefacts.</p>
-      </div>
-      <div class="sec-head-r"><a href="/evidence">Full evidence index →</a></div>
-    </div>
-
-    <div class="docs-grid rv">
-      <a class="doc-tile" href="/evidence">
-        <span class="doc-tag">/ 01</span>
-        <h4>Evidence <em>index</em></h4>
-        <p>Source list with status, type, and access route for every public claim.</p>
-        <span class="doc-cta">Open</span>
-      </a>
-      <a class="doc-tile" href="/recognition">
-        <span class="doc-tag">/ 02</span>
-        <h4>Recognition <em>record</em></h4>
-        <p>CCN expert citations, IGI Global peer review, publication context.</p>
-        <span class="doc-cta">Open</span>
-      </a>
-      <a class="doc-tile" href="/publications">
-        <span class="doc-tag">/ 03</span>
-        <h4>Publication <em>archive</em></h4>
-        <p>Live URLs for Cointelegraph and AlphaWire, plus a PDF archive.</p>
-        <span class="doc-cta">Open</span>
-      </a>
-      <a class="doc-tile" href="/testimonials">
-        <span class="doc-tag">/ 04</span>
-        <h4>Client <em>feedback</em></h4>
-        <p>Verbatim quotes from BBC, General Mills, MRI, Diligent Pharma.</p>
-        <span class="doc-cta">Open</span>
-      </a>
-    </div>
+  <section class="section wrap" data-screen-label="More">
+    <p class="cs-foot rv">For method notes, before-and-after artefacts, or a closer walkthrough on any of these, <a href="/contact">get in touch</a>.</p>
   </section>
 </SiteLayout>
+
+<style>
+  .cs-foot{max-width:60ch;font-size:15px;line-height:1.7;color:var(--ink-2)}
+  .cs-foot a{color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:1px}
+  .cs-foot a:hover{color:var(--terra);border-color:var(--terra)}
+</style>

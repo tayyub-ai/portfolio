@@ -39,24 +39,6 @@ import { site } from "../data/site";
     .bio-prose p{font-size:16px;line-height:1.75;color:var(--ink-2)}
     .bio-prose p b{color:var(--ink);font-weight:600}
 
-    /* Venn (keep, it's data viz) */
-    .venn-wrap{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:24px;position:relative;overflow:hidden}
-    .venn-wrap::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--terra),transparent)}
-    .venn-lab{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--terra);text-transform:uppercase;margin-bottom:8px}
-    .venn{width:100%;height:auto;display:block;margin-top:8px}
-    .venn .circle{fill-opacity:.18;stroke-width:1.5;mix-blend-mode:multiply;transition:fill-opacity .6s ease}
-    .venn .c1{fill:var(--terra);stroke:var(--terra);opacity:0;transition:opacity 1s ease}
-    .venn .c2{fill:var(--ochre);stroke:var(--ochre);opacity:0;transition:opacity 1s ease .3s}
-    .venn .c3{fill:var(--moss);stroke:var(--moss);opacity:0;transition:opacity 1s ease .6s}
-    .venn-wrap.rv.in .venn .c1,.venn-wrap.rv.in .venn .c2,.venn-wrap.rv.in .venn .c3{opacity:1}
-    .venn .c-label{font-family:var(--serif);font-style:italic;font-size:22px;font-weight:400}
-    .venn .c-label.l1{fill:var(--terra)}
-    .venn .c-label.l2{fill:#8a5e15}
-    .venn .c-label.l3{fill:var(--moss)}
-    .venn .overlap-label{font-family:var(--mono);font-size:11px;letter-spacing:.04em;fill:var(--ink);text-anchor:middle;opacity:0;transition:opacity .8s ease 1.2s}
-    .venn-wrap.rv.in .venn .overlap-label{opacity:1}
-    .venn .overlap-label.center{font-family:var(--serif);font-style:italic;font-size:14px;font-weight:400}
-
     /* Credentials grid (clean, not bookshelf) */
     .creds-wrap{margin-top:8px}
     .creds-h{display:flex;justify-content:space-between;align-items:end;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:16px}
@@ -73,13 +55,29 @@ import { site } from "../data/site";
     .cred-body{flex:1;min-width:0}
     .cred-body h5{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;line-height:1.3;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px}
     .cred-body .cred-meta{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
-    .cred-body .cred-skills{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
-    .cred-body .cred-skills span{font-family:var(--mono);font-size:9px;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--bg-soft);color:var(--ink-2);border:1px solid var(--line)}
+    .creds-also{margin-top:14px;font-size:13.5px;line-height:1.65;color:var(--muted)}
     @media (max-width:680px){.creds{grid-template-columns:1fr}}
+
+    /* For press block (quiet, bottom of page) */
+    .press-block{margin-top:32px;padding:22px 24px;background:#fff;border:1px solid var(--line);border-radius:12px}
+    .press-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:12px;font-weight:600}
+    .press-bio{font-size:14.5px;line-height:1.7;color:var(--ink-2)}
+    .press-contact{margin-top:12px;font-size:13.5px;line-height:1.6;color:var(--muted)}
+    .press-contact a{color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:1px}
+    .press-contact a:hover{color:var(--terra);border-color:var(--terra)}
+
+    /* Selected recognition list (quiet, inline) */
+    .recog{margin-top:8px;padding:20px 22px;background:var(--bg-soft);border:1px solid var(--line);border-radius:12px}
+    .recog-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:12px;font-weight:600}
+    .recog-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+    .recog-list li{font-size:14.5px;line-height:1.6;color:var(--ink-2)}
+    .recog-list li b{color:var(--ink);font-weight:600}
+    .recog-list a{color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:1px}
+    .recog-list a:hover{color:var(--terra);border-color:var(--terra)}
 
     /* Principles (simple typographic, no notebook) */
     .principles-wrap{margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
-    .principles-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;margin-bottom:18px;font-weight:600}
+    .principles-h{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:18px;font-weight:600}
     .principles{display:grid;grid-template-columns:1fr 1fr;gap:24px 36px}
     .ppl{display:flex;flex-direction:column;gap:6px;padding:14px 0;border-top:1px solid var(--line)}
     .ppl .num{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
@@ -111,8 +109,8 @@ import { site } from "../data/site";
             <dt>Stack</dt><dd>BigQuery · Python · GA4 · GTM · LLM APIs</dd>
           </dl>
           <div class="profile-status">
-            <span>Open · 2026</span>
-            <span class="yr">2026</span>
+            <span>Available · 2026</span>
+            <span class="yr"><a href="/contact" style="color:inherit">Contact →</a></span>
           </div>
         </div>
       </aside>
@@ -120,63 +118,58 @@ import { site } from "../data/site";
       <div class="bio-block rv d1">
         <h3 class="bio-h">I build analytics workflows teams <em>trust</em>.</h3>
 
-        <div class="venn-wrap rv">
-          <div class="venn-lab">§ Where the work sits</div>
-          <svg class="venn" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet">
-            <circle class="circle c1" cx="220" cy="160" r="120"/>
-            <circle class="circle c2" cx="380" cy="160" r="120"/>
-            <circle class="circle c3" cx="300" cy="270" r="120"/>
-            <text class="c-label l1" x="130" y="90">AI</text>
-            <text class="c-label l2" x="430" y="90" text-anchor="end">Automation</text>
-            <text class="c-label l3" x="300" y="350" text-anchor="middle">Measurement</text>
-            <text class="overlap-label" x="300" y="130">LLM-assisted analytics</text>
-            <text class="overlap-label" x="220" y="240">AI-search visibility</text>
-            <text class="overlap-label" x="380" y="240">Reporting QA</text>
-            <text class="overlap-label center" x="300" y="200">Day-to-day</text>
-          </svg>
+        <div class="bio-prose">
+          <p>I'm a Senior Digital Analyst at 8 Million Stories in Stirling, Scotland. The work sits at the intersection of analytics engineering and applied AI: reporting systems in BigQuery and Python, measurement pipelines in GA4 and GTM, and LLM-assisted workflows for classification, summarisation, and reporting quality. Most of the strongest work is private to clients — recent engagements have spanned media, financial services, consumer brands, insurance, pharma, and personal finance — but the public-facing pieces are written up as case studies and supporting artefacts are available on request.</p>
+          <p>Outside client engagements I write technical features for Cointelegraph and AlphaWire — around 35 pieces between 2022 and 2026, covering AI-driven trading, crypto-security, quantum-resistant systems, and agentic risk. CCN has cited my commentary on AI trading risk and the seed-phrase threat model as an expert source. IGI Global has invited me to peer-review three book chapters on central bank digital currencies, blockchain consensus in IoT banking, and AI-enabled FinTech.</p>
+          <p>I came to analytics from a computer science background — MSc at the University of Stirling, then production analytics work. What keeps me on this beat is that good analytics work is genuinely difficult: it sits between an engineering problem (instrument the system correctly, ship a pipeline that doesn't break) and a judgement problem (what is this telling us, and what are we sure of). LLMs make some of that work faster; they don't change what counts as a good answer. I'd rather ship one reporting workflow a team trusts than three they don't.</p>
         </div>
 
-        <div class="bio-prose">
-          <p>My day-to-day spans <b>AI-assisted analytics</b>, <b>automation in BigQuery and Python</b>, <b>GA4 and GTM measurement engineering</b>, <b>consent and tracking quality</b>, and <b>AI-search visibility research</b>. The work shows up in three places: production systems inside client environments, technical articles for outlets like Cointelegraph and AlphaWire, and chapter reviews for IGI Global.</p>
-          <p>Each section of the site links to a primary source: live article URLs, employer record, peer-review certificates, public repositories, and named client engagements. Confidential work is named but not exposed; supporting documents are available on request.</p>
-        </div>
+        <aside class="recog rv">
+          <h4 class="recog-h">Selected recognition</h4>
+          <ul class="recog-list">
+            <li><b>Cointelegraph &amp; AlphaWire</b> — 35+ technical articles on AI, crypto-security, and quantum-resistant systems, 2022 to 2026. <a href="/publications">See writing →</a></li>
+            <li><b>CCN</b> — cited as an expert source on AI-driven trading risk and the seed-phrase threat model.</li>
+            <li><b>IGI Global</b> — invited peer reviewer for three book chapters on CBDCs, blockchain-IoT banking, and AI-FinTech.</li>
+          </ul>
+        </aside>
 
         <div class="creds-wrap">
           <div class="creds-h">
-            <h3>Training and <em>credentials</em>.</h3>
-            <span class="meta">/ 6 selected · 2024 to 26</span>
+            <h3>Training and credentials.</h3>
+            <span class="meta">Selected · 2024 to 2026</span>
           </div>
           <div class="creds">
-            <div class="cred"><div class="cred-issuer google">G</div><div class="cred-body"><h5>5-Day AI Agents Intensive Course</h5><div class="cred-meta">Google · Dec 2025</div><div class="cred-skills"><span>AI Agents</span><span>Python</span></div></div></div>
-            <div class="cred"><div class="cred-issuer linkedin">in</div><div class="cred-body"><h5>Vertex AI: MLOps with Google Cloud</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>Vertex AI</span><span>MLOps</span></div></div></div>
-            <div class="cred"><div class="cred-issuer linkedin">in</div><div class="cred-body"><h5>Model Context Protocol: Hands-On with Agentic AI</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>MCP</span><span>AI Agents</span></div></div></div>
-            <div class="cred"><div class="cred-issuer aws">AWS</div><div class="cred-body"><h5>AWS Certified Machine Learning: Specialty Prep</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>ML</span><span>AWS</span></div></div></div>
-            <div class="cred"><div class="cred-issuer linkedin">in</div><div class="cred-body"><h5>Agentic AI for Developers</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>Agents</span><span>Enterprise AI</span></div></div></div>
-            <div class="cred"><div class="cred-issuer linkedin">in</div><div class="cred-body"><h5>Generative AI with OpenAI API</h5><div class="cred-meta">LinkedIn · Jun 2025</div><div class="cred-skills"><span>OpenAI</span><span>Generative AI</span></div></div></div>
+            <div class="cred"><div class="cred-issuer google">G</div><div class="cred-body"><h5>5-Day AI Agents Intensive Course</h5><div class="cred-meta">Google · Dec 2025</div></div></div>
+            <div class="cred"><div class="cred-issuer aws">AWS</div><div class="cred-body"><h5>AWS Certified Machine Learning: Specialty Prep</h5><div class="cred-meta">LinkedIn · Jun 2025</div></div></div>
           </div>
+          <p class="creds-also">Also completed coursework on Vertex AI MLOps, Model Context Protocol with Agentic AI, Agentic AI for Developers, and Generative AI with the OpenAI API.</p>
         </div>
 
+        <aside class="press-block rv" id="for-press">
+          <h4 class="press-h">For press, podcasts, and panel intros</h4>
+          <p class="press-bio">Tayyub Yaqoob is a UK-based Senior Digital Analyst at 8 Million Stories, where he builds AI-assisted analytics, automation, and measurement systems for digital and analyst teams. He has published technical writing for Cointelegraph and AlphaWire, been cited as an expert source by CCN, and completed three peer reviews for IGI Global.</p>
+          <p class="press-contact">
+            For interviews, panels, or expert commentary, email <a href={`mailto:${site.email}`}>{site.email}</a>. Headshot and longer bio on request.
+          </p>
+        </aside>
+
         <div class="principles-wrap">
-          <div class="principles-h">§ How I work</div>
+          <div class="principles-h">How I work</div>
           <div class="principles">
             <div class="ppl">
-              <span class="num">/ 01</span>
-              <h4>Reporting before <em>automation</em>.</h4>
+              <h4>Reporting before automation.</h4>
               <p>New automation only lands after the manual version of the same report has been stress-tested across a few cycles.</p>
             </div>
             <div class="ppl">
-              <span class="num">/ 02</span>
-              <h4>AI is <em>assistive</em>, not authoritative.</h4>
+              <h4>AI is assistive, not authoritative.</h4>
               <p>LLMs accelerate triage, classification, and summarisation. The analyst owns the call and the interpretation.</p>
             </div>
             <div class="ppl">
-              <span class="num">/ 03</span>
-              <h4>Consent and tracking quality <em>matter</em>.</h4>
+              <h4>Consent and tracking quality matter.</h4>
               <p>Measurement that is technically clever but legally fragile is worse than no measurement.</p>
             </div>
             <div class="ppl">
-              <span class="num">/ 04</span>
-              <h4>Documentation travels with the <em>system</em>.</h4>
+              <h4>Documentation travels with the system.</h4>
               <p>Every workflow ships with a written rationale, an owner, and a rollback path.</p>
             </div>
           </div>

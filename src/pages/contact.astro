@@ -13,8 +13,9 @@ import { site } from "../data/site";
   footerLead="Replies come from my inbox, usually within 48 hours on weekdays."
 >
   <style slot="head">
-    .cx-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:start;margin-top:8px}
-    @media (max-width:980px){.cx-layout{grid-template-columns:1fr}}
+    .cx-layout{max-width:720px;margin:8px auto 0}
+    .cx-after{max-width:720px;margin:24px auto 0;font-size:14px;line-height:1.7;color:var(--ink-2)}
+    .cx-after b{color:var(--ink);font-weight:600}
 
     /* ── Form card ── */
     .cxform{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px 30px 24px;box-shadow:var(--shadow-1);overflow:hidden;transition:box-shadow .4s}
@@ -48,9 +49,6 @@ import { site } from "../data/site";
 
     .cx-sent{display:none;align-items:center;gap:14px;padding:18px 20px;background:linear-gradient(160deg,var(--sage-soft),#fff);border:1px solid #cfe0b1;border-radius:12px;margin-bottom:18px;position:relative;overflow:hidden}
     .cx-sent.show{display:flex}
-    .cx-sent::before{content:"";position:absolute;top:-12px;right:-12px;width:80px;height:80px;border:2px solid var(--moss);border-radius:50%;background:rgba(232,236,217,.8);transform:rotate(-12deg);display:flex;align-items:center;justify-content:center}
-    .cx-sent .stamp{position:absolute;top:14px;right:14px;width:60px;height:60px;border:1.5px solid var(--moss);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--moss);font-family:var(--mono);font-size:8px;letter-spacing:.12em;line-height:1.3;background:rgba(232,236,217,.85);transform:rotate(-8deg);text-transform:uppercase;z-index:1}
-    .cx-sent .stamp b{font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:13px;letter-spacing:0;text-transform:none;font-weight:400}
     .cx-sent .ic{width:36px;height:36px;border-radius:50%;background:var(--moss);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
     .cx-sent .text{flex:1}
     .cx-sent .text b{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--ink);display:block}
@@ -58,38 +56,10 @@ import { site } from "../data/site";
 
     @media (max-width:680px){.field-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.field-actions{flex-direction:column;align-items:flex-start}}
 
-    /* ── Status board (side) ── */
-    .statboard{background:#1a1714;color:#e8e2d2;border-radius:14px;padding:24px 24px 20px;font-family:var(--mono);box-shadow:0 18px 50px rgba(0,0,0,.25);position:relative;overflow:hidden}
-    .statboard::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent 0,transparent 22px,rgba(232,226,210,.04) 22px,rgba(232,226,210,.04) 23px);pointer-events:none}
-    .statboard-h{display:flex;justify-content:space-between;align-items:center;padding-bottom:10px;border-bottom:1px dashed rgba(232,226,210,.3);margin-bottom:14px;position:relative;z-index:1}
-    .statboard-h .ttl{font-size:10px;letter-spacing:.2em;color:var(--ochre);text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:8px}
-    .statboard-h .ttl::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ochre);animation:pulse 2s infinite}
-    .statboard-h .time{font-size:11px;color:rgba(232,226,210,.7);letter-spacing:.04em;font-variant-numeric:tabular-nums}
-    .statboard-rows{display:flex;flex-direction:column;gap:0;position:relative;z-index:1}
-    .statboard-row{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;padding:11px 0;border-bottom:1px dashed rgba(232,226,210,.15);font-size:11.5px}
-    .statboard-row:last-child{border-bottom:0}
-    .statboard-row .k{color:rgba(232,226,210,.55);letter-spacing:.16em;text-transform:uppercase;font-size:9.5px}
-    .statboard-row .v{color:#fff;font-family:'Inter',sans-serif;font-size:13px;letter-spacing:0;text-transform:none}
-    .statboard-row .v a{color:#f0c87a;border-bottom:1px solid rgba(240,200,122,.4);transition:color .25s,border-color .25s}
-    .statboard-row .v a:hover{color:#fff;border-color:#fff}
-    .statboard-row .pill{padding:3px 9px;border-radius:999px;background:rgba(122,143,94,.2);color:#cfe0b1;border:1px solid rgba(207,224,177,.3);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase}
-    .statboard-foot{position:relative;z-index:1;margin-top:16px;padding-top:14px;border-top:1px dashed rgba(232,226,210,.3);display:flex;justify-content:space-between;align-items:center;font-size:9.5px;color:rgba(232,226,210,.55);letter-spacing:.06em;text-transform:uppercase}
-    .statboard-foot .seal{display:inline-flex;align-items:center;gap:4px;color:var(--ochre)}
-    .statboard-foot .seal::before{content:"§"}
-    @media (max-width:680px){.statboard-row{grid-template-columns:64px 1fr}.statboard-row .pill{grid-column:2;justify-self:start;margin-top:4px}}
-
-    /* ── Topic select chips ── */
-    .topic-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-    .topic-chips label{padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;color:var(--ink-2);cursor:pointer;transition:background .25s,color .25s,border-color .25s}
-    .topic-chips input{position:absolute;opacity:0;pointer-events:none}
-    .topic-chips label:hover{border-color:var(--terra-soft);color:var(--terra)}
-    .topic-chips input:checked + span{background:var(--terra);color:#fff;border-color:var(--terra)}
-    .topic-chips label span{display:inline-block;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;transition:inherit}
-    .topic-chips label:has(input:checked) span{background:var(--terra);color:#fff;border-color:var(--terra)}
   </style>
 
   <PageHeader
-    title="Work, evidence, and <em>contact</em>."
+    title="Contact."
     subtitle="For senior-role conversations, consulting, expert commentary, conference invitations, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays."
     crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
   />
@@ -101,7 +71,6 @@ import { site } from "../data/site";
         <b>Message received.</b>
         <p>I'll reply from <span style="color:var(--ink);font-weight:600">{site.email}</span> within 48 hours on weekdays.</p>
       </div>
-      <div class="stamp">Received<b>{new Date().toLocaleDateString("en-GB",{day:"numeric",month:"short"})}</b>2026</div>
     </div>
 
     <div class="cx-layout">
@@ -113,8 +82,8 @@ import { site } from "../data/site";
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
         <header class="cxform-h">
-          <h3>Direct <em>line</em>.</h3>
-          <span class="meta">Open · 2026</span>
+          <h3>Send a message.</h3>
+          <span class="meta">Available · 2026</span>
         </header>
 
         <div class="field-grid">
@@ -137,7 +106,6 @@ import { site } from "../data/site";
             <select id="cf-topic" name="topic" required>
               <option value="">Senior role / hiring conversation</option>
               <option>Consulting / analytics systems work</option>
-              <option>Request supporting documents</option>
               <option>Speaking / panel / podcast</option>
               <option>Publication / expert commentary</option>
               <option>Other</option>
@@ -161,68 +129,20 @@ import { site } from "../data/site";
         </div>
       </form>
 
-      <!-- Status board -->
-      <aside class="statboard rv d1">
-        <header class="statboard-h">
-          <span class="ttl">Status board</span>
-          <span class="time" id="status-time">· BST</span>
-        </header>
-        <div class="statboard-rows">
-          <div class="statboard-row">
-            <span class="k">Open</span>
-            <span class="v">2026 conversations</span>
-            <span class="pill">Active</span>
-          </div>
-          <div class="statboard-row">
-            <span class="k">Inbox</span>
-            <span class="v"><a href={`mailto:${site.email}`}>{site.email}</a></span>
-            <span class="pill">Direct</span>
-          </div>
-          <div class="statboard-row">
-            <span class="k">Linked</span>
-            <span class="v"><a href={site.social.linkedin} target="_blank" rel="noreferrer">/in/tayyubyaqoob</a></span>
-            <span class="pill">Verify</span>
-          </div>
-          <div class="statboard-row">
-            <span class="k">Code</span>
-            <span class="v"><a href={site.social.github} target="_blank" rel="noreferrer">/tayyub-ai</a></span>
-            <span class="pill">Public</span>
-          </div>
-          <div class="statboard-row">
-            <span class="k">Evidence</span>
-            <span class="v"><a href="/evidence">/evidence index</a></span>
-            <span class="pill">Audit</span>
-          </div>
-          <div class="statboard-row">
-            <span class="k">Press</span>
-            <span class="v"><a href="/press">Bios · fact sheet</a></span>
-            <span class="pill">Kit</span>
-          </div>
-        </div>
-        <div class="statboard-foot">
-          <span>Stirling · United Kingdom</span>
-          <span class="seal">AR-2026-001</span>
-        </div>
-      </aside>
     </div>
+
+    <p class="cx-after rv d1">
+      Prefer email? Write to <b><a href={`mailto:${site.email}`} style="color:inherit;border-bottom:1px solid var(--line-2)">{site.email}</a></b>. Based in Stirling, United Kingdom (GMT). I usually reply within 48 hours on weekdays.
+    </p>
   </section>
 
   <script is:inline>
     (function(){
-      // Sent banner
       const params=new URLSearchParams(location.search);
       if(params.get('sent')==='1'){
         const el=document.getElementById('contact-sent');
         if(el){el.classList.add('show');el.scrollIntoView({behavior:'smooth',block:'start'});}
       }
-      // Live UK clock
-      function tick(){
-        const t=document.getElementById('status-time');if(!t)return;
-        const now=new Date();
-        const opts={hour:'2-digit',minute:'2-digit',second:'2-digit',timeZone:'Europe/London',hour12:false};
-        t.textContent=new Intl.DateTimeFormat('en-GB',opts).format(now)+' BST';
-      }
-      tick();setInterval(tick,1000);
     })();
   </script>
 </SiteLayout>

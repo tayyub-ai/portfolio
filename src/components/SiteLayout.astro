@@ -49,35 +49,84 @@ const breadcrumbData =
       }
     : null;
 
+const personDescription =
+  "Tayyub Yaqoob is a UK-based Senior Digital Analyst at 8 Million Stories specialising in AI-assisted analytics, automation, and digital measurement engineering. Technical writer for Cointelegraph and AlphaWire (35+ pieces, 2022–2026), expert source cited by CCN on AI trading risk and crypto-security, and invited peer reviewer for IGI Global across three book chapters on CBDCs, blockchain-IoT banking, and AI-enabled FinTech.";
+
 const personEntity = {
   "@type": "Person",
+  "@id": `${site.siteUrl}/#person`,
   name: site.name,
+  givenName: "Tayyub",
+  familyName: "Yaqoob",
   url: site.siteUrl,
   image: imageUrl,
   jobTitle: "Senior Digital Analyst",
+  description: personDescription,
   worksFor: {
     "@type": "Organization",
     name: "8 Million Stories",
+    url: "https://www.8millionstories.co.uk/",
+  },
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Senior Digital Analyst",
+    occupationalCategory: "15-2051 Data Scientists",
+    skills: [
+      "AI-assisted analytics",
+      "Analytics automation",
+      "Digital measurement engineering",
+      "BigQuery",
+      "Python",
+      "GA4",
+      "GTM",
+      "LLM-assisted reporting",
+      "Consent and tracking quality",
+      "AI-search visibility research",
+    ],
   },
   homeLocation: {
     "@type": "Place",
     name: site.location,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Stirling",
+      addressRegion: "Scotland",
+      addressCountry: "GB",
+    },
+  },
+  workLocation: {
+    "@type": "Place",
+    name: "Stirling, United Kingdom",
   },
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "University of Stirling",
+    url: "https://www.stir.ac.uk/",
   },
+  knowsLanguage: ["English"],
   email: `mailto:${site.email}`,
   sameAs: [site.social.linkedin, site.social.github, site.social.x],
   knowsAbout: [
-    "AI analytics systems",
-    "Digital measurement",
-    "Machine learning",
-    "Search visibility",
+    "AI-assisted analytics",
     "Analytics automation",
+    "Digital measurement engineering",
+    "Google Analytics 4",
+    "Google Tag Manager",
+    "BigQuery",
+    "Python",
+    "Large language models",
+    "LLM-assisted reporting",
+    "AI-search visibility",
+    "Generative engine optimisation",
+    "Consent and tracking quality",
+    "Crypto-security commentary",
+    "AI in trading",
+    "Agentic AI risk",
+    "Quantum-resistant systems",
+    "Central bank digital currencies",
+    "Blockchain consensus",
   ],
   mainEntityOfPage: canonical,
-  description,
 };
 
 const personData = {
@@ -147,7 +196,7 @@ const allStructuredData = [
   <meta name="twitter:image" content={imageUrl} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   {allStructuredData.map((entry) => (
     <script type="application/ld+json" set:html={JSON.stringify(entry)} />
@@ -156,8 +205,6 @@ const allStructuredData = [
 </head>
 <body>
   <div class="progress" id="progress"></div>
-  <div class="aurora"></div>
-  <div class="spotlight" id="spot"></div>
   <aside class="rail" id="rail" aria-hidden="true"></aside>
 
   <div class="shell">
@@ -171,7 +218,6 @@ const allStructuredData = [
         ))}
       </nav>
       <div class="nav-r">
-        <span class="pill"><span class="live"></span>Open · 2026</span>
         <a href="/contact" class={`btn btn-primary${pathname === "/contact" ? " on" : ""}`}>Contact →</a>
       </div>
     </header>
@@ -201,13 +247,6 @@ const allStructuredData = [
           {footerNav.map((item) => (
             <a href={item.href}>{item.label}</a>
           ))}
-        </div>
-        <div class="fc">
-          <h5>Evidence</h5>
-          <a href="/evidence">Evidence index</a>
-          <a href="/publications">Publication record</a>
-          <a href="/press">Press</a>
-          <a href="/open-source">Open Source</a>
         </div>
       </div>
       <div class="foot-bot"><span>© 2026 {site.name}</span><span>Stirling · MMXXVI</span></div>
