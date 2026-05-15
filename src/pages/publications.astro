@@ -106,6 +106,10 @@ const citationSchema = {
       "@type": "Article",
       headline: citation.headline,
       url: citation.url,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": citation.url,
+      },
       publisher: {
         "@type": "Organization",
         name: "CCN",
