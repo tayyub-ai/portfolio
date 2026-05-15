@@ -25,13 +25,55 @@ const themeColors: Record<string, string> = {
   "Technology": "#d97757",
 };
 
+const expertCitations = [
+  {
+    headline: "What Are AI Agents: Types, Examples & Steps To Build One",
+    url: "https://www.ccn.com/education/crypto/ai-agents-how-to-create-based-ai-agent/",
+    topic: "Agent wallets and the permission layer",
+    quote:
+      "The real engineering work on agent wallets now sits at the permission layer, not the model layer. Scoped session keys, time-bound delegations and policy rulebooks that enforce spending caps and counterparty whitelists before any signature is produced are what separate an experimental agent from one that can be trusted with real funds. Revocation, audit logging and human override are no longer safeguards bolted on top, they are core infrastructure.",
+  },
+  {
+    headline: "How AI Crypto Trading Bots Make And Lose Millions Inside The Black Box",
+    url: "https://www.ccn.com/education/crypto/ai-crypto-trading-bots-how-they-make-and-lose-millions/",
+    topic: "AI trading bots and verifiability",
+    quote:
+      "The real black box is not the model, it is the gap between what the system did and what the user can verify. A bot can react quickly to noisy data, stale signals or overfitted patterns while still looking reliable, because the execution is automated and the outcome is visible even when the reasoning is not. Any system handling real capital needs tested risk limits, full audit logs of inputs and decisions, and human override paths, with the bot's tool integrations and data feeds treated as part of the attack surface.",
+  },
+  {
+    headline: "AI Hallucinations & Slopsquatting: A Caution for Blockchain Devs",
+    url: "https://www.ccn.com/education/crypto/ai-hallucinations-slopsquatting-risk-for-blockchain-devs/",
+    topic: "AI-generated code and supply-chain risk",
+    quote:
+      "The defence here is not careful prompting, it is treating AI suggestions like any other untrusted input. The fact that models confidently generate plausible-sounding package names that do not exist is what makes slopsquatting work, and no amount of better prompting closes that gap. Verifying package provenance, checking how recently a package was published and preferring audited libraries matters more than the prompt that produced the code. AI-generated code should reach production through the same review path as any third-party dependency, not a shorter one.",
+  },
+];
+
+const igiReviews = [
+  {
+    title: "CBDCs and Financial Stability",
+    year: "2022",
+    note: "Macro-impact chapter on central bank digital currencies",
+  },
+  {
+    title: "Blockchain and Consensus for IoT-Based Banking",
+    year: "2022",
+    note: "Consensus-protocol chapter for IoT banking infrastructure",
+  },
+  {
+    title: "AI-Enabled Agile IoT for FinTech",
+    year: "2023",
+    note: "Edge-AI and FinTech-architecture chapter",
+  },
+];
+
 const publicationSchema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  name: "Publications",
+  name: "Writing, citations, and peer review",
   url: "https://www.tayyubyaqoob.com/publications",
   description:
-    "Direct live article URLs plus archive continuity proof for publications across Cointelegraph and AlphaWire.",
+    "Technical articles for Cointelegraph and AlphaWire, expert-source citations in CCN, and invited peer review record for IGI Global.",
   mainEntity: {
     "@type": "ItemList",
     itemListElement: allArticles.map((article, index) => ({
@@ -41,6 +83,9 @@ const publicationSchema = {
         "@type": "Article",
         headline: article.title,
         url: article.url,
+        author: {
+          "@id": "https://www.tayyubyaqoob.com/#person",
+        },
         publisher: {
           "@type": "Organization",
           name: article.outlet,
@@ -49,6 +94,52 @@ const publicationSchema = {
     })),
   },
 };
+
+const citationSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Expert-source citations in CCN",
+  itemListElement: expertCitations.map((citation, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Article",
+      headline: citation.headline,
+      url: citation.url,
+      publisher: {
+        "@type": "Organization",
+        name: "CCN",
+        url: "https://www.ccn.com/",
+      },
+      mentions: {
+        "@id": "https://www.tayyubyaqoob.com/#person",
+      },
+    },
+  })),
+};
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Invited peer-review record for IGI Global",
+  itemListElement: igiReviews.map((review, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Chapter",
+      name: review.title,
+      datePublished: review.year,
+      publisher: {
+        "@type": "Organization",
+        name: "IGI Global",
+        url: "https://www.igi-global.com/",
+      },
+      reviewedBy: {
+        "@id": "https://www.tayyubyaqoob.com/#person",
+      },
+    },
+  })),
+};
 ---
 
 <SiteLayout
@@ -56,12 +147,37 @@ const publicationSchema = {
   description="Live article record plus archive continuity for technical writing across Cointelegraph and AlphaWire."
   pathname="/publications"
   crumbs={[{ label: "Home", href: "/" }, { label: "Publications" }]}
-  structuredData={[publicationSchema]}
+  structuredData={[publicationSchema, citationSchema, reviewSchema]}
 >
   <style slot="head">
     /* Intro paragraph */
     .pub-intro{max-width:64ch;font-size:17px;line-height:1.7;color:var(--ink-2)}
     .pub-intro b{color:var(--ink);font-weight:600}
+    .pub-intro a{color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:1px}
+    .pub-intro a:hover{color:var(--terra);border-color:var(--terra)}
+
+    /* Cited list (CCN excerpts) */
+    .cited-list{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+    .cited{display:block;position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 28px;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
+    .cited::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra);border-radius:14px 0 0 14px}
+    .cited:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .cited-meta{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+    .cited-meta .cited-outlet{color:var(--terra);font-weight:600}
+    .cited-title{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2vw,26px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);margin-bottom:14px}
+    .cited-quote{font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.6;color:var(--ink-2);padding:14px 18px;border-left:3px solid var(--line-2);background:var(--bg-soft);border-radius:0 8px 8px 0;margin:0 0 14px}
+    .cited-cta{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;font-weight:600}
+    .cited-cta::after{content:"↗";transition:transform .25s}
+    .cited:hover .cited-cta::after{transform:translate(2px,-2px)}
+
+    /* IGI peer review list */
+    .igi-list{list-style:none;padding:0;margin:8px 0 0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .igi-row{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:18px 22px;border-bottom:1px solid var(--line);align-items:baseline;transition:background .2s}
+    .igi-row:last-child{border-bottom:0}
+    .igi-row:hover{background:var(--bg-soft)}
+    .igi-num{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);font-weight:600}
+    .igi-body h4{font-family:var(--serif);font-weight:400;font-size:18px;line-height:1.25;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px}
+    .igi-meta{font-size:13px;color:var(--ink-2);line-height:1.5}
+    @media (max-width:680px){.igi-row{grid-template-columns:48px 1fr;gap:12px;padding:16px 18px}}
 
 
     /* ── Article cards (themed) ── */
@@ -102,8 +218,54 @@ const publicationSchema = {
 
   <section class="section wrap first" data-screen-label="Intro">
     <p class="pub-intro rv">
-      Around 35 technical articles for <b>Cointelegraph</b> and <b>AlphaWire</b> between 2022 and 2026, covering AI-driven trading, crypto-security, quantum-resistant systems, and agentic risk. Older Cointelegraph pieces are preserved as a PDF archive where the publisher has restructured its author pages.
+      Around <b>35 technical articles</b> for <b>Cointelegraph</b> and <b>AlphaWire</b> between 2022 and 2026, covering AI-driven trading, crypto-security, quantum-resistant systems, and agentic risk. Commentary cited as an expert source by <a href="#cited">CCN</a> across three pieces on AI agents, AI trading bots, and AI-generated code risk. Invited <a href="#peer-review">peer reviewer</a> for IGI Global across three book chapters between 2022 and 2023.
     </p>
+  </section>
+
+  <section class="section wrap" id="cited" data-screen-label="Cited">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <h2>Cited in CCN.</h2>
+        <p>Three CCN articles that cite my commentary on agent wallets and the permission layer, AI trading-bot verifiability, and supply-chain risk from AI-generated code.</p>
+      </div>
+      <div class="sec-head-r"></div>
+    </div>
+
+    <div class="cited-list rv">
+      {expertCitations.map((c) => (
+        <a class="cited" href={c.url} target="_blank" rel="noreferrer">
+          <div class="cited-meta">
+            <span class="cited-outlet">CCN · Education</span>
+            <span class="cited-topic">{c.topic}</span>
+          </div>
+          <h3 class="cited-title">{c.headline}</h3>
+          <blockquote class="cited-quote">{c.quote}</blockquote>
+          <span class="cited-cta">Read on CCN</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="section wrap" id="peer-review" data-screen-label="Peer review">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <h2>Peer review for IGI Global.</h2>
+        <p>Three publisher-led chapter reviews between 2022 and 2023 across central bank digital currencies, blockchain consensus in IoT banking, and AI-enabled FinTech architecture.</p>
+      </div>
+      <div class="sec-head-r"></div>
+    </div>
+
+    <ol class="igi-list rv">
+      {igiReviews.map((r, i) => (
+        <li class="igi-row">
+          <span class="igi-num">{String(i + 1).padStart(2, "0")}</span>
+          <div class="igi-body">
+            <h4>{r.title}</h4>
+            <span class="igi-meta">IGI Global · invited reviewer · {r.year} · {r.note}</span>
+          </div>
+        </li>
+      ))}
+    </ol>
   </section>
 
   <section class="section wrap" data-screen-label="Articles">

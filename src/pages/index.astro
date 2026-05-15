@@ -251,7 +251,7 @@ import SiteLayout from "../components/SiteLayout.astro";
     <div class="sec-head rv">
       <div class="sec-head-l">
         <h2>Selected work.</h2>
-        <p>Three production systems with the technical approach, the visualization that fits the work, and the stack underneath.</p>
+        <p>Four production systems with the technical approach, the visualization that fits the work, and the stack underneath.</p>
       </div>
       <div class="sec-head-r"><a href="/case-studies">All case studies →</a></div>
     </div>
@@ -376,6 +376,53 @@ import SiteLayout from "../components/SiteLayout.astro";
             <div class="pstat"><span class="pv"><em>140+</em></span><span class="pk">Queries tracked</span></div>
             <div class="pstat"><span class="pv"><em>4</em></span><span class="pk">Platforms</span></div>
             <div class="pstat"><span class="pv"><em>Weekly</em></span><span class="pk">Snapshots</span></div>
+          </div>
+          <span class="pcta">See case study</span>
+        </div>
+      </a>
+
+      <a class="poster p-4 rv d3" href="/case-studies">
+        <div>
+          <span class="ptag">Reporting automation</span>
+          <h3 class="ph">Manual reporting → automated assembly.</h3>
+          <p class="pdesc">Automated assembly of recurring reports and decks from GA4, GSC, and ad-platform data. A multi-hour manual build replaced with a short analyst review pass.</p>
+          <div class="poster-viz">
+            <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet">
+              <text x="6" y="48" font-family="var(--mono)" font-size="10" fill="var(--muted)" letter-spacing=".1em" text-transform="uppercase">MANUAL</text>
+              <g transform="translate(80 28)">
+                <rect width="120" height="36" rx="4" fill="#d97757"/>
+                <text x="10" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Gather · 60m</text>
+                <rect x="120" width="100" height="36" rx="4" fill="#c44d2c"/>
+                <text x="130" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Clean · 50m</text>
+                <rect x="220" width="120" height="36" rx="4" fill="#c89942"/>
+                <text x="230" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Deck · 60m</text>
+                <rect x="340" width="80" height="36" rx="4" fill="#7a8f5e"/>
+                <text x="350" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Review · 40m</text>
+                <rect x="420" width="60" height="36" rx="4" fill="#1a1714"/>
+                <text x="430" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Send · 30m</text>
+              </g>
+              <text x="508" y="48" font-family="var(--serif)" font-style="italic" font-size="14" fill="var(--ink)">4h</text>
+
+              <text x="6" y="138" font-family="var(--mono)" font-size="10" fill="var(--muted)" letter-spacing=".1em" text-transform="uppercase">AUTO</text>
+              <g transform="translate(80 118)">
+                <rect width="40" height="36" rx="4" fill="#7a8f5e"/>
+                <text x="6" y="22" font-family="var(--mono)" font-size="9" fill="#fff">Review</text>
+              </g>
+              <text x="508" y="138" font-family="var(--serif)" font-style="italic" font-size="14" fill="var(--moss)">20m</text>
+
+              <line x1="80" y1="78" x2="560" y2="78" stroke="var(--line)" stroke-dasharray="2 3" opacity=".5"/>
+              <text x="280" y="94" font-family="var(--serif)" font-style="italic" font-size="13" fill="var(--muted)" text-anchor="middle">vs</text>
+            </svg>
+          </div>
+        </div>
+        <div class="pgutter">
+          <div class="pchips">
+            <span>Python</span><span>Slides API</span><span>BigQuery</span><span>Automation</span>
+          </div>
+          <div class="pstats">
+            <div class="pstat"><span class="pv"><em>36</em></span><span class="pk">Reports / month</span></div>
+            <div class="pstat"><span class="pv"><em>~70%</em></span><span class="pk">Time saved</span></div>
+            <div class="pstat"><span class="pv"><em>Inline</em></span><span class="pk">Variance flags</span></div>
           </div>
           <span class="pcta">See case study</span>
         </div>
