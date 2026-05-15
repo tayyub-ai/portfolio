@@ -18,7 +18,7 @@ export const site = {
 export const primaryNav = [
   { href: "/", label: "Home" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/publications", label: "Writing" },
+  { href: "/publications", label: "Publications" },
   { href: "/labs", label: "Labs" },
   { href: "/about", label: "About" },
 ];
@@ -26,7 +26,7 @@ export const primaryNav = [
 export const footerNav = [
   { href: "/", label: "Home" },
   { href: "/case-studies", label: "Case Studies" },
-  { href: "/publications", label: "Writing" },
+  { href: "/publications", label: "Publications" },
   { href: "/labs", label: "Labs" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },

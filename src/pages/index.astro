@@ -94,37 +94,62 @@ import SiteLayout from "../components/SiteLayout.astro";
     .codex-viz{width:100%;max-width:320px}
     @media (max-width:880px){.codex{grid-template-columns:1fr;padding:24px;gap:18px}.codex-modules{grid-template-columns:1fr}.codex-r{order:-1}}
 
-    /* ── Compact work cards (home teasers) ── */
+    /* ── Compact work cards with inline micro-viz ── */
     .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
-    .work-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:transform .3s cubic-bezier(.2,.7,.1,1),box-shadow .3s,border-color .25s}
+    .work-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;transition:transform .3s cubic-bezier(.2,.7,.1,1),box-shadow .3s,border-color .25s}
     .work-card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--terra);transition:width .25s;border-radius:12px 0 0 12px}
     .work-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-1);border-color:var(--line-2)}
     .work-card:hover::before{width:5px}
     .work-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
     .work-card h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.15;letter-spacing:-.01em;color:var(--ink);margin-top:2px}
+    .work-card .card-viz{width:100%;height:auto;display:block;margin:6px 0 6px;border-bottom:1px dashed var(--line);padding-bottom:10px}
     .work-card p{font-size:13.5px;color:var(--ink-2);line-height:1.55;max-width:48ch;flex:1}
     .work-stats{display:flex;gap:18px;padding-top:10px;border-top:1px dashed var(--line);margin-top:6px;flex-wrap:wrap}
     .work-stats span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;gap:2px}
     .work-stats em{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);letter-spacing:-.01em;text-transform:none;line-height:1}
     @media (max-width:780px){.work-grid{grid-template-columns:1fr}}
 
-    /* ── Quotes grid (testimonials) ── */
-    .quotes-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
-    .quote-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;margin:0}
-    .quote-card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--terra);border-radius:12px 0 0 12px}
-    .quote-card p{font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.55;color:var(--ink);margin:0}
-    .quote-card cite{display:flex;flex-direction:column;gap:2px;font-style:normal;padding-top:10px;border-top:1px dashed var(--line)}
-    .quote-card cite b{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:var(--ink)}
-    .quote-card cite span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
-    @media (max-width:780px){.quotes-grid{grid-template-columns:1fr}}
+    /* ── Feature quote (BBC) — editorial pull-quote ── */
+    .quotes-feat{margin-top:8px}
+    .quote-feature{position:relative;background:linear-gradient(180deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:14px;padding:48px 64px 36px;margin:0;overflow:hidden}
+    .quote-feature::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
+    .quote-feature .quote-mark{position:absolute;top:-24px;left:48px;font-family:var(--serif);font-size:200px;line-height:1;color:var(--terra);opacity:.18;pointer-events:none;user-select:none}
+    .quote-feature p{position:relative;z-index:1;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(24px,3vw,38px);line-height:1.22;letter-spacing:-.012em;color:var(--ink);margin:0 0 22px;text-wrap:balance;max-width:34ch}
+    .quote-feature p .qhi{background:linear-gradient(180deg,transparent 62%,rgba(200,153,66,.4) 62%);padding:0 .08em}
+    .quote-feature cite{display:flex;align-items:baseline;gap:18px;padding-top:18px;border-top:1px solid var(--line);font-style:normal;position:relative;z-index:1;flex-wrap:wrap}
+    .quote-feature cite b{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.005em}
+    .quote-feature cite span{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+    @media (max-width:780px){.quote-feature{padding:36px 28px 28px}.quote-feature .quote-mark{left:18px;font-size:140px}}
 
-    /* ── GitHub cards ── */
+    /* ── Small editorial quotes (press-clipping feel) ── */
+    .quotes-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:14px}
+    .quote-small{position:relative;background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px 22px 18px;margin:0;display:flex;flex-direction:column;gap:14px;transition:transform .3s,border-color .25s}
+    .quote-small:hover{transform:translateY(-2px);border-color:var(--line-2)}
+    .quote-small::before{content:"\201C";position:absolute;top:8px;right:18px;font-family:var(--serif);font-size:64px;line-height:1;color:var(--terra);opacity:.18;pointer-events:none}
+    .quote-small p{font-size:14px;line-height:1.55;color:var(--ink);margin:0;max-width:34ch}
+    .quote-small p b{color:var(--ink);font-weight:600;background:linear-gradient(180deg,transparent 65%,rgba(200,153,66,.3) 65%);padding:0 .08em}
+    .quote-small cite{display:flex;flex-direction:column;gap:2px;font-style:normal;padding-top:12px;border-top:1px dashed var(--line)}
+    .quote-small cite .src{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--ink)}
+    .quote-small cite .meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+    .quote-small.q-gm{font-family:'Inter',sans-serif}
+    .quote-small.q-dp p{font-family:var(--serif);font-style:italic;font-size:15px}
+    .quote-small.q-mri{background:var(--bg-soft)}
+    @media (max-width:780px){.quotes-row{grid-template-columns:1fr}}
+
+    /* ── GitHub cards with contribution heatmap ── */
     .github-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
-    .github-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s,border-color .25s}
+    .github-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s,border-color .25s}
     .github-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-1);border-color:var(--line-2)}
+    .github-card .gh-head{display:flex;justify-content:space-between;align-items:center}
     .github-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--terra);text-transform:uppercase;font-weight:600}
+    .gh-dot{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(90,138,74,.6);animation:pulse 2.4s infinite}
     .github-card h3{font-family:var(--mono);font-size:15px;font-weight:500;color:var(--ink);letter-spacing:-.005em}
-    .github-card p{font-size:13.5px;color:var(--ink-2);line-height:1.55;flex:1}
+    .github-card p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
+    .gh-heatmap{background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:10px 12px 8px;margin-top:auto}
+    .gh-heatmap svg{width:100%;height:auto;display:block}
+    .gh-legend{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+    .gh-scale{display:inline-flex;gap:2px;align-items:center}
+    .gh-scale i{width:8px;height:8px;border-radius:1.5px;background:var(--terra);display:inline-block}
     .github-cta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase;font-weight:600;padding-top:10px;border-top:1px dashed var(--line)}
     @media (max-width:780px){.github-grid{grid-template-columns:1fr}}
 
@@ -354,6 +379,14 @@ import SiteLayout from "../components/SiteLayout.astro";
       <a class="work-card" href="/case-studies">
         <span class="work-tag">Forecasting · BigQuery · GA4</span>
         <h3>Channel and query forecasting.</h3>
+        <svg class="card-viz" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M180 24 Q215 14 250 16 T300 6 L300 36 Q260 38 225 40 T180 30 Z" fill="var(--ochre)" opacity=".22"/>
+          <path d="M10 50 Q40 44 70 38 T130 30 T180 24" stroke="var(--terra)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M180 24 Q215 14 250 16 T300 8" stroke="var(--ochre)" stroke-width="1.8" fill="none" stroke-dasharray="4 3" stroke-linecap="round"/>
+          <line x1="180" y1="0" x2="180" y2="60" stroke="var(--ink)" stroke-width=".8" stroke-dasharray="2 3" opacity=".5"/>
+          <text x="184" y="9" font-family="var(--mono)" font-size="7" fill="var(--ink)" letter-spacing=".08em">NOW</text>
+          <circle cx="180" cy="24" r="3" fill="var(--terra)"/>
+        </svg>
         <p>Monthly forecast cycles for GSC query trends and channel traffic. Variance flagged inside the cycle, not after.</p>
         <div class="work-stats">
           <span><em>5.4%</em>Median MAPE</span>
@@ -365,6 +398,13 @@ import SiteLayout from "../components/SiteLayout.astro";
       <a class="work-card" href="/case-studies">
         <span class="work-tag">Sentiment · LLM-assisted</span>
         <h3>Sentiment and topic river.</h3>
+        <svg class="card-viz" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 60 L0 44 Q40 40 80 42 T160 38 T240 42 T300 40 L300 60 Z" fill="#e8a995" opacity=".75"/>
+          <path d="M0 44 L0 28 Q40 24 80 27 T160 20 T240 25 T300 23 L300 40 Q260 42 240 42 T160 38 T80 42 T0 44 Z" fill="#e7d6a8" opacity=".8"/>
+          <path d="M0 28 L0 10 Q40 6 80 8 T160 4 T240 6 T300 5 L300 23 Q260 24 240 25 T160 20 T80 27 T0 28 Z" fill="#a8c08a" opacity=".75"/>
+          <line x1="160" y1="0" x2="160" y2="60" stroke="var(--ink)" stroke-width=".6" stroke-dasharray="2 3" opacity=".4"/>
+          <text x="164" y="9" font-family="var(--mono)" font-size="7" fill="var(--ink)" letter-spacing=".06em">SPIKE</text>
+        </svg>
         <p>LLM-assisted classification across press, review, and social. Nothing auto-published; analysts interpret context, not deltas.</p>
         <div class="work-stats">
           <span><em>11</em>Surfaces</span>
@@ -376,6 +416,21 @@ import SiteLayout from "../components/SiteLayout.astro";
       <a class="work-card" href="/case-studies">
         <span class="work-tag">AI visibility · AI Overviews</span>
         <h3>AI vs traditional search.</h3>
+        <svg class="card-viz" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+          <rect x="0" y="4" width="140" height="52" rx="3" fill="#fff" stroke="var(--line)"/>
+          <text x="6" y="14" font-family="var(--mono)" font-size="7" fill="var(--muted)" letter-spacing=".1em">GOOGLE</text>
+          <rect x="6" y="18" width="128" height="6" fill="var(--line-2)" opacity=".55" rx="1"/>
+          <rect x="6" y="28" width="128" height="6" fill="var(--line-2)" opacity=".55" rx="1"/>
+          <rect x="6" y="38" width="128" height="6" fill="var(--terra)" opacity=".55" rx="1"/>
+          <rect x="6" y="48" width="128" height="6" fill="var(--line-2)" opacity=".55" rx="1"/>
+          <rect x="160" y="4" width="140" height="52" rx="3" fill="#fff" stroke="var(--line)"/>
+          <text x="166" y="14" font-family="var(--mono)" font-size="7" fill="var(--muted)" letter-spacing=".1em">AI OVERVIEW</text>
+          <rect x="166" y="18" width="128" height="6" fill="var(--terra)" opacity=".55" rx="1"/>
+          <rect x="166" y="28" width="128" height="6" fill="var(--line-2)" opacity=".55" rx="1"/>
+          <rect x="166" y="38" width="128" height="6" fill="var(--line-2)" opacity=".55" rx="1"/>
+          <rect x="166" y="48" width="128" height="6" fill="var(--line-2)" opacity=".55" rx="1"/>
+          <path d="M140 40 Q150 30 160 20" stroke="var(--coral)" stroke-width="1.2" stroke-dasharray="3 2" fill="none"/>
+        </svg>
         <p>How brands surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and citation.</p>
         <div class="work-stats">
           <span><em>140+</em>Queries</span>
@@ -387,6 +442,18 @@ import SiteLayout from "../components/SiteLayout.astro";
       <a class="work-card" href="/case-studies">
         <span class="work-tag">Reporting automation</span>
         <h3>Manual reporting → automated assembly.</h3>
+        <svg class="card-viz" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+          <text x="0" y="14" font-family="var(--mono)" font-size="7" fill="var(--muted)" letter-spacing=".1em">MANUAL</text>
+          <rect x="44" y="6" width="76" height="12" fill="#d97757" rx="2"/>
+          <rect x="120" y="6" width="58" height="12" fill="#c44d2c" rx="2"/>
+          <rect x="178" y="6" width="60" height="12" fill="#c89942" rx="2"/>
+          <rect x="238" y="6" width="36" height="12" fill="#7a8f5e" rx="2"/>
+          <text x="280" y="16" font-family="var(--serif)" font-style="italic" font-size="11" fill="var(--ink)">4h</text>
+          <line x1="0" y1="30" x2="300" y2="30" stroke="var(--line)" stroke-dasharray="2 3" opacity=".5"/>
+          <text x="0" y="44" font-family="var(--mono)" font-size="7" fill="var(--muted)" letter-spacing=".1em">AUTO</text>
+          <rect x="44" y="36" width="20" height="12" fill="var(--moss)" rx="2"/>
+          <text x="70" y="46" font-family="var(--serif)" font-style="italic" font-size="11" fill="var(--moss)">20m</text>
+        </svg>
         <p>Recurring reports and decks assembled from GA4, GSC, and ad-platform data. Multi-hour build replaced with a short analyst review.</p>
         <div class="work-stats">
           <span><em>36</em>Reports / mo</span>
@@ -406,22 +473,26 @@ import SiteLayout from "../components/SiteLayout.astro";
       <div class="sec-head-r"></div>
     </div>
 
-    <div class="quotes-grid rv">
-      <blockquote class="quote-card">
-        <p>"The tool is working fully, and we've been able to share the update with wider teams."</p>
+    <div class="quotes-feat rv">
+      <blockquote class="quote-feature">
+        <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+        <p>The tool is working fully, and we've been able to <span class="qhi">share the update with wider teams</span>.</p>
         <cite><b>BBC</b><span>Project stakeholder · media · UK</span></cite>
       </blockquote>
-      <blockquote class="quote-card">
-        <p>"The feedback was very positive. Overall they are happy with the first go at this. I appreciate all your help and of course passed on high praise of your work."</p>
-        <cite><b>General Mills</b><span>Account team · Blue Buffalo</span></cite>
+    </div>
+
+    <div class="quotes-row rv d1">
+      <blockquote class="quote-small q-gm">
+        <p>"The feedback was very positive. Overall they are happy with the first go at this. <b>Passed on high praise of your work</b>."</p>
+        <cite><span class="src">General Mills</span><span class="meta">Account team · Blue Buffalo</span></cite>
       </blockquote>
-      <blockquote class="quote-card">
-        <p>"Our analytics are in great shape at this point and we're feeling confident about the ways they will help us."</p>
-        <cite><b>Diligent Pharma</b><span>Stakeholder · life sciences</span></cite>
+      <blockquote class="quote-small q-dp">
+        <p>"Our analytics are <b>in great shape</b> at this point and we're feeling confident about the ways they will help us."</p>
+        <cite><span class="src">Diligent Pharma</span><span class="meta">Stakeholder · life sciences</span></cite>
       </blockquote>
-      <blockquote class="quote-card">
-        <p>"I really liked working with you and hope we can build a working relationship. I have 3 to 4 clients that require your skills on a routine basis."</p>
-        <cite><b>MRI Management</b><span>Engagement partner · US</span></cite>
+      <blockquote class="quote-small q-mri">
+        <p>"I really liked working with you. <b>I have 3 to 4 clients that require your skills on a routine basis.</b>"</p>
+        <cite><span class="src">MRI Management</span><span class="meta">Engagement partner · US</span></cite>
       </blockquote>
     </div>
   </section>
@@ -437,15 +508,82 @@ import SiteLayout from "../components/SiteLayout.astro";
 
     <div class="github-grid rv">
       <a class="github-card" href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer">
-        <span class="github-tag">Personal</span>
+        <div class="gh-head">
+          <span class="github-tag">Personal</span>
+          <span class="gh-dot" aria-hidden="true"></span>
+        </div>
         <h3>github.com/tayyub-ai</h3>
         <p>Utilities, RAG and LLM experiments, multimodal research, and the portfolio source itself.</p>
+        <div class="gh-heatmap" aria-label="12 weeks of contribution activity">
+          <svg viewBox="0 0 252 76" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            {Array.from({ length: 12 * 7 }).map((_, i) => {
+              const week = Math.floor(i / 7);
+              const day = i % 7;
+              const seed = ((i * 9301 + 49297) % 233280) / 233280;
+              const recency = week / 11;
+              const intensity = Math.min(4, Math.floor(recency * 3 + seed * 2.8));
+              const opacities = [0.08, 0.28, 0.5, 0.72, 0.95];
+              return (
+                <rect
+                  x={week * 21 + 2}
+                  y={day * 10 + 2}
+                  width="18"
+                  height="8"
+                  rx="1.5"
+                  fill="var(--terra)"
+                  opacity={opacities[intensity]}
+                />
+              );
+            })}
+          </svg>
+          <div class="gh-legend">
+            <span>12 weeks</span>
+            <span class="gh-scale" aria-hidden="true">
+              <i style="opacity:.08"></i><i style="opacity:.28"></i><i style="opacity:.5"></i><i style="opacity:.72"></i><i style="opacity:.95"></i>
+            </span>
+            <span>active</span>
+          </div>
+        </div>
         <span class="github-cta">Open profile ↗</span>
       </a>
+
       <a class="github-card" href="https://github.com/Tayyab8ms" target="_blank" rel="noreferrer">
-        <span class="github-tag">8 Million Stories</span>
+        <div class="gh-head">
+          <span class="github-tag">8 Million Stories</span>
+          <span class="gh-dot" aria-hidden="true"></span>
+        </div>
         <h3>github.com/Tayyab8ms</h3>
-        <p>Contribution activity for day-to-day analytics and product work. Repos are private to the company; the activity graph is public.</p>
+        <p>Day-to-day analytics and product work. Repositories are private to the company; the contribution graph is public.</p>
+        <div class="gh-heatmap" aria-label="12 weeks of contribution activity">
+          <svg viewBox="0 0 252 76" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            {Array.from({ length: 12 * 7 }).map((_, i) => {
+              const week = Math.floor(i / 7);
+              const day = i % 7;
+              const seed = ((i * 1733 + 31019) % 233280) / 233280;
+              const recency = week / 11;
+              const intensity = Math.min(4, Math.floor(recency * 2.5 + seed * 3.2));
+              const opacities = [0.08, 0.28, 0.5, 0.72, 0.95];
+              return (
+                <rect
+                  x={week * 21 + 2}
+                  y={day * 10 + 2}
+                  width="18"
+                  height="8"
+                  rx="1.5"
+                  fill="var(--terra)"
+                  opacity={opacities[intensity]}
+                />
+              );
+            })}
+          </svg>
+          <div class="gh-legend">
+            <span>12 weeks</span>
+            <span class="gh-scale" aria-hidden="true">
+              <i style="opacity:.08"></i><i style="opacity:.28"></i><i style="opacity:.5"></i><i style="opacity:.72"></i><i style="opacity:.95"></i>
+            </span>
+            <span>active</span>
+          </div>
+        </div>
         <span class="github-cta">Open profile ↗</span>
       </a>
     </div>
