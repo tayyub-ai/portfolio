@@ -66,6 +66,17 @@ const personEntity = {
     "@type": "Organization",
     name: "8 Million Stories",
     url: "https://www.8millionstories.co.uk/",
+    makesOffer: {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "SoftwareApplication",
+        name: "Codex",
+        url: "https://8ms.com/strategy-and-tech/codex",
+        applicationCategory: "BusinessApplication",
+        description:
+          "Proprietary competitive-intelligence and technical website performance monitoring platform. Modules cover share-of-search reporting, competitor content alerts, technical health checks, carbon-footprint analysis, and data-source monitoring.",
+      },
+    },
   },
   hasOccupation: {
     "@type": "Occupation",
@@ -105,7 +116,12 @@ const personEntity = {
   },
   knowsLanguage: ["English"],
   email: `mailto:${site.email}`,
-  sameAs: [site.social.linkedin, site.social.github, site.social.x],
+  sameAs: [
+    site.social.linkedin,
+    site.social.github,
+    "https://github.com/Tayyab8ms",
+    site.social.x,
+  ],
   subjectOf: [
     {
       "@type": "Article",

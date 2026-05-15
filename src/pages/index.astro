@@ -78,7 +78,57 @@ import SiteLayout from "../components/SiteLayout.astro";
     .dial .sub{font-size:12px;color:var(--ink-2);line-height:1.45;max-width:22ch}
     @media (max-width:880px){.dials{grid-template-columns:1fr 1fr}}
 
-    /* Posters */
+    /* ── Codex feature card ── */
+    .codex{position:relative;display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:32px 36px;margin-top:8px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
+    .codex::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
+    .codex:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .codex-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+    .codex-l h3{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,52px);line-height:1.02;letter-spacing:-.02em;color:var(--ink);margin:8px 0 14px}
+    .codex-desc{font-size:15px;line-height:1.65;color:var(--ink-2);max-width:54ch;margin-bottom:18px}
+    .codex-modules{list-style:none;padding:0;margin:0 0 22px;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+    .codex-modules li{font-size:13px;color:var(--ink-2);line-height:1.5;padding-left:14px;position:relative}
+    .codex-modules li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--terra)}
+    .codex-modules b{color:var(--ink);font-weight:600}
+    .codex-cta{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+    .codex-r{display:flex;align-items:center;justify-content:center}
+    .codex-viz{width:100%;max-width:320px}
+    @media (max-width:880px){.codex{grid-template-columns:1fr;padding:24px;gap:18px}.codex-modules{grid-template-columns:1fr}.codex-r{order:-1}}
+
+    /* ── Compact work cards (home teasers) ── */
+    .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+    .work-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:transform .3s cubic-bezier(.2,.7,.1,1),box-shadow .3s,border-color .25s}
+    .work-card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--terra);transition:width .25s;border-radius:12px 0 0 12px}
+    .work-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-1);border-color:var(--line-2)}
+    .work-card:hover::before{width:5px}
+    .work-tag{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+    .work-card h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.15;letter-spacing:-.01em;color:var(--ink);margin-top:2px}
+    .work-card p{font-size:13.5px;color:var(--ink-2);line-height:1.55;max-width:48ch;flex:1}
+    .work-stats{display:flex;gap:18px;padding-top:10px;border-top:1px dashed var(--line);margin-top:6px;flex-wrap:wrap}
+    .work-stats span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;gap:2px}
+    .work-stats em{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--ink);letter-spacing:-.01em;text-transform:none;line-height:1}
+    @media (max-width:780px){.work-grid{grid-template-columns:1fr}}
+
+    /* ── Quotes grid (testimonials) ── */
+    .quotes-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+    .quote-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;margin:0}
+    .quote-card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--terra);border-radius:12px 0 0 12px}
+    .quote-card p{font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.55;color:var(--ink);margin:0}
+    .quote-card cite{display:flex;flex-direction:column;gap:2px;font-style:normal;padding-top:10px;border-top:1px dashed var(--line)}
+    .quote-card cite b{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;color:var(--ink)}
+    .quote-card cite span{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+    @media (max-width:780px){.quotes-grid{grid-template-columns:1fr}}
+
+    /* ── GitHub cards ── */
+    .github-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
+    .github-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s,border-color .25s}
+    .github-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-1);border-color:var(--line-2)}
+    .github-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--terra);text-transform:uppercase;font-weight:600}
+    .github-card h3{font-family:var(--mono);font-size:15px;font-weight:500;color:var(--ink);letter-spacing:-.005em}
+    .github-card p{font-size:13.5px;color:var(--ink-2);line-height:1.55;flex:1}
+    .github-cta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase;font-weight:600;padding-top:10px;border-top:1px dashed var(--line)}
+    @media (max-width:780px){.github-grid{grid-template-columns:1fr}}
+
+    /* Posters (legacy, unused after restructure) */
     .poster-strip{display:flex;flex-direction:column;gap:14px;margin-top:18px}
     .poster{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:stretch;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s;text-decoration:none;color:inherit}
     .poster:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
@@ -247,188 +297,160 @@ import SiteLayout from "../components/SiteLayout.astro";
     </div>
   </section>
 
-  <section class="section wrap" id="featured" data-screen-label="03 Selected work">
+  <section class="section wrap" data-screen-label="Product">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <h2>Selected work.</h2>
-        <p>Four production systems with the technical approach, the visualization that fits the work, and the stack underneath.</p>
+        <h2>Featured product.</h2>
+        <p>The proprietary product I work on day-to-day at 8 Million Stories.</p>
+      </div>
+      <div class="sec-head-r"></div>
+    </div>
+
+    <a class="codex rv" href="https://8ms.com/strategy-and-tech/codex" target="_blank" rel="noreferrer">
+      <div class="codex-l">
+        <span class="codex-tag">8 Million Stories · proprietary product</span>
+        <h3>Codex.</h3>
+        <p class="codex-desc">Competitive intelligence and technical website performance monitoring. Codex consolidates share-of-search reporting, competitor content alerts, technical health checks, and carbon-footprint analysis into a single dashboard for client teams.</p>
+        <ul class="codex-modules">
+          <li><b>Share of search</b> · market share vs competitors</li>
+          <li><b>Competitor content alerts</b> · activity monitoring and analysis</li>
+          <li><b>Technical Health Check</b> · live site-performance audit</li>
+          <li><b>Carbon Footprint</b> · per-page environmental impact</li>
+          <li><b>Data source monitoring</b> · ingest and update tracking</li>
+        </ul>
+        <span class="codex-cta">See Codex on 8ms.com ↗</span>
+      </div>
+      <div class="codex-r">
+        <svg viewBox="0 0 280 220" preserveAspectRatio="xMidYMid meet" class="codex-viz">
+          <rect x="20" y="20" width="240" height="180" rx="8" fill="#fff" stroke="var(--line)"/>
+          <rect x="32" y="32" width="216" height="12" rx="2" fill="var(--bg-soft)"/>
+          <rect x="32" y="56" width="60" height="60" rx="4" fill="var(--terra)" opacity=".15"/>
+          <text x="62" y="92" font-family="var(--serif)" font-style="italic" font-size="16" fill="var(--terra)" text-anchor="middle">24%</text>
+          <text x="62" y="106" font-family="var(--mono)" font-size="7" fill="var(--muted)" text-anchor="middle">SOS</text>
+          <rect x="100" y="56" width="60" height="60" rx="4" fill="var(--terra)" opacity=".28"/>
+          <text x="130" y="92" font-family="var(--serif)" font-style="italic" font-size="16" fill="var(--terra)" text-anchor="middle">42</text>
+          <text x="130" y="106" font-family="var(--mono)" font-size="7" fill="var(--muted)" text-anchor="middle">ALERTS</text>
+          <rect x="168" y="56" width="80" height="60" rx="4" fill="var(--terra)" opacity=".42"/>
+          <text x="208" y="92" font-family="var(--serif)" font-style="italic" font-size="16" fill="#fff" text-anchor="middle">A+</text>
+          <text x="208" y="106" font-family="var(--mono)" font-size="7" fill="#fff" text-anchor="middle">HEALTH</text>
+          <rect x="32" y="128" width="216" height="60" rx="4" fill="var(--bg-soft)"/>
+          <polyline points="44,170 80,158 116,164 152,148 188,156 224,140 236,148" stroke="var(--terra)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="236" cy="148" r="3" fill="var(--terra)"/>
+        </svg>
+      </div>
+    </a>
+  </section>
+
+  <section class="section wrap" id="featured" data-screen-label="Case studies">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <h2>Selected client work.</h2>
+        <p>Four production systems delivered inside client analytics environments. Full write-ups and visualisations are on the case studies page.</p>
       </div>
       <div class="sec-head-r"><a href="/case-studies">All case studies →</a></div>
     </div>
 
-    <div class="poster-strip">
-      <a class="poster p-1 rv" href="/case-studies">
-        <div>
-          <span class="ptag">Forecasting · BigQuery · GA4</span>
-          <h3 class="ph">Channel and query forecasting.</h3>
-          <p class="pdesc">Monthly forecast cycles for GSC query trends and channel traffic. Used by analyst and account teams to flag variance against forecast inside the cycle rather than after it.</p>
-          <div class="poster-viz">
-            <svg class="pv-fc" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-              <g class="grid">
-                <line x1="0" y1="60" x2="600" y2="60"/>
-                <line x1="0" y1="110" x2="600" y2="110"/>
-                <line x1="0" y1="160" x2="600" y2="160"/>
-              </g>
-              <text class="axis-lbl" x="6" y="58">120k</text>
-              <text class="axis-lbl" x="6" y="108">90k</text>
-              <text class="axis-lbl" x="6" y="158">60k</text>
-              <path class="band" d="M340 100 Q400 80 460 78 T600 60 L600 130 Q540 140 480 145 T340 130 Z"/>
-              <path class="hist" d="M30 170 Q90 158 150 152 T270 132 T340 116"/>
-              <path class="fc" d="M340 116 Q400 96 460 88 T600 64"/>
-              <line class="now-line" x1="340" y1="20" x2="340" y2="200"/>
-              <text class="now-lbl" x="346" y="32">NOW</text>
-              <circle cx="340" cy="116" r="4" fill="#c44d2c"/>
-              <text class="axis-lbl" x="30" y="210">Jan</text>
-              <text class="axis-lbl" x="340" y="210">Jun</text>
-              <text class="axis-lbl" x="570" y="210">Dec</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pgutter">
-          <div class="pchips">
-            <span>BigQuery</span><span>Python</span><span>GSC API</span><span>GA4</span><span>Forecasting</span>
-          </div>
-          <div class="pstats">
-            <div class="pstat"><span class="pv"><em>5.4%</em></span><span class="pk">Median MAPE</span></div>
-            <div class="pstat"><span class="pv"><em>12</em></span><span class="pk">Runs / month</span></div>
-            <div class="pstat"><span class="pv"><em>4</em></span><span class="pk">Channels covered</span></div>
-          </div>
-          <span class="pcta">See case study</span>
+    <div class="work-grid rv">
+      <a class="work-card" href="/case-studies">
+        <span class="work-tag">Forecasting · BigQuery · GA4</span>
+        <h3>Channel and query forecasting.</h3>
+        <p>Monthly forecast cycles for GSC query trends and channel traffic. Variance flagged inside the cycle, not after.</p>
+        <div class="work-stats">
+          <span><em>5.4%</em>Median MAPE</span>
+          <span><em>12</em>Runs / month</span>
+          <span><em>4</em>Channels</span>
         </div>
       </a>
 
-      <a class="poster p-2 rv d1" href="/case-studies">
-        <div>
-          <span class="ptag">Sentiment · LLM-assisted</span>
-          <h3 class="ph">Sentiment and topic river.</h3>
-          <p class="pdesc">LLM-assisted classification across press, review, and social. Stacked bands show how positive, neutral, and negative coverage shifts month over month.</p>
-          <div class="poster-viz">
-            <svg class="pv-rv" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-              <path class="layer l-neg" d="M0 220 L0 168 Q60 158 120 162 T240 152 T360 158 T480 148 T600 150 L600 220 Z"/>
-              <path class="layer l-neu" d="M0 168 L0 108 Q60 104 120 110 T240 96 T360 102 T480 92 T600 96 L600 150 Q540 148 480 148 T360 158 T240 152 T120 162 T0 168 Z"/>
-              <path class="layer l-pos" d="M0 108 L0 50 Q60 42 120 46 T240 32 T360 40 T480 28 T600 34 L600 96 Q540 92 480 92 T360 102 T240 96 T120 110 T0 108 Z"/>
-              <line class="flag-line" x1="240" y1="20" x2="240" y2="200"/>
-              <text class="flag" x="246" y="32">COVERAGE SPIKE · Q2</text>
-              <line class="flag-line" x1="480" y1="20" x2="480" y2="200"/>
-              <text class="flag" x="486" y="32">TOPIC SHIFT · Q4</text>
-              <text class="axis-lbl" x="6" y="212">Jan</text>
-              <text class="axis-lbl" x="298" y="212">Jun</text>
-              <text class="axis-lbl" x="572" y="212">Dec</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pgutter">
-          <div class="pchips">
-            <span>Python</span><span>LLM API</span><span>BigQuery</span><span>NLP</span>
-          </div>
-          <div class="pstats">
-            <div class="pstat"><span class="pv"><em>11</em></span><span class="pk">Surfaces tracked</span></div>
-            <div class="pstat"><span class="pv"><em>~3k</em></span><span class="pk">Mentions / week</span></div>
-            <div class="pstat"><span class="pv"><em>4</em></span><span class="pk">Alert classes</span></div>
-          </div>
-          <span class="pcta">See case study</span>
+      <a class="work-card" href="/case-studies">
+        <span class="work-tag">Sentiment · LLM-assisted</span>
+        <h3>Sentiment and topic river.</h3>
+        <p>LLM-assisted classification across press, review, and social. Nothing auto-published; analysts interpret context, not deltas.</p>
+        <div class="work-stats">
+          <span><em>11</em>Surfaces</span>
+          <span><em>~3k</em>Mentions / wk</span>
+          <span><em>4</em>Alert classes</span>
         </div>
       </a>
 
-      <a class="poster p-3 rv d2" href="/case-studies">
-        <div>
-          <span class="ptag">AI visibility · AI Overviews</span>
-          <h3 class="ph">AI vs traditional search.</h3>
-          <p class="pdesc">Tracking how brands and queries surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and rendered citation.</p>
-          <div class="poster-viz">
-            <svg class="pv-sp" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid meet">
-              <rect class="panel" x="20" y="30" width="240" height="140" rx="6"/>
-              <text class="panel-h" x="32" y="50">Google · organic</text>
-              <rect class="row" x="32" y="60" width="216" height="18" rx="3"/>
-              <text class="result" x="40" y="73">competitor a · category guide</text>
-              <rect class="row" x="32" y="84" width="216" height="18" rx="3"/>
-              <text class="result" x="40" y="97">competitor b · review hub</text>
-              <rect class="row row-hit" x="32" y="108" width="216" height="18" rx="3"/>
-              <text class="result result-hit" x="40" y="121">your brand · category page</text>
-              <rect class="row" x="32" y="132" width="216" height="18" rx="3"/>
-              <text class="result" x="40" y="145">forum · long-tail thread</text>
-              <rect class="panel" x="340" y="30" width="240" height="140" rx="6"/>
-              <text class="panel-h" x="352" y="50">AI Overviews · cited</text>
-              <rect class="row row-hit" x="352" y="60" width="216" height="18" rx="3"/>
-              <text class="result result-hit" x="360" y="73">your brand · cited 1/3</text>
-              <rect class="row" x="352" y="84" width="216" height="18" rx="3"/>
-              <text class="result" x="360" y="97">competitor a · cited 2/3</text>
-              <rect class="row" x="352" y="108" width="216" height="18" rx="3"/>
-              <text class="result" x="360" y="121">trade outlet · cited 3/3</text>
-              <path class="arrow" d="M260 117 Q300 117 340 70" stroke="currentColor" fill="none"/>
-              <line class="scrub-line" x1="20" y1="195" x2="580" y2="195"/>
-              <text class="scrub-lbl" x="20" y="212">Jan</text>
-              <text class="scrub-lbl" x="290" y="212">Jun</text>
-              <text class="scrub-lbl" x="565" y="212">Dec</text>
-              <circle class="scrub-marker" cx="78" cy="195" r="3"/>
-              <circle class="scrub-marker" cx="180" cy="195" r="3"/>
-              <circle class="scrub-marker" cx="290" cy="195" r="4"/>
-              <circle class="scrub-marker" cx="412" cy="195" r="3"/>
-              <circle class="scrub-marker" cx="528" cy="195" r="3"/>
-            </svg>
-          </div>
-        </div>
-        <div class="pgutter">
-          <div class="pchips">
-            <span>AI Overviews</span><span>ChatGPT</span><span>Perplexity</span><span>SERP</span>
-          </div>
-          <div class="pstats">
-            <div class="pstat"><span class="pv"><em>140+</em></span><span class="pk">Queries tracked</span></div>
-            <div class="pstat"><span class="pv"><em>4</em></span><span class="pk">Platforms</span></div>
-            <div class="pstat"><span class="pv"><em>Weekly</em></span><span class="pk">Snapshots</span></div>
-          </div>
-          <span class="pcta">See case study</span>
+      <a class="work-card" href="/case-studies">
+        <span class="work-tag">AI visibility · AI Overviews</span>
+        <h3>AI vs traditional search.</h3>
+        <p>How brands surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and citation.</p>
+        <div class="work-stats">
+          <span><em>140+</em>Queries</span>
+          <span><em>4</em>Platforms</span>
+          <span><em>Weekly</em>Cadence</span>
         </div>
       </a>
 
-      <a class="poster p-4 rv d3" href="/case-studies">
-        <div>
-          <span class="ptag">Reporting automation</span>
-          <h3 class="ph">Manual reporting → automated assembly.</h3>
-          <p class="pdesc">Automated assembly of recurring reports and decks from GA4, GSC, and ad-platform data. A multi-hour manual build replaced with a short analyst review pass.</p>
-          <div class="poster-viz">
-            <svg viewBox="0 0 600 200" preserveAspectRatio="xMidYMid meet">
-              <text x="6" y="48" font-family="var(--mono)" font-size="10" fill="var(--muted)" letter-spacing=".1em" text-transform="uppercase">MANUAL</text>
-              <g transform="translate(80 28)">
-                <rect width="120" height="36" rx="4" fill="#d97757"/>
-                <text x="10" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Gather · 60m</text>
-                <rect x="120" width="100" height="36" rx="4" fill="#c44d2c"/>
-                <text x="130" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Clean · 50m</text>
-                <rect x="220" width="120" height="36" rx="4" fill="#c89942"/>
-                <text x="230" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Deck · 60m</text>
-                <rect x="340" width="80" height="36" rx="4" fill="#7a8f5e"/>
-                <text x="350" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Review · 40m</text>
-                <rect x="420" width="60" height="36" rx="4" fill="#1a1714"/>
-                <text x="430" y="22" font-family="var(--mono)" font-size="10" fill="#fff">Send · 30m</text>
-              </g>
-              <text x="508" y="48" font-family="var(--serif)" font-style="italic" font-size="14" fill="var(--ink)">4h</text>
-
-              <text x="6" y="138" font-family="var(--mono)" font-size="10" fill="var(--muted)" letter-spacing=".1em" text-transform="uppercase">AUTO</text>
-              <g transform="translate(80 118)">
-                <rect width="40" height="36" rx="4" fill="#7a8f5e"/>
-                <text x="6" y="22" font-family="var(--mono)" font-size="9" fill="#fff">Review</text>
-              </g>
-              <text x="508" y="138" font-family="var(--serif)" font-style="italic" font-size="14" fill="var(--moss)">20m</text>
-
-              <line x1="80" y1="78" x2="560" y2="78" stroke="var(--line)" stroke-dasharray="2 3" opacity=".5"/>
-              <text x="280" y="94" font-family="var(--serif)" font-style="italic" font-size="13" fill="var(--muted)" text-anchor="middle">vs</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pgutter">
-          <div class="pchips">
-            <span>Python</span><span>Slides API</span><span>BigQuery</span><span>Automation</span>
-          </div>
-          <div class="pstats">
-            <div class="pstat"><span class="pv"><em>36</em></span><span class="pk">Reports / month</span></div>
-            <div class="pstat"><span class="pv"><em>~70%</em></span><span class="pk">Time saved</span></div>
-            <div class="pstat"><span class="pv"><em>Inline</em></span><span class="pk">Variance flags</span></div>
-          </div>
-          <span class="pcta">See case study</span>
+      <a class="work-card" href="/case-studies">
+        <span class="work-tag">Reporting automation</span>
+        <h3>Manual reporting → automated assembly.</h3>
+        <p>Recurring reports and decks assembled from GA4, GSC, and ad-platform data. Multi-hour build replaced with a short analyst review.</p>
+        <div class="work-stats">
+          <span><em>36</em>Reports / mo</span>
+          <span><em>~70%</em>Time saved</span>
+          <span><em>Inline</em>Variance flags</span>
         </div>
       </a>
     </div>
   </section>
+
+  <section class="section wrap" data-screen-label="Quotes">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <h2>What people say.</h2>
+        <p>Verbatim feedback from client and partner engagements. Names withheld where the engagement is private.</p>
+      </div>
+      <div class="sec-head-r"></div>
+    </div>
+
+    <div class="quotes-grid rv">
+      <blockquote class="quote-card">
+        <p>"The tool is working fully, and we've been able to share the update with wider teams."</p>
+        <cite><b>BBC</b><span>Project stakeholder · media · UK</span></cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>"The feedback was very positive. Overall they are happy with the first go at this. I appreciate all your help and of course passed on high praise of your work."</p>
+        <cite><b>General Mills</b><span>Account team · Blue Buffalo</span></cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>"Our analytics are in great shape at this point and we're feeling confident about the ways they will help us."</p>
+        <cite><b>Diligent Pharma</b><span>Stakeholder · life sciences</span></cite>
+      </blockquote>
+      <blockquote class="quote-card">
+        <p>"I really liked working with you and hope we can build a working relationship. I have 3 to 4 clients that require your skills on a routine basis."</p>
+        <cite><b>MRI Management</b><span>Engagement partner · US</span></cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="section wrap" data-screen-label="Code">
+    <div class="sec-head rv">
+      <div class="sec-head-l">
+        <h2>Code.</h2>
+        <p>Most analytics and product work is private to clients and to 8 Million Stories. The contribution surfaces below show what is public.</p>
+      </div>
+      <div class="sec-head-r"></div>
+    </div>
+
+    <div class="github-grid rv">
+      <a class="github-card" href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer">
+        <span class="github-tag">Personal</span>
+        <h3>github.com/tayyub-ai</h3>
+        <p>Utilities, RAG and LLM experiments, multimodal research, and the portfolio source itself.</p>
+        <span class="github-cta">Open profile ↗</span>
+      </a>
+      <a class="github-card" href="https://github.com/Tayyab8ms" target="_blank" rel="noreferrer">
+        <span class="github-tag">8 Million Stories</span>
+        <h3>github.com/Tayyab8ms</h3>
+        <p>Contribution activity for day-to-day analytics and product work. Repos are private to the company; the activity graph is public.</p>
+        <span class="github-cta">Open profile ↗</span>
+      </a>
+    </div>
+  </section>
+
 
   <section class="section wrap" id="closer-cta" data-screen-label="Contact">
     <div class="closer rv">
