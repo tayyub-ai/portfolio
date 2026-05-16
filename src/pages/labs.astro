@@ -10,8 +10,8 @@ import SiteLayout from "../components/SiteLayout.astro";
   crumbs={[{ label: "Home", href: "/" }, { label: "Labs" }]}
 >
   <style slot="head">
-    /* Lab cards (clean, no blueprint paper) */
-    .bp{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
+    /* Lab boards */
+    .bp{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
     .bp::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
     .bp:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
     .bp.bp-feature{grid-column:span 2}
@@ -38,14 +38,27 @@ import SiteLayout from "../components/SiteLayout.astro";
     .bp-schem .callout{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;fill:var(--terra)}
     .bp-schem .callout-line{stroke:var(--terra);stroke-width:.8;fill:none;stroke-dasharray:3 3;opacity:.6}
 
+    .lab-board{display:grid;grid-template-columns:minmax(0,1.5fr) 260px}
+    .lab-board .bp-content{padding-right:20px}
+    .lab-notes{background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(244,240,230,.96));border-left:1px solid var(--line);padding:28px 24px;display:flex;flex-direction:column;gap:18px}
+    .lab-notes h4,.module-notes h4{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+    .lab-notes ul,.module-notes ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .lab-notes li,.module-notes li{font-size:13.5px;line-height:1.6;color:var(--ink-2);padding-bottom:10px;border-bottom:1px dashed rgba(214,206,187,.92)}
+    .lab-notes li:last-child,.module-notes li:last-child{padding-bottom:0;border-bottom:0}
+    .lab-notes b,.module-notes b{display:block;color:var(--ink);font-weight:600;margin-bottom:3px}
+
     .bp-titleblock{display:none}
 
     .bp-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase;text-decoration:none}
     .bp-cta::after{content:"→";transition:transform .25s}
     .bp-cta:hover::after{transform:translateX(3px)}
 
-    .bp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
-    @media (max-width:780px){.bp-grid{grid-template-columns:1fr}.bp.bp-feature{grid-column:auto}}
+    .bp-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:18px}
+    .bp.module-board{display:grid;grid-template-columns:minmax(0,1.35fr) 220px}
+    .module-notes{background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(244,240,230,.9));border-left:1px solid var(--line);padding:24px 20px;display:flex;flex-direction:column;gap:14px}
+    .module-notes .mini{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+    @media (max-width:900px){.lab-board,.bp.module-board{grid-template-columns:1fr}.lab-notes,.module-notes{border-left:0;border-top:1px solid var(--line)}}
+    @media (max-width:780px){.bp.bp-feature{grid-column:auto}.bp-content{padding:24px 22px}}
   </style>
 
   <PageHeader
@@ -64,7 +77,7 @@ import SiteLayout from "../components/SiteLayout.astro";
     </div>
 
     <!-- LedgerTouch · feature blueprint -->
-    <article class="bp bp-feature rv">
+    <article class="bp bp-feature lab-board rv">
       <span class="bp-corner">In development</span>
       <div class="bp-content">
         <span class="bp-tag">LedgerTouch · independent product</span>
@@ -137,11 +150,19 @@ import SiteLayout from "../components/SiteLayout.astro";
 
         <a href="/contact" class="bp-cta">Ask for the architecture notes</a>
       </div>
+      <aside class="lab-notes">
+        <h4>Notes rail</h4>
+        <ul>
+          <li><b>Core aim</b>Make analytics QA, consent checks, and reporting risk inspectable before teams act on them.</li>
+          <li><b>Surface model</b>Inputs on the left, audit core in the middle, evidence outputs on the right.</li>
+          <li><b>Status</b>R&D only. Architecture notes and scope documents are available on request.</li>
+        </ul>
+      </aside>
     </article>
 
     <div class="bp-grid">
       <!-- GTM audit module -->
-      <article class="bp rv d1">
+      <article class="bp module-board rv d1">
         <span class="bp-corner">In development</span>
         <div class="bp-content">
           <span class="bp-tag">GTM audit module</span>
@@ -185,10 +206,18 @@ import SiteLayout from "../components/SiteLayout.astro";
             <div class="tb"><span class="lbl">Status</span><span class="val">v0.1-alpha</span></div>
           </div>
         </div>
+        <aside class="module-notes">
+          <h4>Subsystem notes</h4>
+          <div class="mini">Focus</div>
+          <ul>
+            <li><b>Coverage</b>Tag and trigger integrity, duplicate detection, conversion-path checks.</li>
+            <li><b>Output</b>Flags and audit notes rather than automated enforcement.</li>
+          </ul>
+        </aside>
       </article>
 
       <!-- Consent audit module -->
-      <article class="bp rv d2">
+      <article class="bp module-board rv d2">
         <span class="bp-corner">In development</span>
         <div class="bp-content">
           <span class="bp-tag">Consent audit module</span>
@@ -232,6 +261,14 @@ import SiteLayout from "../components/SiteLayout.astro";
             <div class="tb"><span class="lbl">Status</span><span class="val">v0.1-alpha</span></div>
           </div>
         </div>
+        <aside class="module-notes">
+          <h4>Subsystem notes</h4>
+          <div class="mini">Focus</div>
+          <ul>
+            <li><b>Coverage</b>CMP detection, consent-mode validation, cookie-behaviour inspection, regional overlays.</li>
+            <li><b>Output</b>Jurisdiction-aware risk notes with evidence trails attached to the scan.</li>
+          </ul>
+        </aside>
       </article>
     </div>
   </section>

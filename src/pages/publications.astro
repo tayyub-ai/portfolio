@@ -2,27 +2,27 @@
 import PageHeader from "../components/PageHeader.astro";
 import SiteLayout from "../components/SiteLayout.astro";
 import {
+  archivedCointelegraphArticles,
   liveAlphaWireArticles,
   liveCointelegraphArticles,
   publicationArchive,
 } from "../data/publications";
 
+const publishedPiecesTotal = 35;
 const allArticles = [...liveCointelegraphArticles, ...liveAlphaWireArticles];
 
-const themeOrder = ["Security", "AI agents", "AI trading", "Quantum", "Blockchain", "Fintech", "Payments", "Adoption", "Research workflow", "Business", "Technology"];
-const formatOrder = ["Explained", "How to", "Business", "Technology"];
 const themeColors: Record<string, string> = {
-  "Security": "#c44d2c",
+  Security: "#c44d2c",
   "AI agents": "#d97757",
   "AI trading": "#c89942",
-  "Quantum": "#7a8f5e",
-  "Blockchain": "#5d7a4a",
-  "Fintech": "#8a5e15",
-  "Payments": "#b5763b",
-  "Adoption": "#a8835c",
+  Quantum: "#7a8f5e",
+  Blockchain: "#5d7a4a",
+  Fintech: "#8a5e15",
+  Payments: "#b5763b",
+  Adoption: "#a8835c",
   "Research workflow": "#3d5535",
-  "Business": "#c44d2c",
-  "Technology": "#d97757",
+  Business: "#c44d2c",
+  Technology: "#d97757",
 };
 
 const expertCitations = [
@@ -144,6 +144,53 @@ const reviewSchema = {
     },
   })),
 };
+
+const themeCounts = Object.entries(
+  allArticles.reduce<Record<string, number>>((acc, article) => {
+    acc[article.theme] = (acc[article.theme] ?? 0) + 1;
+    return acc;
+  }, {}),
+).sort((a, b) => b[1] - a[1]);
+
+const formatCounts = Object.entries(
+  allArticles.reduce<Record<string, number>>((acc, article) => {
+    acc[article.format] = (acc[article.format] ?? 0) + 1;
+    return acc;
+  }, {}),
+).sort((a, b) => b[1] - a[1]);
+
+const archiveYearCounts = Object.entries(
+  archivedCointelegraphArticles.reduce<Record<string, number>>((acc, article) => {
+    const year = article.date.slice(0, 4);
+    acc[year] = (acc[year] ?? 0) + 1;
+    return acc;
+  }, {}),
+).sort((a, b) => a[0].localeCompare(b[0]));
+
+const archiveFormatCounts = Object.entries(
+  archivedCointelegraphArticles.reduce<Record<string, number>>((acc, article) => {
+    acc[article.format] = (acc[article.format] ?? 0) + 1;
+    return acc;
+  }, {}),
+).sort((a, b) => b[1] - a[1]);
+
+const archiveRecentHighlights = archivedCointelegraphArticles.slice(0, 8);
+const archiveDeepCuts = archivedCointelegraphArticles.slice(8);
+
+function formatArchiveDate(date: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${date}T00:00:00Z`));
+}
+
+function shortenQuote(quote: string, words = 24) {
+  const compact = quote.replace(/\s+/g, " ").trim();
+  const parts = compact.split(" ");
+  return parts.length <= words ? compact : `${parts.slice(0, words).join(" ")}...`;
+}
 ---
 
 <SiteLayout
@@ -154,64 +201,150 @@ const reviewSchema = {
   structuredData={[publicationSchema, citationSchema, reviewSchema]}
 >
   <style slot="head">
-    /* Intro paragraph */
-    .pub-intro{max-width:64ch;font-size:17px;line-height:1.7;color:var(--ink-2)}
+    .pub-intro{max-width:66ch;font-size:17px;line-height:1.72;color:var(--ink-2)}
     .pub-intro b{color:var(--ink);font-weight:600}
     .pub-intro a{color:var(--ink);border-bottom:1px solid var(--line-2);padding-bottom:1px}
     .pub-intro a:hover{color:var(--terra);border-color:var(--terra)}
 
-    /* Cited list (CCN excerpts) */
-    .cited-list{display:flex;flex-direction:column;gap:14px;margin-top:8px}
-    .cited{display:block;position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 28px;text-decoration:none;color:inherit;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
-    .cited::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra);border-radius:14px 0 0 14px}
-    .cited:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
-    .cited-meta{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
-    .cited-meta .cited-outlet{color:var(--terra);font-weight:600}
-    .cited-title{font-family:var(--serif);font-weight:400;font-size:clamp(20px,2vw,26px);line-height:1.15;letter-spacing:-.01em;color:var(--ink);margin-bottom:14px}
-    .cited-quote{font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.6;color:var(--ink-2);padding:14px 18px;border-left:3px solid var(--line-2);background:var(--bg-soft);border-radius:0 8px 8px 0;margin:0 0 14px}
-    .cited-cta{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;font-weight:600}
-    .cited-cta::after{content:"↗";transition:transform .25s}
-    .cited:hover .cited-cta::after{transform:translate(2px,-2px)}
+    .pub-command{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:18px;margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow-1);position:relative;overflow:hidden}
+    .pub-command::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
+    .command-copy{display:flex;flex-direction:column;gap:14px;padding-left:6px}
+    .command-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;font-weight:600}
+    .command-copy h3{font-family:var(--serif);font-size:clamp(30px,3.4vw,46px);font-weight:400;line-height:1.02;letter-spacing:-.02em;color:var(--ink);max-width:12ch}
+    .command-copy p{font-size:14px;line-height:1.68;color:var(--ink-2);max-width:48ch}
+    .command-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .command-metrics .metric{padding-top:12px;border-top:1px dashed var(--line)}
+    .command-metrics .metric b{display:block;font-family:var(--serif);font-size:30px;font-weight:400;line-height:1;color:var(--ink)}
+    .command-metrics .metric span{display:block;margin-top:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;line-height:1.45}
 
-    /* IGI peer review list */
-    .igi-list{list-style:none;padding:0;margin:8px 0 0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-    .igi-row{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:18px 22px;border-bottom:1px solid var(--line);align-items:baseline;transition:background .2s}
-    .igi-row:last-child{border-bottom:0}
-    .igi-row:hover{background:var(--bg-soft)}
-    .igi-num{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);font-weight:600}
-    .igi-body h4{font-family:var(--serif);font-weight:400;font-size:18px;line-height:1.25;color:var(--ink);letter-spacing:-.005em;margin-bottom:4px}
-    .igi-meta{font-size:13px;color:var(--ink-2);line-height:1.5}
-    @media (max-width:680px){.igi-row{grid-template-columns:48px 1fr;gap:12px;padding:16px 18px}}
+    .command-field{display:grid;grid-template-rows:auto 1fr;gap:14px}
+    .signal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .signal-card{position:relative;display:flex;flex-direction:column;gap:10px;min-height:156px;background:linear-gradient(160deg,#fff,rgba(246,240,231,.92));border:1px solid var(--line);border-radius:18px;padding:18px;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .25s}
+    .signal-card::before{content:"";position:absolute;right:-36px;top:-44px;width:132px;height:132px;border-radius:999px;background:radial-gradient(circle at center,rgba(196,77,44,.12),transparent 70%)}
+    .signal-card::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,var(--terra),transparent);transform:scaleX(.22);transform-origin:left;transition:transform .3s}
+    .signal-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .signal-card:hover::after{transform:scaleX(1)}
+    .signal-card .label{position:relative;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase}
+    .signal-card b{position:relative;font-family:var(--serif);font-size:32px;font-weight:400;line-height:.95;color:var(--ink);max-width:10ch}
+    .signal-card p{position:relative;font-size:12.5px;line-height:1.58;color:var(--ink-2)}
 
+    .mix-surface{background:linear-gradient(180deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:16px;padding:18px}
+    .mix-surface .mix-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+    .mix-surface .mix-head h4{font-family:var(--serif);font-size:28px;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+    .mix-surface .mix-head span{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+    .theme-band{display:flex;height:22px;border-radius:999px;overflow:hidden;border:1px solid var(--line);margin-top:14px}
+    .theme-band i{display:block;height:100%}
+    .theme-key{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;margin-top:12px}
+    .theme-key span{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+    .theme-key i{width:10px;height:10px;border-radius:2px;display:inline-block}
+    .format-strip{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+    .format-strip span{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--ink-2);text-transform:uppercase}
 
-    /* ── Article cards (themed) ── */
-    .pub-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
-    .pub-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.1,1),box-shadow .35s,border-color .25s}
-    .pub-card::before{content:"";position:absolute;left:0;top:0;width:3px;height:100%;background:var(--terra);transition:width .25s}
-    .pub-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
-    .pub-card:hover::before{width:5px}
-    .pub-card .pub-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-    .pub-card .pub-tag .theme{padding:3px 8px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:600}
-    .pub-card .pub-tag .outlet{color:var(--terra)}
-    .pub-card .pub-tag .format{color:var(--ink-2)}
-    .pub-card h4{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.3;letter-spacing:-.005em;color:var(--ink)}
-    .pub-card:hover h4{color:var(--terra)}
-    .pub-card .cta{margin-top:auto;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase;padding-top:8px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:center}
-    .pub-card .cta::after{content:"↗";transition:transform .25s}
-    .pub-card:hover .cta::after{transform:translate(2px,-2px)}
-    @media (max-width:780px){.pub-cards{grid-template-columns:1fr}}
+    .citation-sheet{position:relative;padding:18px 0 8px}
+    .citation-sheet::before{content:"";position:absolute;left:5%;right:5%;top:56px;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+    .citation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .citation-col{position:relative;display:flex;flex-direction:column;gap:14px;min-height:320px;padding:24px 24px 22px;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-1);transition:transform .35s,box-shadow .35s,border-color .25s}
+    .citation-col:nth-child(1){transform:rotate(-1.3deg) translateY(10px)}
+    .citation-col:nth-child(2){transform:translateY(-10px)}
+    .citation-col:nth-child(3){transform:rotate(1.2deg) translateY(18px)}
+    .citation-col::before{content:attr(data-mark);position:absolute;right:18px;top:12px;font-family:var(--serif);font-size:92px;line-height:1;color:rgba(196,77,44,.1);font-style:italic}
+    .citation-col::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,var(--terra),transparent);transform:scaleX(.16);transform-origin:left;transition:transform .35s}
+    .citation-col:hover{transform:translateY(-6px) rotate(0deg);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .citation-col:hover::after{transform:scaleX(1)}
+    .citation-topic{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase}
+    .citation-col h3{font-family:var(--serif);font-size:25px;font-weight:400;line-height:1.08;letter-spacing:-.01em;color:var(--ink);max-width:14ch}
+    .citation-col p{font-size:13.5px;line-height:1.66;color:var(--ink-2)}
+    .citation-quote{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.55;color:var(--ink)}
+    .citation-cta{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase}
+    .citation-cta::after{content:" ↗"}
 
-    /* ── Archive card (clean) ── */
-    .archive{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px 36px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow-1);transition:transform .35s,box-shadow .35s,border-color .25s}
+    .review-axis{position:relative;background:linear-gradient(180deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:24px;padding:34px 26px 30px;box-shadow:var(--shadow-1);overflow:hidden}
+    .review-axis::before{content:"";position:absolute;left:30px;right:30px;top:66px;height:2px;background:linear-gradient(90deg,rgba(196,77,44,.2),rgba(196,77,44,.75),rgba(138,94,21,.35));border-radius:999px}
+    .review-axis::after{content:"";position:absolute;left:30px;top:63px;width:18%;height:8px;border-radius:999px;background:rgba(196,77,44,.18);filter:blur(10px)}
+    .review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;position:relative}
+    .review-stop{position:relative;padding-top:42px;transition:transform .35s}
+    .review-stop:nth-child(2){transform:translateY(18px)}
+    .review-stop:hover{transform:translateY(-6px)}
+    .review-stop::before{content:"";position:absolute;left:0;top:26px;width:14px;height:14px;border-radius:999px;background:var(--terra);box-shadow:0 0 0 7px #fff}
+    .review-stop .year{display:inline-flex;align-items:center;justify-content:center;min-width:64px;height:30px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+    .review-stop h3{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.02;letter-spacing:-.015em;color:var(--ink);margin-top:14px;max-width:12ch}
+    .review-stop p{font-size:13px;line-height:1.62;color:var(--ink-2);margin-top:10px;max-width:28ch}
+
+    .archive-stage{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:18px;align-items:start}
+    .archive-hero{position:sticky;top:92px;background:linear-gradient(160deg,#fff,rgba(246,240,231,.94));border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow-1);overflow:hidden}
+    .archive-hero::before{content:"";position:absolute;right:-80px;top:-80px;width:220px;height:220px;border-radius:999px;background:radial-gradient(circle at center,rgba(196,77,44,.12),transparent 70%)}
+    .archive-kicker{position:relative;display:inline-flex;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;font-weight:600}
+    .archive-hero h3{position:relative;font-family:var(--serif);font-size:clamp(32px,3.4vw,48px);font-weight:400;line-height:1;letter-spacing:-.03em;color:var(--ink);margin-top:14px;max-width:11ch}
+    .archive-hero p{position:relative;font-size:14px;line-height:1.68;color:var(--ink-2);margin-top:14px;max-width:42ch}
+    .archive-metrics{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:18px}
+    .archive-metric{padding-top:12px;border-top:1px dashed var(--line)}
+    .archive-metric b{display:block;font-family:var(--serif);font-size:30px;font-weight:400;line-height:1;color:var(--ink)}
+    .archive-metric span{display:block;margin-top:6px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;line-height:1.45}
+    .archive-format-strip{position:relative;display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:16px;border-top:1px dashed var(--line)}
+    .archive-format-strip span{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--ink-2);text-transform:uppercase}
+    .archive-doc-cta{position:relative;display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--terra);text-transform:uppercase}
+    .archive-doc-cta::after{content:" ↗"}
+
+    .archive-shell{display:grid;gap:16px}
+    .archive-ribbon{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .archive-card{position:relative;display:flex;flex-direction:column;gap:10px;min-height:210px;padding:20px;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:var(--shadow-1);text-decoration:none;color:inherit;transition:transform .35s,box-shadow .35s,border-color .25s}
+    .archive-card:nth-child(4n+1){transform:rotate(-1.2deg)}
+    .archive-card:nth-child(4n+2){transform:translateY(18px)}
+    .archive-card:nth-child(4n+3){transform:rotate(.9deg)}
+    .archive-card:nth-child(4n+4){transform:translateY(-12px)}
+    .archive-card::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,var(--accent,#c44d2c),transparent)}
+    .archive-card:hover{transform:translateY(-6px) rotate(0deg);box-shadow:var(--shadow-2);border-color:var(--line-2)}
+    .archive-card .meta{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+    .archive-card h4{font-family:var(--serif);font-size:28px;font-weight:400;line-height:1.02;letter-spacing:-.02em;color:var(--ink);max-width:12ch}
+    .archive-card .format{margin-top:auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase}
+    .archive-card .format::after{content:" ↗"}
+
+    .archive-deep-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    .archive-note{display:flex;flex-direction:column;gap:8px;padding:14px 14px 12px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#fff,var(--bg-soft));text-decoration:none;color:inherit;transition:transform .25s,background .25s,border-color .25s}
+    .archive-note:hover{transform:translateY(-3px);border-color:var(--line-2);background:#fff}
+    .archive-note .meta{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+    .archive-note h5{font-family:var(--serif);font-size:18px;font-weight:400;line-height:1.12;letter-spacing:-.01em;color:var(--ink)}
+    .archive-note .cta{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase}
+    .archive-note .cta::after{content:" ↗"}
+
+    .archive{margin-top:14px;background:linear-gradient(180deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:18px;padding:30px 34px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow-1);transition:transform .35s,box-shadow .35s,border-color .25s}
     .archive:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--line-2)}
     .archive .lab{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;margin-bottom:8px;font-weight:600}
     .archive h3{font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.6vw,32px);line-height:1.1;letter-spacing:-.015em;color:var(--ink)}
-    .archive h3 em{font-style:italic;color:var(--terra)}
     .archive p{font-size:14px;color:var(--ink-2);line-height:1.65;margin-top:8px;max-width:54ch}
     .archive .cta{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border-radius:999px;background:var(--ink);color:#fff;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;text-decoration:none;transition:background .25s,transform .25s;white-space:nowrap}
     .archive .cta:hover{background:var(--terra);transform:translateY(-1px)}
     .archive .cta::after{content:"↗"}
-    @media (max-width:780px){.archive{grid-template-columns:1fr;padding:24px 26px}}
+
+    @media (max-width:980px){
+      .pub-command{grid-template-columns:1fr}
+      .citation-grid{grid-template-columns:1fr}
+      .citation-col,.citation-col:nth-child(1),.citation-col:nth-child(2),.citation-col:nth-child(3){transform:none;min-height:auto}
+      .archive-stage{grid-template-columns:1fr}
+      .archive-hero{position:relative;top:auto}
+      .archive-ribbon{grid-template-columns:1fr}
+      .archive-deep-grid{grid-template-columns:1fr 1fr}
+      .signal-grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width:780px){
+      .command-metrics{grid-template-columns:1fr 1fr}
+      .theme-key{grid-template-columns:1fr}
+      .review-axis::before{display:none}
+      .review-grid{grid-template-columns:1fr}
+      .review-stop,.review-stop:nth-child(2){transform:none;padding-top:18px}
+      .review-stop::before{top:6px}
+      .archive-metrics{grid-template-columns:1fr}
+      .archive-deep-grid{grid-template-columns:1fr}
+      .featured-piece h4{font-size:30px;max-width:12ch}
+      .archive{grid-template-columns:1fr;padding:24px 26px}
+    }
+
+    @media (max-width:560px){
+      .command-metrics{grid-template-columns:1fr}
+      .ledger-line a{padding-right:18px}
+      .ledger-line a:hover{padding-left:52px}
+    }
   </style>
 
   <PageHeader
@@ -222,31 +355,86 @@ const reviewSchema = {
 
   <section class="section wrap first" data-screen-label="Intro">
     <p class="pub-intro rv">
-      <b>35 technical pieces</b> for <b>Cointelegraph</b> and <b>AlphaWire</b>, 2022 to 2026, mostly on AI-driven trading, crypto-security, and quantum-resistant systems. Three pieces have been picked up by <a href="#cited">CCN</a> as expert commentary, and I've <a href="#peer-review">peer-reviewed</a> three book chapters for IGI Global.
+      <b>{publishedPiecesTotal} published pieces</b> across Cointelegraph and AlphaWire between 2022 and 2026. The page is anchored by a broader archived Cointelegraph author-index record, <a href="#cited">{expertCitations.length} CCN expert citations</a>, and <a href="#peer-review">{igiReviews.length} invited peer reviews</a> for IGI Global.
     </p>
+
+    <div class="pub-command rv d1">
+      <div class="command-copy">
+        <span class="command-kicker">Writing record</span>
+        <h3>Technical journalism, not a scrapbook.</h3>
+        <p>The page now leads with the strongest proof surfaces first: publication volume, archive continuity, expert citations, peer review, and topic coverage. Decorative fake chronology is gone.</p>
+        <div class="command-metrics">
+          <div class="metric"><b>{publishedPiecesTotal}</b><span>Published pieces</span></div>
+          <div class="metric"><b>{archivedCointelegraphArticles.length}</b><span>Archived Cointelegraph entries</span></div>
+          <div class="metric"><b>{expertCitations.length}</b><span>CCN citations</span></div>
+        </div>
+      </div>
+
+      <div class="command-field">
+        <div class="signal-grid">
+          <article class="signal-card">
+            <span class="label">Archive continuity</span>
+            <b>{archivedCointelegraphArticles.length} indexed entries</b>
+            <p>Cointelegraph is shown through the archived author-index snapshot, not reduced to a tiny surviving subset.</p>
+          </article>
+          <article class="signal-card">
+            <span class="label">Outlet spread</span>
+            <b>Cointelegraph + AlphaWire</b>
+            <p>Coverage spans crypto infrastructure, AI trading workflows, fintech rails, and research-led explainers.</p>
+          </article>
+          <article class="signal-card">
+            <span class="label">Editorial trust</span>
+            <b>{expertCitations.length} citations + {igiReviews.length} reviews</b>
+            <p>External pickup from CCN and invited academic review work strengthen the publication record beyond bylines alone.</p>
+          </article>
+        </div>
+
+        <div class="mix-surface">
+          <div class="mix-head">
+            <h4>Coverage mix.</h4>
+            <span>Theme and format view across the documented article set</span>
+          </div>
+          <div class="theme-band">
+            {themeCounts.map(([theme, count]) => (
+              <i style={`flex:${count};background:${themeColors[theme] || "var(--terra)"}`}></i>
+            ))}
+          </div>
+          <div class="theme-key">
+            {themeCounts.map(([theme, count]) => (
+              <span><i style={`background:${themeColors[theme] || "var(--terra)"}`}></i>{theme} · {count}</span>
+            ))}
+          </div>
+          <div class="format-strip">
+            {formatCounts.map(([format, count]) => (
+              <span>{format} · {count}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="section wrap" id="cited" data-screen-label="Cited">
     <div class="sec-head rv">
       <div class="sec-head-l">
         <h2>Cited in CCN.</h2>
-        <p>Three CCN articles that cite my commentary on agent wallets and the permission layer, AI trading-bot verifiability, and supply-chain risk from AI-generated code.</p>
+        <p>Three expert-source pickups around agent permissions, trading-bot verifiability, and AI-driven supply-chain risk.</p>
       </div>
-      <div class="sec-head-r"></div>
+      <div class="sec-head-r">/ cited commentary</div>
     </div>
 
-    <div class="cited-list rv">
-      {expertCitations.map((c) => (
-        <a class="cited" href={c.url} target="_blank" rel="noreferrer">
-          <div class="cited-meta">
-            <span class="cited-outlet">CCN · Education</span>
-            <span class="cited-topic">{c.topic}</span>
-          </div>
-          <h3 class="cited-title">{c.headline}</h3>
-          <blockquote class="cited-quote">{c.quote}</blockquote>
-          <span class="cited-cta">Read on CCN</span>
-        </a>
-      ))}
+    <div class="citation-sheet rv">
+      <div class="citation-grid">
+        {expertCitations.map((citation, index) => (
+          <a class="citation-col" data-mark={String(index + 1).padStart(2, "0")} href={citation.url} target="_blank" rel="noreferrer">
+            <span class="citation-topic">{citation.topic}</span>
+            <h3>{citation.headline}</h3>
+            <p>{shortenQuote(citation.quote)}</p>
+            <blockquote class="citation-quote">{shortenQuote(citation.quote, 12)}</blockquote>
+            <span class="citation-cta">Read on CCN</span>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -254,45 +442,81 @@ const reviewSchema = {
     <div class="sec-head rv">
       <div class="sec-head-l">
         <h2>Peer review for IGI Global.</h2>
-        <p>Three publisher-led chapter reviews between 2022 and 2023 across central bank digital currencies, blockchain consensus in IoT banking, and AI-enabled FinTech architecture.</p>
+        <p>Three invited publisher reviews spanning CBDCs, banking consensus systems, and AI-enabled FinTech architecture.</p>
       </div>
-      <div class="sec-head-r"></div>
+      <div class="sec-head-r">/ invited reviewer</div>
     </div>
 
-    <ol class="igi-list rv">
-      {igiReviews.map((r, i) => (
-        <li class="igi-row">
-          <span class="igi-num">{String(i + 1).padStart(2, "0")}</span>
-          <div class="igi-body">
-            <h4>{r.title}</h4>
-            <span class="igi-meta">IGI Global · invited reviewer · {r.year} · {r.note}</span>
-          </div>
-        </li>
-      ))}
-    </ol>
+    <div class="review-axis rv">
+      <div class="review-grid">
+        {igiReviews.map((review) => (
+          <article class="review-stop">
+            <span class="year">{review.year}</span>
+            <h3>{review.title}</h3>
+            <p>{review.note}</p>
+          </article>
+        ))}
+      </div>
+    </div>
   </section>
 
   <section class="section wrap" data-screen-label="Articles">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <h2>Articles.</h2>
+        <h2>Publication atlas.</h2>
+        <p>Cointelegraph is shown as an archived body of work first because earlier publisher surfaces were removed or restructured.</p>
       </div>
-      <div class="sec-head-r">/ all verified</div>
+      <div class="sec-head-r">/ archive first</div>
     </div>
 
-    <div class="pub-cards rv">
-      {allArticles.map((article) => (
-        <a class="pub-card" href={article.url} target="_blank" rel="noreferrer">
-          <div class="pub-tag">
-            <span class="theme" style={`color:${themeColors[article.theme] || "var(--terra)"}`}>{article.theme}</span>
-            <span class="outlet">{article.outlet}</span>
-            <span>·</span>
-            <span class="format">{article.format}</span>
-          </div>
-          <h4>{article.title}</h4>
-          <span class="cta">Open article</span>
-        </a>
-      ))}
+    <div class="archive-stage rv">
+      <article class="archive-hero">
+        <span class="archive-kicker">Cointelegraph author-index snapshot</span>
+        <h3>{archivedCointelegraphArticles.length} archived Cointelegraph entries.</h3>
+        <p>The PDF preserves the broader Cointelegraph record captured from the archived author page. This is the main editorial body of work shown on the page.</p>
+        <div class="archive-metrics">
+          <div class="archive-metric"><b>{archiveYearCounts.length}</b><span>Years represented</span></div>
+          <div class="archive-metric"><b>{archiveYearCounts.at(-1)?.[1] ?? 0}</b><span>{archiveYearCounts.at(-1)?.[0] ?? "Latest year"} entries</span></div>
+          <div class="archive-metric"><b>{archiveFormatCounts[0]?.[1] ?? 0}</b><span>{archiveFormatCounts[0]?.[0] ?? "Top format"}</span></div>
+        </div>
+        <div class="archive-format-strip">
+          {archiveYearCounts.map(([year, count]) => (
+            <span>{year} · {count}</span>
+          ))}
+          {archiveFormatCounts.map(([format, count]) => (
+            <span>{format} · {count}</span>
+          ))}
+        </div>
+        <a class="archive-doc-cta" href={publicationArchive.url} target="_blank" rel="noreferrer">Open full Cointelegraph archive PDF</a>
+      </article>
+
+      <div class="archive-shell">
+        <div class="archive-ribbon">
+          {archiveRecentHighlights.map((article, index) => (
+            <a
+              class="archive-card"
+              href={publicationArchive.url}
+              target="_blank"
+              rel="noreferrer"
+              style={`--accent:${index % 2 === 0 ? "#c44d2c" : "#8a5e15"}`}
+            >
+              <span class="meta">{formatArchiveDate(article.date)} · {article.format}</span>
+              <h4>{article.title}</h4>
+              <span class="format">View in archive PDF</span>
+            </a>
+          ))}
+        </div>
+
+        <div class="archive-deep-grid">
+          {archiveDeepCuts.map((article) => (
+            <a class="archive-note" href={publicationArchive.url} target="_blank" rel="noreferrer">
+              <span class="meta">{formatArchiveDate(article.date)} · {article.format}</span>
+              <h5>{article.title}</h5>
+              <span class="cta">Open archive source</span>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
@@ -300,18 +524,18 @@ const reviewSchema = {
     <div class="sec-head rv">
       <div class="sec-head-l">
         <h2>Cointelegraph archive.</h2>
+        <p>Older index continuity is preserved in a PDF because earlier publisher surfaces were removed or restructured.</p>
       </div>
-      <div class="sec-head-r"></div>
+      <div class="sec-head-r">/ continuity proof</div>
     </div>
 
     <div class="archive rv">
       <div>
         <span class="lab">Archive · publisher restructure</span>
         <h3>Cointelegraph PDF archive.</h3>
-        <p>{publicationArchive.description} A PDF record of older Cointelegraph pieces preserved after the publisher restructured its author pages. Where direct URLs remain live they are listed above.</p>
+        <p>{publicationArchive.description}</p>
       </div>
       <a class="cta" href={publicationArchive.url} target="_blank" rel="noreferrer">Open PDF</a>
     </div>
   </section>
-
 </SiteLayout>

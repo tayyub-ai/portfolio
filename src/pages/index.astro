@@ -1,5 +1,20 @@
 ---
 import SiteLayout from "../components/SiteLayout.astro";
+import { getGithubContributionDataset } from "../data/github";
+
+const githubContributionData = await getGithubContributionDataset();
+const githubPrimaryAccount = githubContributionData.accounts[0];
+const githubSecondaryAccount = githubContributionData.accounts[1];
+const githubDayAxis = ["Sun", "", "Tue", "", "Thu", "", "Sat"];
+
+function githubDayLabel(date: string) {
+  return new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${date}T00:00:00Z`));
+}
 ---
 
 <SiteLayout
@@ -136,22 +151,48 @@ import SiteLayout from "../components/SiteLayout.astro";
     .quote-small.q-mri{background:var(--bg-soft)}
     @media (max-width:780px){.quotes-row{grid-template-columns:1fr}}
 
-    /* ── GitHub cards with contribution heatmap ── */
-    .github-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:8px}
-    .github-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;transition:transform .3s,box-shadow .3s,border-color .25s}
-    .github-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-1);border-color:var(--line-2)}
-    .github-card .gh-head{display:flex;justify-content:space-between;align-items:center}
-    .github-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--terra);text-transform:uppercase;font-weight:600}
-    .gh-dot{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(90,138,74,.6);animation:pulse 2.4s infinite}
-    .github-card h3{font-family:var(--mono);font-size:15px;font-weight:500;color:var(--ink);letter-spacing:-.005em}
-    .github-card p{font-size:13.5px;color:var(--ink-2);line-height:1.55}
-    .gh-heatmap{background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:10px 12px 8px;margin-top:auto}
-    .gh-heatmap svg{width:100%;height:auto;display:block}
-    .gh-legend{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
-    .gh-scale{display:inline-flex;gap:2px;align-items:center}
-    .gh-scale i{width:8px;height:8px;border-radius:1.5px;background:var(--terra);display:inline-block}
-    .github-cta{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--terra);text-transform:uppercase;font-weight:600;padding-top:10px;border-top:1px dashed var(--line)}
-    @media (max-width:780px){.github-grid{grid-template-columns:1fr}}
+    /* ── GitHub contribution field ── */
+    .gh-board{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:24px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 30px;position:relative;overflow:hidden;box-shadow:var(--shadow-1)}
+    .gh-board::before{content:"";position:absolute;left:0;top:0;width:4px;height:100%;background:var(--terra)}
+    .gh-summary{display:flex;flex-direction:column;gap:14px;padding-left:8px}
+    .gh-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase;font-weight:600}
+    .gh-summary h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,48px);line-height:1.02;letter-spacing:-.02em;color:var(--ink);max-width:12ch}
+    .gh-summary p{font-size:15px;line-height:1.6;color:var(--ink-2);max-width:42ch}
+    .gh-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .gh-metric{padding:12px 0 0;border-top:1px dashed var(--line)}
+    .gh-metric b{display:block;font-family:var(--serif);font-size:30px;font-weight:400;line-height:1;color:var(--ink)}
+    .gh-metric span{display:block;margin-top:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;line-height:1.45}
+    .gh-account-strip{display:flex;flex-direction:column;gap:10px;padding-top:4px}
+    .gh-account-chip{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#fff,var(--bg-soft))}
+    .gh-account-chip .handle{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink);text-transform:uppercase}
+    .gh-account-chip .handle i{width:10px;height:10px;border-radius:999px;background:var(--accent)}
+    .gh-account-chip .meta{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;text-align:right}
+    .gh-proof{padding-top:12px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;line-height:1.7}
+    .gh-cta{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--terra);text-transform:uppercase;font-weight:600}
+    .gh-stack{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .gh-panel{display:flex;flex-direction:column;gap:18px;padding:20px;background:linear-gradient(180deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:16px;min-width:0}
+    .gh-panel{position:relative;overflow:hidden}
+    .gh-panel::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent,var(--terra)),transparent)}
+    .gh-panel-head{display:flex;justify-content:space-between;align-items:end;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+    .gh-panel-head h4{font-family:var(--serif);font-size:26px;font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+    .gh-panel-head span{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+    .gh-heatmap-wrap{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;align-items:start}
+    .gh-day-axis{display:grid;grid-template-rows:repeat(7,11px);gap:4px;padding-top:1px}
+    .gh-day-axis span{font-family:var(--mono);font-size:8px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;line-height:11px}
+    .gh-heatmap{display:grid;grid-template-rows:repeat(7,11px);grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:4px}
+    .gh-cell{display:block;width:100%;min-width:8px;height:11px;border-radius:2px;background:#f3ede6}
+    .gh-cell.lv-1{background:#e8bea4}
+    .gh-cell.lv-2{background:#d98a63}
+    .gh-cell.lv-3{background:#c85e37}
+    .gh-cell.lv-4{background:#8c3319}
+    .gh-heatmap-fallback{font-size:14px;line-height:1.65;color:var(--ink-2)}
+    .gh-panel-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .gh-panel-metric{padding-top:10px;border-top:1px dashed var(--line)}
+    .gh-panel-metric b{display:block;font-family:var(--serif);font-size:24px;font-weight:400;line-height:1;color:var(--ink)}
+    .gh-panel-metric span{display:block;margin-top:5px;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;line-height:1.45}
+    .gh-note{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1px dashed var(--line);font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;line-height:1.6}
+    @media (max-width:1080px){.gh-board{grid-template-columns:1fr;padding:24px}.gh-summary{padding-left:0}.gh-stack{grid-template-columns:1fr}}
+    @media (max-width:640px){.gh-metrics,.gh-panel-metrics{grid-template-columns:1fr}}
 
     /* Posters (legacy, unused after restructure) */
     .poster-strip{display:flex;flex-direction:column;gap:14px;margin-top:18px}
@@ -500,93 +541,144 @@ import SiteLayout from "../components/SiteLayout.astro";
   <section class="section wrap" data-screen-label="Code">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <h2>Code.</h2>
-        <p>Personal projects on one profile; day-job contribution activity for 8 Million Stories on the other.</p>
+        <h2>Public code proof.</h2>
+        <p>Two public GitHub accounts, shown separately.</p>
       </div>
-      <div class="sec-head-r"></div>
+      <div class="sec-head-r">/ real activity</div>
     </div>
 
-    <div class="github-grid rv">
-      <a class="github-card" href="https://github.com/tayyub-ai" target="_blank" rel="noreferrer">
-        <div class="gh-head">
-          <span class="github-tag">Personal</span>
-          <span class="gh-dot" aria-hidden="true"></span>
-        </div>
-        <h3>github.com/tayyub-ai</h3>
-        <p>Utilities, RAG and LLM experiments, multimodal research, and the portfolio source itself.</p>
-        <div class="gh-heatmap" aria-label="12 weeks of contribution activity">
-          <svg viewBox="0 0 252 76" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-            {Array.from({ length: 12 * 7 }).map((_, i) => {
-              const week = Math.floor(i / 7);
-              const day = i % 7;
-              const seed = ((i * 9301 + 49297) % 233280) / 233280;
-              const recency = week / 11;
-              const intensity = Math.min(4, Math.floor(recency * 3 + seed * 2.8));
-              const opacities = [0.08, 0.28, 0.5, 0.72, 0.95];
-              return (
-                <rect
-                  x={week * 21 + 2}
-                  y={day * 10 + 2}
-                  width="18"
-                  height="8"
-                  rx="1.5"
-                  fill="var(--terra)"
-                  opacity={opacities[intensity]}
-                />
-              );
-            })}
-          </svg>
-          <div class="gh-legend">
-            <span>12 weeks</span>
-            <span class="gh-scale" aria-hidden="true">
-              <i style="opacity:.08"></i><i style="opacity:.28"></i><i style="opacity:.5"></i><i style="opacity:.72"></i><i style="opacity:.95"></i>
-            </span>
-            <span>active</span>
+    <article class="gh-board rv">
+      <div class="gh-summary">
+        <span class="gh-kicker">GitHub · verified public activity</span>
+        <h3>{githubContributionData.combinedTotal.toLocaleString()} public contributions.</h3>
+        <p><code>tayyub-ai</code> is the public build account. <code>Tayyab8ms</code> is the company account.</p>
+        <div class="gh-metrics">
+          <div class="gh-metric">
+            <b>{githubPrimaryAccount.activeDays + githubSecondaryAccount.activeDays}</b>
+            <span>Combined active days</span>
+          </div>
+          <div class="gh-metric">
+            <b>{githubContributionData.combinedPublicRepoCount}</b>
+            <span>Visible public repos</span>
+          </div>
+          <div class="gh-metric">
+            <b>{githubContributionData.accounts.length}</b>
+            <span>Public profiles shown</span>
           </div>
         </div>
-        <span class="github-cta">Open profile ↗</span>
-      </a>
 
-      <a class="github-card" href="https://github.com/Tayyab8ms" target="_blank" rel="noreferrer">
-        <div class="gh-head">
-          <span class="github-tag">8 Million Stories</span>
-          <span class="gh-dot" aria-hidden="true"></span>
+        <div class="gh-account-strip">
+          {githubContributionData.accounts.map((account) => (
+            <div class="gh-account-chip" style={`--accent:${account.accent}`}>
+              <span class="handle"><i></i>{account.handle}</span>
+              <span class="meta">{account.label}</span>
+            </div>
+          ))}
         </div>
-        <h3>github.com/Tayyab8ms</h3>
-        <p>Day-to-day analytics and product work. Repositories are private to the company; the contribution graph is public.</p>
-        <div class="gh-heatmap" aria-label="12 weeks of contribution activity">
-          <svg viewBox="0 0 252 76" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-            {Array.from({ length: 12 * 7 }).map((_, i) => {
-              const week = Math.floor(i / 7);
-              const day = i % 7;
-              const seed = ((i * 1733 + 31019) % 233280) / 233280;
-              const recency = week / 11;
-              const intensity = Math.min(4, Math.floor(recency * 2.5 + seed * 3.2));
-              const opacities = [0.08, 0.28, 0.5, 0.72, 0.95];
-              return (
-                <rect
-                  x={week * 21 + 2}
-                  y={day * 10 + 2}
-                  width="18"
-                  height="8"
-                  rx="1.5"
-                  fill="var(--terra)"
-                  opacity={opacities[intensity]}
-                />
-              );
-            })}
-          </svg>
-          <div class="gh-legend">
-            <span>12 weeks</span>
-            <span class="gh-scale" aria-hidden="true">
-              <i style="opacity:.08"></i><i style="opacity:.28"></i><i style="opacity:.5"></i><i style="opacity:.72"></i><i style="opacity:.95"></i>
-            </span>
-            <span>active</span>
+
+        <p class="gh-proof">
+          {githubContributionData.windowLabel}
+          <br />
+          {githubContributionData.sourceLabel}
+        </p>
+        <a class="gh-cta" href={githubPrimaryAccount.profile} target="_blank" rel="noreferrer">Open primary profile ↗</a>
+      </div>
+
+      <div class="gh-stack">
+        <div class="gh-panel primary">
+          <div class="gh-panel-head">
+            <h4>{githubPrimaryAccount.handle} field.</h4>
+            <span>{githubPrimaryAccount.label}</span>
+          </div>
+
+          {githubPrimaryAccount.weeks.length > 0 ? (
+            <div class="gh-heatmap-wrap" aria-label="Real GitHub contribution heatmap for tayyub-ai">
+              <div class="gh-day-axis" aria-hidden="true">
+                {githubDayAxis.map((label) => (
+                  <span>{label}</span>
+                ))}
+              </div>
+              <div class="gh-heatmap">
+                {githubPrimaryAccount.weeks.map((week) =>
+                  week.map((day) => (
+                    <span
+                      class={`gh-cell lv-${day.level}`}
+                      title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${githubDayLabel(day.date)}`}
+                    ></span>
+                  )),
+                )}
+              </div>
+            </div>
+          ) : (
+            <p class="gh-heatmap-fallback">GitHub’s public contribution grid was unavailable during build, so only the verified summary metrics are shown here.</p>
+          )}
+          <div class="gh-panel-metrics">
+            <div class="gh-panel-metric">
+              <b>{githubPrimaryAccount.total}</b>
+              <span>Contributions</span>
+            </div>
+            <div class="gh-panel-metric">
+              <b>{githubPrimaryAccount.publicRepoCount}</b>
+              <span>Visible repos</span>
+            </div>
+            <div class="gh-panel-metric">
+              <b>{githubPrimaryAccount.activeDays}</b>
+              <span>Active days</span>
+            </div>
+          </div>
+          <div class="gh-note">
+            <span>Peak day {githubPrimaryAccount.busiestDay?.count ?? 0}</span>
+            <span><a class="gh-cta" href={githubPrimaryAccount.profile} target="_blank" rel="noreferrer">Open profile ↗</a></span>
           </div>
         </div>
-        <span class="github-cta">Open profile ↗</span>
-      </a>
-    </div>
+
+        <div class="gh-panel" style={`--accent:${githubSecondaryAccount.accent}`}>
+          <div class="gh-panel-head">
+            <h4>{githubSecondaryAccount.handle} field.</h4>
+            <span>{githubSecondaryAccount.label}</span>
+          </div>
+          {githubSecondaryAccount.weeks.length > 0 ? (
+            <div class="gh-heatmap-wrap" aria-label="Real GitHub contribution heatmap for Tayyab8ms">
+              <div class="gh-day-axis" aria-hidden="true">
+                {githubDayAxis.map((label) => (
+                  <span>{label}</span>
+                ))}
+              </div>
+              <div class="gh-heatmap">
+                {githubSecondaryAccount.weeks.map((week) =>
+                  week.map((day) => (
+                    <span
+                      class={`gh-cell lv-${day.level}`}
+                      title={`${day.count} contribution${day.count === 1 ? "" : "s"} on ${githubDayLabel(day.date)}`}
+                    ></span>
+                  )),
+                )}
+              </div>
+            </div>
+          ) : (
+            <p class="gh-heatmap-fallback">This account’s public heatmap could not be loaded during build, so only verified totals are shown here.</p>
+          )}
+          <div class="gh-panel-metrics">
+            <div class="gh-panel-metric">
+              <b>{githubSecondaryAccount.total}</b>
+              <span>Contributions</span>
+            </div>
+            <div class="gh-panel-metric">
+              <b>{githubSecondaryAccount.publicRepoCount}</b>
+              <span>Visible repos</span>
+            </div>
+            <div class="gh-panel-metric">
+              <b>{githubSecondaryAccount.activeDays}</b>
+              <span>Active days</span>
+            </div>
+          </div>
+          <div class="gh-note">
+            <span>Peak day {githubSecondaryAccount.busiestDay?.count ?? 0}</span>
+            <span><a class="gh-cta" href={githubSecondaryAccount.profile} target="_blank" rel="noreferrer">Open profile ↗</a></span>
+          </div>
+        </div>
+      </div>
+    </article>
   </section>
 
 
