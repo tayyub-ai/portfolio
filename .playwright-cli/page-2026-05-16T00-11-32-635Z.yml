@@ -1,0 +1,271 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - link [ref=e3] [cursor=pointer]:
+      - /url: "#cited"
+      - text: Cited
+    - link [ref=e4] [cursor=pointer]:
+      - /url: "#peer-review"
+      - text: Peer review
+    - link [ref=e5] [cursor=pointer]:
+      - /url: "#contact"
+      - text: contact
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - link "Tayyub Yaqoob" [ref=e9] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e11]: Tayyub Yaqoob
+      - navigation "Primary" [ref=e12]:
+        - link "Home" [ref=e13] [cursor=pointer]:
+          - /url: /
+        - link "Case Studies" [ref=e14] [cursor=pointer]:
+          - /url: /case-studies
+        - link "Publications" [ref=e15] [cursor=pointer]:
+          - /url: /publications
+        - link "Labs" [ref=e16] [cursor=pointer]:
+          - /url: /labs
+        - link "About" [ref=e17] [cursor=pointer]:
+          - /url: /about
+      - link "Contact →" [ref=e19] [cursor=pointer]:
+        - /url: /contact
+    - banner [ref=e20]:
+      - generic [ref=e21]:
+        - link "Home" [ref=e22] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e23]: ›
+        - generic [ref=e24]: Publications
+      - heading "Publications." [level=1] [ref=e25]
+      - paragraph [ref=e26]: Authored articles, expert-source citations, and peer-review record.
+    - paragraph [ref=e28]:
+      - text: 35 technical pieces for Cointelegraph and AlphaWire, 2022 to 2026, mostly on AI-driven trading, crypto-security, and quantum-resistant systems. Three pieces have been picked up by
+      - link "CCN" [ref=e29] [cursor=pointer]:
+        - /url: "#cited"
+      - text: as expert commentary, and I've
+      - link "peer-reviewed" [ref=e30] [cursor=pointer]:
+        - /url: "#peer-review"
+      - text: three book chapters for IGI Global.
+    - generic [ref=e31]:
+      - generic [ref=e33]:
+        - heading "Cited in CCN." [level=2] [ref=e34]
+        - paragraph [ref=e35]: Three CCN articles that cite my commentary on agent wallets and the permission layer, AI trading-bot verifiability, and supply-chain risk from AI-generated code.
+      - generic [ref=e36]:
+        - 'link "CCN · Education Agent wallets and the permission layer What Are AI Agents: Types, Examples & Steps To Build One Read on CCN ↗" [ref=e37] [cursor=pointer]':
+          - /url: https://www.ccn.com/education/crypto/ai-agents-how-to-create-based-ai-agent/
+          - generic [ref=e38]:
+            - generic [ref=e39]: CCN · Education
+            - generic [ref=e40]: Agent wallets and the permission layer
+          - 'heading "What Are AI Agents: Types, Examples & Steps To Build One" [level=3] [ref=e41]'
+          - blockquote [ref=e42]: The real engineering work on agent wallets now sits at the permission layer, not the model layer. Scoped session keys, time-bound delegations and policy rulebooks that enforce spending caps and counterparty whitelists before any signature is produced are what separate an experimental agent from one that can be trusted with real funds. Revocation, audit logging and human override are no longer safeguards bolted on top, they are core infrastructure.
+          - generic [ref=e43]: Read on CCN ↗
+        - link "CCN · Education AI trading bots and verifiability How AI Crypto Trading Bots Make And Lose Millions Inside The Black Box Read on CCN ↗" [ref=e44] [cursor=pointer]:
+          - /url: https://www.ccn.com/education/crypto/ai-crypto-trading-bots-how-they-make-and-lose-millions/
+          - generic [ref=e45]:
+            - generic [ref=e46]: CCN · Education
+            - generic [ref=e47]: AI trading bots and verifiability
+          - heading "How AI Crypto Trading Bots Make And Lose Millions Inside The Black Box" [level=3] [ref=e48]
+          - blockquote [ref=e49]: The real black box is not the model, it is the gap between what the system did and what the user can verify. A bot can react quickly to noisy data, stale signals or overfitted patterns while still looking reliable, because the execution is automated and the outcome is visible even when the reasoning is not. Any system handling real capital needs tested risk limits, full audit logs of inputs and decisions, and human override paths, with the bot's tool integrations and data feeds treated as part of the attack surface.
+          - generic [ref=e50]: Read on CCN ↗
+        - 'link "CCN · Education AI-generated code and supply-chain risk AI Hallucinations & Slopsquatting: A Caution for Blockchain Devs Read on CCN ↗" [ref=e51] [cursor=pointer]':
+          - /url: https://www.ccn.com/education/crypto/ai-hallucinations-slopsquatting-risk-for-blockchain-devs/
+          - generic [ref=e52]:
+            - generic [ref=e53]: CCN · Education
+            - generic [ref=e54]: AI-generated code and supply-chain risk
+          - 'heading "AI Hallucinations & Slopsquatting: A Caution for Blockchain Devs" [level=3] [ref=e55]'
+          - blockquote [ref=e56]: The defence here is not careful prompting, it is treating AI suggestions like any other untrusted input. The fact that models confidently generate plausible-sounding package names that do not exist is what makes slopsquatting work, and no amount of better prompting closes that gap. Verifying package provenance, checking how recently a package was published and preferring audited libraries matters more than the prompt that produced the code. AI-generated code should reach production through the same review path as any third-party dependency, not a shorter one.
+          - generic [ref=e57]: Read on CCN ↗
+    - generic [ref=e58]:
+      - generic [ref=e60]:
+        - heading "Peer review for IGI Global." [level=2] [ref=e61]
+        - paragraph [ref=e62]: Three publisher-led chapter reviews between 2022 and 2023 across central bank digital currencies, blockchain consensus in IoT banking, and AI-enabled FinTech architecture.
+      - list [ref=e63]:
+        - listitem [ref=e64]:
+          - generic [ref=e65]: "01"
+          - generic [ref=e66]:
+            - heading "CBDCs and Financial Stability" [level=4] [ref=e67]
+            - text: IGI Global · invited reviewer · 2022 · Macro-impact chapter on central bank digital currencies
+        - listitem [ref=e68]:
+          - generic [ref=e69]: "02"
+          - generic [ref=e70]:
+            - heading "Blockchain and Consensus for IoT-Based Banking" [level=4] [ref=e71]
+            - text: IGI Global · invited reviewer · 2022 · Consensus-protocol chapter for IoT banking infrastructure
+        - listitem [ref=e72]:
+          - generic [ref=e73]: "03"
+          - generic [ref=e74]:
+            - heading "AI-Enabled Agile IoT for FinTech" [level=4] [ref=e75]
+            - text: IGI Global · invited reviewer · 2023 · Edge-AI and FinTech-architecture chapter
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - heading "Filed pieces." [level=2] [ref=e79]
+          - paragraph [ref=e80]: Latest verified live articles first, presented as an editorial record rather than a tiled card grid.
+        - generic [ref=e81]: / all verified
+      - generic [ref=e82]:
+        - link "Record 01 Adoption Cointelegraph · How to Inside the Swiss city where you can pay for almost everything in Bitcoin Open article ↗" [ref=e83] [cursor=pointer]:
+          - /url: https://cointelegraph.com/news/inside-the-swiss-city-where-you-can-pay-for-almost-everything-in-bitcoin
+          - generic [ref=e84]: Record 01
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e87]: Adoption
+              - generic [ref=e88]: Cointelegraph
+              - generic [ref=e89]: ·
+              - generic [ref=e90]: How to
+            - heading "Inside the Swiss city where you can pay for almost everything in Bitcoin" [level=4] [ref=e91]
+            - generic [ref=e92]: Open article ↗
+        - link "Record 02 Quantum Cointelegraph · Explained What happens to Satoshi’s 1M Bitcoin if quantum computers go live? Open article ↗" [ref=e93] [cursor=pointer]:
+          - /url: https://cointelegraph.com/explained/what-happens-to-satoshi-s-1m-bitcoin-if-quantum-computers-go-live
+          - generic [ref=e94]: Record 02
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - generic [ref=e97]: Quantum
+              - generic [ref=e98]: Cointelegraph
+              - generic [ref=e99]: ·
+              - generic [ref=e100]: Explained
+            - heading "What happens to Satoshi’s 1M Bitcoin if quantum computers go live?" [level=4] [ref=e101]
+            - generic [ref=e102]: Open article ↗
+        - link "Record 03 AI agents Cointelegraph · How to Can ChatGPT-powered AI agents really trade crypto for you? Open article ↗" [ref=e103] [cursor=pointer]:
+          - /url: https://cointelegraph.com/news/can-chatgpt-powered-ai-agents-really-trade-crypto-for-you
+          - generic [ref=e104]: Record 03
+          - generic [ref=e105]:
+            - generic [ref=e106]:
+              - generic [ref=e107]: AI agents
+              - generic [ref=e108]: Cointelegraph
+              - generic [ref=e109]: ·
+              - generic [ref=e110]: How to
+            - heading "Can ChatGPT-powered AI agents really trade crypto for you?" [level=4] [ref=e111]
+            - generic [ref=e112]: Open article ↗
+        - 'link "Record 04 Security Cointelegraph · Explained AI-powered romance scams: The new frontier in crypto fraud Open article ↗" [ref=e113] [cursor=pointer]':
+          - /url: https://cointelegraph.com/explained/ai-powered-romance-scams-the-new-frontier-in-crypto-fraud
+          - generic [ref=e114]: Record 04
+          - generic [ref=e115]:
+            - generic [ref=e116]:
+              - generic [ref=e117]: Security
+              - generic [ref=e118]: Cointelegraph
+              - generic [ref=e119]: ·
+              - generic [ref=e120]: Explained
+            - 'heading "AI-powered romance scams: The new frontier in crypto fraud" [level=4] [ref=e121]'
+            - generic [ref=e122]: Open article ↗
+        - link "Record 05 Security Cointelegraph · Explained Can AI bots steal your crypto? The rise of digital thieves Open article ↗" [ref=e123] [cursor=pointer]:
+          - /url: https://cointelegraph.com/explained/can-ai-bots-steal-your-crypto-the-rise-of-digital-thieves
+          - generic [ref=e124]: Record 05
+          - generic [ref=e125]:
+            - generic [ref=e126]:
+              - generic [ref=e127]: Security
+              - generic [ref=e128]: Cointelegraph
+              - generic [ref=e129]: ·
+              - generic [ref=e130]: Explained
+            - heading "Can AI bots steal your crypto? The rise of digital thieves" [level=4] [ref=e131]
+            - generic [ref=e132]: Open article ↗
+        - link "Record 06 AI trading Cointelegraph · How to How to use Grok for real-time crypto trading signals Open article ↗" [ref=e133] [cursor=pointer]:
+          - /url: https://cointelegraph.com/news/how-to-use-grok-for-crypto-trading
+          - generic [ref=e134]: Record 06
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - generic [ref=e137]: AI trading
+              - generic [ref=e138]: Cointelegraph
+              - generic [ref=e139]: ·
+              - generic [ref=e140]: How to
+            - heading "How to use Grok for real-time crypto trading signals" [level=4] [ref=e141]
+            - generic [ref=e142]: Open article ↗
+        - link "Record 07 Research workflow Cointelegraph · How to How to use GitHub, Discord and X to identify real crypto innovation Open article ↗" [ref=e143] [cursor=pointer]:
+          - /url: https://cointelegraph.com/news/how-to-use-github-discord-and-x-to-identify-real-crypto-innovation
+          - generic [ref=e144]: Record 07
+          - generic [ref=e145]:
+            - generic [ref=e146]:
+              - generic [ref=e147]: Research workflow
+              - generic [ref=e148]: Cointelegraph
+              - generic [ref=e149]: ·
+              - generic [ref=e150]: How to
+            - heading "How to use GitHub, Discord and X to identify real crypto innovation" [level=4] [ref=e151]
+            - generic [ref=e152]: Open article ↗
+        - link "Record 08 Blockchain Cointelegraph · Explained What is decentralized identity in blockchain? Open article ↗" [ref=e153] [cursor=pointer]:
+          - /url: https://cointelegraph.com/explained/what-is-decentralized-identity-in-blockchain/
+          - generic [ref=e154]: Record 08
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - generic [ref=e157]: Blockchain
+              - generic [ref=e158]: Cointelegraph
+              - generic [ref=e159]: ·
+              - generic [ref=e160]: Explained
+            - heading "What is decentralized identity in blockchain?" [level=4] [ref=e161]
+            - generic [ref=e162]: Open article ↗
+        - 'link "Record 09 Payments AlphaWire · Technology X402 Explained: How Coinbase Is Simplifying Stablecoin Transactions Over HTTP Open article ↗" [ref=e163] [cursor=pointer]':
+          - /url: https://alphawire.xyz/news/x402-explained-how-coinbase-is-simplifying-stablecoin-transactions-over-http/
+          - generic [ref=e164]: Record 09
+          - generic [ref=e165]:
+            - generic [ref=e166]:
+              - generic [ref=e167]: Payments
+              - generic [ref=e168]: AlphaWire
+              - generic [ref=e169]: ·
+              - generic [ref=e170]: Technology
+            - 'heading "X402 Explained: How Coinbase Is Simplifying Stablecoin Transactions Over HTTP" [level=4] [ref=e171]'
+            - generic [ref=e172]: Open article ↗
+        - 'link "Record 10 Fintech AlphaWire · Business Meet EmCoin: Where You Can Trade Crypto, Stocks, and Commodities Together Open article ↗" [ref=e173] [cursor=pointer]':
+          - /url: https://alphawire.xyz/news/meet-emcoin-where-you-can-trade-crypto-stocks-and-commodities-together/
+          - generic [ref=e174]: Record 10
+          - generic [ref=e175]:
+            - generic [ref=e176]:
+              - generic [ref=e177]: Fintech
+              - generic [ref=e178]: AlphaWire
+              - generic [ref=e179]: ·
+              - generic [ref=e180]: Business
+            - 'heading "Meet EmCoin: Where You Can Trade Crypto, Stocks, and Commodities Together" [level=4] [ref=e181]'
+            - generic [ref=e182]: Open article ↗
+    - generic [ref=e183]:
+      - heading "Cointelegraph archive." [level=2] [ref=e186]
+      - generic [ref=e187]:
+        - generic [ref=e188]:
+          - text: Archive · publisher restructure
+          - heading "Cointelegraph PDF archive." [level=3] [ref=e189]
+          - paragraph [ref=e190]: PDF archive captured from Cointelegraph history before the outlet removed or restructured parts of the earlier author-index surface. A PDF record of older Cointelegraph pieces preserved after the publisher restructured its author pages. Where direct URLs remain live they are listed above.
+        - link "Open PDF ↗" [ref=e191] [cursor=pointer]:
+          - /url: /evidence/cointelegraph-articles-history.pdf
+  - contentinfo [ref=e192]:
+    - generic [ref=e193]:
+      - heading "Work together or ask for closer detail. Get in touch →" [level=2] [ref=e194]:
+        - text: Work together or ask for closer detail.
+        - link "Get in touch →" [ref=e195] [cursor=pointer]:
+          - /url: /contact
+      - paragraph [ref=e196]: Senior roles, consulting, expert commentary, conference talks, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays.
+      - generic [ref=e197]:
+        - generic [ref=e198]:
+          - generic [ref=e199]: Tayyub Yaqoob
+          - paragraph [ref=e200]: Senior Digital Analyst · 8 Million Stories · Stirling, United Kingdom.
+        - generic [ref=e201]:
+          - heading "Reach" [level=5] [ref=e202]
+          - link "Contact form" [ref=e203] [cursor=pointer]:
+            - /url: /contact
+          - link "Email" [ref=e204] [cursor=pointer]:
+            - /url: mailto:tayyabyaqoob.1@gmail.com
+          - link "LinkedIn ↗" [ref=e205] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/tayyubyaqoob
+          - link "GitHub ↗" [ref=e206] [cursor=pointer]:
+            - /url: https://github.com/tayyub-ai
+        - generic [ref=e207]:
+          - heading "Pages" [level=5] [ref=e208]
+          - link "Home" [ref=e209] [cursor=pointer]:
+            - /url: /
+          - link "Case Studies" [ref=e210] [cursor=pointer]:
+            - /url: /case-studies
+          - link "Publications" [ref=e211] [cursor=pointer]:
+            - /url: /publications
+          - link "Labs" [ref=e212] [cursor=pointer]:
+            - /url: /labs
+          - link "About" [ref=e213] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e214] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e215]:
+        - generic [ref=e216]: © 2026 Tayyub Yaqoob
+        - generic [ref=e217]: Stirling, UK
+  - generic [ref=e220]:
+    - button "Menu" [ref=e221]:
+      - img [ref=e223]
+      - generic: Menu
+    - button "Inspect" [ref=e227]:
+      - img [ref=e229]
+      - generic: Inspect
+    - button "Audit" [ref=e231]:
+      - img [ref=e233]
+      - generic: Audit
+    - button "Settings" [ref=e236]:
+      - img [ref=e238]
+      - generic: Settings

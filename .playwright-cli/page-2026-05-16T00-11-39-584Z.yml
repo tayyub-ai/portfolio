@@ -1,0 +1,330 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - link [ref=e3] [cursor=pointer]:
+      - /url: "#top"
+      - text: Intro
+    - link [ref=e4] [cursor=pointer]:
+      - /url: "#featured"
+      - text: Case studies
+    - link [ref=e5] [cursor=pointer]:
+      - /url: "#contact"
+      - text: contact
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - link "Tayyub Yaqoob" [ref=e9] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e11]: Tayyub Yaqoob
+      - navigation "Primary" [ref=e12]:
+        - link "Home" [ref=e13] [cursor=pointer]:
+          - /url: /
+        - link "Case Studies" [ref=e14] [cursor=pointer]:
+          - /url: /case-studies
+        - link "Publications" [ref=e15] [cursor=pointer]:
+          - /url: /publications
+        - link "Labs" [ref=e16] [cursor=pointer]:
+          - /url: /labs
+        - link "About" [ref=e17] [cursor=pointer]:
+          - /url: /about
+      - link "Contact →" [ref=e19] [cursor=pointer]:
+        - /url: /contact
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]: Senior Digital Analyst · Stirling, United Kingdom
+        - heading "Senior analyst, writer, and engineer working on AI, analytics, and measurement." [level=1] [ref=e24]
+        - link "See selected work →" [ref=e26] [cursor=pointer]:
+          - /url: /case-studies
+        - generic [ref=e27]:
+          - generic [ref=e28]: Selected work and citations
+          - generic [ref=e29]: Cointelegraph
+          - generic [ref=e30]: AlphaWire
+          - generic [ref=e31]: CCN
+          - generic [ref=e32]: IGI Global
+          - generic [ref=e33]: 8 Million Stories
+      - img "Tayyub Yaqoob" [ref=e35]
+    - generic [ref=e36]:
+      - generic [ref=e38]:
+        - heading "Built for analyst and client teams at:" [level=2] [ref=e39]
+        - paragraph [ref=e40]: A selection of named environments where the work has been deployed.
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - generic [ref=e45]: B
+            - generic [ref=e46]: B
+            - generic [ref=e47]: C
+          - generic [ref=e48]: Media · UK
+        - generic [ref=e49]:
+          - generic [ref=e50]: Tesco
+          - generic [ref=e51]: Financial · UK
+        - generic [ref=e52]:
+          - generic [ref=e53]: General Mills
+          - generic [ref=e54]: Consumer · global
+        - generic [ref=e55]:
+          - generic [ref=e56]: Royal London
+          - generic [ref=e57]: Insurance · UK
+        - generic [ref=e58]:
+          - generic [ref=e59]: NerdWallet
+          - generic [ref=e60]: Personal finance
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: B
+            - generic [ref=e64]: B
+            - generic [ref=e65]: C
+          - generic [ref=e66]: Media · UK
+        - generic [ref=e67]:
+          - generic [ref=e68]: Tesco
+          - generic [ref=e69]: Financial · UK
+        - generic [ref=e70]:
+          - generic [ref=e71]: General Mills
+          - generic [ref=e72]: Consumer · global
+        - generic [ref=e73]:
+          - generic [ref=e74]: Royal London
+          - generic [ref=e75]: Insurance · UK
+        - generic [ref=e76]:
+          - generic [ref=e77]: NerdWallet
+          - generic [ref=e78]: Personal finance
+      - generic [ref=e80]:
+        - generic [ref=e81]: Financial 35%
+        - generic [ref=e83]: Media 22%
+        - generic [ref=e85]: Consumer 18%
+        - generic [ref=e87]: Insurance 15%
+        - generic [ref=e89]: Personal finance 10%
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - img [ref=e94]
+            - generic [ref=e97]:
+              - generic [ref=e98]: "0"
+              - emphasis [ref=e99]: +
+          - generic [ref=e100]: Technical articles
+          - generic [ref=e101]: Cointelegraph and AlphaWire combined, plus archive.
+        - generic [ref=e102]:
+          - generic [ref=e103]:
+            - img [ref=e104]
+            - generic [ref=e108]: "0"
+          - generic [ref=e109]: IGI Global reviews
+          - generic [ref=e110]: Publisher-led peer-review record.
+        - generic [ref=e111]:
+          - generic [ref=e112]:
+            - img [ref=e113]
+            - generic [ref=e116]:
+              - generic [ref=e117]: "0"
+              - emphasis [ref=e118]: +
+          - generic [ref=e119]: Teams on systems
+          - generic [ref=e120]: Operational trust across recurring workflows.
+        - generic [ref=e121]:
+          - generic [ref=e122]:
+            - img [ref=e123]
+            - generic [ref=e126]:
+              - generic [ref=e127]: "0"
+              - emphasis [ref=e128]: +
+          - generic [ref=e129]: AI / ML credentials
+          - generic [ref=e130]: Google, AWS, LinkedIn Learning, related training.
+    - generic [ref=e131]:
+      - generic [ref=e133]:
+        - heading "Featured product." [level=2] [ref=e134]
+        - paragraph [ref=e135]: What I work on day-to-day at 8 Million Stories.
+      - link "8 Million Stories · proprietary product Codex. Competitive intelligence and technical performance monitoring for client teams, all in one dashboard. Share of search · market share vs competitors Competitor content alerts · activity monitoring and analysis Technical Health Check · live site-performance audit Carbon Footprint · per-page environmental impact Data source monitoring · ingest and update tracking See Codex on 8ms.com ↗" [ref=e136] [cursor=pointer]:
+        - /url: https://8ms.com/strategy-and-tech/codex
+        - generic [ref=e137]:
+          - text: 8 Million Stories · proprietary product
+          - heading "Codex." [level=3] [ref=e138]
+          - paragraph [ref=e139]: Competitive intelligence and technical performance monitoring for client teams, all in one dashboard.
+          - list [ref=e140]:
+            - listitem [ref=e141]: Share of search · market share vs competitors
+            - listitem [ref=e142]: Competitor content alerts · activity monitoring and analysis
+            - listitem [ref=e143]: Technical Health Check · live site-performance audit
+            - listitem [ref=e144]: Carbon Footprint · per-page environmental impact
+            - listitem [ref=e145]: Data source monitoring · ingest and update tracking
+          - generic [ref=e146]: See Codex on 8ms.com ↗
+        - img [ref=e148]:
+          - generic [ref=e152]: 24%
+          - generic [ref=e153]: SOS
+          - generic [ref=e155]: "42"
+          - generic [ref=e156]: ALERTS
+          - generic [ref=e158]: A+
+          - generic [ref=e159]: HEALTH
+    - generic [ref=e163]:
+      - generic [ref=e164]:
+        - generic [ref=e165]:
+          - heading "Selected client work." [level=2] [ref=e166]
+          - paragraph [ref=e167]: Four projects, with the headline numbers. The case studies page has each one written up in full.
+        - link "All case studies →" [ref=e169] [cursor=pointer]:
+          - /url: /case-studies
+      - generic [ref=e170]:
+        - link "Forecasting · BigQuery · GA4 Channel and query forecasting. Monthly forecast cycles for GSC query trends and channel traffic. Variance flagged inside the cycle, not after. 5.4% Median MAPE 12 Runs / month 4 Channels" [ref=e171] [cursor=pointer]:
+          - /url: /case-studies
+          - generic [ref=e172]: Forecasting · BigQuery · GA4
+          - heading "Channel and query forecasting." [level=3] [ref=e173]
+          - img [ref=e174]:
+            - generic [ref=e178]: NOW
+          - paragraph [ref=e180]: Monthly forecast cycles for GSC query trends and channel traffic. Variance flagged inside the cycle, not after.
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - emphasis [ref=e183]: 5.4%
+              - text: Median MAPE
+            - generic [ref=e184]:
+              - emphasis [ref=e185]: "12"
+              - text: Runs / month
+            - generic [ref=e186]:
+              - emphasis [ref=e187]: "4"
+              - text: Channels
+        - link "Sentiment · LLM-assisted Sentiment and topic river. LLM-assisted classification across press, review, and social. Nothing auto-published; analysts interpret context, not deltas. 11 Surfaces ~3k Mentions / wk 4 Alert classes" [ref=e188] [cursor=pointer]:
+          - /url: /case-studies
+          - generic [ref=e189]: Sentiment · LLM-assisted
+          - heading "Sentiment and topic river." [level=3] [ref=e190]
+          - img [ref=e191]:
+            - generic [ref=e195]: SPIKE
+          - paragraph [ref=e196]: LLM-assisted classification across press, review, and social. Nothing auto-published; analysts interpret context, not deltas.
+          - generic [ref=e197]:
+            - generic [ref=e198]:
+              - emphasis [ref=e199]: "11"
+              - text: Surfaces
+            - generic [ref=e200]:
+              - emphasis [ref=e201]: ~3k
+              - text: Mentions / wk
+            - generic [ref=e202]:
+              - emphasis [ref=e203]: "4"
+              - text: Alert classes
+        - link "AI visibility · AI Overviews AI vs traditional search. How brands surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and citation. 140+ Queries 4 Platforms Weekly Cadence" [ref=e204] [cursor=pointer]:
+          - /url: /case-studies
+          - generic [ref=e205]: AI visibility · AI Overviews
+          - heading "AI vs traditional search." [level=3] [ref=e206]
+          - img [ref=e207]:
+            - generic [ref=e209]: GOOGLE
+            - generic [ref=e215]: AI OVERVIEW
+          - paragraph [ref=e221]: How brands surface across AI Overviews, ChatGPT, Perplexity, and conventional search. Each change captured with date, prompt, and citation.
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - emphasis [ref=e224]: 140+
+              - text: Queries
+            - generic [ref=e225]:
+              - emphasis [ref=e226]: "4"
+              - text: Platforms
+            - generic [ref=e227]:
+              - emphasis [ref=e228]: Weekly
+              - text: Cadence
+        - link "Reporting automation Manual reporting → automated assembly. Recurring reports and decks assembled from GA4, GSC, and ad-platform data. Multi-hour build replaced with a short analyst review. 36 Reports / mo ~70% Time saved Inline Variance flags" [ref=e229] [cursor=pointer]:
+          - /url: /case-studies
+          - generic [ref=e230]: Reporting automation
+          - heading "Manual reporting → automated assembly." [level=3] [ref=e231]
+          - img [ref=e232]:
+            - generic [ref=e233]: MANUAL
+            - generic [ref=e238]: 4h
+            - generic [ref=e239]: AUTO
+            - generic [ref=e241]: 20m
+          - paragraph [ref=e242]: Recurring reports and decks assembled from GA4, GSC, and ad-platform data. Multi-hour build replaced with a short analyst review.
+          - generic [ref=e243]:
+            - generic [ref=e244]:
+              - emphasis [ref=e245]: "36"
+              - text: Reports / mo
+            - generic [ref=e246]:
+              - emphasis [ref=e247]: ~70%
+              - text: Time saved
+            - generic [ref=e248]:
+              - emphasis [ref=e249]: Inline
+              - text: Variance flags
+    - generic [ref=e250]:
+      - generic [ref=e252]:
+        - heading "What clients have said." [level=2] [ref=e253]
+        - paragraph [ref=e254]: Direct quotes from project teams and engagement partners.
+      - blockquote [ref=e256]:
+        - generic: “
+        - paragraph [ref=e257]: The tool is working fully, and we've been able to share the update with wider teams.
+        - generic [ref=e258]:
+          - generic [ref=e259]: BBC
+          - generic [ref=e260]: Project stakeholder · media · UK
+      - generic [ref=e261]:
+        - blockquote [ref=e262]:
+          - text: “
+          - paragraph [ref=e263]: "\"The feedback was very positive. Overall they are happy with the first go at this. Passed on high praise of your work.\""
+          - generic [ref=e264]:
+            - generic [ref=e265]: General Mills
+            - generic [ref=e266]: Account team · Blue Buffalo
+        - blockquote [ref=e267]:
+          - text: “
+          - paragraph [ref=e268]: "\"Our analytics are in great shape at this point and we're feeling confident about the ways they will help us.\""
+          - generic [ref=e269]:
+            - generic [ref=e270]: Diligent Pharma
+            - generic [ref=e271]: Stakeholder · life sciences
+        - blockquote [ref=e272]:
+          - text: “
+          - paragraph [ref=e273]: "\"I really liked working with you. I have 3 to 4 clients that require your skills on a routine basis.\""
+          - generic [ref=e274]:
+            - generic [ref=e275]: MRI Management
+            - generic [ref=e276]: Engagement partner · US
+    - generic [ref=e277]:
+      - generic [ref=e278]:
+        - generic [ref=e279]:
+          - heading "Public code proof." [level=2] [ref=e280]
+          - paragraph [ref=e281]: One verified public contribution ledger, restyled as an editorial activity record instead of a pair of generic GitHub cards.
+        - generic [ref=e282]: / real activity
+      - article [ref=e283]:
+        - generic [ref=e284]:
+          - generic [ref=e285]: GitHub · verified public activity
+          - heading "1,005 contributions in the last year." [level=3] [ref=e286]
+          - paragraph [ref=e287]: 100% commits across a public activity window of May 11, 2025 to May 15, 2026. The visible public trail includes the portfolio itself, AI tooling, multimodal experiments, and other shareable repositories.
+          - list [ref=e288]:
+            - listitem [ref=e289]: portfolio
+            - listitem [ref=e290]: ai-tools
+            - listitem [ref=e291]: free-online-games
+            - listitem [ref=e292]: markdown-rag-knowledgebase
+            - listitem [ref=e293]: image-driven-dialogue
+            - listitem [ref=e294]: portfolio-neovim
+            - listitem [ref=e295]: tax-pal
+          - link "Open profile ↗" [ref=e296] [cursor=pointer]:
+            - /url: https://github.com/tayyub-ai
+        - generic "Contribution heatmap based on the verified public GitHub contribution view" [ref=e297]:
+          - generic [ref=e395]:
+            - generic [ref=e396]: May 11, 2025 to May 15, 2026
+            - generic [ref=e397]: Verified from the public GitHub contribution view on 2026-05-16
+  - contentinfo [ref=e398]:
+    - generic [ref=e399]:
+      - heading "Work together or ask for closer detail. Get in touch →" [level=2] [ref=e400]:
+        - text: Work together or ask for closer detail.
+        - link "Get in touch →" [ref=e401] [cursor=pointer]:
+          - /url: /contact
+      - paragraph [ref=e402]: Senior roles, consulting, expert commentary, conference talks, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays.
+      - generic [ref=e403]:
+        - generic [ref=e404]:
+          - generic [ref=e405]: Tayyub Yaqoob
+          - paragraph [ref=e406]: Senior Digital Analyst · 8 Million Stories · Stirling, United Kingdom.
+        - generic [ref=e407]:
+          - heading "Reach" [level=5] [ref=e408]
+          - link "Contact form" [ref=e409] [cursor=pointer]:
+            - /url: /contact
+          - link "Email" [ref=e410] [cursor=pointer]:
+            - /url: mailto:tayyabyaqoob.1@gmail.com
+          - link "LinkedIn ↗" [ref=e411] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/tayyubyaqoob
+          - link "GitHub ↗" [ref=e412] [cursor=pointer]:
+            - /url: https://github.com/tayyub-ai
+        - generic [ref=e413]:
+          - heading "Pages" [level=5] [ref=e414]
+          - link "Home" [ref=e415] [cursor=pointer]:
+            - /url: /
+          - link "Case Studies" [ref=e416] [cursor=pointer]:
+            - /url: /case-studies
+          - link "Publications" [ref=e417] [cursor=pointer]:
+            - /url: /publications
+          - link "Labs" [ref=e418] [cursor=pointer]:
+            - /url: /labs
+          - link "About" [ref=e419] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e420] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e421]:
+        - generic [ref=e422]: © 2026 Tayyub Yaqoob
+        - generic [ref=e423]: Stirling, UK
+  - generic [ref=e426]:
+    - button "Menu" [ref=e427]:
+      - img [ref=e429]
+      - generic: Menu
+    - button "Inspect" [ref=e433]:
+      - img [ref=e435]
+      - generic: Inspect
+    - button "Audit" [ref=e437]:
+      - img [ref=e439]
+      - generic: Audit
+    - button "Settings" [ref=e442]:
+      - img [ref=e444]
+      - generic: Settings

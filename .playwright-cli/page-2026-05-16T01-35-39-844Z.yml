@@ -1,0 +1,170 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - link [ref=e3] [cursor=pointer]:
+      - /url: "#contact"
+      - text: contact
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - link "Tayyub Yaqoob" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e9]: Tayyub Yaqoob
+      - navigation "Primary" [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: /
+        - link "Case Studies" [ref=e12] [cursor=pointer]:
+          - /url: /case-studies
+        - link "Publications" [ref=e13] [cursor=pointer]:
+          - /url: /publications
+        - link "Labs" [ref=e14] [cursor=pointer]:
+          - /url: /labs
+        - link "About" [ref=e15] [cursor=pointer]:
+          - /url: /about
+      - link "Contact →" [ref=e17] [cursor=pointer]:
+        - /url: /contact
+    - banner [ref=e18]:
+      - generic [ref=e19]:
+        - link "Home" [ref=e20] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e21]: ›
+        - generic [ref=e22]: Labs
+      - heading "Labs." [level=1] [ref=e23]
+      - paragraph [ref=e24]: Tooling I'm building outside client work. None of it is shipped yet.
+    - generic [ref=e25]:
+      - generic [ref=e27]:
+        - heading "What I'm building next." [level=2] [ref=e28]
+        - paragraph [ref=e29]: Architecture and scope are documented. Ship dates aren't.
+      - article [ref=e30]:
+        - generic [ref=e31]: In development
+        - generic [ref=e32]:
+          - generic [ref=e33]: LedgerTouch · independent product
+          - heading "LedgerTouch." [level=3] [ref=e34]
+          - paragraph [ref=e35]: Independent product work in measurement QA, consent checks, reporting risk, and stack-level visibility. Architecture documents and feature scope are available on request. The schematic below shows the current module layout.
+          - img [ref=e37]:
+            - generic [ref=e38]: SYSTEM · LEDGERTOUCH · CORE
+            - generic [ref=e40]: Ingestion
+            - generic [ref=e41]: GA4 · GSC · Ads
+            - generic [ref=e43]: Tag layer
+            - generic [ref=e44]: GTM · CMP
+            - generic [ref=e46]: Consent
+            - generic [ref=e47]: Mode · ToS
+            - generic [ref=e49]: LedgerTouch
+            - generic [ref=e50]: CORE
+            - generic [ref=e51]: qa · risk · audit
+            - generic [ref=e52]: visibility · alerts
+            - generic [ref=e54]: QA report
+            - generic [ref=e55]: Coverage gaps
+            - generic [ref=e57]: Risk score
+            - generic [ref=e58]: Per surface
+            - generic [ref=e60]: Audit log
+            - generic [ref=e61]: Inspectable
+            - generic [ref=e67]: core qa engine →
+            - generic [ref=e69]: → inspectable outputs
+          - link "Ask for the architecture notes →" [ref=e70] [cursor=pointer]:
+            - /url: /contact
+        - complementary [ref=e71]:
+          - heading "Notes rail" [level=4] [ref=e72]
+          - list [ref=e73]:
+            - listitem [ref=e74]:
+              - generic [ref=e75]: Core aim
+              - text: Make analytics QA, consent checks, and reporting risk inspectable before teams act on them.
+            - listitem [ref=e76]:
+              - generic [ref=e77]: Surface model
+              - text: Inputs on the left, audit core in the middle, evidence outputs on the right.
+            - listitem [ref=e78]:
+              - generic [ref=e79]: Status
+              - text: R&D only. Architecture notes and scope documents are available on request.
+      - generic [ref=e80]:
+        - article [ref=e81]:
+          - generic [ref=e82]: In development
+          - generic [ref=e83]:
+            - generic [ref=e84]: GTM audit module
+            - heading "GTM audit module." [level=3] [ref=e85]
+            - paragraph [ref=e86]: Container audit, tag coverage, duplicate detection, consent-mode mapping, and conversion-tag checks. Module spec available on request.
+            - img [ref=e88]:
+              - generic [ref=e89]: MODULE · GTM-AUDIT
+              - generic [ref=e91]: Container
+              - generic [ref=e92]: tags · triggers
+              - generic [ref=e94]: Conversion
+              - generic [ref=e95]: tags · paths
+              - generic [ref=e97]: Audit
+              - generic [ref=e98]: engine
+              - generic [ref=e100]: Dupes
+              - generic [ref=e101]: flagged
+              - generic [ref=e103]: Consent
+              - generic [ref=e104]: mapping
+          - complementary [ref=e109]:
+            - heading "Subsystem notes" [level=4] [ref=e110]
+            - generic [ref=e111]: Focus
+            - list [ref=e112]:
+              - listitem [ref=e113]:
+                - generic [ref=e114]: Coverage
+                - text: Tag and trigger integrity, duplicate detection, conversion-path checks.
+              - listitem [ref=e115]:
+                - generic [ref=e116]: Output
+                - text: Flags and audit notes rather than automated enforcement.
+        - article [ref=e117]:
+          - generic [ref=e118]: In development
+          - generic [ref=e119]:
+            - generic [ref=e120]: Consent audit module
+            - heading "Consent audit module." [level=3] [ref=e121]
+            - paragraph [ref=e122]: CMP detection, consent-mode validation, cookie-behaviour inspection, and regional risk overlays. Module spec available on request.
+            - img [ref=e124]:
+              - generic [ref=e125]: MODULE · CONSENT-AUDIT
+              - generic [ref=e127]: CMP detect
+              - generic [ref=e128]: vendor · version
+              - generic [ref=e130]: Cookie scan
+              - generic [ref=e131]: behaviour
+              - generic [ref=e133]: Validator
+              - generic [ref=e134]: consent · regions
+              - generic [ref=e136]: EU · GDPR
+              - generic [ref=e137]: risk overlay
+              - generic [ref=e139]: US · state laws
+              - generic [ref=e140]: CCPA · CPRA
+          - complementary [ref=e145]:
+            - heading "Subsystem notes" [level=4] [ref=e146]
+            - generic [ref=e147]: Focus
+            - list [ref=e148]:
+              - listitem [ref=e149]:
+                - generic [ref=e150]: Coverage
+                - text: CMP detection, consent-mode validation, cookie-behaviour inspection, regional overlays.
+              - listitem [ref=e151]:
+                - generic [ref=e152]: Output
+                - text: Jurisdiction-aware risk notes with evidence trails attached to the scan.
+  - contentinfo [ref=e153]:
+    - generic [ref=e154]:
+      - heading "Work together or ask for closer detail. Get in touch →" [level=2] [ref=e155]:
+        - text: Work together or ask for closer detail.
+        - link "Get in touch →" [ref=e156] [cursor=pointer]:
+          - /url: /contact
+      - paragraph [ref=e157]: Senior roles, consulting, expert commentary, conference talks, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays.
+      - generic [ref=e158]:
+        - generic [ref=e159]:
+          - generic [ref=e160]: Tayyub Yaqoob
+          - paragraph [ref=e161]: Senior Digital Analyst · 8 Million Stories · Stirling, United Kingdom.
+        - generic [ref=e162]:
+          - heading "Reach" [level=5] [ref=e163]
+          - link "Contact form" [ref=e164] [cursor=pointer]:
+            - /url: /contact
+          - link "Email" [ref=e165] [cursor=pointer]:
+            - /url: mailto:tayyabyaqoob.1@gmail.com
+          - link "LinkedIn ↗" [ref=e166] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/tayyubyaqoob
+          - link "GitHub ↗" [ref=e167] [cursor=pointer]:
+            - /url: https://github.com/tayyub-ai
+        - generic [ref=e168]:
+          - heading "Pages" [level=5] [ref=e169]
+          - link "Home" [ref=e170] [cursor=pointer]:
+            - /url: /
+          - link "Case Studies" [ref=e171] [cursor=pointer]:
+            - /url: /case-studies
+          - link "Publications" [ref=e172] [cursor=pointer]:
+            - /url: /publications
+          - link "Labs" [ref=e173] [cursor=pointer]:
+            - /url: /labs
+          - link "About" [ref=e174] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e175] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e176]:
+        - generic [ref=e177]: © 2026 Tayyub Yaqoob
+        - generic [ref=e178]: Stirling, UK

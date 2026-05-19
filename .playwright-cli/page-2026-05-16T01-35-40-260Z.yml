@@ -1,0 +1,127 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - link [ref=e3] [cursor=pointer]:
+      - /url: "#contact"
+      - text: contact
+  - generic [ref=e4]:
+    - banner [ref=e5]:
+      - link "Tayyub Yaqoob" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e9]: Tayyub Yaqoob
+      - navigation "Primary" [ref=e10]:
+        - link "Home" [ref=e11] [cursor=pointer]:
+          - /url: /
+        - link "Case Studies" [ref=e12] [cursor=pointer]:
+          - /url: /case-studies
+        - link "Publications" [ref=e13] [cursor=pointer]:
+          - /url: /publications
+        - link "Labs" [ref=e14] [cursor=pointer]:
+          - /url: /labs
+        - link "About" [ref=e15] [cursor=pointer]:
+          - /url: /about
+      - link "Contact →" [ref=e17] [cursor=pointer]:
+        - /url: /contact
+    - banner [ref=e18]:
+      - generic [ref=e19]:
+        - link "Home" [ref=e20] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e21]: ›
+        - generic [ref=e22]: Contact
+      - heading "Contact." [level=1] [ref=e23]
+      - paragraph [ref=e24]: For senior roles, consulting, commentary, panels, and reference checks.
+    - generic [ref=e25]:
+      - text: RECEIVED
+      - generic [ref=e27]:
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - heading "Send a message." [level=3] [ref=e31]
+            - generic [ref=e32]: Direct correspondence · 2026
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - textbox "Your name" [ref=e35]:
+                - /placeholder: " "
+              - generic: Your name
+            - generic [ref=e36]:
+              - textbox "Email" [ref=e37]:
+                - /placeholder: " "
+              - generic: Email
+            - generic [ref=e38]:
+              - textbox "Organisation (optional)" [ref=e39]:
+                - /placeholder: " "
+              - generic: Organisation (optional)
+            - generic [ref=e40]:
+              - combobox "Topic" [ref=e41]:
+                - option "Senior role / hiring conversation" [selected]
+                - option "Consulting / analytics systems work"
+                - option "Speaking / panel / podcast"
+                - option "Publication / expert commentary"
+                - option "Other"
+              - generic: Topic
+            - generic [ref=e42]:
+              - textbox "Share the context, timeline, and what you need" [ref=e43]:
+                - /placeholder: " "
+              - generic: Share the context, timeline, and what you need
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: Direct reply only.
+              - text: No mailing list, no PR layer. Replies usually within 48 hours on weekdays.
+            - button "Send message →" [ref=e47] [cursor=pointer]
+        - complementary [ref=e48]:
+          - heading "Response protocol" [level=4] [ref=e49]
+          - paragraph [ref=e50]: This page is for roles, consulting, reference checks, speaking, and expert commentary. The goal is a fast direct exchange, not a lead funnel.
+          - list [ref=e51]:
+            - listitem [ref=e52]:
+              - generic [ref=e53]: Best for
+              - text: Senior role conversations, analytics systems work, publications, panels, and recommendation context.
+            - listitem [ref=e54]:
+              - generic [ref=e55]: Reply cadence
+              - text: Usually within 48 hours on weekdays, from
+              - link "tayyabyaqoob.1@gmail.com" [ref=e56] [cursor=pointer]:
+                - /url: mailto:tayyabyaqoob.1@gmail.com
+              - text: .
+            - listitem [ref=e57]:
+              - generic [ref=e58]: If urgent
+              - text: Include timing, decision window, and the kind of evidence or context you need.
+      - paragraph [ref=e59]:
+        - text: Prefer email? Write to
+        - link "tayyabyaqoob.1@gmail.com" [ref=e61] [cursor=pointer]:
+          - /url: mailto:tayyabyaqoob.1@gmail.com
+        - text: . Based in Stirling, UK.
+  - contentinfo [ref=e62]:
+    - generic [ref=e63]:
+      - heading "Direct contact. Get in touch →" [level=2] [ref=e64]:
+        - text: Direct contact.
+        - link "Get in touch →" [ref=e65] [cursor=pointer]:
+          - /url: /contact
+      - paragraph [ref=e66]: Replies come from my inbox, usually within 48 hours on weekdays.
+      - generic [ref=e67]:
+        - generic [ref=e68]:
+          - generic [ref=e69]: Tayyub Yaqoob
+          - paragraph [ref=e70]: Senior Digital Analyst · 8 Million Stories · Stirling, United Kingdom.
+        - generic [ref=e71]:
+          - heading "Reach" [level=5] [ref=e72]
+          - link "Contact form" [ref=e73] [cursor=pointer]:
+            - /url: /contact
+          - link "Email" [ref=e74] [cursor=pointer]:
+            - /url: mailto:tayyabyaqoob.1@gmail.com
+          - link "LinkedIn ↗" [ref=e75] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/tayyubyaqoob
+          - link "GitHub ↗" [ref=e76] [cursor=pointer]:
+            - /url: https://github.com/tayyub-ai
+        - generic [ref=e77]:
+          - heading "Pages" [level=5] [ref=e78]
+          - link "Home" [ref=e79] [cursor=pointer]:
+            - /url: /
+          - link "Case Studies" [ref=e80] [cursor=pointer]:
+            - /url: /case-studies
+          - link "Publications" [ref=e81] [cursor=pointer]:
+            - /url: /publications
+          - link "Labs" [ref=e82] [cursor=pointer]:
+            - /url: /labs
+          - link "About" [ref=e83] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e84] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e85]:
+        - generic [ref=e86]: © 2026 Tayyub Yaqoob
+        - generic [ref=e87]: Stirling, UK

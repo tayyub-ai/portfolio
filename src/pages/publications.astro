@@ -27,6 +27,9 @@ const themeColors: Record<string, string> = {
 
 const expertCitations = [
   {
+    outlet: "CCN",
+    outletUrl: "https://www.ccn.com/",
+    section: "Education",
     headline: "What Are AI Agents: Types, Examples & Steps To Build One",
     url: "https://www.ccn.com/education/crypto/ai-agents-how-to-create-based-ai-agent/",
     topic: "Agent wallets and the permission layer",
@@ -34,6 +37,9 @@ const expertCitations = [
       "The real engineering work on agent wallets now sits at the permission layer, not the model layer. Scoped session keys, time-bound delegations and policy rulebooks that enforce spending caps and counterparty whitelists before any signature is produced are what separate an experimental agent from one that can be trusted with real funds. Revocation, audit logging and human override are no longer safeguards bolted on top, they are core infrastructure.",
   },
   {
+    outlet: "CCN",
+    outletUrl: "https://www.ccn.com/",
+    section: "Education",
     headline: "How AI Crypto Trading Bots Make And Lose Millions Inside The Black Box",
     url: "https://www.ccn.com/education/crypto/ai-crypto-trading-bots-how-they-make-and-lose-millions/",
     topic: "AI trading bots and verifiability",
@@ -41,11 +47,28 @@ const expertCitations = [
       "The real black box is not the model, it is the gap between what the system did and what the user can verify. A bot can react quickly to noisy data, stale signals or overfitted patterns while still looking reliable, because the execution is automated and the outcome is visible even when the reasoning is not. Any system handling real capital needs tested risk limits, full audit logs of inputs and decisions, and human override paths, with the bot's tool integrations and data feeds treated as part of the attack surface.",
   },
   {
+    outlet: "CCN",
+    outletUrl: "https://www.ccn.com/",
+    section: "Education",
     headline: "AI Hallucinations & Slopsquatting: A Caution for Blockchain Devs",
     url: "https://www.ccn.com/education/crypto/ai-hallucinations-slopsquatting-risk-for-blockchain-devs/",
     topic: "AI-generated code and supply-chain risk",
     quote:
       "The defence here is not careful prompting, it is treating AI suggestions like any other untrusted input. The fact that models confidently generate plausible-sounding package names that do not exist is what makes slopsquatting work, and no amount of better prompting closes that gap. Verifying package provenance, checking how recently a package was published and preferring audited libraries matters more than the prompt that produced the code. AI-generated code should reach production through the same review path as any third-party dependency, not a shorter one.",
+  },
+  {
+    outlet: "Inside Higher Ed",
+    outletUrl: "https://www.insidehighered.com/",
+    section: "Opinion · Ray Schroeder · 2023",
+    headline: "The Innovation Continuum: Planning for What Is Next",
+    url: "https://www.insidehighered.com/opinion/columns/online-trending-now/2023/09/27/innovation-continuum-planning-what-next",
+    topic: "Auto-GPT autonomous agents (citing Cointelegraph)",
+    quote:
+      "The capacity of Auto-GPT to self-generate prompts to perform tasks, as well as its ability to connect with apps, software and services both online and locally, distinguishes it from other AI solutions. This means that, given a goal, Auto-GPT can devise a plausible advertising approach and create a rudimentary website.",
+    mirror: {
+      outlet: "UPCEA",
+      url: "https://upcea.edu/the-innovation-continuum-planning-for-what-is-next/",
+    },
   },
 ];
 
@@ -73,7 +96,7 @@ const publicationSchema = {
   name: "Writing, citations, and peer review",
   url: "https://www.tayyubyaqoob.com/publications",
   description:
-    "Technical articles for Cointelegraph and AlphaWire, expert-source citations in CCN, and invited peer review record for IGI Global.",
+    "Technical articles for Cointelegraph and AlphaWire, expert-source citations in CCN and Inside Higher Ed, and invited peer review record for IGI Global.",
   mainEntity: {
     "@type": "ItemList",
     itemListElement: allArticles.map((article, index) => ({
@@ -98,7 +121,7 @@ const publicationSchema = {
 const citationSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "Expert-source citations in CCN",
+  name: "Expert-source citations",
   itemListElement: expertCitations.map((citation, index) => ({
     "@type": "ListItem",
     position: index + 1,
@@ -112,8 +135,8 @@ const citationSchema = {
       },
       publisher: {
         "@type": "Organization",
-        name: "CCN",
-        url: "https://www.ccn.com/",
+        name: citation.outlet,
+        url: citation.outletUrl,
       },
       mentions: {
         "@id": "https://www.tayyubyaqoob.com/#person",
@@ -241,22 +264,31 @@ function shortenQuote(quote: string, words = 24) {
     .format-strip span{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;border:1px solid var(--line);background:#fff;font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--ink-2);text-transform:uppercase}
 
     .citation-sheet{position:relative;padding:18px 0 8px}
-    .citation-sheet::before{content:"";position:absolute;left:5%;right:5%;top:56px;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
-    .citation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .citation-col{position:relative;display:flex;flex-direction:column;gap:14px;min-height:320px;padding:24px 24px 22px;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-1);transition:transform .35s,box-shadow .35s,border-color .25s}
-    .citation-col:nth-child(1){transform:rotate(-1.3deg) translateY(10px)}
-    .citation-col:nth-child(2){transform:translateY(-10px)}
-    .citation-col:nth-child(3){transform:rotate(1.2deg) translateY(18px)}
-    .citation-col::before{content:attr(data-mark);position:absolute;right:18px;top:12px;font-family:var(--serif);font-size:92px;line-height:1;color:rgba(196,77,44,.1);font-style:italic}
-    .citation-col::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,var(--terra),transparent);transform:scaleX(.16);transform-origin:left;transition:transform .35s}
+    .citation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .citation-col{position:relative;display:flex;flex-direction:column;gap:12px;min-height:340px;padding:26px 26px 22px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-1);transition:transform .35s,box-shadow .35s,border-color .25s}
+    .citation-col:nth-child(1){transform:rotate(-.7deg) translateY(6px)}
+    .citation-col:nth-child(2){transform:rotate(.6deg) translateY(-6px)}
+    .citation-col:nth-child(3){transform:rotate(.5deg) translateY(10px)}
+    .citation-col:nth-child(4){transform:rotate(-.6deg) translateY(-4px)}
+    .citation-col::before{content:attr(data-mark);position:absolute;right:20px;top:14px;font-family:var(--serif);font-size:80px;line-height:1;color:rgba(196,77,44,.1);font-style:italic;pointer-events:none}
+    .citation-col::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,var(--terra),transparent);transform:scaleX(.16);transform-origin:left;transition:transform .35s;border-radius:0 0 18px 18px}
     .citation-col:hover{transform:translateY(-6px) rotate(0deg);box-shadow:var(--shadow-2);border-color:var(--line-2)}
     .citation-col:hover::after{transform:scaleX(1)}
-    .citation-topic{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--terra);text-transform:uppercase}
-    .citation-col h3{font-family:var(--serif);font-size:25px;font-weight:400;line-height:1.08;letter-spacing:-.01em;color:var(--ink);max-width:14ch}
+    .citation-source{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--terra);text-transform:uppercase;font-weight:700}
+    .citation-topic{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+    .citation-col h3{font-family:var(--serif);font-size:24px;font-weight:400;line-height:1.1;letter-spacing:-.01em;color:var(--ink);max-width:16ch}
+    .citation-col h3 a{color:inherit;text-decoration:none;border:none}
+    /* stretched-link: card-wide click target for the headline link, layered below other links */
+    .citation-col h3 .citation-main::before{content:"";position:absolute;inset:0;z-index:1}
+    .citation-col h3 a:hover{color:var(--terra)}
     .citation-col p{font-size:13.5px;line-height:1.66;color:var(--ink-2)}
-    .citation-quote{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--serif);font-style:italic;font-size:16px;line-height:1.55;color:var(--ink)}
-    .citation-cta{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase}
-    .citation-cta::after{content:" ↗"}
+    .citation-quote{margin-top:auto;padding-top:14px;border-top:1px dashed var(--line);font-family:var(--serif);font-style:italic;font-size:15.5px;line-height:1.55;color:var(--ink)}
+    .citation-section{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-top:6px}
+    .citation-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px;padding-top:12px;border-top:1px solid var(--line);position:relative;z-index:2}
+    .citation-cta{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--terra);text-transform:uppercase;font-weight:700;text-decoration:none}
+    .citation-cta:hover{color:var(--ink)}
+    .citation-mirror{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;text-decoration:none;border-bottom:1px dashed var(--line-2);padding-bottom:1px}
+    .citation-mirror:hover{color:var(--terra);border-color:var(--terra)}
 
     .review-axis{position:relative;background:linear-gradient(180deg,#fff,var(--bg-soft));border:1px solid var(--line);border-radius:24px;padding:34px 26px 30px;box-shadow:var(--shadow-1);overflow:hidden}
     .review-axis::before{content:"";position:absolute;left:30px;right:30px;top:66px;height:2px;background:linear-gradient(90deg,rgba(196,77,44,.2),rgba(196,77,44,.75),rgba(138,94,21,.35));border-radius:999px}
@@ -355,7 +387,7 @@ function shortenQuote(quote: string, words = 24) {
 
   <section class="section wrap first" data-screen-label="Intro">
     <p class="pub-intro rv">
-      <b>{publishedPiecesTotal} published pieces</b> across Cointelegraph and AlphaWire between 2022 and 2026. The page is anchored by a broader archived Cointelegraph author-index record, <a href="#cited">{expertCitations.length} CCN expert citations</a>, and <a href="#peer-review">{igiReviews.length} invited peer reviews</a> for IGI Global.
+      <b>{publishedPiecesTotal} published pieces</b> across Cointelegraph and AlphaWire between 2022 and 2026. Anchored by an archived Cointelegraph author-index record, <a href="#cited">{expertCitations.length} expert-source citations across CCN and Inside Higher Ed</a>, and <a href="#peer-review">{igiReviews.length} invited peer reviews</a> for IGI Global.
     </p>
 
     <div class="pub-command rv d1">
@@ -366,7 +398,7 @@ function shortenQuote(quote: string, words = 24) {
         <div class="command-metrics">
           <div class="metric"><b>{publishedPiecesTotal}</b><span>Published pieces</span></div>
           <div class="metric"><b>{archivedCointelegraphArticles.length}</b><span>Archived Cointelegraph entries</span></div>
-          <div class="metric"><b>{expertCitations.length}</b><span>CCN citations</span></div>
+          <div class="metric"><b>{expertCitations.length}</b><span>External citations</span></div>
         </div>
       </div>
 
@@ -385,7 +417,7 @@ function shortenQuote(quote: string, words = 24) {
           <article class="signal-card">
             <span class="label">Editorial trust</span>
             <b>{expertCitations.length} citations + {igiReviews.length} reviews</b>
-            <p>External pickup from CCN and invited academic review work strengthen the publication record beyond bylines alone.</p>
+            <p>External pickup from CCN and Inside Higher Ed, plus invited academic peer review, strengthen the publication record beyond bylines alone.</p>
           </article>
         </div>
 
@@ -417,22 +449,31 @@ function shortenQuote(quote: string, words = 24) {
   <section class="section wrap" id="cited" data-screen-label="Cited">
     <div class="sec-head rv">
       <div class="sec-head-l">
-        <h2>Cited in CCN.</h2>
-        <p>Three expert-source pickups around agent permissions, trading-bot verifiability, and AI-driven supply-chain risk.</p>
+        <h2>Cited as an expert source.</h2>
+        <p>Four expert-source pickups across CCN and Inside Higher Ed, covering agent permissions, trading-bot verifiability, AI-driven supply-chain risk, and Auto-GPT autonomous agents.</p>
       </div>
-      <div class="sec-head-r">/ cited commentary</div>
+      <div class="sec-head-r">/ external citations</div>
     </div>
 
     <div class="citation-sheet rv">
       <div class="citation-grid">
         {expertCitations.map((citation, index) => (
-          <a class="citation-col" data-mark={String(index + 1).padStart(2, "0")} href={citation.url} target="_blank" rel="noreferrer">
+          <article class="citation-col" data-mark={String(index + 1).padStart(2, "0")}>
+            <span class="citation-source">{citation.outlet}</span>
             <span class="citation-topic">{citation.topic}</span>
-            <h3>{citation.headline}</h3>
+            <h3><a class="citation-main" href={citation.url} target="_blank" rel="noreferrer">{citation.headline}</a></h3>
             <p>{shortenQuote(citation.quote)}</p>
             <blockquote class="citation-quote">{shortenQuote(citation.quote, 12)}</blockquote>
-            <span class="citation-cta">Read on CCN</span>
-          </a>
+            <span class="citation-section">{citation.section}</span>
+            <div class="citation-foot">
+              <a class="citation-cta" href={citation.url} target="_blank" rel="noreferrer">Read on {citation.outlet} ↗</a>
+              {citation.mirror && (
+                <a class="citation-mirror" href={citation.mirror.url} target="_blank" rel="noreferrer">
+                  Also on {citation.mirror.outlet} ↗
+                </a>
+              )}
+            </div>
+          </article>
         ))}
       </div>
     </div>

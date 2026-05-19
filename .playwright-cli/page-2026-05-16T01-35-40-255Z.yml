@@ -1,0 +1,376 @@
+- generic [active] [ref=e1]:
+  - complementary [ref=e2]:
+    - link [ref=e3] [cursor=pointer]:
+      - /url: "#cited"
+      - text: Cited
+    - link [ref=e4] [cursor=pointer]:
+      - /url: "#peer-review"
+      - text: Peer review
+    - link [ref=e5] [cursor=pointer]:
+      - /url: "#contact"
+      - text: contact
+  - generic [ref=e6]:
+    - banner [ref=e7]:
+      - link "Tayyub Yaqoob" [ref=e9] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e11]: Tayyub Yaqoob
+      - navigation "Primary" [ref=e12]:
+        - link "Home" [ref=e13] [cursor=pointer]:
+          - /url: /
+        - link "Case Studies" [ref=e14] [cursor=pointer]:
+          - /url: /case-studies
+        - link "Publications" [ref=e15] [cursor=pointer]:
+          - /url: /publications
+        - link "Labs" [ref=e16] [cursor=pointer]:
+          - /url: /labs
+        - link "About" [ref=e17] [cursor=pointer]:
+          - /url: /about
+      - link "Contact →" [ref=e19] [cursor=pointer]:
+        - /url: /contact
+    - banner [ref=e20]:
+      - generic [ref=e21]:
+        - link "Home" [ref=e22] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e23]: ›
+        - generic [ref=e24]: Publications
+      - heading "Publications." [level=1] [ref=e25]
+      - paragraph [ref=e26]: Authored articles, expert-source citations, and peer-review record.
+    - generic [ref=e27]:
+      - paragraph [ref=e28]:
+        - text: 35 published pieces across Cointelegraph and AlphaWire between 2022 and 2026. The page is anchored by a broader archived Cointelegraph author-index record,
+        - link "3 CCN expert citations" [ref=e29] [cursor=pointer]:
+          - /url: "#cited"
+        - text: ", and"
+        - link "3 invited peer reviews" [ref=e30] [cursor=pointer]:
+          - /url: "#peer-review"
+        - text: for IGI Global.
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]: Writing record
+          - heading "Technical journalism, not a scrapbook." [level=3] [ref=e34]
+          - paragraph [ref=e35]: "The page now leads with the strongest proof surfaces first: publication volume, archive continuity, expert citations, peer review, and topic coverage. Decorative fake chronology is gone."
+          - generic [ref=e36]:
+            - generic [ref=e37]:
+              - generic [ref=e38]: "35"
+              - generic [ref=e39]: Published pieces
+            - generic [ref=e40]:
+              - generic [ref=e41]: "30"
+              - generic [ref=e42]: Archived Cointelegraph entries
+            - generic [ref=e43]:
+              - generic [ref=e44]: "3"
+              - generic [ref=e45]: CCN citations
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - article [ref=e48]:
+              - generic [ref=e49]: Archive continuity
+              - generic [ref=e50]: 30 indexed entries
+              - paragraph [ref=e51]: Cointelegraph is shown through the archived author-index snapshot, not reduced to a tiny surviving subset.
+            - article [ref=e52]:
+              - generic [ref=e53]: Outlet spread
+              - generic [ref=e54]: Cointelegraph + AlphaWire
+              - paragraph [ref=e55]: Coverage spans crypto infrastructure, AI trading workflows, fintech rails, and research-led explainers.
+            - article [ref=e56]:
+              - generic [ref=e57]: Editorial trust
+              - generic [ref=e58]: 3 citations + 3 reviews
+              - paragraph [ref=e59]: External pickup from CCN and invited academic review work strengthen the publication record beyond bylines alone.
+          - generic [ref=e60]:
+            - generic [ref=e61]:
+              - heading "Coverage mix." [level=4] [ref=e62]
+              - generic [ref=e63]: Theme and format view across the documented article set
+            - generic [ref=e74]:
+              - generic [ref=e75]: Security · 2
+              - generic [ref=e77]: Adoption · 1
+              - generic [ref=e79]: Quantum · 1
+              - generic [ref=e81]: AI agents · 1
+              - generic [ref=e83]: AI trading · 1
+              - generic [ref=e85]: Research workflow · 1
+              - generic [ref=e87]: Blockchain · 1
+              - generic [ref=e89]: Payments · 1
+              - generic [ref=e91]: Fintech · 1
+            - generic [ref=e93]:
+              - generic [ref=e94]: How to · 4
+              - generic [ref=e95]: Explained · 4
+              - generic [ref=e96]: Technology · 1
+              - generic [ref=e97]: Business · 1
+    - generic [ref=e98]:
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - heading "Cited in CCN." [level=2] [ref=e101]
+          - paragraph [ref=e102]: Three expert-source pickups around agent permissions, trading-bot verifiability, and AI-driven supply-chain risk.
+        - generic [ref=e103]: / cited commentary
+      - generic [ref=e105]:
+        - 'link "01 Agent wallets and the permission layer What Are AI Agents: Types, Examples & Steps To Build One The real engineering work on agent wallets now sits at the permission layer, not the model layer. Scoped session keys, time-bound delegations and policy... Read on CCN ↗" [ref=e106] [cursor=pointer]':
+          - /url: https://www.ccn.com/education/crypto/ai-agents-how-to-create-based-ai-agent/
+          - text: "01"
+          - generic [ref=e107]: Agent wallets and the permission layer
+          - 'heading "What Are AI Agents: Types, Examples & Steps To Build One" [level=3] [ref=e108]'
+          - paragraph [ref=e109]: The real engineering work on agent wallets now sits at the permission layer, not the model layer. Scoped session keys, time-bound delegations and policy...
+          - blockquote [ref=e110]: The real engineering work on agent wallets now sits at the permission...
+          - generic [ref=e111]: Read on CCN ↗
+        - link "02 AI trading bots and verifiability How AI Crypto Trading Bots Make And Lose Millions Inside The Black Box The real black box is not the model, it is the gap between what the system did and what the user can verify. A... Read on CCN ↗" [ref=e112] [cursor=pointer]:
+          - /url: https://www.ccn.com/education/crypto/ai-crypto-trading-bots-how-they-make-and-lose-millions/
+          - text: "02"
+          - generic [ref=e113]: AI trading bots and verifiability
+          - heading "How AI Crypto Trading Bots Make And Lose Millions Inside The Black Box" [level=3] [ref=e114]
+          - paragraph [ref=e115]: The real black box is not the model, it is the gap between what the system did and what the user can verify. A...
+          - blockquote [ref=e116]: The real black box is not the model, it is the gap...
+          - generic [ref=e117]: Read on CCN ↗
+        - 'link "03 AI-generated code and supply-chain risk AI Hallucinations & Slopsquatting: A Caution for Blockchain Devs The defence here is not careful prompting, it is treating AI suggestions like any other untrusted input. The fact that models confidently generate plausible-sounding... Read on CCN ↗" [ref=e118] [cursor=pointer]':
+          - /url: https://www.ccn.com/education/crypto/ai-hallucinations-slopsquatting-risk-for-blockchain-devs/
+          - text: "03"
+          - generic [ref=e119]: AI-generated code and supply-chain risk
+          - 'heading "AI Hallucinations & Slopsquatting: A Caution for Blockchain Devs" [level=3] [ref=e120]'
+          - paragraph [ref=e121]: The defence here is not careful prompting, it is treating AI suggestions like any other untrusted input. The fact that models confidently generate plausible-sounding...
+          - blockquote [ref=e122]: The defence here is not careful prompting, it is treating AI suggestions...
+          - generic [ref=e123]: Read on CCN ↗
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - heading "Peer review for IGI Global." [level=2] [ref=e127]
+          - paragraph [ref=e128]: Three invited publisher reviews spanning CBDCs, banking consensus systems, and AI-enabled FinTech architecture.
+        - generic [ref=e129]: / invited reviewer
+      - generic [ref=e131]:
+        - article [ref=e132]:
+          - generic [ref=e133]: "2022"
+          - heading "CBDCs and Financial Stability" [level=3] [ref=e134]
+          - paragraph [ref=e135]: Macro-impact chapter on central bank digital currencies
+        - article [ref=e136]:
+          - generic [ref=e137]: "2022"
+          - heading "Blockchain and Consensus for IoT-Based Banking" [level=3] [ref=e138]
+          - paragraph [ref=e139]: Consensus-protocol chapter for IoT banking infrastructure
+        - article [ref=e140]:
+          - generic [ref=e141]: "2023"
+          - heading "AI-Enabled Agile IoT for FinTech" [level=3] [ref=e142]
+          - paragraph [ref=e143]: Edge-AI and FinTech-architecture chapter
+    - generic [ref=e144]:
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - heading "Publication atlas." [level=2] [ref=e147]
+          - paragraph [ref=e148]: Cointelegraph is shown as an archived body of work first because earlier publisher surfaces were removed or restructured.
+        - generic [ref=e149]: / archive first
+      - generic [ref=e150]:
+        - article [ref=e151]:
+          - generic [ref=e152]: Cointelegraph author-index snapshot
+          - heading "30 archived Cointelegraph entries." [level=3] [ref=e153]
+          - paragraph [ref=e154]: The PDF preserves the broader Cointelegraph record captured from the archived author page. This is the main editorial body of work shown on the page.
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - generic [ref=e157]: "2"
+              - generic [ref=e158]: Years represented
+            - generic [ref=e159]:
+              - generic [ref=e160]: "26"
+              - generic [ref=e161]: 2025 entries
+            - generic [ref=e162]:
+              - generic [ref=e163]: "19"
+              - generic [ref=e164]: How to
+          - generic [ref=e165]:
+            - generic [ref=e166]: 2024 · 4
+            - generic [ref=e167]: 2025 · 26
+            - generic [ref=e168]: How to · 19
+            - generic [ref=e169]: Explained · 11
+          - link "Open full Cointelegraph archive PDF ↗" [ref=e170] [cursor=pointer]:
+            - /url: /evidence/cointelegraph-articles-history.pdf
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - link "Dec 26, 2025 · How to Inside the Swiss city where you can pay for almost everything in Bitcoin View in archive PDF ↗" [ref=e173] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e174]: Dec 26, 2025 · How to
+              - heading "Inside the Swiss city where you can pay for almost everything in Bitcoin" [level=4] [ref=e175]
+              - generic [ref=e176]: View in archive PDF ↗
+            - link "Nov 15, 2025 · Explained What happens to Satoshi’s 1M Bitcoin if quantum computers go live? View in archive PDF ↗" [ref=e177] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e178]: Nov 15, 2025 · Explained
+              - heading "What happens to Satoshi’s 1M Bitcoin if quantum computers go live?" [level=4] [ref=e179]
+              - generic [ref=e180]: View in archive PDF ↗
+            - link "Nov 5, 2025 · How to How to turn ChatGPT into your personal crypto trading assistant View in archive PDF ↗" [ref=e181] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e182]: Nov 5, 2025 · How to
+              - heading "How to turn ChatGPT into your personal crypto trading assistant" [level=4] [ref=e183]
+              - generic [ref=e184]: View in archive PDF ↗
+            - link "Oct 30, 2025 · How to Can ChatGPT really predict the next crypto market crash? View in archive PDF ↗" [ref=e185] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e186]: Oct 30, 2025 · How to
+              - heading "Can ChatGPT really predict the next crypto market crash?" [level=4] [ref=e187]
+              - generic [ref=e188]: View in archive PDF ↗
+            - link "Oct 14, 2025 · How to How to use Google’s Gemini to research coins before you invest View in archive PDF ↗" [ref=e189] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e190]: Oct 14, 2025 · How to
+              - heading "How to use Google’s Gemini to research coins before you invest" [level=4] [ref=e191]
+              - generic [ref=e192]: View in archive PDF ↗
+            - link "Sep 22, 2025 · How to How to day trade crypto using ChatGPT and Grok View in archive PDF ↗" [ref=e193] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e194]: Sep 22, 2025 · How to
+              - heading "How to day trade crypto using ChatGPT and Grok" [level=4] [ref=e195]
+              - generic [ref=e196]: View in archive PDF ↗
+            - link "Sep 19, 2025 · How to How to use ChatGPT for real-time crypto trading signals View in archive PDF ↗" [ref=e197] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e198]: Sep 19, 2025 · How to
+              - heading "How to use ChatGPT for real-time crypto trading signals" [level=4] [ref=e199]
+              - generic [ref=e200]: View in archive PDF ↗
+            - link "Sep 8, 2025 · How to How to use Grok for real-time crypto trading signals View in archive PDF ↗" [ref=e201] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e202]: Sep 8, 2025 · How to
+              - heading "How to use Grok for real-time crypto trading signals" [level=4] [ref=e203]
+              - generic [ref=e204]: View in archive PDF ↗
+          - generic [ref=e205]:
+            - link "Sep 4, 2025 · Explained Can AI bots steal your crypto? The rise of digital thieves Open archive source ↗" [ref=e206] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e207]: Sep 4, 2025 · Explained
+              - heading "Can AI bots steal your crypto? The rise of digital thieves" [level=5] [ref=e208]
+              - generic [ref=e209]: Open archive source ↗
+            - link "Sep 3, 2025 · How to How to use Google Gemini for smarter crypto trading Open archive source ↗" [ref=e210] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e211]: Sep 3, 2025 · How to
+              - heading "How to use Google Gemini for smarter crypto trading" [level=5] [ref=e212]
+              - generic [ref=e213]: Open archive source ↗
+            - link "Sep 1, 2025 · How to How to use ChatGPT to predict altcoin pumps before they happen Open archive source ↗" [ref=e214] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e215]: Sep 1, 2025 · How to
+              - heading "How to use ChatGPT to predict altcoin pumps before they happen" [level=5] [ref=e216]
+              - generic [ref=e217]: Open archive source ↗
+            - link "Aug 8, 2025 · How to Can Google Gemini really help plan crypto trades? Open archive source ↗" [ref=e218] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e219]: Aug 8, 2025 · How to
+              - heading "Can Google Gemini really help plan crypto trades?" [level=5] [ref=e220]
+              - generic [ref=e221]: Open archive source ↗
+            - link "Aug 5, 2025 · Explained This open-source LLM could redefine AI research, and it’s 100% public Open archive source ↗" [ref=e222] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e223]: Aug 5, 2025 · Explained
+              - heading "This open-source LLM could redefine AI research, and it’s 100% public" [level=5] [ref=e224]
+              - generic [ref=e225]: Open archive source ↗
+            - link "Jul 14, 2025 · How to How to use GitHub, Discord, and X to find hidden crypto gems early Open archive source ↗" [ref=e226] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e227]: Jul 14, 2025 · How to
+              - heading "How to use GitHub, Discord, and X to find hidden crypto gems early" [level=5] [ref=e228]
+              - generic [ref=e229]: Open archive source ↗
+            - link "Jul 11, 2025 · How to How to use ChatGPT for crypto strategy, signals, and sentiment Open archive source ↗" [ref=e230] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e231]: Jul 11, 2025 · How to
+              - heading "How to use ChatGPT for crypto strategy, signals, and sentiment" [level=5] [ref=e232]
+              - generic [ref=e233]: Open archive source ↗
+            - 'link "Jul 9, 2025 · How to ChatGPT vs X: Which is better at first spotting the next big crypto narrative? Open archive source ↗" [ref=e234] [cursor=pointer]':
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e235]: Jul 9, 2025 · How to
+              - 'heading "ChatGPT vs X: Which is better at first spotting the next big crypto narrative?" [level=5] [ref=e236]'
+              - generic [ref=e237]: Open archive source ↗
+            - link "Jul 3, 2025 · How to What are address poisoning attacks in crypto and how to avoid them? Open archive source ↗" [ref=e238] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e239]: Jul 3, 2025 · How to
+              - heading "What are address poisoning attacks in crypto and how to avoid them?" [level=5] [ref=e240]
+              - generic [ref=e241]: Open archive source ↗
+            - link "Jun 12, 2025 · How to Tried automating crypto trades with Grok 3? Here’s what happens Open archive source ↗" [ref=e242] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e243]: Jun 12, 2025 · How to
+              - heading "Tried automating crypto trades with Grok 3? Here’s what happens" [level=5] [ref=e244]
+              - generic [ref=e245]: Open archive source ↗
+            - 'link "Jun 11, 2025 · Explained When an AI says, ‘No, I don’t want to power off’: Inside the o3 refusal Open archive source ↗" [ref=e246] [cursor=pointer]':
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e247]: Jun 11, 2025 · Explained
+              - 'heading "When an AI says, ‘No, I don’t want to power off’: Inside the o3 refusal" [level=5] [ref=e248]'
+              - generic [ref=e249]: Open archive source ↗
+            - link "May 23, 2025 · How to Can ChatGPT-powered AI agents really trade crypto for you? Open archive source ↗" [ref=e250] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e251]: May 23, 2025 · How to
+              - heading "Can ChatGPT-powered AI agents really trade crypto for you?" [level=5] [ref=e252]
+              - generic [ref=e253]: Open archive source ↗
+            - link "Mar 24, 2025 · How to How to use ChatGPT to predict crypto market trends Open archive source ↗" [ref=e254] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e255]: Mar 24, 2025 · How to
+              - heading "How to use ChatGPT to predict crypto market trends" [level=5] [ref=e256]
+              - generic [ref=e257]: Open archive source ↗
+            - 'link "Mar 4, 2025 · How to How to build a ChatGPT-powered AI trading bot: A step-by-step guide Open archive source ↗" [ref=e258] [cursor=pointer]':
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e259]: Mar 4, 2025 · How to
+              - 'heading "How to build a ChatGPT-powered AI trading bot: A step-by-step guide" [level=5] [ref=e260]'
+              - generic [ref=e261]: Open archive source ↗
+            - link "Feb 10, 2025 · How to How to develop an AI agent for crypto trading Open archive source ↗" [ref=e262] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e263]: Feb 10, 2025 · How to
+              - heading "How to develop an AI agent for crypto trading" [level=5] [ref=e264]
+              - generic [ref=e265]: Open archive source ↗
+            - 'link "Jan 27, 2025 · Explained AI-powered romance scams: The new frontier in crypto fraud Open archive source ↗" [ref=e266] [cursor=pointer]':
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e267]: Jan 27, 2025 · Explained
+              - 'heading "AI-powered romance scams: The new frontier in crypto fraud" [level=5] [ref=e268]'
+              - generic [ref=e269]: Open archive source ↗
+            - 'link "Jan 24, 2025 · Explained SAB 121 rescinded: What it means for crypto custody and regulation in 2025 Open archive source ↗" [ref=e270] [cursor=pointer]':
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e271]: Jan 24, 2025 · Explained
+              - 'heading "SAB 121 rescinded: What it means for crypto custody and regulation in 2025" [level=5] [ref=e272]'
+              - generic [ref=e273]: Open archive source ↗
+            - link "Jan 8, 2025 · Explained What are quantum-resistant tokens and why do they matter for crypto? Open archive source ↗" [ref=e274] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e275]: Jan 8, 2025 · Explained
+              - heading "What are quantum-resistant tokens and why do they matter for crypto?" [level=5] [ref=e276]
+              - generic [ref=e277]: Open archive source ↗
+            - link "Dec 17, 2024 · Explained Google’s Willow quantum chip vs. Bitcoin security — What’s at stake? Open archive source ↗" [ref=e278] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e279]: Dec 17, 2024 · Explained
+              - heading "Google’s Willow quantum chip vs. Bitcoin security — What’s at stake?" [level=5] [ref=e280]
+              - generic [ref=e281]: Open archive source ↗
+            - link "Dec 13, 2024 · Explained What is decentralized identity in blockchain? Open archive source ↗" [ref=e282] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e283]: Dec 13, 2024 · Explained
+              - heading "What is decentralized identity in blockchain?" [level=5] [ref=e284]
+              - generic [ref=e285]: Open archive source ↗
+            - link "May 23, 2024 · Explained What is a crypto vault, and how does it work? Open archive source ↗" [ref=e286] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e287]: May 23, 2024 · Explained
+              - heading "What is a crypto vault, and how does it work?" [level=5] [ref=e288]
+              - generic [ref=e289]: Open archive source ↗
+            - link "Apr 7, 2024 · Explained What are generative art NFTs? Open archive source ↗" [ref=e290] [cursor=pointer]:
+              - /url: /evidence/cointelegraph-articles-history.pdf
+              - generic [ref=e291]: Apr 7, 2024 · Explained
+              - heading "What are generative art NFTs?" [level=5] [ref=e292]
+              - generic [ref=e293]: Open archive source ↗
+    - generic [ref=e294]:
+      - generic [ref=e295]:
+        - generic [ref=e296]:
+          - heading "Cointelegraph archive." [level=2] [ref=e297]
+          - paragraph [ref=e298]: Older index continuity is preserved in a PDF because earlier publisher surfaces were removed or restructured.
+        - generic [ref=e299]: / continuity proof
+      - generic [ref=e300]:
+        - generic [ref=e301]:
+          - text: Archive · publisher restructure
+          - heading "Cointelegraph PDF archive." [level=3] [ref=e302]
+          - paragraph [ref=e303]: PDF archive captured from Cointelegraph history before the outlet removed or restructured parts of the earlier author-index surface.
+        - link "Open PDF ↗" [ref=e304] [cursor=pointer]:
+          - /url: /evidence/cointelegraph-articles-history.pdf
+  - contentinfo [ref=e305]:
+    - generic [ref=e306]:
+      - heading "Work together or ask for closer detail. Get in touch →" [level=2] [ref=e307]:
+        - text: Work together or ask for closer detail.
+        - link "Get in touch →" [ref=e308] [cursor=pointer]:
+          - /url: /contact
+      - paragraph [ref=e309]: Senior roles, consulting, expert commentary, conference talks, and reference checks. I reply directly from my inbox, usually within 48 hours on weekdays.
+      - generic [ref=e310]:
+        - generic [ref=e311]:
+          - generic [ref=e312]: Tayyub Yaqoob
+          - paragraph [ref=e313]: Senior Digital Analyst · 8 Million Stories · Stirling, United Kingdom.
+        - generic [ref=e314]:
+          - heading "Reach" [level=5] [ref=e315]
+          - link "Contact form" [ref=e316] [cursor=pointer]:
+            - /url: /contact
+          - link "Email" [ref=e317] [cursor=pointer]:
+            - /url: mailto:tayyabyaqoob.1@gmail.com
+          - link "LinkedIn ↗" [ref=e318] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/tayyubyaqoob
+          - link "GitHub ↗" [ref=e319] [cursor=pointer]:
+            - /url: https://github.com/tayyub-ai
+        - generic [ref=e320]:
+          - heading "Pages" [level=5] [ref=e321]
+          - link "Home" [ref=e322] [cursor=pointer]:
+            - /url: /
+          - link "Case Studies" [ref=e323] [cursor=pointer]:
+            - /url: /case-studies
+          - link "Publications" [ref=e324] [cursor=pointer]:
+            - /url: /publications
+          - link "Labs" [ref=e325] [cursor=pointer]:
+            - /url: /labs
+          - link "About" [ref=e326] [cursor=pointer]:
+            - /url: /about
+          - link "Contact" [ref=e327] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e328]:
+        - generic [ref=e329]: © 2026 Tayyub Yaqoob
+        - generic [ref=e330]: Stirling, UK
